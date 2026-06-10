@@ -1,12 +1,8 @@
-package com.example.auth_system.auth.service;
-
-
+package com.example.auth_system.common.service;
 
 import com.example.auth_system.auth.entity.OtpType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,14 +10,30 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class EmailService {
     
-    private final JavaMailSender mailSender;
+    // Remove JavaMailSender for now - comment it out
+    // private final JavaMailSender mailSender;
     
     public void sendOtpEmail(String to, String otp, OtpType type) {
         String subject = getOtpSubject(type);
         String body = String.format("Your OTP for %s is: %s\n\nThis OTP will expire in 10 minutes.", 
                 getTypeDescription(type), otp);
         
-        sendEmail(to, subject, body);
+        // Just log the email for testing (no actual email sending)
+        log.info("========== EMAIL SIMULATION ==========");
+        log.info("To: {}", to);
+        log.info("Subject: {}", subject);
+        log.info("OTP: {}", otp);
+        log.info("Body: {}", body);
+        log.info("=====================================");
+        
+        // Print to console for easy visibility during testing
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║        📧 EMAIL VERIFICATION          ║");
+        System.out.println("╠════════════════════════════════════════╣");
+        System.out.println("║ To:  " + to);
+        System.out.println("║ OTP: " + otp);
+        System.out.println("║ Type: " + type);
+        System.out.println("╚════════════════════════════════════════╝\n");
     }
     
     public void sendPasswordResetEmail(String to, String resetToken) {
@@ -29,25 +41,23 @@ public class EmailService {
         String subject = "Password Reset Request";
         String body = String.format("Click the link below to reset your password:\n%s\n\nThis link will expire in 24 hours.", resetLink);
         
-        sendEmail(to, subject, body);
+        log.info("========== PASSWORD RESET SIMULATION ==========");
+        log.info("To: {}", to);
+        log.info("Subject: {}", subject);
+        log.info("Reset Token: {}", resetToken);
+        log.info("Reset Link: {}", resetLink);
+        log.info("==============================================");
+        
+        System.out.println("\n🔐 PASSWORD RESET TOKEN: " + resetToken);
+        System.out.println("   Email: " + to + "\n");
     }
     
     public void sendPasswordResetConfirmationEmail(String to) {
         String subject = "Password Reset Successful";
         String body = "Your password has been successfully reset. If you didn't perform this action, please contact support immediately.";
         
-        sendEmail(to, subject, body);
-    }
-    
-    private void sendEmail(String to, String subject, String body) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(body);
-        message.setFrom("noreply@yourapp.com");
-        
-        mailSender.send(message);
-        log.info("Email sent to: {}", to);
+        log.info("Password reset confirmation sent to: {}", to);
+        System.out.println("✅ Password reset confirmation for: " + to);
     }
     
     private String getOtpSubject(OtpType type) {

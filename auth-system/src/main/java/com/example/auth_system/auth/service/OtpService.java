@@ -4,7 +4,8 @@ package com.example.auth_system.auth.service;
 import com.example.auth_system.auth.entity.OtpToken;
 import com.example.auth_system.auth.entity.OtpType;
 import com.example.auth_system.auth.repository.OtpTokenRepository;
-import com.example.auth_system.util.OtpGenerator;
+import com.example.auth_system.common.service.EmailService;
+import com.example.auth_system.common.util.OtpGenerator;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class OtpService {
     @Transactional
     public void sendOtp(String email, OtpType type) {
         // Generate 6-digit OTP
-        String otp = otpGenerator.generate();
+        String otp = otpGenerator.generateOtp();
         
         // Invalidate existing active OTPs for this email and type
         otpTokenRepository.invalidateAllActiveOtps(email, type);
