@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,16 +35,21 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final OtpService otpService;
     private final EmailService emailService;
+    private final RoleRepository roleRepository;
 
     @Override
     @Transactional
     public AuthResponse register(RegisterRequest request) {
-        log.info("Registering new user with email: {}", request.getEmail());
+        try {
+            log.info("Registering new user with email: {}", request.getEmail());
 
         // Check if user already exists
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
         }
+
+        Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 
         // Create new user
         User user = User.builder()
@@ -50,7 +57,7 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .role(Role.ROLE_USER)
+                .roles(Set.of(userRole))
                 .enabled(false)
                 .emailVerified(false)
                 .createdAt(LocalDateTime.now())
@@ -69,6 +76,11 @@ public class AuthServiceImpl implements AuthService {
                 .message("Registration successful. Please verify your email with OTP")
                 .userId(user.getId().toString())
                 .build();
+        } catch (Exception e) {
+            log.error("Registration failed for email {}: {}", request.getEmail(), e.getMessage(), e);
+            throw new AuthException("Registration failed: " + e.getMessage());
+        }
+        
     }
 
     @Override
@@ -113,7 +125,9 @@ public class AuthServiceImpl implements AuthService {
                         .email(user.getEmail())
                         .firstName(user.getFirstName())
                         .lastName(user.getLastName())
-                        .role(user.getRole().name())
+                        .roles(user.getRoles().stream()
+                            .map(role -> role.getName().name())
+                            .collect(Collectors.toList()))
                         .emailVerified(user.isEmailVerified())
                         .build())
                 .build();

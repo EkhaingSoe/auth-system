@@ -3,6 +3,8 @@ package com.example.auth_system.auth.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,8 +34,14 @@ public class User {
     private boolean enabled;
     private boolean emailVerified;
     
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Builder.Default
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
     
     private LocalDateTime lastLoginAt;
     

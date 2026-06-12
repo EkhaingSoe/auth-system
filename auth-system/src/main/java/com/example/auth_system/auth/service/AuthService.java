@@ -8,6 +8,7 @@ import com.example.auth_system.auth.dto.request.SendOtpRequest;
 import com.example.auth_system.auth.dto.request.VerifyOtpRequest;
 import com.example.auth_system.auth.dto.response.AuthResponse;
 import com.example.auth_system.auth.dto.response.LoginResponse;
+import com.example.auth_system.auth.dto.response.UserInfoResponse;
 
 public interface AuthService {
     AuthResponse register(RegisterRequest request);
@@ -17,4 +18,5 @@ public interface AuthService {
     void resetPassword(ResetPasswordRequest request);
     void sendOtp(SendOtpRequest request);
     void verifyOtp(VerifyOtpRequest request);
+    // UserInfoResponse getCurrentUser(String authHeader);
 }

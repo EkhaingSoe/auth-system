@@ -46,7 +46,7 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         log.info("Received registration request for email: {}", request.getEmail());
         AuthResponse response = authService.register(request);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+       return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     /**

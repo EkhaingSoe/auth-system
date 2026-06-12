@@ -15,6 +15,7 @@ import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -43,7 +44,10 @@ public class JwtTokenProvider {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId().toString());
         claims.put("email", user.getEmail());
-        claims.put("role", user.getRole().name());
+        List<String> roles = user.getRoles().stream()
+            .map(role -> role.getName().name())
+            .toList();
+        claims.put("roles", roles);
         claims.put("type", "access");
 
         return buildToken(claims, user.getEmail(), jwtExpiration);

@@ -1,5 +1,7 @@
 package com.example.auth_system.auth.dto.response;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,7 +22,7 @@ public class LoginResponse {
         private String email;
         private String firstName;
         private String lastName;
-        private String role;
+        private List<String> roles;
         private boolean emailVerified;
     }
 }

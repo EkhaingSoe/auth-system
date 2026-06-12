@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.auth_system.auth.entity.Role;
 import com.example.auth_system.auth.entity.User;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.management.relation.Role;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
@@ -29,7 +29,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByEmailAndEnabledTrue(String email);
     
     // Find users by role
-    List<User> findByRole(Role role);
+    List<User> findByRolesContaining(Role role);
     
     // Find users created after certain date
     List<User> findByCreatedAtAfter(LocalDateTime date);

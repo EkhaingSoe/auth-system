@@ -57,8 +57,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     // Build Spring Security UserDetails object
     private UserDetails buildUserDetails(User user) {
         // Create authority/role
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
-        List<SimpleGrantedAuthority> authorities = Collections.singletonList(authority);
+        List<SimpleGrantedAuthority> authorities = user.getRoles().stream()
+            .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+            .toList();
         
         // Build UserDetails
         return org.springframework.security.core.userdetails.User
