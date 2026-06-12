@@ -8,10 +8,10 @@ import com.example.auth_system.auth.dto.request.SendOtpRequest;
 import com.example.auth_system.auth.dto.request.VerifyOtpRequest;
 import com.example.auth_system.auth.dto.response.AuthResponse;
 import com.example.auth_system.auth.dto.response.LoginResponse;
-import com.example.auth_system.auth.dto.response.UserInfoResponse;
 
 public interface AuthService {
     AuthResponse register(RegisterRequest request);
+
     LoginResponse login(LoginRequest request);
     void logout(String token);
     void forgotPassword(ForgotPasswordRequest request);
