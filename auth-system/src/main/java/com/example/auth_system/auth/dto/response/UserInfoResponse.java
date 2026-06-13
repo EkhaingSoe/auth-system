@@ -1,5 +1,7 @@
 package com.example.auth_system.auth.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,6 +14,7 @@ public class UserInfoResponse {
     private String lastName;
     private String role;
     private boolean emailVerified;
-    private String createdAt;
-    private String lastLoginAt;
+    private boolean enabled;
+    private LocalDateTime createdAt;      // Change from String to LocalDateTime
+    private LocalDateTime lastLoginAt;
 }

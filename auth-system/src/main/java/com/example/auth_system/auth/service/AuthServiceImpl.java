@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -265,5 +266,124 @@ public class AuthServiceImpl implements AuthService {
         }
 
         log.info("OTP verified successfully for: {}", request.getEmail());
+    }
+
+    @Override
+    public UserInfoResponse getCurrentUser(String authHeader) {
+        log.info("Getting current user from token");
+        
+        String token = extractTokenFromHeader(authHeader);
+        log.debug("Token: {}", token.substring(0, Math.min(token.length(), 50)) + "...");
+        
+        if (!jwtTokenProvider.validateToken(token)) {
+            throw new InvalidTokenException("Invalid or expired token");
+        }
+        
+        String email = jwtTokenProvider.getEmailFromToken(token);
+        log.info("🔍 Extracted email from token: {}", email);  // ← ADD THIS
+        
+        // Debug: Check what users exist in database
+        List<User> allUsers = userRepository.findAll();
+        log.info("📊 Total users in DB: {}", allUsers.size());
+        for (User u : allUsers) {
+            log.info("   User: {} - {}", u.getEmail(), u.getId());
+        }
+        
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
+        
+        log.info("✅ Found user: {} with ID: {}", user.getEmail(), user.getId());
+        
+        String roleName = user.getRoles().stream()
+                .findFirst()
+                .map(role -> role.getName().name())
+                .orElse("ROLE_USER");
+        
+        return UserInfoResponse.builder()
+                .id(user.getId().toString())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .role(roleName)
+                .emailVerified(user.isEmailVerified())
+                .enabled(user.isEnabled())
+                .createdAt(user.getCreatedAt())
+                .lastLoginAt(user.getLastLoginAt())
+                .build();
+    }
+
+    @Override
+    public RefreshTokenResponse refreshToken(RefreshTokenRequest request) {
+        log.info("Refreshing token");
+        String refreshToken = request.getRefreshToken();
+        
+        if (!jwtTokenProvider.validateToken(refreshToken)) {
+            throw new InvalidTokenException("Invalid refresh token");
+        }
+        
+        String email = jwtTokenProvider.getEmailFromToken(refreshToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        
+        String newAccessToken = jwtTokenProvider.generateToken(user);
+        String newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
+        
+        return RefreshTokenResponse.builder()
+                .accessToken(newAccessToken)
+                .refreshToken(newRefreshToken)
+                .tokenType("Bearer")
+                .expiresIn(jwtTokenProvider.getExpirationTime())
+                .build();
+    }
+
+    @Override
+    public void verifyEmail(String token) {
+        log.info("Verifying email with token");
+        if (!jwtTokenProvider.validateToken(token)) {
+            throw new InvalidTokenException("Invalid or expired token");
+        }
+        
+        String email = jwtTokenProvider.getEmailFromToken(token);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        
+        user.setEmailVerified(true);
+        user.setEnabled(true);
+        userRepository.save(user);
+        
+        log.info("Email verified for user: {}", email);
+    }
+
+    @Override
+    public void changePassword(String authHeader, ChangePasswordRequest request) {
+        log.info("Changing password");
+        
+        String token = extractTokenFromHeader(authHeader);
+        String email = jwtTokenProvider.getEmailFromToken(token);
+        
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        
+        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
+            throw new AuthException("Current password is incorrect");
+        }
+        
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            throw new AuthException("New passwords do not match");
+        }
+        
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        user.setUpdatedAt(LocalDateTime.now());
+        userRepository.save(user);
+        
+        log.info("Password changed for user: {}", email);
+    }
+
+    
+    private String extractTokenFromHeader(String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new AuthException("Missing or invalid authorization header");
+        }
+        return authHeader.substring(7);
     }
 }

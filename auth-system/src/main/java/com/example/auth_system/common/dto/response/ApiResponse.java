@@ -1,34 +1,67 @@
 package com.example.auth_system.common.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class ApiResponse {
-    private boolean success;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApiResponse<T> {
+    private int code;
     private String message;
+    private T data;
+    private LocalDateTime timestamp;
+    private boolean success;
     
-    @Builder.Default
-    private LocalDateTime timestamp = LocalDateTime.now();
-    
-    // Optional: Add status code if needed
-    private Integer statusCode;
-
-     public static ApiResponse success(String message) {
-        return ApiResponse.builder()
+    // Success responses
+    public static <T> ApiResponse<T> success(T data) {
+        return ApiResponse.<T>builder()
+                .code(200)
+                .message("Success")
+                .data(data)
                 .success(true)
-                .message(message)
-                .statusCode(200)
+                .timestamp(LocalDateTime.now())
                 .build();
     }
     
-    // Convenience method for error responses
-    public static ApiResponse error(String message) {
-        return ApiResponse.builder()
-                .success(false)
+    public static <T> ApiResponse<T> success(String message, T data) {
+        return ApiResponse.<T>builder()
+                .code(200)
                 .message(message)
+                .data(data)
+                .success(true)
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+    
+    public static <T> ApiResponse<T> success(int code, String message, T data) {
+        return ApiResponse.<T>builder()
+                .code(code)
+                .message(message)
+                .data(data)
+                .success(true)
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+    
+    // Error responses
+    public static <T> ApiResponse<T> error(String message) {
+        return ApiResponse.<T>builder()
+                .code(500)
+                .message(message)
+                .success(false)
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+    
+    public static <T> ApiResponse<T> error(int code, String message) {
+        return ApiResponse.<T>builder()
+                .code(code)
+                .message(message)
+                .success(false)
+                .timestamp(LocalDateTime.now())
                 .build();
     }
 }
