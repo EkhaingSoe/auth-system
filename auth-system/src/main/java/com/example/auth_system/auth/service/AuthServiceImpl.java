@@ -157,6 +157,7 @@ public class AuthServiceImpl implements AuthService {
 
         // Generate reset token
         String resetToken = jwtTokenProvider.generatePasswordResetToken(user);
+         log.info("reset token", resetToken);
         
         // Save reset token to database
         PasswordResetToken passwordResetToken = PasswordResetToken.builder()

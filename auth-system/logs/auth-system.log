@@ -1,5 +1,5 @@
-2026-06-12 15:42:12.827 [main] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 12540 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
-2026-06-12 15:42:12.837 [main] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v4.0.6, Spring v7.0.7
-2026-06-12 15:42:12.838 [main] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-12 15:42:13.878 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-12 15:42:13.977 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 4 JPA repository interfaces.
+2026-06-15 11:49:55.465 [main] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 23760 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-06-15 11:49:55.472 [main] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v4.0.6, Spring v7.0.7
+2026-06-15 11:49:55.473 [main] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-15 11:49:56.506 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-15 11:49:56.582 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
