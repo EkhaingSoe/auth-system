@@ -63,32 +63,47 @@ public class UserManagementServiceImpl implements UserManagementService {
 
     @Override
     public UserResponse createUser(CreateUserRequest request) {
-        log.info("Creating new user with email: {}", request.getEmail());
+        log.info("Creating new user with username: {}, email: {}", request.getUsername(), request.getEmail());
 
-        // Check if user exists
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
+        // ✅ Check if username already exists
+        if (request.getUsername() != null && userRepository.existsByUsername(request.getUsername())) {
+            throw new UserAlreadyExistsException("Username '" + request.getUsername() + "' already taken");
+        }
+
+        // ✅ Check if email already exists (if provided)
+        if (request.getEmail() != null && userRepository.existsByEmail(request.getEmail())) {
+            throw new UserAlreadyExistsException("Email '" + request.getEmail() + "' already in use");
         }
 
         // Map request to entity
         User user = userMapper.toEntity(request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        // Assign default role (ROLE_USER) if no roles specified
+        // ✅ Assign role (single role from request)
         Set<Role> roles = new HashSet<>();
         if (request.getRole() != null && !request.getRole().isEmpty()) {
             Role role = roleRepository.findByName(RoleName.valueOf(request.getRole()))
                     .orElseThrow(() -> new RuntimeException("Role not found: " + request.getRole()));
             roles.add(role);
         } else {
+            // Default role if none specified
             Role defaultRole = roleRepository.findByName(RoleName.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Default role ROLE_USER not found"));
             roles.add(defaultRole);
         }
         user.setRoles(roles);
 
+        if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+            user.setEmailVerified(true); // Staff auto-verified
+            user.setEnabled(true); // Staff auto-enabled
+        } else {
+            user.setEmailVerified(false); // Public needs OTP
+            user.setEnabled(false); // Public needs verification
+        }
+
         user = userRepository.save(user);
-        log.info("User created successfully with id: {}", user.getId());
+        log.info("User created successfully with id: {}, username: {}, email: {}",
+                user.getId(), user.getUsername(), user.getEmail());
 
         return userMapper.toResponse(user);
     }
@@ -100,11 +115,21 @@ public class UserManagementServiceImpl implements UserManagementService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
-        user = userMapper.updateEntity(user, request);
+        // ✅ Only update allowed fields
+        if (request.getFirstName() != null) {
+            user.setFirstName(request.getFirstName());
+        }
+        if (request.getLastName() != null) {
+            user.setLastName(request.getLastName());
+        }
+        if (request.getEnabled() != null) {
+            user.setEnabled(request.getEnabled());
+        }
+
         user.setUpdatedAt(LocalDateTime.now());
         user = userRepository.save(user);
 
-        log.info("User updated successfully with id: {}", id);
+        log.info("User updated successfully: {}", user.getEmail());
         return userMapper.toResponse(user);
     }
 
@@ -190,5 +215,13 @@ public class UserManagementServiceImpl implements UserManagementService {
 
         List<User> users = userRepository.findAllEnabled();
         return userMapper.toResponseList(users);
+    }
+
+    @Override
+    public UserResponse getUserByUsername(String username) {
+        log.info("Fetching user by username: {}", username);
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with username: " + username));
+        return userMapper.toResponse(user);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.auth_system.auth.service;
 
-
 import com.example.auth_system.auth.dto.request.*;
 import com.example.auth_system.auth.dto.response.*;
 import com.example.auth_system.auth.entity.*;
@@ -44,52 +43,53 @@ public class AuthServiceImpl implements AuthService {
         try {
             log.info("Registering new user with email: {}", request.getEmail());
 
-        // Check if user already exists
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
-        }
+            // Check if user already exists
+            if (userRepository.existsByEmail(request.getEmail())) {
+                throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
+            }
 
-        Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 
-        // Create new user
-        User user = User.builder()
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .roles(Set.of(userRole))
-                .enabled(false)
-                .emailVerified(false)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
+            // Create new user
+            User user = User.builder()
+                    .email(request.getEmail())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .firstName(request.getFirstName())
+                    .lastName(request.getLastName())
+                    .roles(Set.of(userRole))
+                    .enabled(false)
+                    .emailVerified(false)
+                    .createdAt(LocalDateTime.now())
+                    .updatedAt(LocalDateTime.now())
+                    .build();
 
-        user = userRepository.save(user);
+            user = userRepository.save(user);
 
-        // Send OTP for email verification
-        otpService.sendOtp(user.getEmail(), OtpType.REGISTRATION);
+            // Send OTP for email verification
+            otpService.sendOtp(user.getEmail(), OtpType.REGISTRATION);
 
-        log.info("User registered successfully with id: {}", user.getId());
+            log.info("User registered successfully with id: {}", user.getId());
 
-        return AuthResponse.builder()
-                .success(true)
-                .message("Registration successful. Please verify your email with OTP")
-                .userId(user.getId().toString())
-                .build();
+            return AuthResponse.builder()
+                    .success(true)
+                    .message("Registration successful. Please verify your email with OTP")
+                    .userId(user.getId().toString())
+                    .build();
         } catch (Exception e) {
             log.error("Registration failed for email {}: {}", request.getEmail(), e.getMessage(), e);
             throw new AuthException("Registration failed: " + e.getMessage());
         }
-        
+
     }
 
     @Override
     public LoginResponse login(LoginRequest request) {
         log.info("Login attempt for email: {}", request.getEmail());
 
-        // Find user by email
+        // Find user by email or email
         User user = userRepository.findByEmail(request.getEmail())
+                .or(() -> userRepository.findByUsername(request.getEmail())) // ✅ NEW: Fallback to username
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
         // Check password
@@ -114,7 +114,8 @@ public class AuthServiceImpl implements AuthService {
         user.setLastLoginAt(LocalDateTime.now());
         userRepository.save(user);
 
-        log.info("User logged in successfully: {}", user.getEmail());
+        String loginId = user.getUsername() != null ? user.getUsername() : user.getEmail();
+        log.info("User logged in successfully: {}", loginId);
 
         return LoginResponse.builder()
                 .accessToken(token)
@@ -127,8 +128,8 @@ public class AuthServiceImpl implements AuthService {
                         .firstName(user.getFirstName())
                         .lastName(user.getLastName())
                         .roles(user.getRoles().stream()
-                            .map(role -> role.getName().name())
-                            .collect(Collectors.toList()))
+                                .map(role -> role.getName().name())
+                                .collect(Collectors.toList()))
                         .emailVerified(user.isEmailVerified())
                         .build())
                 .build();
@@ -137,13 +138,13 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void logout(String token) {
         log.info("Logging out user");
-        
+
         // Remove token from cache/blacklist (if implemented)
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
             jwtTokenProvider.invalidateToken(token);
         }
-        
+
         log.info("User logged out successfully");
     }
 
@@ -157,8 +158,8 @@ public class AuthServiceImpl implements AuthService {
 
         // Generate reset token
         String resetToken = jwtTokenProvider.generatePasswordResetToken(user);
-         log.info("reset token", resetToken);
-        
+        log.info("reset token", resetToken);
+
         // Save reset token to database
         PasswordResetToken passwordResetToken = PasswordResetToken.builder()
                 .token(resetToken)
@@ -166,7 +167,7 @@ public class AuthServiceImpl implements AuthService {
                 .used(false)
                 .expiresAt(LocalDateTime.now().plusHours(24))
                 .build();
-        
+
         passwordResetTokenRepository.save(passwordResetToken);
 
         // Send email with reset link
@@ -221,10 +222,9 @@ public class AuthServiceImpl implements AuthService {
 
         // Rate limiting check (optional)
         long otpCount = otpTokenRepository.countOtpsByEmailSince(
-                request.getEmail(), 
-                LocalDateTime.now().minusHours(1)
-        );
-        
+                request.getEmail(),
+                LocalDateTime.now().minusHours(1));
+
         if (otpCount >= 5) {
             throw new AuthException("Too many OTP requests. Please try again later");
         }
@@ -245,8 +245,7 @@ public class AuthServiceImpl implements AuthService {
                         request.getEmail(),
                         request.getOtp(),
                         request.getType(),
-                        LocalDateTime.now()
-                )
+                        LocalDateTime.now())
                 .orElseThrow(() -> new OtpValidationException("Invalid or expired OTP"));
 
         // Mark OTP as used
@@ -257,12 +256,12 @@ public class AuthServiceImpl implements AuthService {
         if (request.getType() == OtpType.REGISTRATION) {
             User user = userRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-            
+
             user.setEmailVerified(true);
             user.setEnabled(true);
             user.setUpdatedAt(LocalDateTime.now());
             userRepository.save(user);
-            
+
             log.info("Email verified successfully for user: {}", request.getEmail());
         }
 
@@ -272,34 +271,34 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public UserInfoResponse getCurrentUser(String authHeader) {
         log.info("Getting current user from token");
-        
+
         String token = extractTokenFromHeader(authHeader);
         log.debug("Token: {}", token.substring(0, Math.min(token.length(), 50)) + "...");
-        
+
         if (!jwtTokenProvider.validateToken(token)) {
             throw new InvalidTokenException("Invalid or expired token");
         }
-        
+
         String email = jwtTokenProvider.getEmailFromToken(token);
-        log.info("🔍 Extracted email from token: {}", email);  // ← ADD THIS
-        
+        log.info("🔍 Extracted email from token: {}", email); // ← ADD THIS
+
         // Debug: Check what users exist in database
         List<User> allUsers = userRepository.findAll();
         log.info("📊 Total users in DB: {}", allUsers.size());
         for (User u : allUsers) {
             log.info("   User: {} - {}", u.getEmail(), u.getId());
         }
-        
+
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
-        
+
         log.info("✅ Found user: {} with ID: {}", user.getEmail(), user.getId());
-        
+
         String roleName = user.getRoles().stream()
                 .findFirst()
                 .map(role -> role.getName().name())
                 .orElse("ROLE_USER");
-        
+
         return UserInfoResponse.builder()
                 .id(user.getId().toString())
                 .email(user.getEmail())
@@ -317,18 +316,18 @@ public class AuthServiceImpl implements AuthService {
     public RefreshTokenResponse refreshToken(RefreshTokenRequest request) {
         log.info("Refreshing token");
         String refreshToken = request.getRefreshToken();
-        
+
         if (!jwtTokenProvider.validateToken(refreshToken)) {
             throw new InvalidTokenException("Invalid refresh token");
         }
-        
+
         String email = jwtTokenProvider.getEmailFromToken(refreshToken);
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        
+
         String newAccessToken = jwtTokenProvider.generateToken(user);
         String newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
-        
+
         return RefreshTokenResponse.builder()
                 .accessToken(newAccessToken)
                 .refreshToken(newRefreshToken)
@@ -343,44 +342,43 @@ public class AuthServiceImpl implements AuthService {
         if (!jwtTokenProvider.validateToken(token)) {
             throw new InvalidTokenException("Invalid or expired token");
         }
-        
+
         String email = jwtTokenProvider.getEmailFromToken(token);
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        
+
         user.setEmailVerified(true);
         user.setEnabled(true);
         userRepository.save(user);
-        
+
         log.info("Email verified for user: {}", email);
     }
 
     @Override
     public void changePassword(String authHeader, ChangePasswordRequest request) {
         log.info("Changing password");
-        
+
         String token = extractTokenFromHeader(authHeader);
         String email = jwtTokenProvider.getEmailFromToken(token);
-        
+
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        
+
         if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
             throw new AuthException("Current password is incorrect");
         }
-        
+
         if (!request.getNewPassword().equals(request.getConfirmPassword())) {
             throw new AuthException("New passwords do not match");
         }
-        
+
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         user.setUpdatedAt(LocalDateTime.now());
         userRepository.save(user);
-        
+
         log.info("Password changed for user: {}", email);
     }
 
-    
     private String extractTokenFromHeader(String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new AuthException("Missing or invalid authorization header");

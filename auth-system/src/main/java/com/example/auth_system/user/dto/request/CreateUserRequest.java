@@ -1,4 +1,3 @@
-// src/main/java/com/example/auth_system/user/dto/request/CreateUserRequest.java
 package com.example.auth_system.user.dto.request;
 
 import jakarta.validation.constraints.Email;
@@ -9,17 +8,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserRequest {
 
-    @NotBlank(message = "Email is required")
+    // username is required for staff
+    @NotBlank(message = "Username is required")
+    private String username;
+
+    // email is optional for staff, required for public users
     @Email(message = "Invalid email format")
-    private String email;
+    private String email; // Optional
 
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must be at least 6 characters")
@@ -32,5 +33,5 @@ public class CreateUserRequest {
     private String lastName;
 
     @NotBlank(message = "Role is required")
-    private String role;
+    private String role; // e.g., "ROLE_CASHIER", "ROLE_ADMIN"
 }

@@ -20,6 +20,9 @@ public interface UserManagementService {
     // Get user by email
     UserResponse getUserByEmail(String email);
 
+    // ✅ NEW: Get user by username
+    UserResponse getUserByUsername(String username);
+
     // Create new user
     UserResponse createUser(CreateUserRequest request);
 

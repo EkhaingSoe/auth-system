@@ -17,50 +17,55 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class CustomUserDetailsService implements UserDetailsService {
-    
+
     private final UserRepository userRepository;
-    
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         log.debug("Loading user by email: {}", email);
-        
+
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-        
+                .or(() -> userRepository.findByUsername(email)) // ✅ NEW: Fallback to username
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with: " + email));
+
+        String identifier = user.getUsername() != null ? user.getUsername() : user.getEmail();
+        log.debug("User found: {}", identifier);
+
         // Check if user is enabled
         if (!user.isEnabled()) {
             log.warn("User account is disabled: {}", email);
             throw new UsernameNotFoundException("User account is disabled");
         }
-        
+
         // Check if email is verified
-        if (!user.isEmailVerified()) {
-            log.warn("User email not verified: {}", email);
+        if (user.getEmail() != null && !user.isEmailVerified()) {
+            log.warn("User email not verified: {}", user.getEmail());
             throw new UsernameNotFoundException("Email not verified");
         }
-        
+
         return buildUserDetails(user);
     }
-    
+
     // Load user by ID (for internal use)
     public UserDetails loadUserById(String userId) {
         log.debug("Loading user by id: {}", userId);
-        
+
         // This would require a findById method in repository
         // User user = userRepository.findById(UUID.fromString(userId))
-        //         .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + userId));
+        // .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " +
+        // userId));
         // return buildUserDetails(user);
-        
+
         throw new UnsupportedOperationException("Method not implemented yet");
     }
-    
+
     // Build Spring Security UserDetails object
     private UserDetails buildUserDetails(User user) {
         // Create authority/role
         List<SimpleGrantedAuthority> authorities = user.getRoles().stream()
-            .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-            .toList();
-        
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .toList();
+
         // Build UserDetails
         return org.springframework.security.core.userdetails.User
                 .builder()

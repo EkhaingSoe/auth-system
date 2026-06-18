@@ -44,13 +44,22 @@ public class JwtTokenProvider {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId().toString());
         claims.put("email", user.getEmail());
+
+        // ✅ CHANGE 1: Add username to claims if it exists
+        if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+            claims.put("username", user.getUsername());
+        }
+
         List<String> roles = user.getRoles().stream()
-            .map(role -> role.getName().name())
-            .toList();
+                .map(role -> role.getName().name())
+                .toList();
         claims.put("roles", roles);
         claims.put("type", "access");
 
-        return buildToken(claims, user.getEmail(), jwtExpiration);
+        // ✅ CHANGE 2: Subject = username if exists, otherwise email
+        String subject = user.getUsername() != null ? user.getUsername() : user.getEmail();
+
+        return buildToken(claims, subject, jwtExpiration);
     }
 
     /**
@@ -58,12 +67,12 @@ public class JwtTokenProvider {
      */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        
+
         // Extract authorities/roles
         String authorities = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
-        
+
         claims.put("roles", authorities);
         claims.put("type", "access");
 
@@ -152,7 +161,15 @@ public class JwtTokenProvider {
      * Get user email from token (alias for getUsernameFromToken)
      */
     public String getEmailFromToken(String token) {
-        return getClaimFromToken(token, Claims::getSubject);
+        String subject = getClaimFromToken(token, Claims::getSubject);
+
+        // ✅ If subject looks like an email, return it directly
+        if (subject != null && subject.contains("@")) {
+            return subject;
+        }
+
+        // ✅ If subject is a username, get email from claims
+        return getClaimFromToken(token, claims -> claims.get("email", String.class));
     }
 
     /**
@@ -227,13 +244,13 @@ public class JwtTokenProvider {
                     .setSigningKey(getSigningKey())
                     .build()
                     .parseClaimsJws(token);
-            
+
             // Check if token is blacklisted
             if (isTokenInvalidated(token)) {
                 log.warn("Token has been invalidated");
                 return false;
             }
-            
+
             return true;
         } catch (SecurityException | MalformedJwtException e) {
             log.error("Invalid JWT signature: {}", e.getMessage());
@@ -255,12 +272,12 @@ public class JwtTokenProvider {
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
         boolean isValid = (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
-        
+
         if (isValid && isTokenInvalidated(token)) {
             log.warn("Token is invalidated for user: {}", username);
             return false;
         }
-        
+
         return isValid;
     }
 
@@ -272,7 +289,7 @@ public class JwtTokenProvider {
             Claims claims = getAllClaimsFromToken(token);
             String purpose = claims.get("purpose", String.class);
             String type = claims.get("type", String.class);
-            
+
             return expectedPurpose.equals(purpose) && !isTokenExpired(token) && !isTokenInvalidated(token);
         } catch (Exception e) {
             log.error("Token validation for purpose failed: {}", e.getMessage());
@@ -329,7 +346,7 @@ public class JwtTokenProvider {
         try {
             Date expiration = getExpirationDateFromToken(token);
             long ttl = expiration.getTime() - System.currentTimeMillis();
-            
+
             if (ttl > 0) {
                 invalidatedTokens.put(token, System.currentTimeMillis() + ttl);
                 log.info("Token invalidated successfully. Will be removed after {} ms", ttl);
@@ -349,13 +366,13 @@ public class JwtTokenProvider {
         if (invalidationTime == null) {
             return false;
         }
-        
+
         // Remove expired entries from blacklist
         if (System.currentTimeMillis() > invalidationTime) {
             invalidatedTokens.remove(token);
             return false;
         }
-        
+
         return true;
     }
 
@@ -365,14 +382,14 @@ public class JwtTokenProvider {
     public void cleanupBlacklist() {
         long now = System.currentTimeMillis();
         int removedCount = 0;
-        
+
         for (Map.Entry<String, Long> entry : invalidatedTokens.entrySet()) {
             if (now > entry.getValue()) {
                 invalidatedTokens.remove(entry.getKey());
                 removedCount++;
             }
         }
-        
+
         if (removedCount > 0) {
             log.debug("Cleaned up {} expired tokens from blacklist", removedCount);
         }
@@ -385,19 +402,19 @@ public class JwtTokenProvider {
         if (!validateToken(refreshToken)) {
             throw new IllegalArgumentException("Invalid refresh token");
         }
-        
+
         if (!isRefreshToken(refreshToken)) {
             throw new IllegalArgumentException("Token is not a refresh token");
         }
-        
+
         String email = getEmailFromToken(refreshToken);
         String userId = getUserIdFromToken(refreshToken);
-        
+
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
         claims.put("email", email);
         claims.put("type", "access");
-        
+
         return buildToken(claims, email, jwtExpiration);
     }
 

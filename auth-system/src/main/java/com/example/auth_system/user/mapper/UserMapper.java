@@ -16,6 +16,7 @@ public class UserMapper {
 
     public User toEntity(CreateUserRequest request) {
         return User.builder()
+                .username(request.getUsername()) // ✅ ADDED: Map username
                 .email(request.getEmail())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -40,6 +41,7 @@ public class UserMapper {
     public UserResponse toResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())
+                .username(user.getUsername())
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
