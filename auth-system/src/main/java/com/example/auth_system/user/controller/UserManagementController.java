@@ -28,7 +28,7 @@ public class UserManagementController {
 
         private final UserManagementService userManagementService;
 
-        // ============ GET ENDPOINTS ============
+        // get end point
 
         @GetMapping
         public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsers() {
@@ -80,7 +80,7 @@ public class UserManagementController {
                                 ApiResponse.success(200, "Enabled users retrieved successfully", users));
         }
 
-        // ============ POST ENDPOINTS ============
+        // post end point
 
         @PostMapping
         public ResponseEntity<ApiResponse<UserResponse>> createUser(

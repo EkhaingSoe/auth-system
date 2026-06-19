@@ -1,17 +1,14 @@
+// src/main/java/com/example/auth_system/auth/security/CustomUserDetailsService.java
 package com.example.auth_system.auth.security;
 
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,59 +18,17 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        log.debug("Loading user by email: {}", email);
+    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+        log.debug("Loading user by: {}", usernameOrEmail);
 
-        User user = userRepository.findByEmail(email)
-                .or(() -> userRepository.findByUsername(email)) // ✅ NEW: Fallback to username
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with: " + email));
+        // ✅ Find by email or username
+        User user = userRepository.findByEmail(usernameOrEmail)
+                .or(() -> userRepository.findByUsername(usernameOrEmail))
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with: " + usernameOrEmail));
 
-        String identifier = user.getUsername() != null ? user.getUsername() : user.getEmail();
-        log.debug("User found: {}", identifier);
+        log.debug("User found: {}", user.getEmail());
 
-        // Check if user is enabled
-        if (!user.isEnabled()) {
-            log.warn("User account is disabled: {}", email);
-            throw new UsernameNotFoundException("User account is disabled");
-        }
-
-        // Check if email is verified
-        if (user.getEmail() != null && !user.isEmailVerified()) {
-            log.warn("User email not verified: {}", user.getEmail());
-            throw new UsernameNotFoundException("Email not verified");
-        }
-
-        return buildUserDetails(user);
-    }
-
-    // Load user by ID (for internal use)
-    public UserDetails loadUserById(String userId) {
-        log.debug("Loading user by id: {}", userId);
-
-        // This would require a findById method in repository
-        // User user = userRepository.findById(UUID.fromString(userId))
-        // .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " +
-        // userId));
-        // return buildUserDetails(user);
-
-        throw new UnsupportedOperationException("Method not implemented yet");
-    }
-
-    // Build Spring Security UserDetails object
-    private UserDetails buildUserDetails(User user) {
-        // Create authority/role
-        List<SimpleGrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .toList();
-
-        // Build UserDetails
-        return org.springframework.security.core.userdetails.User
-                .builder()
-                .username(user.getEmail())
-                .password(user.getPassword())
-                .authorities(authorities)
-                .accountLocked(!user.isEnabled())
-                .disabled(!user.isEnabled())
-                .build();
+        // ✅ Return CustomUserDetails instead of User
+        return new CustomUserDetails(user);
     }
 }
