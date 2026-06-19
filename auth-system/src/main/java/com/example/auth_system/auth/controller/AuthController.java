@@ -1,4 +1,4 @@
-package com.example.auth_system.auth;
+package com.example.auth_system.auth.controller;
 
 import com.example.auth_system.auth.dto.request.*;
 import com.example.auth_system.auth.dto.response.*;
@@ -22,7 +22,9 @@ public class AuthController {
 
     /**
      * Register a new user
-     * @param request Registration request with email, password, first name, last name
+     * 
+     * @param request Registration request with email, password, first name, last
+     *                name
      * @return AuthResponse with registration status
      */
     @PostMapping("/register")
@@ -34,6 +36,7 @@ public class AuthController {
 
     /**
      * Login user
+     * 
      * @param request Login request with email and password
      * @return LoginResponse with JWT tokens and user info
      */
@@ -46,6 +49,7 @@ public class AuthController {
 
     /**
      * Logout user
+     * 
      * @param request HttpServletRequest to extract Authorization header
      * @return ApiResponse with logout status
      */
@@ -59,6 +63,7 @@ public class AuthController {
 
     /**
      * Request password reset
+     * 
      * @param request ForgotPasswordRequest with email
      * @return ApiResponse with status
      */
@@ -66,12 +71,15 @@ public class AuthController {
     public ResponseEntity<ApiResponse<Void>> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request) {
         log.info("🔑 POST /api/auth/forgot-password - Email: {}", request.getEmail());
         authService.forgotPassword(request);
-        return ResponseEntity.ok(ApiResponse.success(200, "Password reset link sent to your email if account exists", null));
+        return ResponseEntity
+                .ok(ApiResponse.success(200, "Password reset link sent to your email if account exists", null));
     }
 
     /**
      * Reset password using token
-     * @param request ResetPasswordRequest with token, new password, confirm password
+     * 
+     * @param request ResetPasswordRequest with token, new password, confirm
+     *                password
      * @return ApiResponse with reset status
      */
     @PostMapping("/reset-password")
@@ -83,6 +91,7 @@ public class AuthController {
 
     /**
      * Send OTP to user's email
+     * 
      * @param request SendOtpRequest with email and OTP type
      * @return ApiResponse with status
      */
@@ -95,6 +104,7 @@ public class AuthController {
 
     /**
      * Verify OTP code
+     * 
      * @param request VerifyOtpRequest with email, OTP code, and type
      * @return ApiResponse with verification status
      */
@@ -107,11 +117,13 @@ public class AuthController {
 
     /**
      * Refresh access token using refresh token
+     * 
      * @param request RefreshTokenRequest with refresh token
      * @return RefreshTokenResponse with new tokens
      */
     @PostMapping("/refresh-token")
-    public ResponseEntity<ApiResponse<RefreshTokenResponse>> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
+    public ResponseEntity<ApiResponse<RefreshTokenResponse>> refreshToken(
+            @Valid @RequestBody RefreshTokenRequest request) {
         log.info("🔄 POST /api/auth/refresh-token - Refresh token");
         // TODO: Implement refresh token logic in AuthService
         RefreshTokenResponse response = authService.refreshToken(request);
@@ -120,6 +132,7 @@ public class AuthController {
 
     /**
      * Verify email using token (alternative to OTP)
+     * 
      * @param token Email verification token
      * @return ApiResponse with verification status
      */
@@ -133,7 +146,8 @@ public class AuthController {
 
     /**
      * Change password for authenticated user
-     * @param request ChangePasswordRequest with old and new password
+     * 
+     * @param request     ChangePasswordRequest with old and new password
      * @param httpRequest HttpServletRequest to extract token
      * @return ApiResponse with status
      */
@@ -149,6 +163,7 @@ public class AuthController {
 
     /**
      * Get current authenticated user info
+     * 
      * @param httpRequest HttpServletRequest to extract token
      * @return UserInfoResponse with current user details
      */

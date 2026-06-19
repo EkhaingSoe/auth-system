@@ -23,7 +23,6 @@ import java.util.UUID;
 @RequestMapping("/api/admin/users")
 @RequiredArgsConstructor
 @Slf4j
-@PreAuthorize("hasRole('ADMIN')")
 public class UserManagementController {
 
         private final UserManagementService userManagementService;

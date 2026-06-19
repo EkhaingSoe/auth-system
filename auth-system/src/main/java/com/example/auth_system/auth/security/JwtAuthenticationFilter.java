@@ -19,39 +19,40 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    
+
     private final JwtTokenProvider jwtTokenProvider;
     private final CustomUserDetailsService customUserDetailsService;
-    
+
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
             HttpServletResponse response,
-            FilterChain filterChain
-    ) throws ServletException, IOException {
-        
+            FilterChain filterChain) throws ServletException, IOException {
+
         try {
             // Get JWT token from request
             String jwt = getJwtFromRequest(request);
-            
+
             // Validate token and set authentication
             if (jwt != null && jwtTokenProvider.validateToken(jwt)) {
                 String email = jwtTokenProvider.getEmailFromToken(jwt);
-                
+
                 // Check if token is invalidated
                 if (!jwtTokenProvider.isTokenInvalidated(jwt)) {
                     UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
-                    
+
+                    // ✅ ADD THIS DEBUG LOG
+                    log.info("🔍 Authorities for user {}: {}", email, userDetails.getAuthorities());
+
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                             userDetails,
                             null,
-                            userDetails.getAuthorities()
-                    );
-                    
+                            userDetails.getAuthorities());
+
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    
+
                     SecurityContextHolder.getContext().setAuthentication(authentication);
-                    
+
                     log.debug("Set authentication for user: {} in security context", email);
                 } else {
                     log.warn("Token has been invalidated for user: {}", email);
@@ -60,24 +61,24 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception ex) {
             log.error("Could not set user authentication in security context", ex);
         }
-        
+
         filterChain.doFilter(request, response);
     }
-    
+
     // Extract JWT token from request header
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
-        
+
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
-        
+
         // Also check for token in request parameter (for WebSocket, etc.)
         String tokenParam = request.getParameter("token");
         if (tokenParam != null && !tokenParam.isEmpty()) {
             return tokenParam;
         }
-        
+
         return null;
     }
 }

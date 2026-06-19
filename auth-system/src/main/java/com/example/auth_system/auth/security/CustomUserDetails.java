@@ -25,7 +25,7 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Get roles as authorities (ROLE_ADMIN, ROLE_MANAGER, etc.)
         Set<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName().name()))
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toSet());
 
         // Get permissions as authorities (PRODUCT_CREATE, ORDER_READ, etc.)

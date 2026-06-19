@@ -1,9 +1,7 @@
-
 package com.example.auth_system.common.config;
 
 import com.example.auth_system.auth.security.JwtAuthenticationFilter;
 import com.example.auth_system.auth.security.PermissionEvaluator;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,22 +36,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable) // Disable CORS for testing
+                .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        // ✅ ALLOW all auth endpoints without authentication
                         .requestMatchers(
-                                "/api/auth/**", // ALL auth endpoints
-                                "/api/auth/register", // Registration
-                                "/api/auth/login", // Login
-                                "/api/auth/send-otp", // Send OTP
-                                "/api/auth/verify-otp", // Verify OTP
-                                "/api/auth/forgot-password", // Forgot password
-                                "/api/auth/reset-password", // Reset password
+                                "/api/auth/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**",
                                 "/api-docs/**")
-                        .permitAll() // ← This is critical!
+                        .permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
@@ -85,17 +76,5 @@ public class SecurityConfig {
         DefaultMethodSecurityExpressionHandler handler = new DefaultMethodSecurityExpressionHandler();
         handler.setPermissionEvaluator(permissionEvaluator);
         return handler;
-    }
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated());
-
-        return http.build();
     }
 }
