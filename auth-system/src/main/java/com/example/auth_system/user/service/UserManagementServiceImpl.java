@@ -94,9 +94,14 @@ public class UserManagementServiceImpl implements UserManagementService {
         user.setRoles(roles);
 
         if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+            if (request.getStoreId() == null) {
+                throw new RuntimeException("Store ID is required for staff users");
+            }
+            user.setStoreId(request.getStoreId());
             user.setEmailVerified(true); // Staff auto-verified
             user.setEnabled(true); // Staff auto-enabled
         } else {
+            user.setStoreId(null);
             user.setEmailVerified(false); // Public needs OTP
             user.setEnabled(false); // Public needs verification
         }
@@ -205,8 +210,15 @@ public class UserManagementServiceImpl implements UserManagementService {
     public List<UserResponse> getUsersByRole(String roleName) {
         log.info("Fetching users by role: {}", roleName);
 
-        List<User> users = userRepository.findByRoleName(roleName);
-        return userMapper.toResponseList(users);
+        try {
+            // ✅ Convert String to RoleName enum
+            RoleName role = RoleName.valueOf(roleName);
+            List<User> users = userRepository.findByRoleName(role);
+            return userMapper.toResponseList(users);
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid role name: {}", roleName);
+            throw new RuntimeException("Role not found: " + roleName);
+        }
     }
 
     @Override

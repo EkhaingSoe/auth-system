@@ -1,7 +1,10 @@
 package com.example.auth_system.user.dto.request;
 
+import java.util.UUID;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,4 +37,7 @@ public class CreateUserRequest {
 
     @NotBlank(message = "Role is required")
     private String role; // e.g., "ROLE_CASHIER", "ROLE_ADMIN"
+
+    @NotNull(message = "Store ID is required for staff")
+    private UUID storeId;
 }

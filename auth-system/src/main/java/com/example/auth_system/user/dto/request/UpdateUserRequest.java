@@ -1,6 +1,8 @@
 // src/main/java/com/example/auth_system/user/dto/request/UpdateUserRequest.java
 package com.example.auth_system.user.dto.request;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,4 +16,5 @@ public class UpdateUserRequest {
     private String firstName;
     private String lastName;
     private Boolean enabled;
+    private UUID storeId;
 }

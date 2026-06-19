@@ -1,0 +1,9 @@
+CREATE TABLE otp_tokens (
+    id UUID PRIMARY KEY,
+    otp VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    used BOOLEAN DEFAULT FALSE,
+    expires_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

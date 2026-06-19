@@ -1,6 +1,7 @@
 // src/main/java/com/example/auth_system/user/repository/UserManagementRepository.java
 package com.example.auth_system.user.repository;
 
+import com.example.auth_system.auth.entity.RoleName;
 import com.example.auth_system.auth.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,7 +27,7 @@ public interface UserManagementRepository extends JpaRepository<User, UUID> {
     List<User> findAllEnabled();
 
     @Query("SELECT u FROM User u JOIN u.roles r WHERE r.name = :roleName")
-    List<User> findByRoleName(@Param("roleName") String roleName);
+    List<User> findByRoleName(@Param("roleName") RoleName roleName);
 
     @Query("SELECT u FROM User u WHERE " +
             "LOWER(u.username) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " + // ✅ ADDED username search

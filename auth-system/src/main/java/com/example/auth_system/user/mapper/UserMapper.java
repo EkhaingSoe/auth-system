@@ -20,6 +20,7 @@ public class UserMapper {
                 .email(request.getEmail())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
+                .storeId(request.getStoreId())
                 .enabled(true)
                 .emailVerified(false)
                 .build();
@@ -45,6 +46,7 @@ public class UserMapper {
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
+                .storeId(user.getStoreId())
                 .roles(user.getRoles().stream()
                         .map(role -> role.getName().name())
                         .collect(Collectors.toList()))

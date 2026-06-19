@@ -48,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
                 throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
             }
 
-            Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+            Role userRole = roleRepository.findByName(RoleName.ROLE_CASHIER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 
             // Create new user

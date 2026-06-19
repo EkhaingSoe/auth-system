@@ -20,6 +20,7 @@ public class UserResponse {
     private String email;
     private String firstName;
     private String lastName;
+    private UUID storeId;
     private List<String> roles;
     private boolean enabled;
     private boolean emailVerified;
