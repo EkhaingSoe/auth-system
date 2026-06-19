@@ -31,21 +31,21 @@ public class PermissionController {
                 ApiResponse.success(200, "Permissions retrieved successfully", permissions));
     }
 
-    @GetMapping("/role/{roleName}")
+    @GetMapping("/{roleName}/permission")
     public ResponseEntity<ApiResponse<Set<Permission>>> getPermissionsByRole(
             @PathVariable String roleName) {
-        log.info("GET /api/admin/permissions/role/{} - Getting permissions by role", roleName);
+        log.info("GET /api/admin/permissions/{}/permission - Getting permissions by role", roleName);
 
         Set<Permission> permissions = permissionManagementService.getPermissionsByRole(roleName);
         return ResponseEntity.ok(
                 ApiResponse.success(200, "Permissions retrieved successfully", permissions));
     }
 
-    @PutMapping("/role/{roleName}")
+    @PutMapping("/{roleName}/permissions")
     public ResponseEntity<ApiResponse<Role>> assignPermissionsToRole(
             @PathVariable String roleName,
             @RequestBody List<String> permissionNames) {
-        log.info("PUT /api/admin/permissions/role/{} - Assigning permissions: {}", roleName, permissionNames);
+        log.info("PUT /api/admin/permissions/{}/permissions - Assigning permissions: {}", roleName, permissionNames);
 
         Role role = permissionManagementService.assignPermissionsToRole(roleName, permissionNames);
         return ResponseEntity.ok(
