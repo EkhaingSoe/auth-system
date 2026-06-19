@@ -8592,3 +8592,119 @@ org.springframework.web.servlet.resource.NoResourceFoundException: No static res
 2026-06-19 17:07:23.271 [http-nio-8080-exec-1] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, ORDER_DELETE, CATEGORY_CREATE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, PRODUCT_READ, CUSTOMER_UPDATE, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
 2026-06-19 17:07:23.272 [http-nio-8080-exec-1] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
 2026-06-19 17:07:23.274 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/permissions/ROLE_CASHIER/permissions' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-06-19 17:07:23.329 [http-nio-8080-exec-1] INFO  c.e.a.a.c.PermissionController - PUT /api/admin/permissions/ROLE_CASHIER/permissions - Assigning permissions: [PRODUCT_READ, ORDER_CREATE, ORDER_READ, CUSTOMER_READ, CUSTOMER_CREATE]
+2026-06-19 17:07:23.333 [http-nio-8080-exec-1] INFO  c.e.a.a.s.PermissionManagementServiceImpl - Assigning permissions to role: ROLE_CASHIER
+2026-06-19 17:07:23.336 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.name=?
+2026-06-19 17:07:23.337 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-06-19 17:07:23.348 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name 
+    from
+        permissions p1_0 
+    where
+        p1_0.name=?
+2026-06-19 17:07:23.351 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name 
+    from
+        permissions p1_0 
+    where
+        p1_0.name=?
+2026-06-19 17:07:23.353 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name 
+    from
+        permissions p1_0 
+    where
+        p1_0.name=?
+2026-06-19 17:07:23.354 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name 
+    from
+        permissions p1_0 
+    where
+        p1_0.name=?
+2026-06-19 17:07:23.356 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name 
+    from
+        permissions p1_0 
+    where
+        p1_0.name=?
+2026-06-19 17:07:23.367 [http-nio-8080-exec-1] INFO  c.e.a.a.s.PermissionManagementServiceImpl - Permissions assigned successfully to role: ROLE_CASHIER
+2026-06-19 17:07:23.412 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        role_permissions 
+    where
+        role_id=?
+2026-06-19 17:07:23.416 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        role_permissions
+        (role_id, permission_id) 
+    values
+        (?, ?)
+2026-06-19 17:07:23.419 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        role_permissions
+        (role_id, permission_id) 
+    values
+        (?, ?)
+2026-06-19 17:07:23.420 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        role_permissions
+        (role_id, permission_id) 
+    values
+        (?, ?)
+2026-06-19 17:07:23.420 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        role_permissions
+        (role_id, permission_id) 
+    values
+        (?, ?)
+2026-06-19 17:07:23.421 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        role_permissions
+        (role_id, permission_id) 
+    values
+        (?, ?)
