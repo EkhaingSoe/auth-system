@@ -6886,3 +6886,196 @@ Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1004E:
     where
         id=?
 2026-06-20 15:20:50.366 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.CustomUserDetailsService - Loading user by: admin@gmail.com
+2026-06-20 15:20:50.368 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-20 15:20:50.371 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-06-20 15:20:50.376 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-06-20 15:20:50.378 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.CustomUserDetailsService - User found: admin@gmail.com
+2026-06-20 15:20:50.378 [http-nio-8080-exec-4] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, ORDER_DELETE, CATEGORY_CREATE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, PRODUCT_READ, CUSTOMER_UPDATE, USER_DELETE, STORE_CREATE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, STORE_DELETE, ORDER_CREATE, SETTINGS_VIEW]
+2026-06-20 15:20:50.378 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-06-20 15:20:50.380 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.PermissionServiceImpl - User admin@gmail.com has permission STORE_DELETE: true
+2026-06-20 15:20:50.381 [http-nio-8080-exec-4] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission STORE_DELETE: true
+2026-06-20 15:20:50.381 [http-nio-8080-exec-4] INFO  c.e.a.s.controller.StoreController - DELETE /api/admin/stores/cbabf1af-394b-4a32-88d4-a5de2ba6386b - Deleting store
+2026-06-20 15:20:50.382 [http-nio-8080-exec-4] INFO  c.e.a.s.s.impl.StoreServiceImpl - Deleting store: cbabf1af-394b-4a32-88d4-a5de2ba6386b
+2026-06-20 15:20:50.383 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-06-20 15:20:50.392 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.parent_store_id=?
+2026-06-20 15:20:50.397 [http-nio-8080-exec-4] INFO  c.e.a.s.s.impl.StoreServiceImpl - Store deleted: cbabf1af-394b-4a32-88d4-a5de2ba6386b
+2026-06-20 15:20:50.398 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        stores 
+    where
+        id=?
+2026-06-20 15:20:57.812 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.CustomUserDetailsService - Loading user by: admin@gmail.com
+2026-06-20 15:20:57.815 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-20 15:20:57.817 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-06-20 15:20:57.821 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-06-20 15:20:57.822 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.CustomUserDetailsService - User found: admin@gmail.com
+2026-06-20 15:20:57.823 [http-nio-8080-exec-5] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, ORDER_DELETE, CATEGORY_CREATE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, PRODUCT_READ, CUSTOMER_UPDATE, USER_DELETE, STORE_CREATE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, STORE_DELETE, ORDER_CREATE, SETTINGS_VIEW]
+2026-06-20 15:20:57.823 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-06-20 15:20:57.824 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.PermissionServiceImpl - User admin@gmail.com has permission STORE_UPDATE: true
+2026-06-20 15:20:57.825 [http-nio-8080-exec-5] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission STORE_UPDATE: true
+2026-06-20 15:20:57.825 [http-nio-8080-exec-5] INFO  c.e.a.s.controller.StoreController - PATCH /api/admin/stores/cbabf1af-394b-4a32-88d4-a5de2ba6386b/status - Updating status to SUSPENDED
+2026-06-20 15:20:57.825 [http-nio-8080-exec-5] INFO  c.e.a.s.s.impl.StoreServiceImpl - Updating store status: cbabf1af-394b-4a32-88d4-a5de2ba6386b -> SUSPENDED
+2026-06-20 15:20:57.825 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-06-20 15:20:57.832 [http-nio-8080-exec-5] ERROR c.e.a.c.e.GlobalExceptionHandler - Resource not found: Store not found with id: cbabf1af-394b-4a32-88d4-a5de2ba6386b
