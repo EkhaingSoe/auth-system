@@ -5,6 +5,7 @@ import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
+import com.example.auth_system.product.entity.ProductImage;
 import com.example.auth_system.product.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -183,6 +184,18 @@ public class ProductController {
         return ResponseEntity.ok(ApiResponse.success(200, "Image uploaded successfully", product));
     }
 
+    @PostMapping("/{productId}/variants/{variantId}/images")
+    @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
+    public ResponseEntity<ApiResponse<ProductResponse>> uploadVariantImage(
+            @PathVariable UUID productId,
+            @PathVariable UUID variantId,
+            @RequestParam("file") MultipartFile file,
+            @RequestParam(value = "isPrimary", defaultValue = "false") Boolean isPrimary) {
+        log.info("POST /api/admin/products/{}/variants/{}/images - Uploading variant image", productId, variantId);
+        ProductResponse product = productService.uploadVariantImage(productId, variantId, file, isPrimary);
+        return ResponseEntity.ok(ApiResponse.success(200, "Variant image uploaded successfully", product));
+    }
+
     @DeleteMapping("/{productId}/images/{imageId}")
     @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
     public ResponseEntity<ApiResponse<ProductResponse>> removeProductImage(
@@ -201,5 +214,22 @@ public class ProductController {
         log.info("PATCH /api/admin/products/{}/images/{}/primary - Setting primary image", productId, imageId);
         ProductResponse product = productService.setPrimaryImage(productId, imageId);
         return ResponseEntity.ok(ApiResponse.success(200, "Primary image set successfully", product));
+    }
+
+    @GetMapping("/{productId}/images")
+    @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
+    public ResponseEntity<ApiResponse<List<ProductImage>>> getProductImages(@PathVariable UUID productId) {
+        log.info("GET /api/admin/products/{}/images - Getting product images", productId);
+        List<ProductImage> images = productService.getProductImages(productId);
+        return ResponseEntity.ok(ApiResponse.success(200, "Product images retrieved", images));
+    }
+
+    @GetMapping("/{productId}/variants/{variantId}/images")
+    @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
+    public ResponseEntity<ApiResponse<List<ProductImage>>> getVariantImages(@PathVariable UUID productId,
+            @PathVariable UUID variantId) {
+        log.info("GET /api/admin/products/variants/{}/images - Getting variant images", variantId);
+        List<ProductImage> images = productService.getVariantImages(productId, variantId);
+        return ResponseEntity.ok(ApiResponse.success(200, "Variant images retrieved", images));
     }
 }

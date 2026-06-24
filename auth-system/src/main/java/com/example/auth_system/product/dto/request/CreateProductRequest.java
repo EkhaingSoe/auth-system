@@ -1,5 +1,6 @@
 package com.example.auth_system.product.dto.request;
 
+import com.example.auth_system.supplier.dto.request.CreateSupplierRequest;
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -20,9 +21,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CreateProductRequest {
 
-    // ============================================================
-    // PRODUCT INFORMATION
-    // ============================================================
     @NotBlank(message = "Product name is required")
     @Size(max = 255, message = "Product name must not exceed 255 characters")
     private String name;
@@ -35,9 +33,6 @@ public class CreateProductRequest {
 
     private String productType; // STOCKABLE, CONSUMABLE, SERVICE
 
-    // ============================================================
-    // SALES SETTINGS
-    // ============================================================
     @Builder.Default
     private Boolean saleOk = true;
 
@@ -49,30 +44,20 @@ public class CreateProductRequest {
 
     private BigDecimal taxRate;
 
-    // ============================================================
-    // VARIANTS (Required - at least one)
-    // ============================================================
     @NotNull(message = "At least one variant is required")
     @Size(min = 1, message = "At least one variant is required")
     @Valid
     private List<CreateVariantRequest> variants;
 
-    // ============================================================
-    // SUPPLIERS (Required - at least one)
-    // ============================================================
     @NotNull(message = "At least one supplier is required")
     @Size(min = 1, message = "At least one supplier is required")
     @Valid
     private List<SupplierRequest> suppliers;
 
-    // ============================================================
-    // IMAGES (Optional)
-    // ============================================================
     private List<ImageRequest> images;
+    private List<VariantImageRequest> variantImages;
 
-    // ============================================================
-    // INNER CLASSES
-    // ============================================================
+    // inner class
 
     @Data
     @Builder
@@ -145,6 +130,18 @@ public class CreateProductRequest {
 
         private String altText;
 
+        private Integer sortOrder;
+    }
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class VariantImageRequest {
+        private UUID variantId; // Which variant this image belongs to
+        private String imageUrl;
+        private Boolean isPrimary;
+        private String altText;
         private Integer sortOrder;
     }
 }

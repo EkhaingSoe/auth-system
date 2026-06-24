@@ -1,4 +1,4 @@
-package com.example.auth_system.product.entity;
+package com.example.auth_system.supplier.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,39 +12,34 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "product_images")
+@Table(name = "suppliers")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductImage {
+public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Column(name = "supplier_code", unique = true, nullable = false, length = 20)
+    private String supplierCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "variant_id")
-    private ProductVariant variant;
+    @Column(nullable = false, length = 255)
+    private String name;
 
-    @Column(name = "image_url", nullable = false, length = 500)
-    private String imageUrl;
+    @Column(name = "contact_person", length = 255)
+    private String contactPerson;
 
-    @Column(name = "public_id", length = 255)
-    private String publicId;
+    @Column(length = 20)
+    private String phone;
 
-    @Column(name = "is_primary")
-    private Boolean isPrimary = false;
+    @Column(length = 255)
+    private String email;
 
-    @Column(name = "alt_text", length = 255)
-    private String altText;
-
-    @Column(name = "sort_order")
-    private Integer sortOrder = 0;
+    @Column(columnDefinition = "TEXT")
+    private String address;
 
     @Column(name = "is_active")
     @Builder.Default

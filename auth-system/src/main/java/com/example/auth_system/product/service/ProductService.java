@@ -4,6 +4,8 @@ import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
+import com.example.auth_system.product.entity.ProductImage;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -51,4 +53,10 @@ public interface ProductService {
     ProductResponse removeProductImage(UUID productId, UUID imageId);
 
     ProductResponse setPrimaryImage(UUID productId, UUID imageId);
+
+    ProductResponse uploadVariantImage(UUID productId, UUID variantId, MultipartFile file, Boolean isPrimary);
+
+    List<ProductImage> getProductImages(UUID productId);
+
+    List<ProductImage> getVariantImages(UUID productId, UUID variantId);
 }

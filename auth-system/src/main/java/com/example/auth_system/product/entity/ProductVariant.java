@@ -83,6 +83,7 @@ public class ProductVariant {
     private String unit = "piece";
 
     @Column(name = "is_active")
+    @Builder.Default
     private Boolean isActive = true;
 
     @OneToMany(mappedBy = "variant", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -108,4 +109,47 @@ public class ProductVariant {
     public boolean needsReorder() {
         return stockQuantity <= reorderLevel;
     }
+
+    public void addImage(ProductImage image) {
+        images.add(image);
+        image.setVariant((this));
+        image.setProduct(null);
+    }
+
+    public void removeImage(ProductImage image) {
+        images.remove(image);
+        image.setVariant(null);
+    }
+
+    public ProductImage getPrimaryImage() {
+        return images.stream()
+                .filter(ProductImage::getIsPrimary)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public List<ProductImage> getActiveImages() {
+        return images.stream()
+                .filter(image -> image.getIsActive() != null && image.getIsActive())
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+    public void clearImages() {
+        images.clear();
+    }
+
+    public long getActiveImageCount() {
+        return images.stream()
+                .filter(image -> image.getIsActive() != null && image.getIsActive())
+                .count();
+    }
+
+    public boolean hasImages() {
+        return !images.isEmpty();
+    }
+
+    public boolean hasActiveImages() {
+        return getActiveImageCount() > 0;
+    }
+
 }

@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.auth_system.product.dto.request.CreateProductRequest.SupplierRequest;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -42,7 +44,7 @@ public class UpdateProductRequest {
     private List<CreateProductRequest.CreateVariantRequest> variants;
 
     @Valid
-    private List<CreateProductRequest.SupplierRequest> suppliers;
+    private List<SupplierRequest> suppliers;
 
     @Valid
     private List<CreateProductRequest.ImageRequest> images;

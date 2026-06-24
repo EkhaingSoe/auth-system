@@ -19,7 +19,8 @@ import com.example.auth_system.product.mapper.ProductMapper;
 import com.example.auth_system.product.mapper.ProductVariantMapper;
 import com.example.auth_system.product.repository.*;
 import com.example.auth_system.product.service.ProductService;
-import com.example.auth_system.product.entity.Supplier;
+import com.example.auth_system.supplier.entity.Supplier;
+import com.example.auth_system.supplier.repository.SupplierRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -392,11 +393,13 @@ public class ProductServiceImpl implements ProductService {
 
             ProductImage image = ProductImage.builder()
                     .product(product)
+                    .variant(null)
                     .imageUrl(imageUrl)
                     .publicId(publicId)
                     .isPrimary(isPrimary)
                     .altText(file.getOriginalFilename())
                     .sortOrder(product.getImages().size())
+                    .isActive(true)
                     .build();
 
             imageRepository.save(image);
@@ -411,6 +414,53 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductResponse uploadVariantImage(UUID productId, UUID variantId, MultipartFile file, Boolean isPrimary) {
+        log.info("Uploading image for variant: {} of product: {}", variantId, productId);
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
+
+        ProductVariant variant = variantRepository.findById(variantId)
+                .orElseThrow(() -> new ResourceNotFoundException("Variant not found with id: " + variantId));
+
+        if (!variant.getProduct().getId().equals(productId)) {
+            throw new BusinessException("Variant does not belong to this product");
+        }
+
+        try {
+
+            var uploadResult = cloudinaryService.uploadImage(file, "products/" + productId + "/variants/" + variantId);
+
+            String imageUrl = uploadResult.get("url").toString();
+            String publicId = uploadResult.get("public_id").toString();
+
+            // If this is primary, clear existing primary images for this variant
+            if (isPrimary) {
+                imageRepository.clearPrimaryVariantImages(variantId);
+            }
+
+            ProductImage image = ProductImage.builder()
+                    .product(null) // ← NULL for variant-level images
+                    .variant(variant)
+                    .imageUrl(imageUrl)
+                    .publicId(publicId)
+                    .isPrimary(isPrimary)
+                    .altText(file.getOriginalFilename())
+                    .sortOrder(variant.getImages().size())
+                    .build();
+
+            imageRepository.save(image);
+            variant.addImage(image);
+
+            log.info("Variant image uploaded successfully for variant: {}", variantId);
+            return productMapper.toResponse(product);
+        } catch (Exception e) {
+            log.error("Failed to upload variant image: {}", e.getMessage());
+            throw new BusinessException("Failed to upload variant image: " + e.getMessage());
+        }
+    }
+
+    @Override
     public ProductResponse removeProductImage(UUID productId, UUID imageId) {
         log.info("Removing image: {} from product: {}", imageId, productId);
 
@@ -420,8 +470,15 @@ public class ProductServiceImpl implements ProductService {
         ProductImage image = imageRepository.findById(imageId)
                 .orElseThrow(() -> new ResourceNotFoundException("Image not found with id: " + imageId));
 
-        // Check if image belongs to product
-        if (!image.getProduct().getId().equals(productId)) {
+        // Check if image belongs to this product (either at product or variant level)
+        boolean belongsToProduct = false;
+        if (image.getProduct() != null && image.getProduct().getId().equals(productId)) {
+            belongsToProduct = true;
+        } else if (image.getVariant() != null && image.getVariant().getProduct().getId().equals(productId)) {
+            belongsToProduct = true;
+        }
+
+        if (!belongsToProduct) {
             throw new BusinessException("Image does not belong to this product");
         }
 
@@ -434,14 +491,34 @@ public class ProductServiceImpl implements ProductService {
             log.warn("Failed to delete image from Cloudinary: {}", e.getMessage());
         }
 
+        // Remove from appropriate parent
+        if (image.getProduct() != null) {
+            image.getProduct().getImages().remove(image);
+        } else if (image.getVariant() != null) {
+            image.getVariant().getImages().remove(image);
+        }
+
         imageRepository.delete(image);
-        product.getImages().remove(image);
 
         // If deleted image was primary, set another as primary
-        if (image.getIsPrimary() && !product.getImages().isEmpty()) {
-            ProductImage firstImage = product.getImages().get(0);
-            firstImage.setIsPrimary(true);
-            imageRepository.save(firstImage);
+        if (image.getIsPrimary()) {
+            if (image.getProduct() != null) {
+                // Product-level: set first available as primary
+                List<ProductImage> remainingImages = imageRepository.findByProductId(productId);
+                if (!remainingImages.isEmpty()) {
+                    ProductImage firstImage = remainingImages.get(0);
+                    firstImage.setIsPrimary(true);
+                    imageRepository.save(firstImage);
+                }
+            } else if (image.getVariant() != null) {
+                // Variant-level: set first available as primary
+                List<ProductImage> remainingImages = imageRepository.findByVariantId(image.getVariant().getId());
+                if (!remainingImages.isEmpty()) {
+                    ProductImage firstImage = remainingImages.get(0);
+                    firstImage.setIsPrimary(true);
+                    imageRepository.save(firstImage);
+                }
+            }
         }
 
         log.info("Image removed successfully: {}", imageId);
@@ -458,13 +535,26 @@ public class ProductServiceImpl implements ProductService {
         ProductImage image = imageRepository.findById(imageId)
                 .orElseThrow(() -> new ResourceNotFoundException("Image not found with id: " + imageId));
 
-        // Check if image belongs to product
-        if (!image.getProduct().getId().equals(productId)) {
+        boolean belongsToProduct = false;
+        UUID variantId = null;
+
+        if (image.getProduct() != null && image.getProduct().getId().equals(productId)) {
+            belongsToProduct = true;
+        } else if (image.getVariant() != null && image.getVariant().getProduct().getId().equals(productId)) {
+            belongsToProduct = true;
+            variantId = image.getVariant().getId();
+        }
+
+        if (!belongsToProduct) {
             throw new BusinessException("Image does not belong to this product");
         }
 
-        // Clear existing primary
-        imageRepository.clearPrimaryImages(productId);
+        // Clear existing primary for the same level (product or variant)
+        if (image.getProduct() != null) {
+            imageRepository.clearPrimaryImages(productId);
+        } else if (image.getVariant() != null) {
+            imageRepository.clearPrimaryVariantImages(variantId);
+        }
 
         // Set new primary
         image.setIsPrimary(true);
@@ -473,6 +563,51 @@ public class ProductServiceImpl implements ProductService {
         log.info("Primary image set successfully: {}", imageId);
         return productMapper.toResponse(product);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ProductImage> getProductImages(UUID productId) {
+        log.info("Getting product images for product: {}", productId);
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
+
+        // Get only product-level images (variant_id IS NULL)
+        return imageRepository.findByProductId(productId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ProductImage> getVariantImages(UUID productId, UUID variantId) {
+        log.info("Getting variant images for variant: {} of product: {}", variantId, productId);
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
+
+        ProductVariant variant = variantRepository.findById(variantId)
+                .orElseThrow(() -> new ResourceNotFoundException("Variant not found with id: " + variantId));
+
+        if (!variant.getProduct().getId().equals(productId)) {
+            throw new BusinessException("Variant does not belong to this product");
+        }
+
+        return imageRepository.findByVariantId(variantId);
+    }
+
+    // @Override
+    // @Transactional(readOnly = true)
+    // public List<ProductImage> getAllImagesForProduct(UUID productId) {
+    // log.info("Getting all images (product + variants) for product: {}",
+    // productId);
+
+    // // Verify product exists
+    // Product product = productRepository.findById(productId)
+    // .orElseThrow(() -> new ResourceNotFoundException("Product not found with id:
+    // " + productId));
+
+    // // Get all images: product-level + all variant-level
+    // return imageRepository.findByProductIdOrVariantId(productId);
+    // }
 
     private String generateProductCode() {
         long count = productRepository.count() + 1;

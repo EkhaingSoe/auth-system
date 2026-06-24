@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.auth_system.supplier.entity.Supplier;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
