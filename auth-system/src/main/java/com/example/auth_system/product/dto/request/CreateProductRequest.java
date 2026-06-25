@@ -56,6 +56,7 @@ public class CreateProductRequest {
 
     private List<ImageRequest> images;
     private List<VariantImageRequest> variantImages;
+     private List<WarehouseStockRequest> warehouseStocks;
 
     // inner class
 
@@ -143,5 +144,19 @@ public class CreateProductRequest {
         private Boolean isPrimary;
         private String altText;
         private Integer sortOrder;
+    }
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class WarehouseStockRequest {
+        @NotNull(message = "Warehouse ID is required")
+        private UUID warehouseId;
+
+        private Integer stockQuantity;
+        private Integer reservedQuantity;
+        private Integer minStock;
+        private Integer maxStock;
     }
 }

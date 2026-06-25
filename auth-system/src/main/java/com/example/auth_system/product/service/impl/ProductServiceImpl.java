@@ -15,10 +15,13 @@ import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductImage;
 import com.example.auth_system.product.entity.ProductSupplier;
 import com.example.auth_system.product.entity.ProductVariant;
+import com.example.auth_system.product.entity.ProductWarehouse;
 import com.example.auth_system.product.mapper.ProductMapper;
 import com.example.auth_system.product.mapper.ProductVariantMapper;
 import com.example.auth_system.product.repository.*;
 import com.example.auth_system.product.service.ProductService;
+import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.store.repository.StoreRepository;
 import com.example.auth_system.supplier.entity.Supplier;
 import com.example.auth_system.supplier.repository.SupplierRepository;
 
@@ -49,6 +52,8 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
     private final ProductVariantMapper variantMapper;
     private final CloudinaryService cloudinaryService;
+    private final StoreRepository storeRepository;  // ← Add this
+    private final ProductWarehouseRepository productWarehouseRepository;
 
     private static final String PRODUCT_CODE_PREFIX = "PRD-";
     private static final int PRODUCT_CODE_PADDING = 4;
@@ -57,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse createProduct(CreateProductRequest request) {
         log.info("Creating product: {}", request.getName());
 
-        // Validate category
+        // Validate category // Find category by ID (returns Category entity)
         Category category = null;
         if (request.getCategoryId() != null) {
             category = categoryRepository.findById(request.getCategoryId())
@@ -65,7 +70,6 @@ public class ProductServiceImpl implements ProductService {
                             "Category not found with id: " + request.getCategoryId()));
         }
 
-        // Validate brand
         Brand brand = null;
         if (request.getBrandId() != null) {
             brand = brandRepository.findById(request.getBrandId())
@@ -85,7 +89,7 @@ public class ProductServiceImpl implements ProductService {
 
         // Create product
         Product product = productMapper.toEntity(request);
-        product.setCategory(category);
+        product.setCategory(category); // Set the Category entity into Product // product.category = Category(id="cat-001", name="Clothing", ...)
         product.setBrand(brand);
 
         // Generate product code
@@ -121,6 +125,34 @@ public class ProductServiceImpl implements ProductService {
                 supplierRepository.save(productSupplier);
                 product.addSupplier(productSupplier);
             }
+        }
+
+        if (request.getWarehouseStocks() != null && !request.getWarehouseStocks().isEmpty()) {
+            for (CreateProductRequest.WarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
+                // Validate store exists
+                Store store = storeRepository.findById(stockRequest.getWarehouseId())
+                        .orElseThrow(() -> new ResourceNotFoundException(
+                                "Store not found with id: " + stockRequest.getWarehouseId()));
+
+                // Check if store is active
+                if (!"ACTIVE".equals(store.getStatus())) {
+                    throw new BusinessException("Store is not active: " + store.getName());
+                }
+
+                // Create product-warehouse link
+                ProductWarehouse productWarehouse = ProductWarehouse.builder()
+                        .product(product)
+                        .warehouse(store)
+                        .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
+                        .reservedQuantity(stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
+                        .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
+                        .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
+                        .build();
+
+                productWarehouseRepository.save(productWarehouse);
+                // product.addWarehouseStock(productWarehouse); // If you have this method
+            }
+            log.info("Created {} warehouse stocks for product", request.getWarehouseStocks().size());
         }
 
         // Create images
@@ -231,6 +263,32 @@ public class ProductServiceImpl implements ProductService {
                 product.addImage(image);
             }
         }
+
+        if (request.getWarehouseStocks() != null) {
+        // Clear existing warehouse stocks
+        List<ProductWarehouse> existingStocks = productWarehouseRepository.findByProductId(product.getId());
+        if (!existingStocks.isEmpty()) {
+            productWarehouseRepository.deleteAll(existingStocks);
+        }
+
+        // Create new warehouse stocks
+        for (CreateProductRequest.WarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
+            Store store = storeRepository.findById(stockRequest.getWarehouseId())
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Store not found with id: " + stockRequest.getWarehouseId()));
+
+            ProductWarehouse productWarehouse = ProductWarehouse.builder()
+                    .product(product)
+                    .warehouse(store)
+                    .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
+                    .reservedQuantity(stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
+                    .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
+                    .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
+                    .build();
+
+            productWarehouseRepository.save(productWarehouse);
+        }
+    }
 
         product = productRepository.save(product);
         log.info("Product updated successfully: {}", productId);

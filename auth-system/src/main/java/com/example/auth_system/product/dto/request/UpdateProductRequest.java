@@ -48,4 +48,7 @@ public class UpdateProductRequest {
 
     @Valid
     private List<CreateProductRequest.ImageRequest> images;
+
+    @Valid
+    private List<CreateProductRequest.WarehouseStockRequest> warehouseStocks;
 }
