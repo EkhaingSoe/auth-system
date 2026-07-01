@@ -87,8 +87,8 @@ public class UserManagementServiceImpl implements UserManagementService {
             roles.add(role);
         } else {
             // Default role if none specified
-            Role defaultRole = roleRepository.findByName(RoleName.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Default role ROLE_USER not found"));
+            Role defaultRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER)
+                    .orElseThrow(() -> new RuntimeException("Default role ROLE_CUSTOMER not found"));
             roles.add(defaultRole);
         }
         user.setRoles(roles);

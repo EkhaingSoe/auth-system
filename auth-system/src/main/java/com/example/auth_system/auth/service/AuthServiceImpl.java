@@ -297,7 +297,7 @@ public class AuthServiceImpl implements AuthService {
         String roleName = user.getRoles().stream()
                 .findFirst()
                 .map(role -> role.getName().name())
-                .orElse("ROLE_USER");
+                .orElse("ROLE_CUSTOMER");
 
         return UserInfoResponse.builder()
                 .id(user.getId().toString())
