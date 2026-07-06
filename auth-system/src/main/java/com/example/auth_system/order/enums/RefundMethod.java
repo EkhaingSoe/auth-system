@@ -1,18 +1,15 @@
 package com.example.auth_system.order.enums;
 
-public enum PaymentMethod {
+public enum RefundMethod {
     
-    CASH("Cash"),
-    CARD("Card"),
-    KBZ_PAY("KPay"),
+    ORIGINAL_PAYMENT("Original Payment"),
+    STORE_CREDIT("Store Credit"),
     BANK_TRANSFER("Bank Transfer"),
-
-    KBZ_QR("KBZ QR"),
-    AYA_QR("AYA QR");
+    CASH("Cash");
 
     private final String displayName;
 
-    PaymentMethod(String displayName) {
+    RefundMethod(String displayName) {
         this.displayName = displayName;
     }
 

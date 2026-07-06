@@ -115,11 +115,11 @@ public class Order {
     @Column(name = "tax_rate")
     private BigDecimal taxRate;
 
-    @Column(name = "shipping_method")
-    private String shippingMethod;
+    // @Column(name = "shipping_method")
+    // private String shippingMethod;
 
-    @Column(name = "shipping_tracking_number")
-    private String shippingTrackingNumber;
+    // @Column(name = "shipping_tracking_number")
+    // private String shippingTrackingNumber;
 
     @Column(name = "shipping_address")
     private String shippingAddress;

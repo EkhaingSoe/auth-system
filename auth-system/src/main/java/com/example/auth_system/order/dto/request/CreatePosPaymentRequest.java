@@ -2,10 +2,7 @@ package com.example.auth_system.order.dto.request;
 
 import com.example.auth_system.order.enums.PaymentMethod;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -14,7 +11,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePaymentRequest {
+public class CreatePosPaymentRequest {
 
     @NotNull(message = "Order ID is required")
     private UUID orderId;
@@ -25,15 +22,17 @@ public class CreatePaymentRequest {
     @NotNull(message = "Payment method is required")
     private PaymentMethod paymentMethod;
 
+    // Optional reference (bank slip, QR ref, etc.)
     private String transactionId;
 
-    // For card payments
+    // CARD (manual entry or POS terminal summary)
     private String cardLastFour;
     private String cardBrand;
 
-    // For bank transfer
+    // BANK TRANSFER
     private String bankName;
     private String bankAccount;
 
+    @NotNull(message = "Created by is required")
     private UUID createdBy;
 }
