@@ -1,7 +1,9 @@
 package com.example.auth_system.order.entity;
 
 import com.example.auth_system.auth.entity.User;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.example.auth_system.order.dto.request.RefundItemRequest;
+import com.example.auth_system.order.enums.RefundMethod;
+import com.example.auth_system.order.enums.RefundType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +16,7 @@ import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -46,10 +49,10 @@ public class Refund {
     private String refundReason;
 
     @Column(name = "refund_type")
-    private String refundType; // FULL, PARTIAL
+    private RefundType refundType; // FULL, PARTIAL
 
     @Column(name = "refund_method")
-    private String refundMethod; // ORIGINAL_PAYMENT, STORE_CREDIT, BANK_TRANSFER
+    private RefundMethod refundMethod; // ORIGINAL_PAYMENT, STORE_CREDIT, BANK_TRANSFER
 
     @Column(name = "refund_status")
     @Builder.Default
@@ -57,7 +60,7 @@ public class Refund {
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "refund_items", columnDefinition = "jsonb")
-    private JsonNode refundItems;
+    private List<RefundItem> refundItems;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by")

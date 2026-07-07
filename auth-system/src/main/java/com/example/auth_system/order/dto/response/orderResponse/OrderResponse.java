@@ -24,8 +24,8 @@ public class OrderResponse {
 
     private CustomerInfoResponse customer;
 
-    private UserInfo createdBy;
-    private UserInfo approvedBy;
+    private UserInfoResponse createdBy;
+    private UserInfoResponse approvedBy;
 
     private OrderStatus orderStatus;
     private PaymentStatus paymentStatus;

@@ -12,12 +12,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CreateOrderItemRequest {
 
-    @NotNull
+    @NotNull(message = "Product ID is required")
     private UUID productId;
 
     private UUID variantId;
 
-    @NotNull
+     @NotNull(message = "Quantity is required")
     private Integer quantity;
 
     private BigDecimal unitPrice;

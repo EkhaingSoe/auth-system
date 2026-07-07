@@ -20,4 +20,5 @@ public class RefundItemRequest {
 
     @NotNull
     private BigDecimal refundAmount;
+
 }

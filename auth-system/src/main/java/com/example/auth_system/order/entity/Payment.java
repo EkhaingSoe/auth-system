@@ -78,6 +78,12 @@ public class Payment {
     @Builder.Default
     private BigDecimal exchangeRate = BigDecimal.ONE;
 
+    @Column(name = "gateway_name")
+    private String gatewayName;
+
+    @Column(name = "gateway_reference")
+    private String gatewayReference;
+
     @Column(name = "payment_date")
     @CreationTimestamp
     private LocalDateTime paymentDate;

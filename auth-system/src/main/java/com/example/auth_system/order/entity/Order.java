@@ -154,6 +154,9 @@ public class Order {
     @Column(name = "customer_notes")
     private String customerNotes;
 
+    @Column(name = "coupon_code")
+    private String couponCode;
+
     @Column(name = "internal_notes")
     private String internalNotes;
 
