@@ -1,6 +1,7 @@
-package com.example.auth_system.order.dto.response;
+package com.example.auth_system.order.dto.response.orderResponse;
 
 import com.example.auth_system.auth.dto.response.LoginResponse.UserInfo;
+import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
 import com.example.auth_system.order.enums.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
