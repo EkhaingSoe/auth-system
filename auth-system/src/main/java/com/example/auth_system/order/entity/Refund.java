@@ -3,6 +3,7 @@ package com.example.auth_system.order.entity;
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.order.dto.request.RefundItemRequest;
 import com.example.auth_system.order.enums.RefundMethod;
+import com.example.auth_system.order.enums.RefundStatus;
 import com.example.auth_system.order.enums.RefundType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -56,7 +57,7 @@ public class Refund {
 
     @Column(name = "refund_status")
     @Builder.Default
-    private String refundStatus = "PENDING"; // PENDING, APPROVED, PROCESSING, COMPLETED, REJECTED
+    private RefundStatus refundStatus = RefundStatus.PENDING; // PENDING, APPROVED, PROCESSING, COMPLETED, REJECTED
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "refund_items", columnDefinition = "jsonb")

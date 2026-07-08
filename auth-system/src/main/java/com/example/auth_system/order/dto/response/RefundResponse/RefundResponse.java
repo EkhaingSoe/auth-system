@@ -3,6 +3,7 @@ package com.example.auth_system.order.dto.response.RefundResponse;
 import com.example.auth_system.auth.dto.response.UserInfoResponse;
 import com.example.auth_system.order.dto.response.orderResponse.CustomerInfoResponse;
 import com.example.auth_system.order.enums.RefundMethod;
+import com.example.auth_system.order.enums.RefundStatus;
 import com.example.auth_system.order.enums.RefundType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +33,7 @@ public class RefundResponse {
     private String refundReason;
     private RefundType refundType;
     private RefundMethod refundMethod;
-    private String refundStatus;
+    private RefundStatus refundStatus;
 
     private List<RefundItemResponse> refundItems;
 
