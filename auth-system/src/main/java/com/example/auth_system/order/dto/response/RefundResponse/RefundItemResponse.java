@@ -32,6 +32,8 @@ public class RefundItemResponse {
     private Integer refundQuantity;
 
     private BigDecimal unitPrice;
+    private BigDecimal discountAmount;
+    private BigDecimal taxAmount;
 
     private BigDecimal refundAmount;
 
