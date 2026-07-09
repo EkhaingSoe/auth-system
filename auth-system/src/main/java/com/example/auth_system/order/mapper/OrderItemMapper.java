@@ -11,64 +11,64 @@ import com.example.auth_system.product.entity.ProductVariant;
 @Component
 public class OrderItemMapper {
 
-    // request DTO -> Entity
+        // request DTO -> Entity
 
-    public OrderItem toEntity(CreateOrderItemRequest request, Product product, ProductVariant variant) {
+        public OrderItem toEntity(CreateOrderItemRequest request, Product product, ProductVariant variant) {
 
-        return OrderItem.builder()
-                .product(product)
-                .variant(variant)
-                .quantity(request.getQuantity())
-                .unitPrice(request.getUnitPrice())
-                .build();
+                return OrderItem.builder()
+                                .product(product)
+                                .variant(variant)
+                                .quantity(request.getQuantity())
+                                // .unitPrice(request.getUnitPrice())
+                                .build();
 
-    }
-
-    // Entity -> Response DTO
-    public OrderItemResponse toResponse(OrderItem item) {
-
-        if (item == null) {
-            return null;
         }
 
-        return OrderItemResponse.builder()
-                .id(item.getId())
-                .productId(item.getProduct() != null ? item.getProduct().getId() : null)
-                .productName(
-                        item.getProduct() != null
-                                ? item.getProduct().getName()
-                                : null)
+        // Entity -> Response DTO
+        public OrderItemResponse toResponse(OrderItem item) {
 
-                .productCode(
-                        item.getProduct() != null
-                                ? item.getProduct().getProductCode()
-                                : null)
-                .variantId(
-                        item.getVariant() != null
-                                ? item.getVariant().getId()
-                                : null)
+                if (item == null) {
+                        return null;
+                }
 
-                .variantSku(
-                        item.getVariant() != null
-                                ? item.getVariant().getSku()
-                                : null)
+                return OrderItemResponse.builder()
+                                .id(item.getId())
+                                .productId(item.getProduct() != null ? item.getProduct().getId() : null)
+                                .productName(
+                                                item.getProduct() != null
+                                                                ? item.getProduct().getName()
+                                                                : null)
 
-                .variantAttributes(
-                        item.getVariant() != null
-                                ? item.getVariant().getAttributeValues()
-                                : null)
+                                .productCode(
+                                                item.getProduct() != null
+                                                                ? item.getProduct().getProductCode()
+                                                                : null)
+                                .variantId(
+                                                item.getVariant() != null
+                                                                ? item.getVariant().getId()
+                                                                : null)
 
-                // Price information
-                .quantity(item.getQuantity())
-                .unitPrice(item.getUnitPrice())
-                .discountAmount(item.getDiscountAmount())
-                .taxAmount(item.getTaxAmount())
-                .totalPrice(item.getTotalPrice())
+                                .variantSku(
+                                                item.getVariant() != null
+                                                                ? item.getVariant().getSku()
+                                                                : null)
 
-                // Refund information
-                .refundedQuantity(item.getRefundedQuantity())
-                .isRefunded(item.getIsRefunded())
+                                .variantAttributes(
+                                                item.getVariant() != null
+                                                                ? item.getVariant().getAttributeValues()
+                                                                : null)
 
-                .build();
-    }
+                                // Price information
+                                .quantity(item.getQuantity())
+                                .unitPrice(item.getUnitPrice())
+                                .discountAmount(item.getDiscountAmount())
+                                .taxAmount(item.getTaxAmount())
+                                .totalPrice(item.getTotalPrice())
+
+                                // Refund information
+                                .refundedQuantity(item.getRefundedQuantity())
+                                .isRefunded(item.getIsRefunded())
+
+                                .build();
+        }
 }

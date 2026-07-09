@@ -13,7 +13,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, UUID> {
 
     List<OrderItem> findByProductId(UUID productId);
 
-    @Query("SELECT oi.productId, SUM(oi.quantity) as totalSold FROM OrderItem oi WHERE oi.order.orderStatus = 'DELIVERED' GROUP BY oi.productId ORDER BY totalSold DESC")
+    @Query("SELECT oi.product.id, SUM(oi.quantity) as totalSold FROM OrderItem oi WHERE oi.order.orderStatus = 'DELIVERED' GROUP BY oi.product.id ORDER BY totalSold DESC")
     List<Object[]> findTopSellingProducts();
 
     @Query("SELECT SUM(oi.totalPrice) FROM OrderItem oi WHERE oi.order.orderStatus = 'DELIVERED'")

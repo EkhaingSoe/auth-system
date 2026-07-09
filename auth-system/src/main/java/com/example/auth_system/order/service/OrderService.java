@@ -13,7 +13,7 @@ import java.util.UUID;
 public interface OrderService {
 
     // CRUD Operations
-    // OrderResponse createOrder(CreateOrderRequest request);
+    OrderResponse createOrder(CreateOrderRequest request);
 
     // OrderResponse updateOrder(UUID orderId, UpdateOrderRequest request);
 

@@ -13,6 +13,7 @@ import com.example.auth_system.order.dto.response.orderResponse.OrderResponse;
 import com.example.auth_system.order.entity.Order;
 import com.example.auth_system.order.entity.OrderItem;
 import com.example.auth_system.order.entity.OrderStatusHistory;
+import com.example.auth_system.order.enums.FulfillmentStatus;
 import com.example.auth_system.order.enums.OrderStatus;
 import com.example.auth_system.order.enums.PaymentStatus;
 import com.example.auth_system.order.mapper.OrderItemMapper;
@@ -27,6 +28,9 @@ import com.example.auth_system.product.repository.ProductRepository;
 import com.example.auth_system.product.repository.ProductVariantRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,32 +57,71 @@ public class OrderServiceImpl implements OrderService {
     private final OrderMapper orderMapper;
     private final OrderItemMapper orderItemMapper;
 
-    // @Override
-    // public OrderResponse createOrder(CreateOrderRequest request) {
-    // log.info("Creating order...");
+    @Override
+    public OrderResponse createOrder(CreateOrderRequest request) {
+        log.info("Creating order...");
 
-    // Customer customer = null;
-    // if (request.getCustomerId() != null) {
-    // customer = customerRepository.findById(request.getCustomerId()).orElseThrow(
-    // () -> new RuntimeException("Customer not found"));
-    // }
+        Customer customer = null;
+        if (request.getCustomerId() != null) {
+            customer = customerRepository.findById(request.getCustomerId()).orElseThrow(
+                    () -> new ResourceNotFoundException("Customer not found"));
+        }
 
-    // List<OrderItem> orderItems = new ArrayList<>();
-    // BigDecimal subtotal = BigDecimal.ZERO;
-    // for (CreateOrderItemRequest itemRequest : request.getItems()) {
-    // Product product =
-    // productRepository.findById(itemRequest.getProductId()).orElseThrow(
-    // () -> new RuntimeException("Product not found"));
+        List<OrderItem> orderItems = new ArrayList<>();
+        BigDecimal subtotal = BigDecimal.ZERO;
+        for (CreateOrderItemRequest itemRequest : request.getItems()) {
+            Product product = productRepository.findById(itemRequest.getProductId()).orElseThrow(
+                    () -> new ResourceNotFoundException("Product not found"));
 
-    // ProductVariant variant = null;
+            ProductVariant variant = null;
 
-    // if (itemRequest.getVariantId() != null) {
-    // variant = variantRepository.findById(itemRequest.getVariantId()).orElseThrow(
-    // () -> new RuntimeException("Variant not found"));
+            if (itemRequest.getVariantId() != null) {
+                variant = variantRepository.findById(itemRequest.getVariantId()).orElseThrow(
+                        () -> new ResourceNotFoundException("Variant not found"));
 
-    // }
-    // }
+            }
+            OrderItem orderItem = orderItemMapper.toEntity(itemRequest, product, variant);
+            BigDecimal price = variant != null ? variant.getSellingPrice() : product.getMinPrice();
+            orderItem.setUnitPrice(price);
+            BigDecimal totalPrice = price.multiply(BigDecimal.valueOf(itemRequest.getQuantity()));
+            orderItem.setTotalPrice(totalPrice);
+            orderItem.setProductName(product.getName());
+            orderItem.setProductSku(product.getProductCode());
+            orderItem.setVariantSku(variant != null ? variant.getSku() : null);
+            orderItem.setVariantAttributes(variant != null ? variant.getAttributeValues() : null);
+            subtotal = subtotal.add(totalPrice);
+            orderItems.add(orderItem);
+        }
 
-    // }
+        Order order = orderMapper.toEntity(request, customer, orderItems, subtotal);
+        order.setOrderNumber(generateOrderNumber());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User currentUser = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
+        order.setCreatedBy(currentUser);
+        // Initial status
+        order.setOrderStatus(OrderStatus.PENDING);
+        order.setPaymentStatus(PaymentStatus.UNPAID);
+        order.setFulfillmentStatus(FulfillmentStatus.UNFULFILLED);
+
+        order.setDiscountAmount(BigDecimal.ZERO);
+        order.setTaxAmount(BigDecimal.ZERO);
+        order.setShippingCost(BigDecimal.ZERO);
+        BigDecimal grandTotal = subtotal
+                .subtract(order.getDiscountAmount())
+                .add(order.getTaxAmount())
+                .add(order.getShippingCost());
+
+        order.setGrandTotal(grandTotal);
+        Order savedOrder = orderRepository.save(order);
+        return orderMapper.toResponse(savedOrder);
+
+    }
+
+    private String generateOrderNumber() {
+        return "ORD-" + System.currentTimeMillis();
+    }
 
 }
