@@ -236,6 +236,49 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.toResponse(order);
     }
 
+    @Override
+    @Transactional
+    public OrderResponse cancelOrder(UUID orderId, String reason) {
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+
+        if (order.getOrderStatus() == OrderStatus.DELIVERED) {
+            throw new BusinessException("Delivered order cannot be cancelled");
+        }
+
+        if (order.getOrderStatus() == OrderStatus.CANCELLED) {
+            throw new BusinessException("Order is already cancelled");
+        }
+        // Keep old status for history
+        OrderStatus previousStatus = order.getOrderStatus();
+
+        // Update order status
+        order.setOrderStatus(OrderStatus.CANCELLED);
+        order.setCancelledDate(LocalDateTime.now());
+
+        // Get current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User currentUser = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        // Create history
+        OrderStatusHistory history = OrderStatusHistory.builder()
+                .order(order)
+                .previousStatus(previousStatus)
+                .newStatus(OrderStatus.CANCELLED)
+                .changedBy(currentUser)
+                .reason(reason)
+                .build();
+
+        statusHistoryRepository.save(history);
+
+        // Save order
+        Order savedOrder = orderRepository.save(order);
+
+        return orderMapper.toResponse(savedOrder);
+    }
+
     private String generateOrderNumber() {
         return "ORD-" + System.currentTimeMillis();
     }

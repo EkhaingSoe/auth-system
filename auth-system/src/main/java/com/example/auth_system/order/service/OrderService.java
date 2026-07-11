@@ -34,7 +34,7 @@ public interface OrderService {
     // // Status Management
     OrderResponse updateOrderStatus(UUID orderId, OrderStatus newStatus, String reason);
 
-    // OrderResponse cancelOrder(UUID orderId, String reason);
+    OrderResponse cancelOrder(UUID orderId, String reason);
 
     // // Statistics
     // long countOrdersByStatus(OrderStatus status);
