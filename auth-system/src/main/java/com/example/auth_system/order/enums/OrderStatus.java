@@ -2,13 +2,10 @@ package com.example.auth_system.order.enums;
 
 public enum OrderStatus {
     PENDING("Pending"),
-    PAID("Paid"),
     PROCESSING("Processing"),
     SHIPPED("Shipped"),
     DELIVERED("Delivered"),
-    CANCELLED("Cancelled"),
-    REFUNDED("Refunded"),
-    PARTIALLY_REFUNDED("Partially Refunded");
+    CANCELLED("Cancelled");
 
     private final String displayName;
 

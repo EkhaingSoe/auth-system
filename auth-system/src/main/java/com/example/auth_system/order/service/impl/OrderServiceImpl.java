@@ -116,12 +116,146 @@ public class OrderServiceImpl implements OrderService {
 
         order.setGrandTotal(grandTotal);
         Order savedOrder = orderRepository.save(order);
+        addOrderStatusHistory(
+                savedOrder,
+                null,
+                OrderStatus.PENDING,
+                currentUser,
+                "Order created");
         return orderMapper.toResponse(savedOrder);
 
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public OrderResponse getOrderById(UUID orderId) {
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+
+        return orderMapper.toResponse(order);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public OrderResponse getOrderByNumber(String orderNumber) {
+
+        Order order = orderRepository.findByOrderNumber(orderNumber)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+
+        return orderMapper.toResponse(order);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponse> getAllOrders() {
+
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream()
+                .map(orderMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponse> getOrdersByCustomer(UUID customerId) {
+
+        List<Order> orders = orderRepository.findByCustomerId(customerId);
+        return orders.stream()
+                .map(orderMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponse> getOrdersByStatus(OrderStatus status) {
+
+        List<Order> orders = orderRepository.findByOrderStatus(status);
+        return orders.stream()
+                .map(orderMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponse> getOrdersByDateRange(LocalDateTime start, LocalDateTime end) {
+
+        List<Order> orders = orderRepository.findByOrderDateBetween(start, end);
+        return orders.stream()
+                .map(orderMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponse> searchOrders(String searchTerm) {
+
+        List<Order> orders = orderRepository.searchOrders(searchTerm);
+        return orders.stream()
+                .map(orderMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public OrderResponse updateOrderStatus(UUID orderId, OrderStatus newStatus, String reason) {
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+
+        OrderStatus previousStatus = order.getOrderStatus();
+
+        order.setOrderStatus(newStatus);
+
+        switch (newStatus) {
+            case PROCESSING -> order.setProcessingDate(LocalDateTime.now());
+            case SHIPPED -> order.setShippedDate(LocalDateTime.now());
+            case DELIVERED -> order.setDeliveredDate(LocalDateTime.now());
+            case CANCELLED -> order.setCancelledDate(LocalDateTime.now());
+            default -> {
+            }
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User currentUser = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        OrderStatusHistory history = OrderStatusHistory.builder()
+                .order(order)
+                .previousStatus(previousStatus)
+                .newStatus(newStatus)
+                .changedBy(currentUser)
+                .reason(reason)
+                .build();
+
+        statusHistoryRepository.save(history);
+
+        orderRepository.save(order);
+
+        return orderMapper.toResponse(order);
+    }
+
     private String generateOrderNumber() {
         return "ORD-" + System.currentTimeMillis();
+    }
+
+    private void addOrderStatusHistory(
+            Order order,
+            OrderStatus previousStatus,
+            OrderStatus newStatus,
+            User user,
+            String reason) {
+
+        OrderStatusHistory history = OrderStatusHistory.builder()
+                .order(order)
+                .previousStatus(previousStatus)
+                .newStatus(newStatus)
+                .changedBy(user)
+                .reason(reason)
+                .build();
+
+        statusHistoryRepository.save(history);
     }
 
 }
