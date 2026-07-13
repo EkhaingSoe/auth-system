@@ -1,5 +1,8 @@
 package com.example.auth_system.order.dto.request;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import lombok.*;
 
 @Data
@@ -9,11 +12,18 @@ import lombok.*;
 public class UpdateOrderShippingRequest {
 
     private String shippingMethod;
-    private String shippingTrackingNumber;
 
-    private String shippingAddress;
-    private String shippingCity;
-    private String shippingState;
-    private String shippingPostalCode;
-    private String shippingCountry;
+    private String trackingNumber;
+
+    private String carrierName;
+
+    private String carrierPhone;
+
+    private BigDecimal shippingCost;
+
+    private LocalDate estimatedDelivery;
+
+    private LocalDate actualDelivery;
+
+    private String status;
 }

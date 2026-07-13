@@ -1,6 +1,7 @@
 package com.example.auth_system.order.dto.response.orderResponse;
 
 import com.example.auth_system.auth.dto.response.LoginResponse.UserInfo;
+import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
 import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
 import com.example.auth_system.order.enums.*;
 import lombok.AllArgsConstructor;
@@ -43,6 +44,7 @@ public class OrderResponse {
 
     private List<OrderItemResponse> items;
     private List<PaymentResponse> payments;
+    private List<ShipmentResponse> shipments;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
