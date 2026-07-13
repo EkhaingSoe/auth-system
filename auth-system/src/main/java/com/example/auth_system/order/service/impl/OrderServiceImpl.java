@@ -49,7 +49,6 @@ import java.util.stream.Collectors;
 public class OrderServiceImpl implements OrderService {
 
         private final OrderRepository orderRepository;
-        private final OrderItemRepository orderItemRepository;
         private final OrderStatusHistoryRepository statusHistoryRepository;
         private final CustomerRepository customerRepository;
         private final UserRepository userRepository;
