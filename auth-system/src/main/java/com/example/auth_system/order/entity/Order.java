@@ -172,6 +172,10 @@ public class Order {
     @Builder.Default
     private List<Payment> payments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<OrderShipment> shipments = new ArrayList<>();
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -194,6 +198,11 @@ public class Order {
     public void addPayment(Payment payment) {
         payments.add(payment);
         payment.setOrder(this);
+    }
+
+    public void addShipment(OrderShipment shipment) {
+        shipments.add(shipment);
+        shipment.setOrder(this);
     }
 
     public void addStatusHistory(OrderStatusHistory history) {

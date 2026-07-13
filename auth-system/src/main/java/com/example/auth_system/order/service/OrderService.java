@@ -1,7 +1,6 @@
 package com.example.auth_system.order.service;
 
 import com.example.auth_system.order.dto.request.CreateOrderRequest;
-import com.example.auth_system.order.dto.request.UpdateOrderRequest;
 import com.example.auth_system.order.dto.response.orderResponse.OrderResponse;
 import com.example.auth_system.order.enums.OrderStatus;
 
@@ -14,8 +13,6 @@ public interface OrderService {
 
     // CRUD Operations
     OrderResponse createOrder(CreateOrderRequest request);
-
-    // OrderResponse updateOrder(UUID orderId, UpdateOrderRequest request);
 
     OrderResponse getOrderById(UUID orderId);
 
@@ -37,12 +34,12 @@ public interface OrderService {
     OrderResponse cancelOrder(UUID orderId, String reason);
 
     // // Statistics
-    // long countOrdersByStatus(OrderStatus status);
+    long countOrdersByStatus(OrderStatus status);
 
-    // BigDecimal getTotalRevenue();
+    BigDecimal getTotalRevenue();
 
-    // BigDecimal getRevenueBetween(LocalDateTime start, LocalDateTime end);
+    BigDecimal getRevenueBetween(LocalDateTime start, LocalDateTime end);
 
     // // Delete
-    // void deleteOrder(UUID orderId);
+    void deleteOrder(UUID orderId);
 }
