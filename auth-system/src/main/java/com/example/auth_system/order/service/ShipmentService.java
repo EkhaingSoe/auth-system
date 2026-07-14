@@ -3,6 +3,7 @@ package com.example.auth_system.order.service;
 import com.example.auth_system.order.dto.request.CreateShipmentRequest;
 import com.example.auth_system.order.dto.request.UpdateOrderShippingRequest;
 import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
+import com.example.auth_system.order.enums.ShipmentStatus;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +18,7 @@ public interface ShipmentService {
 
     ShipmentResponse updateShipment(UUID shipmentId, UpdateOrderShippingRequest request);
 
-    // ShipmentResponse updateShipmentStatus(UUID shipmentId, String status);
+    ShipmentResponse updateShipmentStatus(UUID shipmentId, ShipmentStatus status);
 
-    // void deleteShipment(UUID shipmentId);
+    void deleteShipment(UUID shipmentId);
 }

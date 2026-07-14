@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.auth.repository.UserRepository;
+import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.order.dto.request.CreateShipmentRequest;
 import com.example.auth_system.order.dto.request.UpdateOrderShippingRequest;
@@ -102,6 +103,45 @@ public class ShipmentServiceImpl implements ShipmentService {
         orderRepository.save(order);
         OrderShipment updatedShipment = shipmentRepository.save(shipment);
         return shipmentMapper.toResponse(updatedShipment);
+
+    }
+
+    @Override
+    @Transactional
+    public ShipmentResponse updateShipmentStatus(UUID shipmentId, ShipmentStatus status) {
+        OrderShipment shipment = shipmentRepository.findById(shipmentId).orElseThrow(
+                () -> new ResourceNotFoundException("Shipment not found"));
+
+        shipment.setStatus(status);
+        Order order = shipment.getOrder();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User currentUser = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        OrderStatus newOrderStatus = mapShipmentStatusToOrderStatus(status);
+        if (newOrderStatus != null) {
+            orderStatusService.changeStatus(order, newOrderStatus, currentUser, "Shipment status changed");
+
+        }
+        OrderShipment updatedShipment = shipmentRepository.save(shipment);
+        return shipmentMapper.toResponse(updatedShipment);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteShipment(UUID shipmentId) {
+
+        OrderShipment shipment = shipmentRepository.findById(shipmentId).orElseThrow(
+                () -> new ResourceNotFoundException("Shipment not found"));
+        if (shipment.getStatus() == ShipmentStatus.SHIPPED
+                || shipment.getStatus() == ShipmentStatus.DELIVERED) {
+
+            throw new BusinessException(
+                    "Cannot delete shipped or delivered shipment");
+        }
+
+        shipmentRepository.delete(shipment);
 
     }
 
