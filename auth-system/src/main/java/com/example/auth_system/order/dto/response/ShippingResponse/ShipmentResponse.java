@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.example.auth_system.order.enums.ShipmentStatus;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -36,7 +38,7 @@ public class ShipmentResponse {
 
     private BigDecimal shippingCost;
 
-    private String status;
+    private ShipmentStatus status;
 
     private LocalDateTime createdAt;
 

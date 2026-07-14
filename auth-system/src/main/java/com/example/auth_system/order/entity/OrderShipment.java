@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.auth_system.order.enums.ShipmentStatus;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,8 +27,8 @@ public class OrderShipment {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false, unique = true)
     private Order order;
 
     @Column(name = "shipping_method")
@@ -53,9 +55,10 @@ public class OrderShipment {
     @Column(name = "carrier_phone")
     private String carrierPhone;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     @Builder.Default
-    private String status = "PENDING"; // PENDING, PROCESSING, SHIPPED, DELIVERED, FAILED
+    private ShipmentStatus status = ShipmentStatus.PENDING;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

@@ -172,9 +172,8 @@ public class Order {
     @Builder.Default
     private List<Payment> payments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<OrderShipment> shipments = new ArrayList<>();
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private OrderShipment shipment;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -200,8 +199,8 @@ public class Order {
         payment.setOrder(this);
     }
 
-    public void addShipment(OrderShipment shipment) {
-        shipments.add(shipment);
+    public void setShipment(OrderShipment shipment) {
+        this.shipment = shipment;
         shipment.setOrder(this);
     }
 

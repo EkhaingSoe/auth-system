@@ -17,7 +17,7 @@ public interface ShipmentService {
 
     ShipmentResponse updateShipment(UUID shipmentId, UpdateOrderShippingRequest request);
 
-    ShipmentResponse updateShipmentStatus(UUID shipmentId, String status);
+    // ShipmentResponse updateShipmentStatus(UUID shipmentId, String status);
 
-    void deleteShipment(UUID shipmentId);
+    // void deleteShipment(UUID shipmentId);
 }

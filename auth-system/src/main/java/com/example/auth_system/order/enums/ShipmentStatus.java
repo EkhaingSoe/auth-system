@@ -1,18 +1,19 @@
 package com.example.auth_system.order.enums;
 
-public enum PaymentStatus {
-    UNPAID("Unpaid"),
+public enum ShipmentStatus {
+
+    PENDING("Pending"),
     PROCESSING("Processing"),
-    PAID("Paid"),
+    SHIPPED("Shipped"),
+    IN_TRANSIT("In Transit"),
+    DELIVERED("Delivered"),
     FAILED("Failed"),
-    CANCELLED("Cancelled"),
-    PARTIALLY_PAID("Partially Paid"),
-    REFUNDED("Refunded"),
-    PARTIALLY_REFUNDED("Partially Refunded");
+    RETURNED("Returned"),
+    CANCELLED("Cancelled");
 
     private final String displayName;
 
-    PaymentStatus(String displayName) {
+    ShipmentStatus(String displayName) {
         this.displayName = displayName;
     }
 

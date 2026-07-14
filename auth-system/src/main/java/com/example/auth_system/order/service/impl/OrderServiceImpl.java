@@ -23,6 +23,7 @@ import com.example.auth_system.order.repository.OrderItemRepository;
 import com.example.auth_system.order.repository.OrderRepository;
 import com.example.auth_system.order.repository.OrderStatusHistoryRepository;
 import com.example.auth_system.order.service.OrderService;
+import com.example.auth_system.order.service.OrderStatusService;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.product.repository.ProductRepository;
@@ -56,6 +57,7 @@ public class OrderServiceImpl implements OrderService {
         private final ProductVariantRepository variantRepository;
         private final OrderMapper orderMapper;
         private final OrderItemMapper orderItemMapper;
+        private final OrderStatusService orderStatusService;
 
         @Override
         public OrderResponse createOrder(CreateOrderRequest request) {
@@ -197,39 +199,16 @@ public class OrderServiceImpl implements OrderService {
         }
 
         @Override
-        @Transactional(readOnly = true)
+        @Transactional
         public OrderResponse updateOrderStatus(UUID orderId, OrderStatus newStatus, String reason) {
 
                 Order order = orderRepository.findById(orderId)
                                 .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
-
-                OrderStatus previousStatus = order.getOrderStatus();
-
-                order.setOrderStatus(newStatus);
-
-                switch (newStatus) {
-                        case PROCESSING -> order.setProcessingDate(LocalDateTime.now());
-                        case SHIPPED -> order.setShippedDate(LocalDateTime.now());
-                        case DELIVERED -> order.setDeliveredDate(LocalDateTime.now());
-                        case CANCELLED -> order.setCancelledDate(LocalDateTime.now());
-                        default -> {
-                        }
-                }
-
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
                 User currentUser = userRepository.findByUsername(authentication.getName())
                                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-                OrderStatusHistory history = OrderStatusHistory.builder()
-                                .order(order)
-                                .previousStatus(previousStatus)
-                                .newStatus(newStatus)
-                                .changedBy(currentUser)
-                                .reason(reason)
-                                .build();
-
-                statusHistoryRepository.save(history);
+                orderStatusService.changeStatus(order, newStatus, currentUser, reason);
 
                 orderRepository.save(order);
 
@@ -250,30 +229,28 @@ public class OrderServiceImpl implements OrderService {
                 if (order.getOrderStatus() == OrderStatus.CANCELLED) {
                         throw new BusinessException("Order is already cancelled");
                 }
-                // Keep old status for history
-                OrderStatus previousStatus = order.getOrderStatus();
 
-                // Update order status
-                order.setOrderStatus(OrderStatus.CANCELLED);
-                order.setCancelledDate(LocalDateTime.now());
-
-                // Get current user
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
                 User currentUser = userRepository.findByUsername(authentication.getName())
                                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-                // Create history
-                OrderStatusHistory history = OrderStatusHistory.builder()
-                                .order(order)
-                                .previousStatus(previousStatus)
-                                .newStatus(OrderStatus.CANCELLED)
-                                .changedBy(currentUser)
-                                .reason(reason)
-                                .build();
 
-                statusHistoryRepository.save(history);
+                orderStatusService.changeStatus(order, OrderStatus.CANCELLED, currentUser, reason);
 
-                // Save order
+                // OrderStatus previousStatus = order.getOrderStatus();
+                // order.setOrderStatus(OrderStatus.CANCELLED);
+                // order.setCancelledDate(LocalDateTime.now());
+
+                // OrderStatusHistory history = OrderStatusHistory.builder()
+                // .order(order)
+                // .previousStatus(previousStatus)
+                // .newStatus(OrderStatus.CANCELLED)
+                // .changedBy(currentUser)
+                // .reason(reason)
+                // .build();
+
+                // statusHistoryRepository.save(history);
+
                 Order savedOrder = orderRepository.save(order);
 
                 return orderMapper.toResponse(savedOrder);

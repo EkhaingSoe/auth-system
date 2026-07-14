@@ -3,6 +3,8 @@ package com.example.auth_system.order.dto.request;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.example.auth_system.order.enums.ShipmentStatus;
+
 import lombok.*;
 
 @Data
@@ -25,5 +27,5 @@ public class UpdateOrderShippingRequest {
 
     private LocalDate actualDelivery;
 
-    private String status;
+    private ShipmentStatus status;
 }
