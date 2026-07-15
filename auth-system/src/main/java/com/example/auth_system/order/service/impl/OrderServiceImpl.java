@@ -8,8 +8,6 @@ import com.example.auth_system.customer.entity.Customer;
 import com.example.auth_system.customer.repository.CustomerRepository;
 import com.example.auth_system.order.dto.request.CreateOrderItemRequest;
 import com.example.auth_system.order.dto.request.CreateOrderRequest;
-import com.example.auth_system.order.dto.request.UpdateOrderRequest;
-import com.example.auth_system.order.dto.request.UpdateOrderShippingRequest;
 import com.example.auth_system.order.dto.response.orderResponse.OrderResponse;
 import com.example.auth_system.order.entity.Order;
 import com.example.auth_system.order.entity.OrderItem;
@@ -19,7 +17,6 @@ import com.example.auth_system.order.enums.OrderStatus;
 import com.example.auth_system.order.enums.PaymentStatus;
 import com.example.auth_system.order.mapper.OrderItemMapper;
 import com.example.auth_system.order.mapper.OrderMapper;
-import com.example.auth_system.order.repository.OrderItemRepository;
 import com.example.auth_system.order.repository.OrderRepository;
 import com.example.auth_system.order.repository.OrderStatusHistoryRepository;
 import com.example.auth_system.order.service.OrderService;
@@ -236,20 +233,6 @@ public class OrderServiceImpl implements OrderService {
                                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
                 orderStatusService.changeStatus(order, OrderStatus.CANCELLED, currentUser, reason);
-
-                // OrderStatus previousStatus = order.getOrderStatus();
-                // order.setOrderStatus(OrderStatus.CANCELLED);
-                // order.setCancelledDate(LocalDateTime.now());
-
-                // OrderStatusHistory history = OrderStatusHistory.builder()
-                // .order(order)
-                // .previousStatus(previousStatus)
-                // .newStatus(OrderStatus.CANCELLED)
-                // .changedBy(currentUser)
-                // .reason(reason)
-                // .build();
-
-                // statusHistoryRepository.save(history);
 
                 Order savedOrder = orderRepository.save(order);
 

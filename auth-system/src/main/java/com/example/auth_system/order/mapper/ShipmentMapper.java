@@ -6,74 +6,72 @@ import com.example.auth_system.order.dto.request.CreateShipmentRequest;
 import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
 import com.example.auth_system.order.entity.Order;
 import com.example.auth_system.order.entity.OrderShipment;
+import com.example.auth_system.order.enums.ShipmentStatus;
 
 @Component
 public class ShipmentMapper {
 
-    public OrderShipment toEntity(
-            CreateShipmentRequest request,
-            Order order) {
+        public OrderShipment toEntity(CreateShipmentRequest request, Order order) {
 
-        return OrderShipment.builder()
-                .order(order)
-                .shippingMethod(request.getShippingMethod())
-                .trackingNumber(request.getTrackingNumber())
-                .carrierName(request.getCarrierName())
-                .carrierPhone(request.getCarrierPhone())
-                .shippingCost(request.getShippingCost())
-                .estimatedDelivery(request.getEstimatedDelivery())
-                .status("PENDING")
-                .build();
-    }
-
-    public ShipmentResponse toResponse(
-            OrderShipment shipment) {
-
-        if (shipment == null) {
-            return null;
+                return OrderShipment.builder()
+                                .order(order)
+                                .shippingMethod(request.getShippingMethod())
+                                .trackingNumber(request.getTrackingNumber())
+                                .carrierName(request.getCarrierName())
+                                .carrierPhone(request.getCarrierPhone())
+                                .shippingCost(request.getShippingCost())
+                                .estimatedDelivery(request.getEstimatedDelivery())
+                                .status(ShipmentStatus.PENDING)
+                                .build();
         }
 
-        return ShipmentResponse.builder()
-                .id(shipment.getId())
+        public ShipmentResponse toResponse(OrderShipment shipment) {
 
-                .orderId(
-                        shipment.getOrder() != null
-                                ? shipment.getOrder().getId()
-                                : null)
+                if (shipment == null) {
+                        return null;
+                }
 
-                .shippingMethod(
-                        shipment.getShippingMethod())
+                return ShipmentResponse.builder()
+                                .id(shipment.getId())
 
-                .trackingNumber(
-                        shipment.getTrackingNumber())
+                                .orderId(
+                                                shipment.getOrder() != null
+                                                                ? shipment.getOrder().getId()
+                                                                : null)
 
-                .carrierName(
-                        shipment.getCarrierName())
+                                .shippingMethod(
+                                                shipment.getShippingMethod())
 
-                .carrierPhone(
-                        shipment.getCarrierPhone())
+                                .trackingNumber(
+                                                shipment.getTrackingNumber())
 
-                .shippingDate(
-                        shipment.getShippingDate())
+                                .carrierName(
+                                                shipment.getCarrierName())
 
-                .estimatedDelivery(
-                        shipment.getEstimatedDelivery())
+                                .carrierPhone(
+                                                shipment.getCarrierPhone())
 
-                .actualDelivery(
-                        shipment.getActualDelivery())
+                                .shippingDate(
+                                                shipment.getShippingDate())
 
-                .shippingCost(
-                        shipment.getShippingCost())
+                                .estimatedDelivery(
+                                                shipment.getEstimatedDelivery())
 
-                .status(
-                        shipment.getStatus())
+                                .actualDelivery(
+                                                shipment.getActualDelivery())
 
-                .createdAt(
-                        shipment.getCreatedAt())
+                                .shippingCost(
+                                                shipment.getShippingCost())
 
-                .updatedAt(
-                        shipment.getUpdatedAt())
+                                .status(
+                                                shipment.getStatus())
 
-                .build();
-    }
+                                .createdAt(
+                                                shipment.getCreatedAt())
+
+                                .updatedAt(
+                                                shipment.getUpdatedAt())
+
+                                .build();
+        }
 }

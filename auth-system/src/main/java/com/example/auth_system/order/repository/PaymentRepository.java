@@ -28,4 +28,6 @@ public interface PaymentRepository extends JpaRepository<Payment, UUID> {
 
     boolean existsByTransactionId(String transactionId);
 
+    Optional<Payment> findFirstByOrderIdOrderByCreatedAtDesc(UUID orderId);
+
 }

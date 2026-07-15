@@ -35,5 +35,5 @@ public class CreatePaymentRequest {
     private String bankName;
     private String bankAccount;
 
-    private UUID createdBy;
+    // private UUID createdBy;
 }
