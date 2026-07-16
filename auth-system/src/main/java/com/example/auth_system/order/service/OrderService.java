@@ -1,6 +1,6 @@
 package com.example.auth_system.order.service;
 
-import com.example.auth_system.order.dto.request.CreateOrderRequest;
+import com.example.auth_system.order.dto.request.Order.CreateOrderRequest;
 import com.example.auth_system.order.dto.response.orderResponse.OrderResponse;
 import com.example.auth_system.order.enums.OrderStatus;
 

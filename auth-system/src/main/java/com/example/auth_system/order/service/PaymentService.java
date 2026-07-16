@@ -1,7 +1,8 @@
 package com.example.auth_system.order.service;
 
-import com.example.auth_system.order.dto.request.CreateEcommercePaymentRequest;
-import com.example.auth_system.order.dto.request.CreatePaymentRequest;
+import com.example.auth_system.order.dto.request.Payment.CreateEcommercePaymentRequest;
+import com.example.auth_system.order.dto.request.Payment.CreatePaymentRequest;
+import com.example.auth_system.order.dto.response.paymentResponse.EcommercePaymentResponse;
 import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface PaymentService {
 
     PaymentResponse createPayment(CreatePaymentRequest request);
 
-    PaymentResponse createEcommercePayment(CreateEcommercePaymentRequest request);
+    EcommercePaymentResponse createEcommercePayment(CreateEcommercePaymentRequest request);
 
     PaymentResponse completePayment(UUID paymentId);
     // PaymentResponse refundPayment(UUID paymentId, String reason);

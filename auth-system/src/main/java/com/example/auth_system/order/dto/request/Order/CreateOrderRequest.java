@@ -1,9 +1,11 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.dto.request.Order;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.auth_system.order.dto.request.Address.BillingAddressRequest;
+import com.example.auth_system.order.dto.request.Address.ShippingAddressRequest;
 import com.example.auth_system.order.enums.OrderType;
 
 import jakarta.validation.Valid;
@@ -27,7 +29,8 @@ public class CreateOrderRequest {
     private UUID customerId;
 
     // @NotNull(message = "Created by is required")
-    // private UUID createdBy; i will get user from backend, so no need to send this from frontend
+    // private UUID createdBy; i will get user from backend, so no need to send this
+    // from frontend
 
     @NotEmpty(message = "At least one item is required")
     @Valid
@@ -38,7 +41,6 @@ public class CreateOrderRequest {
 
     @Valid
     private BillingAddressRequest billingAddress;
-
 
     private String couponCode;
 

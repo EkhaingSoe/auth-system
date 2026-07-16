@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.dto.request.Order;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -17,7 +17,7 @@ public class CreateOrderItemRequest {
 
     private UUID variantId;
 
-     @NotNull(message = "Quantity is required")
+    @NotNull(message = "Quantity is required")
     private Integer quantity;
 
     private BigDecimal unitPrice;

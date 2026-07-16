@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.dto.request.Order;
 
 import com.example.auth_system.order.enums.OrderStatus;
 import lombok.*;

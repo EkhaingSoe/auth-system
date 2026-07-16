@@ -1,7 +1,7 @@
 package com.example.auth_system.order.service;
 
-import com.example.auth_system.order.dto.request.CreateShipmentRequest;
-import com.example.auth_system.order.dto.request.UpdateOrderShippingRequest;
+import com.example.auth_system.order.dto.request.Address.CreateShipmentRequest;
+import com.example.auth_system.order.dto.request.Address.UpdateOrderShippingRequest;
 import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
 import com.example.auth_system.order.enums.ShipmentStatus;
 

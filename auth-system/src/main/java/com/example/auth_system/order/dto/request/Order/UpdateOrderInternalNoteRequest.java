@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.dto.request.Order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateOrderInternalNoteRequest {
-    
-    private String internalNotes;
 
+    private String internalNotes;
 
 }

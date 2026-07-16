@@ -3,9 +3,10 @@ package com.example.auth_system.order.mapper;
 import org.springframework.stereotype.Component;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.order.dto.request.CreateEcommercePaymentRequest;
-import com.example.auth_system.order.dto.request.CreatePaymentRequest;
+import com.example.auth_system.order.dto.request.Payment.CreateEcommercePaymentRequest;
+import com.example.auth_system.order.dto.request.Payment.CreatePaymentRequest;
 import com.example.auth_system.order.dto.response.orderResponse.CustomerInfoResponse;
+import com.example.auth_system.order.dto.response.paymentResponse.EcommercePaymentResponse;
 import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
 import com.example.auth_system.order.entity.Order;
 import com.example.auth_system.order.entity.Payment;
@@ -85,6 +86,21 @@ public class PaymentMapper {
                                 .refundTransactionId(payment.getRefundTransactionId())
                                 .createdAt(payment.getCreatedAt())
                                 .updatedAt(payment.getUpdatedAt())
+                                .build();
+        }
+
+        public EcommercePaymentResponse toEcommercePaymentResponse(Payment payment) {
+
+                if (payment == null) {
+                        return null;
+                }
+
+                return EcommercePaymentResponse.builder()
+                                .paymentId(payment.getId())
+                                .paymentNumber(payment.getPaymentNumber())
+                                .paymentStatus(payment.getPaymentStatus())
+                                .gatewayName(payment.getGatewayName())
+                                .gatewayReference(payment.getGatewayReference())
                                 .build();
         }
 

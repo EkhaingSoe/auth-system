@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.dto.request.Payment;
 
 import com.example.auth_system.order.enums.PaymentMethod;
 import jakarta.validation.constraints.NotNull;

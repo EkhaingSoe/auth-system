@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.auth_system.order.dto.response.orderResponse.UserInfoResponse;
 import com.example.auth_system.customer.entity.Customer;
-import com.example.auth_system.order.dto.request.CreateOrderRequest;
+import com.example.auth_system.order.dto.request.Order.CreateOrderRequest;
 import com.example.auth_system.order.dto.response.orderResponse.AddressInfoResponse;
 import com.example.auth_system.order.dto.response.orderResponse.CustomerInfoResponse;
 import com.example.auth_system.order.dto.response.orderResponse.OrderResponse;

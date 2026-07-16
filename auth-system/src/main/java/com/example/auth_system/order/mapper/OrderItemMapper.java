@@ -2,7 +2,7 @@ package com.example.auth_system.order.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.example.auth_system.order.dto.request.CreateOrderItemRequest;
+import com.example.auth_system.order.dto.request.Order.CreateOrderItemRequest;
 import com.example.auth_system.order.dto.response.orderResponse.OrderItemResponse;
 import com.example.auth_system.order.entity.OrderItem;
 import com.example.auth_system.product.entity.Product;

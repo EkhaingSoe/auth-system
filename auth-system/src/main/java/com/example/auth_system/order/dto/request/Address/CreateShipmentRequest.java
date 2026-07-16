@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.dto.request.Address;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
