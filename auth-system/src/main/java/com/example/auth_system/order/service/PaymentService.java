@@ -4,6 +4,7 @@ import com.example.auth_system.order.dto.request.Payment.CreateEcommercePaymentR
 import com.example.auth_system.order.dto.request.Payment.CreatePaymentRequest;
 import com.example.auth_system.order.dto.response.paymentResponse.EcommercePaymentResponse;
 import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
+import com.example.auth_system.payment_gateway.kpay.KPayWebhookRequest;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +16,8 @@ public interface PaymentService {
     EcommercePaymentResponse createEcommercePayment(CreateEcommercePaymentRequest request);
 
     PaymentResponse completePayment(UUID paymentId);
+
+    void handleKPayWebhook(KPayWebhookRequest request);
     // PaymentResponse refundPayment(UUID paymentId, String reason);
     // PaymentResponse getPaymentById(UUID paymentId);
     // List<PaymentResponse> getPaymentsByOrder(UUID orderId);

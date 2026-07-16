@@ -26,6 +26,7 @@ import com.example.auth_system.order.service.OrderStatusService;
 import com.example.auth_system.order.service.PaymentService;
 import com.example.auth_system.payment_gateway.kpay.KPayPaymentService;
 import com.example.auth_system.payment_gateway.kpay.KPayResponse;
+import com.example.auth_system.payment_gateway.kpay.KPayWebhookRequest;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -117,6 +118,42 @@ public class PaymentServiceImpl implements PaymentService {
         response.setQrCode(kPayResponse.getQrCode());
 
         return response;
+    }
+
+    @Override
+    @Transactional
+    public void handleKPayWebhook(KPayWebhookRequest request) {
+
+        Payment payment = paymentRepository
+                .findByGatewayReference(request.getPaymentId())
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "Payment not found"));
+
+        if (request.getStatus().equals("SUCCESS")) {
+
+            payment.setPaymentStatus(PaymentStatus.PAID);
+
+            payment.setTransactionId(request.getTransactionId());
+
+            payment.setCompletedDate(LocalDateTime.now());
+
+            paymentRepository.save(payment);
+
+            Order order = payment.getOrder();
+
+            order.setPaymentStatus(PaymentStatus.PAID);
+
+            orderStatusService.changeStatus(
+                    order,
+                    OrderStatus.PROCESSING,
+                    payment.getCreatedBy(),
+                    "Payment completed");
+
+            orderRepository.save(order);
+
+        }
+
     }
 
     @Override
