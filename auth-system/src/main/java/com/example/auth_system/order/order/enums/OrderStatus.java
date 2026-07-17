@@ -1,4 +1,4 @@
-package com.example.auth_system.order.enums;
+package com.example.auth_system.order.order.enums;
 
 public enum OrderStatus {
     PENDING("Pending"),

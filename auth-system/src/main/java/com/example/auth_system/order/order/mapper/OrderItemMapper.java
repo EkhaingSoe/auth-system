@@ -1,4 +1,4 @@
-package com.example.auth_system.order.mapper;
+package com.example.auth_system.order.order.mapper;
 
 import org.springframework.stereotype.Component;
 

@@ -1,11 +1,11 @@
-package com.example.auth_system.order.service.impl;
+package com.example.auth_system.order.order.service.impl;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.order.enums.OrderStatus;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.order.entity.OrderStatusHistory;
-import com.example.auth_system.order.repository.OrderStatusHistoryRepository;
-import com.example.auth_system.order.service.OrderStatusService;
+import com.example.auth_system.order.order.enums.OrderStatus;
+import com.example.auth_system.order.order.repository.OrderStatusHistoryRepository;
+import com.example.auth_system.order.order.service.OrderStatusService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import com.example.auth_system.order.dto.request.Address.BillingAddressRequest;
 import com.example.auth_system.order.dto.request.Address.ShippingAddressRequest;
-import com.example.auth_system.order.enums.OrderType;
+import com.example.auth_system.order.order.enums.OrderType;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;

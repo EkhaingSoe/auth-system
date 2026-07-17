@@ -1,6 +1,5 @@
 package com.example.auth_system.order.order.dto.orderRequest;
 
-import com.example.auth_system.order.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import com.example.auth_system.order.order.enums.OrderStatus;
 
 @Data
 @Builder

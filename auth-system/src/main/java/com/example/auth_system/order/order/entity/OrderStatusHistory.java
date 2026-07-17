@@ -1,7 +1,7 @@
 package com.example.auth_system.order.order.entity;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.order.enums.OrderStatus;
+import com.example.auth_system.order.order.enums.OrderStatus;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

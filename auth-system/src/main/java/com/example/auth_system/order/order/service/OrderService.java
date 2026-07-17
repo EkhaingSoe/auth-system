@@ -1,8 +1,8 @@
-package com.example.auth_system.order.service;
+package com.example.auth_system.order.order.service;
 
-import com.example.auth_system.order.enums.OrderStatus;
 import com.example.auth_system.order.order.dto.orderRequest.CreateOrderRequest;
 import com.example.auth_system.order.order.dto.orderResponse.OrderResponse;
+import com.example.auth_system.order.order.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

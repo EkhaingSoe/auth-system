@@ -1,9 +1,9 @@
-package com.example.auth_system.order.repository;
+package com.example.auth_system.order.order.repository;
 
-import com.example.auth_system.order.enums.FulfillmentStatus;
-import com.example.auth_system.order.enums.OrderStatus;
 import com.example.auth_system.order.enums.PaymentStatus;
 import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.order.enums.FulfillmentStatus;
+import com.example.auth_system.order.order.enums.OrderStatus;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

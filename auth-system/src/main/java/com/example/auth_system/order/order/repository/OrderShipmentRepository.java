@@ -1,4 +1,4 @@
-package com.example.auth_system.order.repository;
+package com.example.auth_system.order.order.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
