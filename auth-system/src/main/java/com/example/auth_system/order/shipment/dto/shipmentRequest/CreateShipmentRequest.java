@@ -1,17 +1,21 @@
-package com.example.auth_system.order.dto.request.Address;
+package com.example.auth_system.order.shipment.dto.shipmentRequest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.UUID;
 
-import com.example.auth_system.order.enums.ShipmentStatus;
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateOrderShippingRequest {
+public class CreateShipmentRequest {
+
+    private UUID orderId;
 
     private String shippingMethod;
 
@@ -24,8 +28,4 @@ public class UpdateOrderShippingRequest {
     private BigDecimal shippingCost;
 
     private LocalDate estimatedDelivery;
-
-    private LocalDate actualDelivery;
-
-    private ShipmentStatus status;
 }

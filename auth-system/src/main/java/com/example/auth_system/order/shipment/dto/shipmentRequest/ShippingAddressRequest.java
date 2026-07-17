@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request.Address;
+package com.example.auth_system.order.shipment.dto.shipmentRequest;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BillingAddressRequest {
+public class ShippingAddressRequest {
 
     private String address;
     private String city;

@@ -1,4 +1,4 @@
-package com.example.auth_system.order.enums;
+package com.example.auth_system.order.shipment.enums;
 
 public enum ShipmentStatus {
 

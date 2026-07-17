@@ -1,13 +1,13 @@
 package com.example.auth_system.order.order.dto.orderResponse;
 
 import com.example.auth_system.auth.dto.response.LoginResponse.UserInfo;
-import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
 import com.example.auth_system.order.enums.*;
 import com.example.auth_system.order.order.enums.FulfillmentStatus;
 import com.example.auth_system.order.order.enums.OrderStatus;
 import com.example.auth_system.order.order.enums.OrderType;
 import com.example.auth_system.order.payment.dto.paymentResponse.PaymentResponse;
 import com.example.auth_system.order.payment.enums.PaymentStatus;
+import com.example.auth_system.order.shipment.dto.shipmentResponse.ShipmentResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -8,6 +8,7 @@ import com.example.auth_system.order.order.enums.OrderStatus;
 import com.example.auth_system.order.order.enums.OrderType;
 import com.example.auth_system.order.payment.entity.Payment;
 import com.example.auth_system.order.payment.enums.PaymentStatus;
+import com.example.auth_system.order.shipment.entity.OrderShipment;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

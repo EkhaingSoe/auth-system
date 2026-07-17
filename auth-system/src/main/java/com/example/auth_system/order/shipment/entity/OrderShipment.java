@@ -1,4 +1,4 @@
-package com.example.auth_system.order.order.entity;
+package com.example.auth_system.order.shipment.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.auth_system.order.enums.ShipmentStatus;
+import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.shipment.enums.ShipmentStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

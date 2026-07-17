@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-import com.example.auth_system.order.dto.request.Address.BillingAddressRequest;
-import com.example.auth_system.order.dto.request.Address.ShippingAddressRequest;
 import com.example.auth_system.order.order.enums.OrderType;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.BillingAddressRequest;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.ShippingAddressRequest;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;

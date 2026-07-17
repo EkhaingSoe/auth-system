@@ -1,12 +1,12 @@
-package com.example.auth_system.order.mapper;
+package com.example.auth_system.order.shipment.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.example.auth_system.order.dto.request.Address.CreateShipmentRequest;
-import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
-import com.example.auth_system.order.enums.ShipmentStatus;
 import com.example.auth_system.order.order.entity.Order;
-import com.example.auth_system.order.order.entity.OrderShipment;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.CreateShipmentRequest;
+import com.example.auth_system.order.shipment.dto.shipmentResponse.ShipmentResponse;
+import com.example.auth_system.order.shipment.entity.OrderShipment;
+import com.example.auth_system.order.shipment.enums.ShipmentStatus;
 
 @Component
 public class ShipmentMapper {

@@ -1,6 +1,5 @@
-package com.example.auth_system.order.service.impl;
+package com.example.auth_system.order.shipment.service.impl;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,20 +11,18 @@ import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.auth.repository.UserRepository;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
-import com.example.auth_system.order.dto.request.Address.CreateShipmentRequest;
-import com.example.auth_system.order.dto.request.Address.UpdateOrderShippingRequest;
-import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
-import com.example.auth_system.order.enums.ShipmentStatus;
-import com.example.auth_system.order.mapper.ShipmentMapper;
 import com.example.auth_system.order.order.entity.Order;
-import com.example.auth_system.order.order.entity.OrderShipment;
-import com.example.auth_system.order.order.entity.OrderStatusHistory;
 import com.example.auth_system.order.order.enums.OrderStatus;
 import com.example.auth_system.order.order.repository.OrderRepository;
 import com.example.auth_system.order.order.repository.OrderShipmentRepository;
-import com.example.auth_system.order.order.repository.OrderStatusHistoryRepository;
 import com.example.auth_system.order.order.service.OrderStatusService;
-import com.example.auth_system.order.service.ShipmentService;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.CreateShipmentRequest;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.UpdateOrderShippingRequest;
+import com.example.auth_system.order.shipment.dto.shipmentResponse.ShipmentResponse;
+import com.example.auth_system.order.shipment.entity.OrderShipment;
+import com.example.auth_system.order.shipment.enums.ShipmentStatus;
+import com.example.auth_system.order.shipment.mapper.ShipmentMapper;
+import com.example.auth_system.order.shipment.service.ShipmentService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +37,6 @@ public class ShipmentServiceImpl implements ShipmentService {
     private final OrderRepository orderRepository;
     private final ShipmentMapper shipmentMapper;
     private final OrderShipmentRepository shipmentRepository;
-    private final OrderStatusHistoryRepository statusHistoryRepository;
     private final UserRepository userRepository;
     private final OrderStatusService orderStatusService;
 

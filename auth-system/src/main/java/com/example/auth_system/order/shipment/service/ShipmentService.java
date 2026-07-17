@@ -1,9 +1,9 @@
-package com.example.auth_system.order.service;
+package com.example.auth_system.order.shipment.service;
 
-import com.example.auth_system.order.dto.request.Address.CreateShipmentRequest;
-import com.example.auth_system.order.dto.request.Address.UpdateOrderShippingRequest;
-import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
-import com.example.auth_system.order.enums.ShipmentStatus;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.CreateShipmentRequest;
+import com.example.auth_system.order.shipment.dto.shipmentRequest.UpdateOrderShippingRequest;
+import com.example.auth_system.order.shipment.dto.shipmentResponse.ShipmentResponse;
+import com.example.auth_system.order.shipment.enums.ShipmentStatus;
 
 import java.util.List;
 import java.util.UUID;

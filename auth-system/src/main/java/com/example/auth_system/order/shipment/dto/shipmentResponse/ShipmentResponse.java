@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.ShippingResponse;
+package com.example.auth_system.order.shipment.dto.shipmentResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.example.auth_system.order.enums.ShipmentStatus;
+import com.example.auth_system.order.shipment.enums.ShipmentStatus;
 
 @Data
 @Builder
