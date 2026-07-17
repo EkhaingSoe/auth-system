@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 import com.example.auth_system.order.dto.request.Address.CreateShipmentRequest;
 import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;
-import com.example.auth_system.order.entity.Order;
-import com.example.auth_system.order.entity.OrderShipment;
 import com.example.auth_system.order.enums.ShipmentStatus;
+import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.order.entity.OrderShipment;
 
 @Component
 public class ShipmentMapper {

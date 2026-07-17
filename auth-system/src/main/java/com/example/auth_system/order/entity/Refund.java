@@ -5,6 +5,8 @@ import com.example.auth_system.order.dto.request.RefundItemRequest;
 import com.example.auth_system.order.enums.RefundMethod;
 import com.example.auth_system.order.enums.RefundStatus;
 import com.example.auth_system.order.enums.RefundType;
+import com.example.auth_system.order.order.entity.Order;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

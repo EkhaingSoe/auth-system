@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 import com.example.auth_system.order.dto.request.RefundItemRequest;
 import com.example.auth_system.order.dto.response.RefundResponse.RefundItemResponse;
-import com.example.auth_system.order.entity.OrderItem;
 import com.example.auth_system.order.entity.RefundItem;
+import com.example.auth_system.order.order.entity.OrderItem;
 
 import java.math.BigDecimal;
 

@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.auth_system.customer.entity.Customer;
-import com.example.auth_system.order.entity.Order;
-import com.example.auth_system.order.entity.OrderItem;
 import com.example.auth_system.order.order.dto.orderRequest.CreateOrderRequest;
 import com.example.auth_system.order.order.dto.orderResponse.AddressInfoResponse;
 import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
@@ -15,6 +13,8 @@ import com.example.auth_system.order.order.dto.orderResponse.OrderResponse;
 import com.example.auth_system.order.order.dto.orderResponse.OrderSummaryResponse;
 import com.example.auth_system.order.order.dto.orderResponse.OrderTimelineResponse;
 import com.example.auth_system.order.order.dto.orderResponse.UserInfoResponse;
+import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.order.entity.OrderItem;
 
 import lombok.RequiredArgsConstructor;
 

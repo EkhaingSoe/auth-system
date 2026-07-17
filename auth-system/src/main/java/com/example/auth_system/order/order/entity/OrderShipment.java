@@ -1,4 +1,4 @@
-package com.example.auth_system.order.entity;
+package com.example.auth_system.order.order.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

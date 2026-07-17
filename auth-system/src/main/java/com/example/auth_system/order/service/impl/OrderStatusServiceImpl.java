@@ -1,9 +1,9 @@
 package com.example.auth_system.order.service.impl;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.order.entity.Order;
-import com.example.auth_system.order.entity.OrderStatusHistory;
 import com.example.auth_system.order.enums.OrderStatus;
+import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.order.entity.OrderStatusHistory;
 import com.example.auth_system.order.repository.OrderStatusHistoryRepository;
 import com.example.auth_system.order.service.OrderStatusService;
 

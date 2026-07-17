@@ -7,10 +7,10 @@ import com.example.auth_system.order.dto.request.Payment.CreateEcommercePaymentR
 import com.example.auth_system.order.dto.request.Payment.CreatePaymentRequest;
 import com.example.auth_system.order.dto.response.paymentResponse.EcommercePaymentResponse;
 import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
-import com.example.auth_system.order.entity.Order;
 import com.example.auth_system.order.entity.Payment;
 import com.example.auth_system.order.enums.PaymentStatus;
 import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
+import com.example.auth_system.order.order.entity.Order;
 
 @Component
 public class PaymentMapper {

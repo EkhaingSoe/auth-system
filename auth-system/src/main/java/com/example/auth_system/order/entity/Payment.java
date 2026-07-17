@@ -4,6 +4,8 @@ import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.customer.entity.Customer;
 import com.example.auth_system.order.enums.PaymentMethod;
 import com.example.auth_system.order.enums.PaymentStatus;
+import com.example.auth_system.order.order.entity.Order;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

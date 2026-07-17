@@ -1,7 +1,8 @@
-package com.example.auth_system.order.entity;
+package com.example.auth_system.order.order.entity;
 
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.order.enums.OrderStatus;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

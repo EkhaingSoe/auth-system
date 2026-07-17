@@ -1,10 +1,11 @@
 package com.example.auth_system.order.repository;
 
-import com.example.auth_system.order.entity.OrderShipment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import com.example.auth_system.order.order.entity.OrderShipment;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

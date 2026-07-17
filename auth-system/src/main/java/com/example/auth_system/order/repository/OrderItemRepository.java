@@ -1,8 +1,9 @@
 package com.example.auth_system.order.repository;
 
-import com.example.auth_system.order.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import com.example.auth_system.order.order.entity.OrderItem;
 
 import java.util.List;
 import java.util.UUID;

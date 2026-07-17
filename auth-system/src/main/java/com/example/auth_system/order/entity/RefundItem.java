@@ -1,5 +1,6 @@
 package com.example.auth_system.order.entity;
 
+import com.example.auth_system.order.order.entity.OrderItem;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.fasterxml.jackson.databind.JsonNode;
