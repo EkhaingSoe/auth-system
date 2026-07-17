@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.orderResponse;
+package com.example.auth_system.order.order.dto.orderResponse;
 
 import java.util.UUID;
 
@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerInfoResponse {
-
+public class UserInfoResponse {
     private UUID id;
-    private String name;
-    private String email;
+    private String username;
 }

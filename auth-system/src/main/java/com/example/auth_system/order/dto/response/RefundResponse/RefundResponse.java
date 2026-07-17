@@ -1,10 +1,11 @@
 package com.example.auth_system.order.dto.response.RefundResponse;
 
 import com.example.auth_system.auth.dto.response.UserInfoResponse;
-import com.example.auth_system.order.dto.response.orderResponse.CustomerInfoResponse;
 import com.example.auth_system.order.enums.RefundMethod;
 import com.example.auth_system.order.enums.RefundStatus;
 import com.example.auth_system.order.enums.RefundType;
+import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

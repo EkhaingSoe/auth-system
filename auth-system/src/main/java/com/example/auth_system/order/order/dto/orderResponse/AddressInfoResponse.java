@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.orderResponse;
+package com.example.auth_system.order.order.dto.orderResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.orderResponse;
+package com.example.auth_system.order.order.dto.orderResponse;
 
 import java.math.BigDecimal;
 
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderSummaryResponse {
-    
+
     private BigDecimal subtotal;
     private BigDecimal discountAmount;
     private BigDecimal taxAmount;

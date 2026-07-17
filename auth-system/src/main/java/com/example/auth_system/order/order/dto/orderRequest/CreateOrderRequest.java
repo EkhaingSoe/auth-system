@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.request.Order;
+package com.example.auth_system.order.order.dto.orderRequest;
 
 import java.math.BigDecimal;
 import java.util.List;

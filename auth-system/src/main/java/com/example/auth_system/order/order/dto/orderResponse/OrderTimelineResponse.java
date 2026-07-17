@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.orderResponse;
+package com.example.auth_system.order.order.dto.orderResponse;
 
 import java.time.LocalDateTime;
 

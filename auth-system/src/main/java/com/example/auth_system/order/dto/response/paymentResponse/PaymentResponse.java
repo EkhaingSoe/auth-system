@@ -1,8 +1,9 @@
 package com.example.auth_system.order.dto.response.paymentResponse;
 
-import com.example.auth_system.order.dto.response.orderResponse.CustomerInfoResponse;
 import com.example.auth_system.order.enums.PaymentMethod;
 import com.example.auth_system.order.enums.PaymentStatus;
+import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

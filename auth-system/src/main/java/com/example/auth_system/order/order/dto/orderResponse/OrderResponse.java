@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.orderResponse;
+package com.example.auth_system.order.order.dto.orderResponse;
 
 import com.example.auth_system.auth.dto.response.LoginResponse.UserInfo;
 import com.example.auth_system.order.dto.response.ShippingResponse.ShipmentResponse;

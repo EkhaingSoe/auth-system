@@ -1,8 +1,8 @@
 package com.example.auth_system.order.controller;
 
-import com.example.auth_system.order.dto.request.Order.CreateOrderRequest;
-import com.example.auth_system.order.dto.response.orderResponse.OrderResponse;
 import com.example.auth_system.order.enums.OrderStatus;
+import com.example.auth_system.order.order.dto.orderRequest.CreateOrderRequest;
+import com.example.auth_system.order.order.dto.orderResponse.OrderResponse;
 import com.example.auth_system.order.service.OrderService;
 
 import jakarta.validation.Valid;
