@@ -1,6 +1,7 @@
 package com.example.auth_system.order.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.auth.repository.UserRepository;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
+import com.example.auth_system.customer.repository.CustomerRepository;
 import com.example.auth_system.order.dto.request.Payment.CreateEcommercePaymentRequest;
 import com.example.auth_system.order.dto.request.Payment.CreatePaymentRequest;
 import com.example.auth_system.order.dto.response.paymentResponse.EcommercePaymentResponse;
@@ -28,7 +30,7 @@ import com.example.auth_system.payment_gateway.kpay.KPayPaymentService;
 import com.example.auth_system.payment_gateway.kpay.KPayResponse;
 import com.example.auth_system.payment_gateway.kpay.KPayWebhookRequest;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,6 +46,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentRepository paymentRepository;
     private final OrderStatusService orderStatusService;
     private final KPayPaymentService kPayPaymentService;
+    private final CustomerRepository customerRepository;
 
     @Override
     public PaymentResponse createPayment(CreatePaymentRequest request) {
@@ -157,13 +160,62 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public PaymentResponse completePayment(UUID paymentId) {
-        // Implement the logic to create a payment
+    @Transactional(readOnly = true)
+    public PaymentResponse getPaymentById(UUID paymentId) {
 
-        Payment payment = paymentRepository.findById(paymentId).orElseThrow(
-                () -> new ResourceNotFoundException("Payment is not found"));
+        Payment payment = paymentRepository.findByIdAndDeletedFalse(paymentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Payment not found"));
 
-        return null;
+        return paymentMapper.toResponse(payment);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PaymentResponse> getPaymentsByOrder(UUID orderId) {
+
+        if (!orderRepository.existsById(orderId)) {
+            throw new ResourceNotFoundException("Order not found");
+        }
+
+        List<Payment> payments = paymentRepository.findByOrderIdAndDeletedFalse(orderId);
+
+        return payments.stream()
+                .map(paymentMapper::toResponse)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PaymentResponse> getPaymentsByCustomer(UUID customerId) {
+
+        if (!customerRepository.existsById(customerId)) {
+            throw new ResourceNotFoundException("Customer not found");
+        }
+
+        List<Payment> payments = paymentRepository.findByCustomerIdAndDeletedFalse(customerId);
+
+        return payments.stream()
+                .map(paymentMapper::toResponse)
+                .toList();
+    }
+
+    @Override
+    @Transactional
+    public void deletePayment(UUID paymentId) {
+
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Payment not found"));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User currentUser = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
+
+        payment.setDeleted(true);
+        payment.setDeletedAt(LocalDateTime.now());
+        payment.setDeletedBy(currentUser);
+
+        paymentRepository.save(payment);
     }
 
     private String generatePaymentNumber() {

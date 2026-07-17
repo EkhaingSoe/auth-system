@@ -15,12 +15,14 @@ public interface PaymentService {
 
     EcommercePaymentResponse createEcommercePayment(CreateEcommercePaymentRequest request);
 
-    PaymentResponse completePayment(UUID paymentId);
-
     void handleKPayWebhook(KPayWebhookRequest request);
+
     // PaymentResponse refundPayment(UUID paymentId, String reason);
-    // PaymentResponse getPaymentById(UUID paymentId);
-    // List<PaymentResponse> getPaymentsByOrder(UUID orderId);
-    // List<PaymentResponse> getPaymentsByCustomer(UUID customerId);
-    // void deletePayment(UUID paymentId);
+    PaymentResponse getPaymentById(UUID paymentId);
+
+    List<PaymentResponse> getPaymentsByOrder(UUID orderId);
+
+    List<PaymentResponse> getPaymentsByCustomer(UUID customerId);
+
+    void deletePayment(UUID paymentId);
 }

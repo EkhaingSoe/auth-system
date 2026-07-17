@@ -12,13 +12,15 @@ public interface PaymentRepository extends JpaRepository<Payment, UUID> {
 
     Optional<Payment> findByPaymentNumber(String paymentNumber);
 
+    Optional<Payment> findByIdAndDeletedFalse(UUID paymentId);
+
     Optional<Payment> findByTransactionId(String transactionId);
 
     Optional<Payment> findByGatewayReference(String gatewayReference);
 
-    List<Payment> findByOrderId(UUID orderId);
+    List<Payment> findByOrderIdAndDeletedFalse(UUID orderId);
 
-    List<Payment> findByCustomerId(UUID customerId);
+    List<Payment> findByCustomerIdAndDeletedFalse(UUID customerId);
 
     List<Payment> findByPaymentStatus(PaymentStatus paymentStatus);
 
