@@ -1,4 +1,4 @@
-package com.example.auth_system.order.controller;
+package com.example.auth_system.order.order.controller;
 
 import com.example.auth_system.order.order.dto.orderRequest.CreateOrderRequest;
 import com.example.auth_system.order.order.dto.orderResponse.OrderResponse;

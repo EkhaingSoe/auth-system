@@ -6,6 +6,7 @@ import com.example.auth_system.order.enums.RefundMethod;
 import com.example.auth_system.order.enums.RefundStatus;
 import com.example.auth_system.order.enums.RefundType;
 import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.payment.entity.Payment;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.auth_system.order.enums;
+package com.example.auth_system.order.payment.enums;
 
 public enum PaymentStatus {
     UNPAID("Unpaid"),

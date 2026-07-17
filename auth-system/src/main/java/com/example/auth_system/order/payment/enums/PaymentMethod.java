@@ -1,7 +1,7 @@
-package com.example.auth_system.order.enums;
+package com.example.auth_system.order.payment.enums;
 
 public enum PaymentMethod {
-    
+
     CASH("Cash"),
     CARD("Card"),
     KBZ_PAY("KPay"),

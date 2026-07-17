@@ -1,6 +1,6 @@
 package com.example.auth_system.payment_gateway.kpay;
 
-import com.example.auth_system.order.entity.Payment;
+import com.example.auth_system.order.payment.entity.Payment;
 
 public interface KPayPaymentService {
 

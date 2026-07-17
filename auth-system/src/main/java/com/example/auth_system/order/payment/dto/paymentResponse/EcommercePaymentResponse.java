@@ -1,8 +1,8 @@
-package com.example.auth_system.order.dto.response.paymentResponse;
+package com.example.auth_system.order.payment.dto.paymentResponse;
 
 import java.util.UUID;
 
-import com.example.auth_system.order.enums.PaymentStatus;
+import com.example.auth_system.order.payment.enums.PaymentStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

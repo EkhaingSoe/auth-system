@@ -1,7 +1,8 @@
-package com.example.auth_system.order.repository;
+package com.example.auth_system.order.payment.repository;
 
-import com.example.auth_system.order.entity.Payment;
-import com.example.auth_system.order.enums.PaymentStatus;
+import com.example.auth_system.order.payment.entity.Payment;
+import com.example.auth_system.order.payment.enums.PaymentStatus;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

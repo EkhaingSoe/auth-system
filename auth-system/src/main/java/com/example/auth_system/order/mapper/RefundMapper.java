@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 
 import com.example.auth_system.order.dto.request.ProcessRefundRequest;
 import com.example.auth_system.order.dto.response.RefundResponse.RefundResponse;
-import com.example.auth_system.order.entity.Payment;
 import com.example.auth_system.order.entity.Refund;
 import com.example.auth_system.order.entity.RefundItem;
 import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.payment.entity.Payment;
 
 import lombok.RequiredArgsConstructor;
 

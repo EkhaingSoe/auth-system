@@ -1,10 +1,10 @@
-package com.example.auth_system.order.entity;
+package com.example.auth_system.order.payment.entity;
 
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.customer.entity.Customer;
-import com.example.auth_system.order.enums.PaymentMethod;
-import com.example.auth_system.order.enums.PaymentStatus;
 import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.payment.enums.PaymentMethod;
+import com.example.auth_system.order.payment.enums.PaymentStatus;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

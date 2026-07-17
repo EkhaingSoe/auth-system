@@ -1,16 +1,16 @@
-package com.example.auth_system.order.mapper;
+package com.example.auth_system.order.payment.mapper;
 
 import org.springframework.stereotype.Component;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.order.dto.request.Payment.CreateEcommercePaymentRequest;
-import com.example.auth_system.order.dto.request.Payment.CreatePaymentRequest;
-import com.example.auth_system.order.dto.response.paymentResponse.EcommercePaymentResponse;
-import com.example.auth_system.order.dto.response.paymentResponse.PaymentResponse;
-import com.example.auth_system.order.entity.Payment;
-import com.example.auth_system.order.enums.PaymentStatus;
 import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
 import com.example.auth_system.order.order.entity.Order;
+import com.example.auth_system.order.payment.dto.paymentRequest.CreateEcommercePaymentRequest;
+import com.example.auth_system.order.payment.dto.paymentRequest.CreatePaymentRequest;
+import com.example.auth_system.order.payment.dto.paymentResponse.EcommercePaymentResponse;
+import com.example.auth_system.order.payment.dto.paymentResponse.PaymentResponse;
+import com.example.auth_system.order.payment.entity.Payment;
+import com.example.auth_system.order.payment.enums.PaymentStatus;
 
 @Component
 public class PaymentMapper {
