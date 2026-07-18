@@ -10,20 +10,20 @@ public interface RefundService {
 
     RefundResponse processRefund(ProcessRefundRequest request);
 
-    // RefundResponse getRefundById(UUID refundId);
+    RefundResponse getRefundById(UUID refundId);
 
-    // List<RefundResponse> getRefundsByOrder(UUID orderId);
+    List<RefundResponse> getRefundsByOrder(UUID orderId);
 
-    // List<RefundResponse> getRefundsByPayment(UUID paymentId);
+    List<RefundResponse> getRefundsByPayment(UUID paymentId);
 
-    // List<RefundResponse> getRefundsByCustomer(UUID customerId);
+    List<RefundResponse> getRefundsByCustomer(UUID customerId);
 
-    // List<RefundResponse> getPendingRefunds();
+    List<RefundResponse> getPendingRefunds();
 
-    // RefundResponse approveRefund(UUID refundId);
+    RefundResponse approveRefund(UUID refundId);
 
-    // RefundResponse rejectRefund(UUID refundId, String reason);
+    RefundResponse rejectRefund(UUID refundId, String reason);
 
-    // RefundResponse completeRefund(UUID refundId);
+    RefundResponse completeRefund(UUID refundId);
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.payment.entity.Payment;
 import com.example.auth_system.order.refund.dto.refundRequest.ProcessRefundRequest;
@@ -19,7 +20,8 @@ public class RefundMapper {
 
     private final RefundItemMapper refundItemMapper;
 
-    public Refund toEntity(ProcessRefundRequest request, Order order, Payment payment, List<RefundItem> refundItems) {
+    public Refund toEntity(ProcessRefundRequest request, Order order, Payment payment, List<RefundItem> refundItems,
+            User currentUser) {
         Refund refund = Refund.builder()
                 .order(order)
                 .payment(payment)
@@ -28,6 +30,7 @@ public class RefundMapper {
                 .refundType(request.getRefundType())
                 .refundMethod(request.getRefundMethod())
                 .refundItems(refundItems)
+                .createdBy(currentUser)
                 .build();
         return refund;
     }

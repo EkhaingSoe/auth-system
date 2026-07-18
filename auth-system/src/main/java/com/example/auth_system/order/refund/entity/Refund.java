@@ -86,4 +86,11 @@ public class Refund {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public void addRefundItem(RefundItem item) {
+
+        refundItems.add(item);
+        item.setRefund(this);
+
+    }
 }

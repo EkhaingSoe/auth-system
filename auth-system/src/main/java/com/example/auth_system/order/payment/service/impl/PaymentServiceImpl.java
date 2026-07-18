@@ -26,7 +26,7 @@ import com.example.auth_system.order.payment.enums.PaymentStatus;
 import com.example.auth_system.order.payment.mapper.PaymentMapper;
 import com.example.auth_system.order.payment.repository.PaymentRepository;
 import com.example.auth_system.order.payment.service.PaymentService;
-import com.example.auth_system.payment_gateway.kpay.KPayPaymentService;
+import com.example.auth_system.payment_gateway.kpay.KPayGateway;
 import com.example.auth_system.payment_gateway.kpay.KPayResponse;
 import com.example.auth_system.payment_gateway.kpay.KPayWebhookRequest;
 
@@ -45,7 +45,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentMapper paymentMapper;
     private final PaymentRepository paymentRepository;
     private final OrderStatusService orderStatusService;
-    private final KPayPaymentService kPayPaymentService;
+    private final KPayGateway KPayGateWay;
     private final CustomerRepository customerRepository;
 
     @Override
@@ -110,7 +110,7 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setPaymentNumber(generatePaymentNumber());
         Payment savedPayment = paymentRepository.save(payment);
         // this is sending from my backend server to kpay server
-        KPayResponse kPayResponse = kPayPaymentService.createPayment(savedPayment);
+        KPayResponse kPayResponse = KPayGateWay.createPayment(savedPayment);
         // Save gateway information
         savedPayment.setGatewayReference(kPayResponse.getPaymentId());
         savedPayment.setGatewayName("KPAY");
