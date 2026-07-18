@@ -1,7 +1,8 @@
-package com.example.auth_system.order.repository;
+package com.example.auth_system.order.refund.repository;
 
-import com.example.auth_system.order.entity.Refund;
-import com.example.auth_system.order.enums.RefundStatus;
+import com.example.auth_system.order.refund.entity.Refund;
+import com.example.auth_system.order.refund.enums.RefundStatus;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

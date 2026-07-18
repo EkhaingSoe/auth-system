@@ -1,10 +1,10 @@
-package com.example.auth_system.order.dto.response.RefundResponse;
+package com.example.auth_system.order.refund.dto.refundResponse;
 
 import com.example.auth_system.auth.dto.response.UserInfoResponse;
-import com.example.auth_system.order.enums.RefundMethod;
-import com.example.auth_system.order.enums.RefundStatus;
-import com.example.auth_system.order.enums.RefundType;
 import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
+import com.example.auth_system.order.refund.enums.RefundMethod;
+import com.example.auth_system.order.refund.enums.RefundStatus;
+import com.example.auth_system.order.refund.enums.RefundType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

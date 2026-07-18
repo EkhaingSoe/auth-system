@@ -1,11 +1,11 @@
-package com.example.auth_system.order.mapper;
+package com.example.auth_system.order.refund.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.example.auth_system.order.dto.request.RefundItemRequest;
-import com.example.auth_system.order.dto.response.RefundResponse.RefundItemResponse;
-import com.example.auth_system.order.entity.RefundItem;
 import com.example.auth_system.order.order.entity.OrderItem;
+import com.example.auth_system.order.refund.dto.refundRequest.RefundItemRequest;
+import com.example.auth_system.order.refund.dto.refundResponse.RefundItemResponse;
+import com.example.auth_system.order.refund.entity.RefundItem;
 
 import java.math.BigDecimal;
 

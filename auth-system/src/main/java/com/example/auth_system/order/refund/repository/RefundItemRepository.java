@@ -1,4 +1,4 @@
-package com.example.auth_system.order.repository;
+package com.example.auth_system.order.refund.repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.example.auth_system.order.entity.RefundItem;
+import com.example.auth_system.order.refund.entity.RefundItem;
 
 public interface RefundItemRepository extends JpaRepository<RefundItem, UUID> {
 

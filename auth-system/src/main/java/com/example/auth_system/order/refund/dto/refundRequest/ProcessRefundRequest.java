@@ -1,7 +1,8 @@
-package com.example.auth_system.order.dto.request;
+package com.example.auth_system.order.refund.dto.refundRequest;
 
-import com.example.auth_system.order.enums.RefundMethod;
-import com.example.auth_system.order.enums.RefundType;
+import com.example.auth_system.order.refund.enums.RefundMethod;
+import com.example.auth_system.order.refund.enums.RefundType;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -35,7 +36,6 @@ public class ProcessRefundRequest {
     // replaced JsonNode
     private List<RefundItemRequest> refundItems;
 
-    private UUID approvedBy;
+    // private UUID approvedBy;
 
-    
 }

@@ -1,15 +1,15 @@
-package com.example.auth_system.order.mapper;
+package com.example.auth_system.order.refund.mapper;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.auth_system.order.dto.request.ProcessRefundRequest;
-import com.example.auth_system.order.dto.response.RefundResponse.RefundResponse;
-import com.example.auth_system.order.entity.Refund;
-import com.example.auth_system.order.entity.RefundItem;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.payment.entity.Payment;
+import com.example.auth_system.order.refund.dto.refundRequest.ProcessRefundRequest;
+import com.example.auth_system.order.refund.dto.refundResponse.RefundResponse;
+import com.example.auth_system.order.refund.entity.Refund;
+import com.example.auth_system.order.refund.entity.RefundItem;
 
 import lombok.RequiredArgsConstructor;
 

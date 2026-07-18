@@ -1,12 +1,12 @@
-package com.example.auth_system.order.entity;
+package com.example.auth_system.order.refund.entity;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.order.dto.request.RefundItemRequest;
-import com.example.auth_system.order.enums.RefundMethod;
-import com.example.auth_system.order.enums.RefundStatus;
-import com.example.auth_system.order.enums.RefundType;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.payment.entity.Payment;
+import com.example.auth_system.order.refund.dto.refundRequest.RefundItemRequest;
+import com.example.auth_system.order.refund.enums.RefundMethod;
+import com.example.auth_system.order.refund.enums.RefundStatus;
+import com.example.auth_system.order.refund.enums.RefundType;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +20,7 @@ import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,9 +63,13 @@ public class Refund {
     @Builder.Default
     private RefundStatus refundStatus = RefundStatus.PENDING; // PENDING, APPROVED, PROCESSING, COMPLETED, REJECTED
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "refund_items", columnDefinition = "jsonb")
-    private List<RefundItem> refundItems;
+    // @JdbcTypeCode(SqlTypes.JSON)
+    // @Column(name = "refund_items", columnDefinition = "jsonb")
+    // private List<RefundItem> refundItems;
+
+    @OneToMany(mappedBy = "refund", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<RefundItem> refundItems = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by")

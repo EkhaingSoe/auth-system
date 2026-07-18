@@ -1,4 +1,4 @@
-package com.example.auth_system.order.entity;
+package com.example.auth_system.order.refund.entity;
 
 import com.example.auth_system.order.order.entity.OrderItem;
 import com.example.auth_system.product.entity.Product;

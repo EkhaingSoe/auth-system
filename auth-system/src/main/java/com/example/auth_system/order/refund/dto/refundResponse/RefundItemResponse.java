@@ -1,4 +1,4 @@
-package com.example.auth_system.order.dto.response.RefundResponse;
+package com.example.auth_system.order.refund.dto.refundResponse;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
-package com.example.auth_system.order.enums;
+package com.example.auth_system.order.refund.enums;
 
 public enum RefundMethod {
-    
+
     ORIGINAL_PAYMENT("Original Payment"),
     STORE_CREDIT("Store Credit"),
     BANK_TRANSFER("Bank Transfer"),
