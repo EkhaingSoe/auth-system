@@ -2867,3 +2867,1071 @@ Caused by: org.hibernate.AnnotationException: Association 'com.example.auth_syst
 2026-07-20 15:05:04.626 [Thread-122] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-07-20 15:05:04.627 [Thread-122] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-31 - Shutdown initiated...
 2026-07-20 15:05:04.628 [Thread-122] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-31 - Shutdown completed.
+2026-07-20 15:05:04.729 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:05:04.730 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:05:04.730 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:05:05.134 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:05:05.269 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 30 JPA repository interfaces.
+2026-07-20 15:05:05.470 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:05:05.470 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:05:05.470 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:05:05.492 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:05:05.492 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 760 ms
+2026-07-20 15:05:05.552 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-32 - Starting...
+2026-07-20 15:05:05.597 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-32 - Added connection org.postgresql.jdbc.PgConnection@28032ced
+2026-07-20 15:05:05.597 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-32 - Start completed.
+2026-07-20 15:05:05.635 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:05:05.640 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:05:05.754 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:05:05.754 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:05:05.755 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:05:05.807 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:05:05.810 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:05:05.827 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:05:06.670 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:05:06.671 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:05:06.791 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:05:08.611 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:05:08.784 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1bfc72f5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58dad33f, org.springframework.security.web.context.SecurityContextHolderFilter@416a8c2f, org.springframework.security.web.header.HeaderWriterFilter@1095363, org.springframework.security.web.authentication.logout.LogoutFilter@7c4bb953, com.example.auth_system.auth.security.JwtAuthenticationFilter@9255c1b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@49f01585, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@229d593, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@19c4b692, org.springframework.security.web.session.SessionManagementFilter@281861fd, org.springframework.security.web.access.ExceptionTranslationFilter@5d0aa304, org.springframework.security.web.access.intercept.AuthorizationFilter@3adcd5dc]
+2026-07-20 15:05:09.017 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:05:09.036 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:05:09.075 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.381 seconds (process running for 18445.277)
+2026-07-20 15:05:09.122 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:05:09.130 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:05:09.151 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:05:09.158 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:24:15.639 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:24:15.663 [Thread-126] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:24:15.671 [Thread-126] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-32 - Shutdown initiated...
+2026-07-20 15:24:15.674 [Thread-126] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-32 - Shutdown completed.
+2026-07-20 15:24:15.820 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:24:15.820 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:24:15.820 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:24:16.322 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:24:16.422 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:24:16.623 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:24:16.623 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:24:16.623 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:24:16.644 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:24:16.644 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 824 ms
+2026-07-20 15:24:16.674 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-33 - Starting...
+2026-07-20 15:24:16.725 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-33 - Added connection org.postgresql.jdbc.PgConnection@42e0d1e7
+2026-07-20 15:24:16.725 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-33 - Start completed.
+2026-07-20 15:24:16.743 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:24:16.745 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:24:16.788 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:24:16.788 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:24:16.802 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:24:16.838 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:24:16.839 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:24:16.852 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:24:17.355 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:24:17.355 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:24:17.455 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:24:18.587 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:24:18.699 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@70d51d73, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2071d422, org.springframework.security.web.context.SecurityContextHolderFilter@660177bc, org.springframework.security.web.header.HeaderWriterFilter@1fcd10b8, org.springframework.security.web.authentication.logout.LogoutFilter@1f363ec3, com.example.auth_system.auth.security.JwtAuthenticationFilter@29f86c05, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@af3c74a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7dcc4e7c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f6f5ab0, org.springframework.security.web.session.SessionManagementFilter@2f94160f, org.springframework.security.web.access.ExceptionTranslationFilter@1c0e1204, org.springframework.security.web.access.intercept.AuthorizationFilter@5e3bf051]
+2026-07-20 15:24:18.853 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:24:18.871 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:24:18.885 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.149 seconds (process running for 19595.088)
+2026-07-20 15:24:18.904 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:24:18.904 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:24:18.932 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:24:18.938 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:24:37.384 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (2 additions, 0 deletions, 0 modifications)
+2026-07-20 15:24:37.395 [Thread-130] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:24:37.397 [Thread-130] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-33 - Shutdown initiated...
+2026-07-20 15:24:37.399 [Thread-130] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-33 - Shutdown completed.
+2026-07-20 15:24:37.506 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:24:37.506 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:24:37.506 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:24:37.878 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:24:38.021 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 145 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:24:38.190 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:24:38.190 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:24:38.190 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:24:38.225 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:24:38.225 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 719 ms
+2026-07-20 15:24:38.290 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-34 - Starting...
+2026-07-20 15:24:38.347 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-34 - Added connection org.postgresql.jdbc.PgConnection@7e62b0b5
+2026-07-20 15:24:38.348 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-34 - Start completed.
+2026-07-20 15:24:38.356 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:24:38.369 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:24:38.436 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:24:38.436 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:24:38.437 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:24:38.471 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:24:38.471 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:24:38.489 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:24:39.289 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:24:39.289 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:24:39.437 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:24:41.136 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:24:41.304 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1de0ceb8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@61570b92, org.springframework.security.web.context.SecurityContextHolderFilter@3395d5bf, org.springframework.security.web.header.HeaderWriterFilter@23f36b43, org.springframework.security.web.authentication.logout.LogoutFilter@6263c50b, com.example.auth_system.auth.security.JwtAuthenticationFilter@550fc25d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e08d60, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3971476c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68ce189d, org.springframework.security.web.session.SessionManagementFilter@7e4706dd, org.springframework.security.web.access.ExceptionTranslationFilter@630a29a4, org.springframework.security.web.access.intercept.AuthorizationFilter@5414be0c]
+2026-07-20 15:24:41.527 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:24:41.546 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:24:41.550 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.077 seconds (process running for 19617.751)
+2026-07-20 15:24:41.570 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:24:41.570 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:24:41.586 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:24:41.590 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:25:08.338 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:25:08.338 [Thread-134] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:25:08.338 [Thread-134] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-34 - Shutdown initiated...
+2026-07-20 15:25:08.338 [Thread-134] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-34 - Shutdown completed.
+2026-07-20 15:25:08.439 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:25:08.439 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:25:08.439 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:25:08.839 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:25:09.031 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 185 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:25:09.270 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:25:09.272 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:25:09.273 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:25:09.299 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:25:09.299 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 856 ms
+2026-07-20 15:25:09.354 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-35 - Starting...
+2026-07-20 15:25:09.405 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-35 - Added connection org.postgresql.jdbc.PgConnection@51fb70f2
+2026-07-20 15:25:09.405 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-35 - Start completed.
+2026-07-20 15:25:09.424 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:25:09.424 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:25:09.524 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:25:09.524 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:25:09.524 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:25:09.605 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:25:09.609 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:25:09.626 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:25:10.211 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:25:10.211 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:25:10.331 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:25:11.976 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:25:12.098 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@40d60256, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1c07e634, org.springframework.security.web.context.SecurityContextHolderFilter@3e17ed87, org.springframework.security.web.header.HeaderWriterFilter@6145aef6, org.springframework.security.web.authentication.logout.LogoutFilter@75453909, com.example.auth_system.auth.security.JwtAuthenticationFilter@d404ab9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e917ab7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ef4f8d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9d82e71, org.springframework.security.web.session.SessionManagementFilter@7aa190ec, org.springframework.security.web.access.ExceptionTranslationFilter@42464614, org.springframework.security.web.access.intercept.AuthorizationFilter@482f0376]
+2026-07-20 15:25:12.296 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:25:12.322 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:25:12.322 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.916 seconds (process running for 19648.535)
+2026-07-20 15:25:12.355 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:25:12.369 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:25:12.376 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:25:12.384 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:25:49.441 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:25:49.448 [Thread-138] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:25:49.448 [Thread-138] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-35 - Shutdown initiated...
+2026-07-20 15:25:49.448 [Thread-138] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-35 - Shutdown completed.
+2026-07-20 15:25:49.594 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:25:49.594 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:25:49.594 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:25:49.973 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:25:50.075 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 100 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:25:50.264 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:25:50.265 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:25:50.265 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:25:50.290 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:25:50.290 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 696 ms
+2026-07-20 15:25:50.338 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-36 - Starting...
+2026-07-20 15:25:50.385 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-36 - Added connection org.postgresql.jdbc.PgConnection@39eac349
+2026-07-20 15:25:50.385 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-36 - Start completed.
+2026-07-20 15:25:50.421 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:25:50.423 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:25:50.506 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:25:50.506 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:25:50.506 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:25:50.564 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:25:50.573 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:25:50.589 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:25:50.972 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:25:50.972 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:25:51.103 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:25:52.873 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:25:53.023 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@472a604c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@25bd0614, org.springframework.security.web.context.SecurityContextHolderFilter@292ee731, org.springframework.security.web.header.HeaderWriterFilter@3086a22c, org.springframework.security.web.authentication.logout.LogoutFilter@27a8bbb6, com.example.auth_system.auth.security.JwtAuthenticationFilter@52579776, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5876e4c8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5de4aa28, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57816faf, org.springframework.security.web.session.SessionManagementFilter@2d412c0c, org.springframework.security.web.access.ExceptionTranslationFilter@60123773, org.springframework.security.web.access.intercept.AuthorizationFilter@30da1dff]
+2026-07-20 15:25:53.243 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:25:53.273 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:25:53.278 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.722 seconds (process running for 19689.481)
+2026-07-20 15:25:53.325 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:25:53.331 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:25:53.347 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:25:53.351 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:26:05.906 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:26:05.913 [Thread-142] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:05.913 [Thread-142] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-36 - Shutdown initiated...
+2026-07-20 15:26:05.918 [Thread-142] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-36 - Shutdown completed.
+2026-07-20 15:26:06.042 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:26:06.042 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:26:06.042 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:26:06.424 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:26:06.539 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 106 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:26:06.753 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:26:06.754 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:26:06.756 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:26:06.775 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:26:06.775 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 733 ms
+2026-07-20 15:26:06.839 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-37 - Starting...
+2026-07-20 15:26:06.890 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-37 - Added connection org.postgresql.jdbc.PgConnection@7fffcdb
+2026-07-20 15:26:06.890 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-37 - Start completed.
+2026-07-20 15:26:06.904 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:26:06.906 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:26:06.961 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:26:06.961 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:26:06.966 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:26:07.011 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:26:07.019 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:26:07.031 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:26:07.471 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:26:07.471 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:07.611 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:26:09.237 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:26:09.394 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4cbb3bdf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a8403d0, org.springframework.security.web.context.SecurityContextHolderFilter@6f05068c, org.springframework.security.web.header.HeaderWriterFilter@6475f3e0, org.springframework.security.web.authentication.logout.LogoutFilter@2caf58c0, com.example.auth_system.auth.security.JwtAuthenticationFilter@379e88f0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5681bd24, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d20bee7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8cd93a4, org.springframework.security.web.session.SessionManagementFilter@270a20b2, org.springframework.security.web.access.ExceptionTranslationFilter@5a78353, org.springframework.security.web.access.intercept.AuthorizationFilter@6f53e76e]
+2026-07-20 15:26:09.606 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:26:09.621 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:26:09.625 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.617 seconds (process running for 19705.826)
+2026-07-20 15:26:09.660 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:26:09.665 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:26:09.673 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:26:09.675 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:26:13.472 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:26:13.480 [Thread-146] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:13.480 [Thread-146] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-37 - Shutdown initiated...
+2026-07-20 15:26:13.480 [Thread-146] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-37 - Shutdown completed.
+2026-07-20 15:26:13.619 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:26:13.619 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:26:13.619 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:26:13.925 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:26:14.038 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:26:14.192 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:26:14.196 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:26:14.196 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:26:14.211 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:26:14.211 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 589 ms
+2026-07-20 15:26:14.251 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-38 - Starting...
+2026-07-20 15:26:14.299 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-38 - Added connection org.postgresql.jdbc.PgConnection@38432467
+2026-07-20 15:26:14.302 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-38 - Start completed.
+2026-07-20 15:26:14.308 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:26:14.308 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:26:14.376 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:26:14.376 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:26:14.386 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:26:14.425 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:26:14.425 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:26:14.442 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:26:15.123 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:26:15.124 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:15.222 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:26:16.755 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:26:16.939 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@297120a6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3661f35f, org.springframework.security.web.context.SecurityContextHolderFilter@3827153b, org.springframework.security.web.header.HeaderWriterFilter@34c9f4b4, org.springframework.security.web.authentication.logout.LogoutFilter@6c3298e, com.example.auth_system.auth.security.JwtAuthenticationFilter@771ead13, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@554ee592, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e59d7db, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b2ab584, org.springframework.security.web.session.SessionManagementFilter@65d9acb5, org.springframework.security.web.access.ExceptionTranslationFilter@3d1a13ce, org.springframework.security.web.access.intercept.AuthorizationFilter@4484d2f5]
+2026-07-20 15:26:17.149 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:26:17.174 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:26:17.174 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.586 seconds (process running for 19713.382)
+2026-07-20 15:26:17.206 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:26:17.221 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:26:17.240 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:26:17.240 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:26:29.938 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:26:29.946 [Thread-150] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:29.946 [Thread-150] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-38 - Shutdown initiated...
+2026-07-20 15:26:29.954 [Thread-150] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-38 - Shutdown completed.
+2026-07-20 15:26:30.060 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:26:30.060 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:26:30.061 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:26:30.423 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:26:30.545 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 120 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:26:30.726 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:26:30.726 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:26:30.726 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:26:30.744 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:26:30.744 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 680 ms
+2026-07-20 15:26:30.785 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-39 - Starting...
+2026-07-20 15:26:30.826 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-39 - Added connection org.postgresql.jdbc.PgConnection@5c123173
+2026-07-20 15:26:30.827 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-39 - Start completed.
+2026-07-20 15:26:30.848 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:26:30.848 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:26:30.923 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:26:30.923 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:26:30.923 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:26:30.974 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:26:30.977 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:26:30.996 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:26:31.831 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:26:31.831 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:31.939 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:26:33.686 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:26:33.833 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6158efc2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f970b54, org.springframework.security.web.context.SecurityContextHolderFilter@6aaf1d8d, org.springframework.security.web.header.HeaderWriterFilter@451cb2c, org.springframework.security.web.authentication.logout.LogoutFilter@5bbca9b4, com.example.auth_system.auth.security.JwtAuthenticationFilter@669cc5ce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e1594de, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1497249b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d83ab72, org.springframework.security.web.session.SessionManagementFilter@3a5cff7f, org.springframework.security.web.access.ExceptionTranslationFilter@3118aacc, org.springframework.security.web.access.intercept.AuthorizationFilter@44233739]
+2026-07-20 15:26:34.066 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:26:34.084 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:26:34.090 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.064 seconds (process running for 19730.292)
+2026-07-20 15:26:34.119 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:26:34.124 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:26:34.144 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:26:34.158 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 15:26:40.072 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 15:26:40.091 [Thread-154] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:40.091 [Thread-154] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-39 - Shutdown initiated...
+2026-07-20 15:26:40.091 [Thread-154] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-39 - Shutdown completed.
+2026-07-20 15:26:40.220 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 15:26:40.220 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 15:26:40.220 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 15:26:40.655 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 15:26:40.754 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 99 ms. Found 31 JPA repository interfaces.
+2026-07-20 15:26:40.956 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 15:26:40.956 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 15:26:40.956 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 15:26:40.989 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 15:26:40.989 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 769 ms
+2026-07-20 15:26:41.055 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Starting...
+2026-07-20 15:26:41.105 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-40 - Added connection org.postgresql.jdbc.PgConnection@36c160a7
+2026-07-20 15:26:41.105 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Start completed.
+2026-07-20 15:26:41.140 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 15:26:41.140 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 15:26:41.250 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 15:26:41.250 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 15:26:41.254 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 15:26:41.302 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 15:26:41.306 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 15:26:41.323 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 15:26:42.116 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 15:26:42.117 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 15:26:42.218 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 15:26:43.653 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 15:26:43.808 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5611be34, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4552abd7, org.springframework.security.web.context.SecurityContextHolderFilter@455836e3, org.springframework.security.web.header.HeaderWriterFilter@73cdf390, org.springframework.security.web.authentication.logout.LogoutFilter@6aaf2ffe, com.example.auth_system.auth.security.JwtAuthenticationFilter@60f8e137, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39132ca, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1fdc105b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37ba7631, org.springframework.security.web.session.SessionManagementFilter@492709d2, org.springframework.security.web.access.ExceptionTranslationFilter@7ad78b01, org.springframework.security.web.access.intercept.AuthorizationFilter@1f83cd94]
+2026-07-20 15:26:44.092 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 15:26:44.108 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 15:26:44.109 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.933 seconds (process running for 19740.316)
+2026-07-20 15:26:44.138 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 15:26:44.142 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 15:26:44.158 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 15:26:44.163 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 16:58:22.050 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 16:58:22.084 [Thread-158] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 16:58:22.086 [Thread-158] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Shutdown initiated...
+2026-07-20 16:58:22.089 [Thread-158] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Shutdown completed.
+2026-07-20 16:58:22.251 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 16:58:22.252 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 16:58:22.253 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 16:58:22.891 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 16:58:23.037 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 31 JPA repository interfaces.
+2026-07-20 16:58:23.399 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 16:58:23.401 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 16:58:23.401 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 16:58:23.439 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 16:58:23.439 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1166 ms
+2026-07-20 16:58:23.542 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Starting...
+2026-07-20 16:58:23.596 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-41 - Added connection org.postgresql.jdbc.PgConnection@142186e4
+2026-07-20 16:58:23.597 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Start completed.
+2026-07-20 16:58:23.625 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 16:58:23.638 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 16:58:23.737 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 16:58:23.737 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 16:58:23.737 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 16:58:23.804 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 16:58:23.807 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 16:58:23.832 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 16:58:24.599 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 16:58:24.603 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 16:58:24.767 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 16:58:26.634 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 16:58:26.828 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b6e9d41, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6afc1cac, org.springframework.security.web.context.SecurityContextHolderFilter@711f9a6a, org.springframework.security.web.header.HeaderWriterFilter@5608535e, org.springframework.security.web.authentication.logout.LogoutFilter@4bb55bc2, com.example.auth_system.auth.security.JwtAuthenticationFilter@67f2bd1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@409e26b5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54180f5b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a6fcf48, org.springframework.security.web.session.SessionManagementFilter@5508feca, org.springframework.security.web.access.ExceptionTranslationFilter@2aa3727e, org.springframework.security.web.access.intercept.AuthorizationFilter@ae4bc94]
+2026-07-20 16:58:27.170 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 16:58:27.191 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 16:58:27.207 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.064 seconds (process running for 25243.41)
+2026-07-20 16:58:27.242 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 16:58:27.247 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 16:58:27.273 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 16:58:27.284 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 17:13:14.012 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 17:13:14.032 [Thread-162] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 17:13:14.034 [Thread-162] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Shutdown initiated...
+2026-07-20 17:13:14.036 [Thread-162] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Shutdown completed.
+2026-07-20 17:13:14.170 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 17:13:14.172 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 17:13:14.173 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 17:13:14.673 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 17:13:14.823 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 149 ms. Found 32 JPA repository interfaces.
+2026-07-20 17:13:15.110 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 17:13:15.110 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 17:13:15.110 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 17:13:15.141 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 17:13:15.141 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 964 ms
+2026-07-20 17:13:15.212 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Starting...
+2026-07-20 17:13:15.276 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-42 - Added connection org.postgresql.jdbc.PgConnection@3e3e3ee6
+2026-07-20 17:13:15.277 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Start completed.
+2026-07-20 17:13:15.309 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 17:13:15.309 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 17:13:15.406 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 17:13:15.407 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 17:13:15.408 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 17:13:15.468 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 17:13:15.471 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 17:13:15.492 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 17:13:16.474 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 17:13:16.475 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 17:13:16.691 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 17:13:18.871 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 17:13:19.011 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@e4022a5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b3e336d, org.springframework.security.web.context.SecurityContextHolderFilter@23d2d4b, org.springframework.security.web.header.HeaderWriterFilter@1fb6086e, org.springframework.security.web.authentication.logout.LogoutFilter@7fe199b8, com.example.auth_system.auth.security.JwtAuthenticationFilter@2c3d66fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5bd96768, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7483e105, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67301a9b, org.springframework.security.web.session.SessionManagementFilter@b7d7870, org.springframework.security.web.access.ExceptionTranslationFilter@72c57f03, org.springframework.security.web.access.intercept.AuthorizationFilter@7d1f48e7]
+2026-07-20 17:13:19.491 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 17:13:19.512 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 17:13:19.525 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.407 seconds (process running for 26135.727)
+2026-07-20 17:13:19.560 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 17:13:19.570 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 17:13:19.595 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 17:13:19.604 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 17:14:25.612 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 17:14:25.630 [Thread-166] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 17:14:25.631 [Thread-166] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Shutdown initiated...
+2026-07-20 17:14:25.632 [Thread-166] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Shutdown completed.
+2026-07-20 17:14:25.769 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 3884 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-07-20 17:14:25.769 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-20 17:14:25.770 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-20 17:14:26.209 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-20 17:14:26.340 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 130 ms. Found 32 JPA repository interfaces.
+2026-07-20 17:14:26.541 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-20 17:14:26.541 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-20 17:14:26.541 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-07-20 17:14:26.563 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-20 17:14:26.564 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 792 ms
+2026-07-20 17:14:26.610 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Starting...
+2026-07-20 17:14:26.654 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-43 - Added connection org.postgresql.jdbc.PgConnection@76882b1e
+2026-07-20 17:14:26.654 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Start completed.
+2026-07-20 17:14:26.684 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/auth-db (PostgreSQL 18.4)
+2026-07-20 17:14:26.684 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-07-20 17:14:26.776 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 32
+2026-07-20 17:14:26.776 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-07-20 17:14:26.777 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-07-20 17:14:26.819 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-20 17:14:26.823 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-20 17:14:26.837 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-20 17:14:27.594 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-20 17:14:27.595 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 17:14:27.729 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-20 17:14:29.424 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-20 17:14:29.579 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c92c80, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@224d595e, org.springframework.security.web.context.SecurityContextHolderFilter@1de533ce, org.springframework.security.web.header.HeaderWriterFilter@98e2351, org.springframework.security.web.authentication.logout.LogoutFilter@768a5542, com.example.auth_system.auth.security.JwtAuthenticationFilter@4cbb5362, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@49f51170, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@311927b4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18c15f51, org.springframework.security.web.session.SessionManagementFilter@56b4b37b, org.springframework.security.web.access.ExceptionTranslationFilter@eab4df7, org.springframework.security.web.access.intercept.AuthorizationFilter@6fc905a3]
+2026-07-20 17:14:29.862 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-20 17:14:29.882 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-07-20 17:14:29.888 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.167 seconds (process running for 26206.09)
+2026-07-20 17:14:29.924 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-07-20 17:14:29.929 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-07-20 17:14:29.945 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-07-20 17:14:29.949 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-07-20 17:14:51.427 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-07-20 17:14:51.439 [Thread-170] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-20 17:14:51.440 [Thread-170] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Shutdown initiated...
+2026-07-20 17:14:51.442 [Thread-170] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Shutdown completed.
