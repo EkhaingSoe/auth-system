@@ -32,5 +32,4 @@ public class CreateStockAdjustmentRequest {
     @NotNull(message = "Reason is required")
     private String reason;
 
-    private String notes;
 }

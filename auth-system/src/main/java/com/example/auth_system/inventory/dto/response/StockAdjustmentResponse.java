@@ -2,6 +2,8 @@ package com.example.auth_system.inventory.dto.response;
 
 import com.example.auth_system.inventory.enums.AdjustmentStatus;
 import com.example.auth_system.inventory.enums.AdjustmentType;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,7 +29,7 @@ public class StockAdjustmentResponse {
     // Variant Information
     private UUID variantId;
     private String variantSku;
-    private String variantAttributes;
+    private JsonNode variantAttributes;
 
     // Warehouse Information
     private UUID warehouseId;
@@ -53,5 +55,4 @@ public class StockAdjustmentResponse {
 
     // Additional Info
     private String reason;
-    private String notes;
 }
