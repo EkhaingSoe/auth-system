@@ -1,6 +1,8 @@
 package com.example.auth_system.inventory.dto.response;
 
 import com.example.auth_system.inventory.enums.MovementType;
+import com.example.auth_system.inventory.enums.ReferenceType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,7 +42,7 @@ public class StockMovementResponse {
     private String toWarehouseName;
 
     private UUID referenceId;
-    private String referenceType;
+    private ReferenceType referenceType;
 
     private String notes;
     private UUID createdBy;
