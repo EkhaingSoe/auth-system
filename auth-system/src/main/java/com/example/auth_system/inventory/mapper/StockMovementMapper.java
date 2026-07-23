@@ -31,15 +31,24 @@ public class StockMovementMapper {
                 .quantity(
                         movement.getQuantity())
 
+                .previousQuantity(movement.getPreviousQuantity())
+                .newQuantity(movement.getNewQuantity())
+                .unitCost(movement.getUnitCost())
+                .totalCost(movement.getTotalCost())
+
                 .fromWarehouseId(
                         movement.getFromWarehouse() != null
                                 ? movement.getFromWarehouse().getId()
                                 : null)
+                
+                .fromWarehouseName(movement.getFromWarehouse()!= null ? movement.getFromWarehouse().getName() : null)
 
                 .toWarehouseId(
                         movement.getToWarehouse() != null
                                 ? movement.getToWarehouse().getId()
                                 : null)
+
+                .toWarehouseName(movement.getToWarehouse()!= null ? movement.getToWarehouse().getName() : null)
 
                 .referenceId(
                         movement.getReferenceId())
