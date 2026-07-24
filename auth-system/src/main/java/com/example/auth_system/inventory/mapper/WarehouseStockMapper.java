@@ -3,6 +3,8 @@ package com.example.auth_system.inventory.mapper;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.example.auth_system.inventory.dto.response.LowStockResponse;
 import com.example.auth_system.inventory.dto.response.StockSummaryResponse;
 import com.example.auth_system.inventory.dto.response.WarehouseStockResponse;
@@ -11,6 +13,10 @@ import com.example.auth_system.inventory.enums.StockStatus;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 
+import lombok.RequiredArgsConstructor;
+
+@Component
+@RequiredArgsConstructor
 public class WarehouseStockMapper {
 
         public WarehouseStockResponse toWarehouseStockResponse(WarehouseStock warehouseStock) {

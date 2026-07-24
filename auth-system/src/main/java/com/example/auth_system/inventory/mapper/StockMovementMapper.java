@@ -1,8 +1,14 @@
 package com.example.auth_system.inventory.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.example.auth_system.inventory.dto.response.StockMovementResponse;
 import com.example.auth_system.inventory.entity.StockMovement;
 
+import lombok.RequiredArgsConstructor;
+
+@Component
+@RequiredArgsConstructor
 public class StockMovementMapper {
 
         public StockMovementResponse toResponse(StockMovement movement) {

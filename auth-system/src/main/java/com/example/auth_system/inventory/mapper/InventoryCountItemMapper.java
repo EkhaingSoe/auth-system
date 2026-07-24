@@ -1,8 +1,14 @@
 package com.example.auth_system.inventory.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountItemResponse;
 import com.example.auth_system.inventory.entity.InventoryCountItem;
 
+import lombok.RequiredArgsConstructor;
+
+@Component
+@RequiredArgsConstructor
 public class InventoryCountItemMapper {
 
     public InventoryCountItemResponse toResponse(

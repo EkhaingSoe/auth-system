@@ -6,11 +6,13 @@ import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.ProductImage;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public interface ProductService {
 
     // Product CRUD
