@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.auth_system.inventory.enums.StockStatus;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,17 +29,17 @@ public class StockSummaryResponse {
     private Integer reorderLevel;
     private Integer minStock;
     private Integer maxStock;
-    private String status; // IN_STOCK, LOW_STOCK, OUT_OF_STOCK, OVER_STOCK
     private List<WarehouseStockResponse> warehouseStocks;
+    private StockStatus status;
 
-    public String getStatus() {
+    public StockStatus getStatus() {
         if (availableStock <= 0)
-            return "OUT_OF_STOCK";
+            return StockStatus.OUT_OF_STOCK;
         if (availableStock <= reorderLevel)
-            return "LOW_STOCK";
+            return StockStatus.LOW_STOCK;
         if (maxStock != null
                 && availableStock > maxStock)
-            return "OVER_STOCK";
-        return "IN_STOCK";
+            return StockStatus.OVER_STOCK;
+        return StockStatus.IN_STOCK;
     }
 }
