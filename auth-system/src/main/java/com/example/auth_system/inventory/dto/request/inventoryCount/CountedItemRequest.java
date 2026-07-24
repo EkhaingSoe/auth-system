@@ -9,12 +9,10 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class InventoryCountItemRequest {
+public class CountedItemRequest {
 
-    @NotNull(message = "Product ID is required")
-    private UUID productId;
-
-    private UUID variantId;
+    @NotNull(message = "Inventory count item ID is required")
+    private UUID itemId;
 
     @NotNull(message = "Counted quantity is required")
     private Integer countedQuantity;

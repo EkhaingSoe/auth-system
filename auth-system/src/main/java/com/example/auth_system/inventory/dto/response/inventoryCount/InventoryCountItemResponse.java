@@ -24,7 +24,7 @@ public class InventoryCountItemResponse {
 
     private String variantSku;
 
-    private Integer expectedQuantity;
+    private Integer systemQuantity;
 
     private Integer countedQuantity;
 
