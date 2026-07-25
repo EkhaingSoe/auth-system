@@ -8,19 +8,20 @@ import com.example.auth_system.inventory.dto.response.StockSummaryResponse;
 import com.example.auth_system.inventory.dto.response.WarehouseStockResponse;
 
 public interface WarehouseStockService {
-    // WarehouseStockResponse getWarehouseStockById(UUID warehouseStockId);
 
-    // List<WarehouseStockResponse> getAllWarehouseStocks();
+    WarehouseStockResponse getWarehouseStockById(UUID warehouseStockId);
 
-    // List<WarehouseStockResponse> getStockByWarehouse(UUID warehouseId);
+    List<WarehouseStockResponse> getAllWarehouseStocks();
 
-    // List<WarehouseStockResponse> getStockByProduct(
-    // UUID productId,
-    // UUID variantId);
+    List<WarehouseStockResponse> getStockByWarehouse(UUID warehouseId);
 
-    // StockSummaryResponse getStockSummary(
-    // UUID productId,
-    // UUID variantId);
+    List<WarehouseStockResponse> getStockByProduct(UUID productId, UUID variantId);
 
-    // List<LowStockResponse> getLowStockProducts();
+    StockSummaryResponse getStockSummary(UUID productId, UUID variantId);
+
+    List<LowStockResponse> getLowStockProducts();
+
+    List<WarehouseStockResponse> getOutOfStockProducts();
+
+    List<WarehouseStockResponse> getOverStockProducts();
 }

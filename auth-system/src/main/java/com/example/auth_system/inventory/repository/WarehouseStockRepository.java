@@ -19,41 +19,50 @@ import java.util.UUID;
 
 public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, UUID> {
 
-    Optional<WarehouseStock> findByProductAndVariantAndWarehouse(Product product, ProductVariant variant,
-            Store warehouse);
+        Optional<WarehouseStock> findByProductAndVariantAndWarehouse(Product product, ProductVariant variant,
+                        Store warehouse);
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
-    Optional<WarehouseStock> findByProductIdAndVariantIdAndWarehouseId(UUID productId, UUID variantId,
-            UUID warehouseId);
+        @Lock(LockModeType.PESSIMISTIC_WRITE)
+        Optional<WarehouseStock> findByProductIdAndVariantIdAndWarehouseId(UUID productId, UUID variantId,
+                        UUID warehouseId);
 
-    List<WarehouseStock> findByWarehouseId(UUID warehouseId);
+        List<WarehouseStock> findByWarehouseId(UUID warehouseId);
 
-    List<WarehouseStock> findByProductId(UUID productId);
+        List<WarehouseStock> findByProductId(UUID productId);
 
-    List<WarehouseStock> findByVariantId(UUID variantId);
+        List<WarehouseStock> findByVariantId(UUID variantId);
 
-    boolean existsByProductAndVariantAndWarehouse(
-            Product product,
-            ProductVariant variant,
-            Store warehouse);
+        List<WarehouseStock> findByProductIdAndVariantId(
+                        UUID productId,
+                        UUID variantId);
 
-    @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity <= ws.reorderLevel AND ws.currentQuantity > 0")
-    List<WarehouseStock> findItemsBelowReorderLevel();
+        boolean existsByProductAndVariantAndWarehouse(
+                        Product product,
+                        ProductVariant variant,
+                        Store warehouse);
 
-    @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity = 0")
-    List<WarehouseStock> findOutOfStockItems();
+        @Query("""
+                        SELECT ws
+                        FROM WarehouseStock ws
+                        WHERE (ws.currentQuantity - ws.reservedQuantity) <= ws.reorderLevel
+                        AND (ws.currentQuantity - ws.reservedQuantity) > 0
+                        """)
+        List<WarehouseStock> findLowStockItems();
 
-    @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity > ws.maxStock")
-    List<WarehouseStock> findOverStockItems();
+        @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity = 0")
+        List<WarehouseStock> findOutOfStockItems();
 
-    @Query("SELECT ws FROM WarehouseStock ws WHERE ws.warehouse.id = :warehouseId AND ws.currentQuantity <= ws.reorderLevel")
-    List<WarehouseStock> findWarehouseItemsBelowReorder(@Param("warehouseId") UUID warehouseId);
+        @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity > ws.maxStock")
+        List<WarehouseStock> findOverStockItems();
 
-    @Modifying
-    @Query("UPDATE WarehouseStock ws SET ws.currentQuantity = :quantity, ws.lastUpdatedAt = CURRENT_TIMESTAMP WHERE ws.id = :id")
-    int updateStockQuantity(@Param("id") UUID id, @Param("quantity") Integer quantity);
+        @Query("SELECT ws FROM WarehouseStock ws WHERE ws.warehouse.id = :warehouseId AND ws.currentQuantity <= ws.reorderLevel")
+        List<WarehouseStock> findWarehouseItemsBelowReorder(@Param("warehouseId") UUID warehouseId);
 
-    @Modifying
-    @Query("UPDATE WarehouseStock ws SET ws.reservedQuantity = :reserved WHERE ws.id = :id")
-    int updateReservedQuantity(@Param("id") UUID id, @Param("reserved") Integer reserved);
+        @Modifying
+        @Query("UPDATE WarehouseStock ws SET ws.currentQuantity = :quantity, ws.lastUpdatedAt = CURRENT_TIMESTAMP WHERE ws.id = :id")
+        int updateStockQuantity(@Param("id") UUID id, @Param("quantity") Integer quantity);
+
+        @Modifying
+        @Query("UPDATE WarehouseStock ws SET ws.reservedQuantity = :reserved WHERE ws.id = :id")
+        int updateReservedQuantity(@Param("id") UUID id, @Param("reserved") Integer reserved);
 }

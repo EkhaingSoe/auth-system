@@ -16,53 +16,67 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class WarehouseStockController {
 
-    private final WarehouseStockService warehouseStockService;
+        private final WarehouseStockService warehouseStockService;
 
-    // @GetMapping
-    // public ResponseEntity<List<WarehouseStockResponse>> getAllWarehouseStocks() {
+        @GetMapping
+        public ResponseEntity<List<WarehouseStockResponse>> getAllWarehouseStocks() {
 
-    // return ResponseEntity.ok(
-    // warehouseStockService.getAllWarehouseStocks());
-    // }
+                return ResponseEntity.ok(
+                                warehouseStockService.getAllWarehouseStocks());
+        }
 
-    // @GetMapping("/{warehouseStockId}")
-    // public ResponseEntity<WarehouseStockResponse> getWarehouseStockById(
-    // @PathVariable UUID warehouseStockId) {
+        @GetMapping("/{warehouseStockId}")
+        public ResponseEntity<WarehouseStockResponse> getWarehouseStockById(
+                        @PathVariable UUID warehouseStockId) {
 
-    // return ResponseEntity.ok(
-    // warehouseStockService.getWarehouseStockById(warehouseStockId));
-    // }
+                return ResponseEntity.ok(
+                                warehouseStockService.getWarehouseStockById(warehouseStockId));
+        }
 
-    // @GetMapping("/warehouse/{warehouseId}")
-    // public ResponseEntity<List<WarehouseStockResponse>> getStockByWarehouse(
-    // @PathVariable UUID warehouseId) {
+        @GetMapping("/warehouse/{warehouseId}")
+        public ResponseEntity<List<WarehouseStockResponse>> getStockByWarehouse(
+                        @PathVariable UUID warehouseId) {
 
-    // return ResponseEntity.ok(
-    // warehouseStockService.getStockByWarehouse(warehouseId));
-    // }
+                return ResponseEntity.ok(
+                                warehouseStockService.getStockByWarehouse(warehouseId));
+        }
 
-    // @GetMapping("/product/{productId}")
-    // public ResponseEntity<List<WarehouseStockResponse>> getStockByProduct(
-    // @PathVariable UUID productId,
-    // @RequestParam(required = false) UUID variantId) {
+        @GetMapping("/product/{productId}")
+        public ResponseEntity<List<WarehouseStockResponse>> getStockByProduct(
+                        @PathVariable UUID productId,
+                        @RequestParam(required = false) UUID variantId) {
 
-    // return ResponseEntity.ok(
-    // warehouseStockService.getStockByProduct(productId, variantId));
-    // }
+                return ResponseEntity.ok(
+                                warehouseStockService.getStockByProduct(productId, variantId));
+        }
 
-    // @GetMapping("/summary")
-    // public ResponseEntity<StockSummaryResponse> getStockSummary(
-    // @RequestParam UUID productId,
-    // @RequestParam(required = false) UUID variantId) {
+        @GetMapping("/summary")
+        public ResponseEntity<StockSummaryResponse> getStockSummary(
+                        @RequestParam UUID productId,
+                        @RequestParam(required = false) UUID variantId) {
 
-    // return ResponseEntity.ok(
-    // warehouseStockService.getStockSummary(productId, variantId));
-    // }
+                return ResponseEntity.ok(
+                                warehouseStockService.getStockSummary(productId, variantId));
+        }
 
-    // @GetMapping("/low-stock")
-    // public ResponseEntity<List<LowStockResponse>> getLowStockProducts() {
+        @GetMapping("/low-stock")
+        public ResponseEntity<List<LowStockResponse>> getLowStockProducts() {
 
-    // return ResponseEntity.ok(
-    // warehouseStockService.getLowStockProducts());
-    // }
+                return ResponseEntity.ok(
+                                warehouseStockService.getLowStockProducts());
+        }
+
+        @GetMapping("/out-of-stock")
+        public ResponseEntity<List<WarehouseStockResponse>> getOutOfStockProducts() {
+
+                return ResponseEntity.ok(
+                                warehouseStockService.getOutOfStockProducts());
+        }
+
+        @GetMapping("/over-stock")
+        public ResponseEntity<List<WarehouseStockResponse>> getOverStockProducts() {
+
+                return ResponseEntity.ok(
+                                warehouseStockService.getOverStockProducts());
+        }
 }
