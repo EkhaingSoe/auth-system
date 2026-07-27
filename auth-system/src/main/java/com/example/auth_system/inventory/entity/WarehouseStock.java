@@ -90,4 +90,18 @@ public class WarehouseStock {
     public boolean isOverMaxStock() {
         return currentQuantity > maxStock;
     }
+
+    public void decreaseQuantity(Integer quantity) {
+
+        if (this.currentQuantity < quantity) {
+            throw new RuntimeException("Not enough stock");
+        }
+
+        this.currentQuantity -= quantity;
+    }
+
+    public void increaseQuantity(Integer quantity) {
+
+        this.currentQuantity += quantity;
+    }
 }

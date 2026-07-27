@@ -27,6 +27,15 @@ public interface StockMovementRepository extends JpaRepository<StockMovement, UU
 
     List<StockMovement> findByToWarehouseId(UUID warehouseId);
 
+    @Query("""
+                SELECT sm
+                FROM StockMovement sm
+                WHERE sm.fromWarehouse.id = :warehouseId
+                   OR sm.toWarehouse.id = :warehouseId
+                ORDER BY sm.createdAt DESC
+            """)
+    List<StockMovement> findByWarehouseId(@Param("warehouseId") UUID warehouseId);
+
     List<StockMovement> findByProductIdAndMovementType(UUID productId, MovementType movementType);
 
     @Query("SELECT sm FROM StockMovement sm WHERE sm.createdAt BETWEEN :start AND :end")

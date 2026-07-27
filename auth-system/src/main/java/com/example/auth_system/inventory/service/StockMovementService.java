@@ -1,7 +1,10 @@
 package com.example.auth_system.inventory.service;
 
+import com.example.auth_system.inventory.dto.request.stockMovement.TransferStockRequest;
+import com.example.auth_system.inventory.dto.response.StockInOutResponse;
 // import com.example.auth_system.inventory.dto.request.TransferStockRequest;
 import com.example.auth_system.inventory.dto.response.StockMovementResponse;
+import com.example.auth_system.inventory.dto.response.StockMovementSummaryResponse;
 import com.example.auth_system.inventory.entity.StockMovement;
 import com.example.auth_system.inventory.enums.MovementType;
 import com.example.auth_system.product.entity.Product;
@@ -18,41 +21,40 @@ public interface StockMovementService {
     // Query APIs (Frontend)
     // ============================================================
 
-    // List<StockMovementResponse> getAllStockMovements();
+    List<StockMovementResponse> getAllStockMovements();
 
-    // StockMovementResponse getStockMovementById(UUID movementId);
+    StockMovementResponse getStockMovementById(UUID movementId);
 
-    // StockMovementResponse getStockMovementByNumber(String movementNumber);
+    StockMovementResponse getStockMovementByNumber(String movementNumber);
 
-    // List<StockMovementResponse> getStockMovementsByProduct(UUID productId);
+    List<StockMovementResponse> getStockMovementsByProduct(UUID productId);
 
-    // List<StockMovementResponse> getStockMovementsByVariant(UUID variantId);
+    List<StockMovementResponse> getStockMovementsByVariant(UUID variantId);
 
-    // List<StockMovementResponse> getStockMovementsByWarehouse(UUID warehouseId);
+    List<StockMovementResponse> getStockMovementsByWarehouse(UUID warehouseId);
 
-    // List<StockMovementResponse> getStockMovementsByType(MovementType
-    // movementType);
+    List<StockMovementResponse> getStockMovementsByType(MovementType movementType);
 
-    // List<StockMovementResponse> getStockMovementsByReference(UUID referenceId);
+    List<StockMovementResponse> getStockMovementsByReference(UUID referenceId);
 
-    // List<StockMovementResponse> getStockMovementsByDateRange(
-    // LocalDateTime start,
-    // LocalDateTime end);
+    List<StockMovementResponse> getStockMovementsByDateRange(
+            LocalDateTime start,
+            LocalDateTime end);
 
     // List<StockMovementResponse> getStockMovementsByProductAndDateRange(
     // UUID productId,
     // LocalDateTime start,
     // LocalDateTime end);
 
-    // Object getStockMovementSummary(UUID productId);
+    StockMovementSummaryResponse getStockMovementSummary(UUID productId);
 
-    // Object getTotalInOutQuantity(UUID productId);
+    StockInOutResponse getTotalInOutQuantity(UUID productId);
 
     // // ============================================================
     // // Inventory Operations
     // // ============================================================
 
-    // // StockMovementResponse transferStock(TransferStockRequest request);
+    StockMovementResponse transferStock(TransferStockRequest request);
 
     // // ============================================================
     // // Internal APIs

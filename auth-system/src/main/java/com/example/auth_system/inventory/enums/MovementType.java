@@ -7,7 +7,8 @@ public enum MovementType {
     RETURN_OUT("Return to Supplier"),
     TRANSFER_IN("Transfer In"),
     TRANSFER_OUT("Transfer Out"),
-    ADJUSTMENT("Manual Adjustment"),
+    ADJUSTMENT_IN("Manual Adjustment In"),
+    ADJUSTMENT_OUT("Manual Adjustment out"),
     WASTAGE("Wastage/Damage"),
     COUNT_ADJUST("Inventory Count Adjustment");
 
