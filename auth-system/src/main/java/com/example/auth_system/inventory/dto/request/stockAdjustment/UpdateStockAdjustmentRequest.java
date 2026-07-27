@@ -1,6 +1,5 @@
 package com.example.auth_system.inventory.dto.request.stockAdjustment;
 
-import com.example.auth_system.inventory.enums.AdjustmentDirection;
 import com.example.auth_system.inventory.enums.AdjustmentType;
 
 import jakarta.validation.constraints.Min;
@@ -16,27 +15,24 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateStockAdjustmentRequest {
+public class UpdateStockAdjustmentRequest {
 
-    @NotNull(message = "Product ID is required")
+    @NotNull(message = "Product id is required")
     private UUID productId;
 
     private UUID variantId;
 
-    @NotNull(message = "Warehouse ID is required")
+    @NotNull(message = "Warehouse id is required")
     private UUID warehouseId;
 
     @NotNull(message = "Adjustment type is required")
     private AdjustmentType adjustmentType;
 
-    @NotNull(message = "Adjustment direction is required")
-    private AdjustmentDirection direction;
-
-    @NotNull(message = "New quantity is required")
+    @NotNull(message = "Quantity is required")
     @Min(value = 1, message = "Quantity must be greater than 0")
-    private Integer newQuantity;
+    private Integer quantity;
 
-    @NotNull(message = "Reason is required")
     private String reason;
 
+    private String notes;
 }

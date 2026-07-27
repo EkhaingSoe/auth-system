@@ -1,6 +1,7 @@
 package com.example.auth_system.inventory.entity;
 
 import com.example.auth_system.auth.entity.User;
+import com.example.auth_system.inventory.enums.AdjustmentDirection;
 import com.example.auth_system.inventory.enums.AdjustmentStatus;
 import com.example.auth_system.inventory.enums.AdjustmentType;
 import com.example.auth_system.product.entity.Product;
@@ -58,6 +59,10 @@ public class StockAdjustment {
     @Enumerated(EnumType.STRING)
     @Column(name = "adjustment_type", nullable = false)
     private AdjustmentType adjustmentType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AdjustmentDirection direction;
 
     @Column(name = "old_quantity", nullable = false)
     private Integer oldQuantity;

@@ -6,6 +6,7 @@ import com.example.auth_system.inventory.dto.request.stockAdjustment.CreateStock
 import com.example.auth_system.inventory.dto.response.StockAdjustmentResponse;
 import com.example.auth_system.inventory.dto.response.StockAdjustmentSummaryResponse;
 import com.example.auth_system.inventory.entity.StockAdjustment;
+import com.example.auth_system.inventory.enums.AdjustmentStatus;
 import com.example.auth_system.inventory.repository.projection.StockAdjustmentSummaryProjection;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
@@ -24,7 +25,10 @@ public class StockAdjustmentMapper {
                                 .variant(productVariant)
                                 .warehouse(warehouse)
                                 .adjustmentType(request.getAdjustmentType())
+                                .direction(request.getDirection())
+                                .newQuantity(request.getNewQuantity())
                                 .reason(request.getReason())
+                                .status(AdjustmentStatus.PENDING)
                                 .build();
                 return stockAdjustment;
         }
