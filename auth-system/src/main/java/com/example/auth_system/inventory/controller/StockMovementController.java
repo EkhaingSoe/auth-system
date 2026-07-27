@@ -225,4 +225,20 @@ public class StockMovementController {
                         stockMovementService.getTotalInOutQuantity(productId)));
     }
 
+    @GetMapping("/product/{productId}/date-range")
+    public ResponseEntity<List<StockMovementResponse>> getStockMovementsByProductAndDateRange(
+            @PathVariable UUID productId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+
+        return ResponseEntity.ok(
+                stockMovementService.getStockMovementsByProductAndDateRange(
+                        productId,
+                        start,
+                        end));
+    }
+
+    // GET
+    // /api/inventory/movements/product/8e4efb91-c01d-43d7-8d22-73f72d3f5c90/date-range?start=2026-07-01T00:00:00&end=2026-07-31T23:59:59
+
 }

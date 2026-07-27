@@ -1,5 +1,7 @@
 package com.example.auth_system.inventory.service.impl;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -8,6 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.inventory.dto.request.stockMovement.TransferStockRequest;
 import com.example.auth_system.inventory.dto.response.StockInOutResponse;
@@ -17,6 +20,7 @@ import com.example.auth_system.inventory.dto.response.WarehouseStockResponse;
 import com.example.auth_system.inventory.entity.StockMovement;
 import com.example.auth_system.inventory.entity.WarehouseStock;
 import com.example.auth_system.inventory.enums.MovementType;
+import com.example.auth_system.inventory.enums.ReferenceType;
 import com.example.auth_system.inventory.mapper.StockMovementMapper;
 import com.example.auth_system.inventory.repository.StockMovementRepository;
 import com.example.auth_system.inventory.repository.WarehouseStockRepository;
@@ -271,5 +275,76 @@ public class StockMovementSerciveImpl implements StockMovementService {
                 .totalIn(summary.getTotalIncoming())
                 .totalOut(summary.getTotalOutgoing())
                 .build();
+    }
+
+    @Override
+    public StockMovement createMovement(
+            MovementType movementType,
+            Product product,
+            ProductVariant variant,
+            Store fromWarehouse,
+            Store toWarehouse,
+            Integer quantity,
+            Integer previousQuantity,
+            Integer newQuantity,
+            BigDecimal unitCost,
+            UUID referenceId,
+            ReferenceType referenceType,
+            String notes,
+            User createdBy) {
+
+        StockMovement movement = StockMovement.builder()
+                .movementNumber(generateMovementNumber())
+
+                .product(product)
+                .variant(variant)
+
+                .fromWarehouse(fromWarehouse)
+                .toWarehouse(toWarehouse)
+
+                .movementType(movementType)
+
+                .quantity(quantity)
+
+                .previousQuantity(previousQuantity)
+                .newQuantity(newQuantity)
+
+                .unitCost(unitCost)
+
+                .totalCost(
+                        unitCost != null
+                                ? unitCost.multiply(
+                                        BigDecimal.valueOf(quantity))
+                                : null)
+
+                .referenceId(referenceId)
+                .referenceType(referenceType)
+
+                .notes(notes)
+
+                .createdBy(createdBy)
+
+                .build();
+
+        return stockMovementRepository.save(movement);
+    }
+
+    @Override
+    public List<StockMovementResponse> getStockMovementsByProductAndDateRange(
+            UUID productId,
+            LocalDateTime start,
+            LocalDateTime end) {
+
+        List<StockMovement> stockMovements = stockMovementRepository.findByProductIdAndDateRange(productId, start, end);
+        return stockMovements.stream()
+                .map(stockMovementMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    private String generateMovementNumber() {
+        return "SM-" + LocalDate.now()
+                + "-" + UUID.randomUUID()
+                        .toString()
+                        .substring(0, 8);
     }
 }

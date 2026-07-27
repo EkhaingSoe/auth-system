@@ -1,5 +1,6 @@
 package com.example.auth_system.inventory.service;
 
+import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.inventory.dto.request.stockMovement.TransferStockRequest;
 import com.example.auth_system.inventory.dto.response.StockInOutResponse;
 // import com.example.auth_system.inventory.dto.request.TransferStockRequest;
@@ -7,10 +8,12 @@ import com.example.auth_system.inventory.dto.response.StockMovementResponse;
 import com.example.auth_system.inventory.dto.response.StockMovementSummaryResponse;
 import com.example.auth_system.inventory.entity.StockMovement;
 import com.example.auth_system.inventory.enums.MovementType;
+import com.example.auth_system.inventory.enums.ReferenceType;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.store.entity.Store;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -41,10 +44,10 @@ public interface StockMovementService {
             LocalDateTime start,
             LocalDateTime end);
 
-    // List<StockMovementResponse> getStockMovementsByProductAndDateRange(
-    // UUID productId,
-    // LocalDateTime start,
-    // LocalDateTime end);
+    List<StockMovementResponse> getStockMovementsByProductAndDateRange(
+            UUID productId,
+            LocalDateTime start,
+            LocalDateTime end);
 
     StockMovementSummaryResponse getStockMovementSummary(UUID productId);
 
@@ -61,13 +64,19 @@ public interface StockMovementService {
     // // Called by Purchase, Sale, Adjustment, Inventory Count
     // // ============================================================
 
-    // StockMovement createMovement(
-    // MovementType movementType,
-    // Product product,
-    // ProductVariant variant,
-    // Store warehouse,
-    // Integer quantity,
-    // UUID referenceId,
-    // String remarks);
+    StockMovement createMovement(
+            MovementType movementType,
+            Product product,
+            ProductVariant variant,
+            Store fromWarehouse,
+            Store toWarehouse,
+            Integer quantity,
+            Integer previousQuantity,
+            Integer newQuantity,
+            BigDecimal unitCost,
+            UUID referenceId,
+            ReferenceType referenceType,
+            String notes,
+            User createdBy);
 
 }

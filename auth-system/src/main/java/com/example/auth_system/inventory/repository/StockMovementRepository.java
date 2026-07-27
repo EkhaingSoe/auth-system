@@ -49,4 +49,16 @@ public interface StockMovementRepository extends JpaRepository<StockMovement, UU
 
     @Query("SELECT COALESCE(SUM(sm.quantity), 0) FROM StockMovement sm WHERE sm.product.id = :productId AND sm.movementType IN :outTypes")
     Integer getTotalOutQuantity(@Param("productId") UUID productId, @Param("outTypes") List<MovementType> outTypes);
+
+    @Query("""
+                SELECT sm
+                FROM StockMovement sm
+                WHERE sm.product.id = :productId
+                  AND sm.createdAt BETWEEN :start AND :end
+                ORDER BY sm.createdAt DESC
+            """)
+    List<StockMovement> findByProductIdAndDateRange(
+            @Param("productId") UUID productId,
+            @Param("start") LocalDateTime start,
+            @Param("end") LocalDateTime end);
 }
