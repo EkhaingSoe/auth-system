@@ -16,9 +16,20 @@ public class StockAdjustmentSummaryResponse {
 
     private UUID warehouseId;
     private String warehouseName;
+
     private AdjustmentType adjustmentType;
-    private Integer totalAdjustments;
-    private Integer totalDifference;
-    private Integer positiveAdjustments;
-    private Integer negativeAdjustments;
+
+    private Long totalAdjustments;
+
+    private Long pendingCount;
+
+    private Long approvedCount;
+
+    private Long completedCount;
+
+    private Integer totalIncreaseQuantity;
+
+    private Integer totalDecreaseQuantity;
+
+    private Integer netDifference;
 }

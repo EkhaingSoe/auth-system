@@ -20,6 +20,7 @@ import com.example.auth_system.inventory.dto.request.stockAdjustment.ApproveStoc
 import com.example.auth_system.inventory.dto.request.stockAdjustment.CreateStockAdjustmentRequest;
 import com.example.auth_system.inventory.dto.request.stockAdjustment.UpdateStockAdjustmentRequest;
 import com.example.auth_system.inventory.dto.response.StockAdjustmentResponse;
+import com.example.auth_system.inventory.dto.response.StockAdjustmentSummaryResponse;
 import com.example.auth_system.inventory.dto.response.StockMovementResponse;
 import com.example.auth_system.inventory.entity.StockAdjustment;
 import com.example.auth_system.inventory.entity.StockMovement;
@@ -350,6 +351,16 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
                 StockAdjustment savedAdjustment = stockAdjustmentRepository.save(adjustment);
 
                 return stockAdjustmentMapper.toResponse(savedAdjustment);
+        }
+
+        @Override
+        public List<StockAdjustmentSummaryResponse> getAdjustmentSummary() {
+
+                return stockAdjustmentRepository
+                                .getAdjustmentSummary()
+                                .stream()
+                                .map(stockAdjustmentMapper::toSummaryResponse)
+                                .collect(Collectors.toList());
         }
 
         private String generateAdjustmentNumber() {

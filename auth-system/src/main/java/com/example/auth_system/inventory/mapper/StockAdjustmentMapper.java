@@ -87,17 +87,37 @@ public class StockAdjustmentMapper {
                         StockAdjustmentSummaryProjection projection) {
 
                 return StockAdjustmentSummaryResponse.builder()
-                                .warehouseId(projection.getWarehouseId())
-                                .warehouseName(projection.getWarehouseName())
-                                .adjustmentType(projection.getAdjustmentType())
+
+                                .warehouseId(
+                                                projection.getWarehouseId())
+
+                                .warehouseName(
+                                                projection.getWarehouseName())
+
+                                .adjustmentType(
+                                                projection.getAdjustmentType())
+
                                 .totalAdjustments(
-                                                projection.getTotalAdjustments().intValue())
-                                .totalDifference(
-                                                projection.getTotalDifference().intValue())
-                                .positiveAdjustments(
-                                                projection.getPositiveAdjustments().intValue())
-                                .negativeAdjustments(
-                                                projection.getNegativeAdjustments().intValue())
+                                                projection.getTotalAdjustments())
+
+                                .pendingCount(
+                                                projection.getPendingCount())
+
+                                .approvedCount(
+                                                projection.getApprovedCount())
+
+                                .completedCount(
+                                                projection.getCompletedCount())
+
+                                .totalIncreaseQuantity(
+                                                projection.getTotalIncreaseQuantity())
+
+                                .totalDecreaseQuantity(
+                                                projection.getTotalDecreaseQuantity())
+
+                                .netDifference(
+                                                projection.getNetDifference())
+
                                 .build();
         }
 

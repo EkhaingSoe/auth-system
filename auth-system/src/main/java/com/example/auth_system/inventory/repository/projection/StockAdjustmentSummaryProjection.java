@@ -13,9 +13,15 @@ public interface StockAdjustmentSummaryProjection {
 
     Long getTotalAdjustments();
 
-    Long getTotalDifference();
+    Long getPendingCount();
 
-    Long getPositiveAdjustments();
+    Long getApprovedCount();
 
-    Long getNegativeAdjustments();
+    Long getCompletedCount();
+
+    Integer getTotalIncreaseQuantity();
+
+    Integer getTotalDecreaseQuantity();
+
+    Integer getNetDifference();
 }
