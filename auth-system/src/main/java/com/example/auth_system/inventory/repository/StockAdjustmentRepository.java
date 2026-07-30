@@ -120,85 +120,19 @@ public interface StockAdjustmentRepository extends JpaRepository<StockAdjustment
 
     @Query("""
                 SELECT
-
                     sa.warehouse.id AS warehouseId,
-
                     sa.warehouse.name AS warehouseName,
-
                     sa.adjustmentType AS adjustmentType,
-
-
                     COUNT(sa) AS totalAdjustments,
-
-
-                    SUM(
-                        CASE
-                            WHEN sa.status = 'PENDING'
-                            THEN 1
-                            ELSE 0
-                        END
-                    ) AS pendingCount,
-
-
-                    SUM(
-                        CASE
-                            WHEN sa.status = 'APPROVED'
-                            THEN 1
-                            ELSE 0
-                        END
-                    ) AS approvedCount,
-
-
-                    SUM(
-                        CASE
-                            WHEN sa.status = 'COMPLETED'
-                            THEN 1
-                            ELSE 0
-                        END
-                    ) AS completedCount,
-
-
-                    COALESCE(
-                        SUM(
-                            CASE
-                                WHEN sa.direction = 'INCREASE'
-                                THEN sa.difference
-                                ELSE 0
-                            END
-                        ),
-                    0) AS totalIncreaseQuantity,
-
-
-                    COALESCE(
-                        SUM(
-                            CASE
-                                WHEN sa.direction = 'DECREASE'
-                                THEN ABS(sa.difference)
-                                ELSE 0
-                            END
-                        ),
-                    0) AS totalDecreaseQuantity,
-
-
-                    COALESCE(
-                        SUM(sa.difference),
-                    0) AS netDifference
-
-
+                    SUM(CASE WHEN sa.status = 'PENDING' THEN 1 ELSE 0 END) AS pendingCount,
+                    SUM(CASE WHEN sa.status = 'APPROVED' THEN 1 ELSE 0 END) AS approvedCount,
+                    SUM(CASE WHEN sa.status = 'COMPLETED' THEN 1 ELSE 0 END) AS completedCount,
+                    COALESCE(SUM(CASE WHEN sa.direction = 'INCREASE' THEN sa.difference ELSE 0 END), 0) AS totalIncreaseQuantity,
+                    COALESCE(SUM(CASE WHEN sa.direction = 'DECREASE' THEN ABS(sa.difference) ELSE 0 END), 0) AS totalDecreaseQuantity,
+                    COALESCE(SUM(sa.difference), 0) AS netDifference
                 FROM StockAdjustment sa
-
-
-                GROUP BY
-
-                    sa.warehouse.id,
-
-                    sa.warehouse.name,
-
-                    sa.adjustmentType
-
-
-                ORDER BY sa.warehouse.name
-
+                GROUP BY sa.warehouse.id, sa.warehouse.name, sa.adjustmentType
+                ORDER BY sa.warehouse.name, sa.adjustmentType
             """)
     List<StockAdjustmentSummaryProjection> getAdjustmentSummary();
 

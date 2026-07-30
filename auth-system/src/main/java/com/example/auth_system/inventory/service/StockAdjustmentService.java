@@ -44,11 +44,6 @@ public interface StockAdjustmentService {
     StockAdjustmentResponse completeStockAdjustment(UUID adjustmentId);
 
     // // Summary / Reports
-    // List<StockAdjustmentSummaryResponse> getAdjustmentSummary();
+    List<StockAdjustmentSummaryResponse> getAdjustmentSummary();
 
-    // List<StockAdjustmentSummaryResponse> getAdjustmentSummaryByWarehouse(UUID
-    // warehouseId);
-
-    // // Delete
-    // void deleteStockAdjustment(UUID adjustmentId);
 }
