@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,6 +47,10 @@ public class InventoryCountItem {
     private Integer countedQuantity;
 
     private Integer difference;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stock_adjustment_id")
+    private StockAdjustment stockAdjustment;
 
     private String notes;
 }
