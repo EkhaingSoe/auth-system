@@ -10,7 +10,7 @@ import com.example.auth_system.inventory.enums.InventoryCountStatus;
 
 public interface InventoryCountService {
     // CRUD
-    // InventoryCountResponse create(CreateInventoryCountRequest request);
+    InventoryCountResponse create(CreateInventoryCountRequest request);
 
     // InventoryCountResponse update(UUID countId, UpdateInventoryCountRequest
     // request);

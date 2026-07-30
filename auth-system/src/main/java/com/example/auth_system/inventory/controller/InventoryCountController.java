@@ -36,112 +36,122 @@ public class InventoryCountController {
                 .body(ApiResponse.success(201, "Inventory count created successfully", response));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<InventoryCountResponse>> update(
-            @PathVariable UUID id,
-            @RequestBody @Valid UpdateInventoryCountRequest request) {
+    // @PutMapping("/{id}")
+    // public ResponseEntity<ApiResponse<InventoryCountResponse>> update(
+    // @PathVariable UUID id,
+    // @RequestBody @Valid UpdateInventoryCountRequest request) {
 
-        InventoryCountResponse response = inventoryCountService.update(id, request);
+    // InventoryCountResponse response = inventoryCountService.update(id, request);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count updated successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count updated successfully", response));
+    // }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable UUID id) {
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<ApiResponse<Void>> delete(@PathVariable UUID id) {
 
-        inventoryCountService.delete(id);
+    // inventoryCountService.delete(id);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count deleted successfully", null));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count deleted successfully", null));
+    // }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<InventoryCountResponse>> getById(
-            @PathVariable UUID id) {
+    // @GetMapping("/{id}")
+    // public ResponseEntity<ApiResponse<InventoryCountResponse>> getById(
+    // @PathVariable UUID id) {
 
-        InventoryCountResponse response = inventoryCountService.getById(id);
+    // InventoryCountResponse response = inventoryCountService.getById(id);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count retrieved successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count retrieved successfully",
+    // response));
+    // }
 
-    @GetMapping
-    public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> getAll() {
+    // @GetMapping
+    // public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> getAll() {
 
-        List<InventoryCountResponse> response = inventoryCountService.getAll();
+    // List<InventoryCountResponse> response = inventoryCountService.getAll();
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory counts retrieved successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory counts retrieved successfully",
+    // response));
+    // }
 
-    @GetMapping("/search")
-    public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> search(
-            @RequestParam String keyword) {
+    // @GetMapping("/search")
+    // public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> search(
+    // @RequestParam String keyword) {
 
-        List<InventoryCountResponse> response = inventoryCountService.search(keyword);
+    // List<InventoryCountResponse> response =
+    // inventoryCountService.search(keyword);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Search completed successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Search completed successfully", response));
+    // }
 
-    @GetMapping("/warehouse/{warehouseId}")
-    public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> getByWarehouse(
-            @PathVariable UUID warehouseId) {
+    // @GetMapping("/warehouse/{warehouseId}")
+    // public ResponseEntity<ApiResponse<List<InventoryCountResponse>>>
+    // getByWarehouse(
+    // @PathVariable UUID warehouseId) {
 
-        List<InventoryCountResponse> response = inventoryCountService.getByWarehouse(warehouseId);
+    // List<InventoryCountResponse> response =
+    // inventoryCountService.getByWarehouse(warehouseId);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory counts retrieved successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory counts retrieved successfully",
+    // response));
+    // }
 
-    @GetMapping("/status/{status}")
-    public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> getByStatus(
-            @PathVariable InventoryCountStatus status) {
+    // @GetMapping("/status/{status}")
+    // public ResponseEntity<ApiResponse<List<InventoryCountResponse>>> getByStatus(
+    // @PathVariable InventoryCountStatus status) {
 
-        List<InventoryCountResponse> response = inventoryCountService.getByStatus(status);
+    // List<InventoryCountResponse> response =
+    // inventoryCountService.getByStatus(status);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory counts retrieved successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory counts retrieved successfully",
+    // response));
+    // }
 
-    @PutMapping("/{id}/start")
-    public ResponseEntity<ApiResponse<InventoryCountResponse>> startCount(
-            @PathVariable UUID id) {
+    // @PutMapping("/{id}/start")
+    // public ResponseEntity<ApiResponse<InventoryCountResponse>> startCount(
+    // @PathVariable UUID id) {
 
-        InventoryCountResponse response = inventoryCountService.startCount(id);
+    // InventoryCountResponse response = inventoryCountService.startCount(id);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count started successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count started successfully", response));
+    // }
 
-    @PutMapping("/{id}/complete")
-    public ResponseEntity<ApiResponse<InventoryCountResponse>> completeCount(
-            @PathVariable UUID id) {
+    // @PutMapping("/{id}/complete")
+    // public ResponseEntity<ApiResponse<InventoryCountResponse>> completeCount(
+    // @PathVariable UUID id) {
 
-        InventoryCountResponse response = inventoryCountService.completeCount(id);
+    // InventoryCountResponse response = inventoryCountService.completeCount(id);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count completed successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count completed successfully",
+    // response));
+    // }
 
-    @PutMapping("/{id}/verify")
-    public ResponseEntity<ApiResponse<InventoryCountResponse>> verifyCount(
-            @PathVariable UUID id) {
+    // @PutMapping("/{id}/verify")
+    // public ResponseEntity<ApiResponse<InventoryCountResponse>> verifyCount(
+    // @PathVariable UUID id) {
 
-        InventoryCountResponse response = inventoryCountService.verifyCount(id);
+    // InventoryCountResponse response = inventoryCountService.verifyCount(id);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count verified successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count verified successfully", response));
+    // }
 
-    @PutMapping("/{id}/cancel")
-    public ResponseEntity<ApiResponse<InventoryCountResponse>> cancelCount(
-            @PathVariable UUID id) {
+    // @PutMapping("/{id}/cancel")
+    // public ResponseEntity<ApiResponse<InventoryCountResponse>> cancelCount(
+    // @PathVariable UUID id) {
 
-        InventoryCountResponse response = inventoryCountService.cancelCount(id);
+    // InventoryCountResponse response = inventoryCountService.cancelCount(id);
 
-        return ResponseEntity.ok(
-                ApiResponse.success(200, "Inventory count cancelled successfully", response));
-    }
+    // return ResponseEntity.ok(
+    // ApiResponse.success(200, "Inventory count cancelled successfully",
+    // response));
+    // }
 }
