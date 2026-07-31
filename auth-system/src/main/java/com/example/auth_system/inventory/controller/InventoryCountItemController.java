@@ -23,20 +23,21 @@ public class InventoryCountItemController {
 
     private final InventoryCountItemService inventoryCountItemService;
 
-    // @PostMapping("/{inventoryCountId}")
-    // public ResponseEntity<ApiResponse<InventoryCountItemResponse>> create(
-    // @PathVariable UUID inventoryCountId,
-    // @RequestBody @Valid CreateInventoryCountItemRequest request) {
+    @PostMapping("/{inventoryCountId}")
+    public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>> createInventoryCountItem(
+            @PathVariable UUID inventoryCountId,
+            @RequestBody @Valid List<CreateInventoryCountItemRequest> requests) {
 
-    // InventoryCountItemResponse response =
-    // inventoryCountItemService.create(inventoryCountId, request);
+        List<InventoryCountItemResponse> response = inventoryCountItemService.createInventoryCountitem(
+                inventoryCountId,
+                requests);
 
-    // return ResponseEntity.status(HttpStatus.CREATED)
-    // .body(ApiResponse.success(
-    // 201,
-    // "Inventory count item created successfully",
-    // response));
-    // }
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ApiResponse.success(
+                        201,
+                        "Inventory count items created successfully",
+                        response));
+    }
 
     // @PutMapping("/{itemId}")
     // public ResponseEntity<ApiResponse<InventoryCountItemResponse>> update(
@@ -110,23 +111,21 @@ public class InventoryCountItemController {
     // response));
     // }
 
-    // @PutMapping("/{itemId}/count")
-    // public ResponseEntity<ApiResponse<InventoryCountItemResponse>>
-    // updateCountedQuantity(
-    // @PathVariable UUID itemId,
-    // @RequestParam Integer countedQuantity) {
+    @PutMapping("/{itemId}/count")
+    public ResponseEntity<ApiResponse<InventoryCountItemResponse>> CountedQuantity(
+            @PathVariable UUID itemId,
+            @RequestParam Integer countedQuantity) {
 
-    // InventoryCountItemResponse response =
-    // inventoryCountItemService.updateCountedQuantity(
-    // itemId,
-    // countedQuantity);
+        InventoryCountItemResponse response = inventoryCountItemService.CountedQuantity(
+                itemId,
+                countedQuantity);
 
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Counted quantity updated successfully",
-    // response));
-    // }
+        return ResponseEntity.ok(
+                ApiResponse.success(
+                        200,
+                        "Counted quantity updated successfully",
+                        response));
+    }
 
     // @PostMapping("/{inventoryCountId}/create-adjustments")
     // public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>>

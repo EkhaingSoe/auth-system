@@ -9,8 +9,8 @@ import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCo
 
 public interface InventoryCountItemService {
 
-    // InventoryCountItemResponse create(UUID inventoryCountId,
-    // CreateInventoryCountItemRequest request);
+    List<InventoryCountItemResponse> createInventoryCountitem(UUID inventoryCountId,
+            List<CreateInventoryCountItemRequest> requests);
 
     // InventoryCountItemResponse update(UUID itemId,
     // UpdateInventoryCountItemsRequest request);
@@ -23,8 +23,7 @@ public interface InventoryCountItemService {
 
     // List<InventoryCountItemResponse> getDiscrepancyItems(UUID inventoryCountId);
 
-    // InventoryCountItemResponse updateCountedQuantity(UUID itemId, Integer
-    // countedQuantity);
+    InventoryCountItemResponse CountedQuantity(UUID itemId, Integer countedQuantity);
 
     // List<InventoryCountItemResponse> createStockAdjustments(UUID
     // inventoryCountId);

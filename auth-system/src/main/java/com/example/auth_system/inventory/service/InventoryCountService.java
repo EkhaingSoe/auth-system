@@ -29,7 +29,7 @@ public interface InventoryCountService {
     // List<InventoryCountResponse> getByStatus(InventoryCountStatus status);
 
     // // Workflow
-    // InventoryCountResponse startCount(UUID countId);
+    InventoryCountResponse startCount(UUID countId);
 
     // InventoryCountResponse completeCount(UUID countId);
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.auth_system.auth.entity.User;
+import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.service.CurrentUserService;
 import com.example.auth_system.inventory.dto.request.inventoryCount.CreateInventoryCountRequest;
@@ -68,16 +69,33 @@ public class InventoryCountServiceImpl implements InventoryCountService {
 
         inventoryCountRepository.save(count);
 
-        if (request.getCountType() == CountType.FULL_COUNT) {
+        return inventoryCountMapper.toInventoryCountResponse(count);
+    }
 
-            createFullCountItems(count);
+    @Transactional
+    @Override
+    public InventoryCountResponse startCount(UUID id) {
 
-        } else if (request.getCountType() == CountType.CYCLE_COUNT) {
+        InventoryCount count = inventoryCountRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Inventory count not found"));
 
-            // createPartialCountItems(count, request.getItems());
-
+        if (count.getStatus() != InventoryCountStatus.PENDING) {
+            throw new BusinessException(
+                    "Only pending count can start");
         }
 
+        if (count.getCountType() == CountType.FULL_COUNT) {
+            createFullCountItems(count);
+        } else if (count.getCountType() == CountType.CYCLE_COUNT) {
+            if (count.getItems().isEmpty()) {
+                throw new BusinessException(
+                        "Please add products before starting count");
+            }
+        }
+
+        count.setStatus(InventoryCountStatus.IN_PROGRESS);
+        inventoryCountRepository.save(count);
         return inventoryCountMapper.toInventoryCountResponse(count);
     }
 
@@ -88,12 +106,10 @@ public class InventoryCountServiceImpl implements InventoryCountService {
                         .substring(0, 8);
     }
 
-    private void createFullCountItems(
-            InventoryCount count) {
+    private void createFullCountItems(InventoryCount count) {
 
-        List<WarehouseStock> stocks = warehouseStockRepository
-                .findByWarehouseId(
-                        count.getWarehouse().getId());
+        List<WarehouseStock> stocks = warehouseStockRepository.findByWarehouseId(
+                count.getWarehouse().getId());
 
         for (WarehouseStock stock : stocks) {
 
