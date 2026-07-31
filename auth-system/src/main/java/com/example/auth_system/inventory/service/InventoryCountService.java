@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.example.auth_system.inventory.dto.request.inventoryCount.CreateInventoryCountRequest;
 import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateInventoryCountRequest;
+import com.example.auth_system.inventory.dto.response.StockAdjustmentResponse;
 import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountResponse;
 import com.example.auth_system.inventory.enums.InventoryCountStatus;
 
@@ -31,9 +32,11 @@ public interface InventoryCountService {
     // // Workflow
     InventoryCountResponse startCount(UUID countId);
 
-    // InventoryCountResponse completeCount(UUID countId);
+    InventoryCountResponse completeCount(UUID countId);
 
     // InventoryCountResponse verifyCount(UUID countId);
 
     // InventoryCountResponse cancelCount(UUID countId);
+
+    List<StockAdjustmentResponse> createAdjustment(UUID countId);
 }

@@ -90,8 +90,12 @@ public interface InventoryCountItemRepository extends JpaRepository<InventoryCou
     @Query("SELECT ci FROM InventoryCountItem ci JOIN FETCH ci.product p LEFT JOIN FETCH ci.variant v LEFT JOIN FETCH ci.stockAdjustment sa WHERE ci.id = :itemId")
     Optional<InventoryCountItem> findWithAllDetailsById(@Param("itemId") UUID itemId);
 
-    @Modifying
-    @Query("UPDATE InventoryCountItem ci SET ci.countedQuantity = :countedQuantity, ci.difference = :countedQuantity - ci.systemQuantity WHERE ci.id = :itemId")
-    int updateCountedQuantity(@Param("itemId") UUID itemId, @Param("countedQuantity") Integer countedQuantity);
+    @Query("""
+                SELECT COUNT(ci)
+                FROM InventoryCountItem ci
+                WHERE ci.inventoryCount.id = :countId
+                AND ci.countedQuantity IS NULL
+            """)
+    long countUncountedItems(@Param("countId") UUID countId);
 
 }

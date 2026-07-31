@@ -14,7 +14,7 @@ public class UpdateInventoryCountItemsRequest {
 
     @NotEmpty(message = "Count items are required")
     @Valid
-    private List<CountedItemRequest> items;
+    private List<UpdateCountedQuantityRequest> items;
 
     private String notes;
 }

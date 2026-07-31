@@ -4,6 +4,7 @@ import com.example.auth_system.product.mapper.ProductVariantMapper;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -22,6 +23,7 @@ import com.example.auth_system.inventory.dto.request.stockAdjustment.UpdateStock
 import com.example.auth_system.inventory.dto.response.StockAdjustmentResponse;
 import com.example.auth_system.inventory.dto.response.StockAdjustmentSummaryResponse;
 import com.example.auth_system.inventory.dto.response.StockMovementResponse;
+import com.example.auth_system.inventory.entity.InventoryCountItem;
 import com.example.auth_system.inventory.entity.StockAdjustment;
 import com.example.auth_system.inventory.entity.StockMovement;
 import com.example.auth_system.inventory.entity.WarehouseStock;
@@ -31,6 +33,7 @@ import com.example.auth_system.inventory.enums.AdjustmentType;
 import com.example.auth_system.inventory.enums.MovementType;
 import com.example.auth_system.inventory.enums.ReferenceType;
 import com.example.auth_system.inventory.mapper.StockAdjustmentMapper;
+import com.example.auth_system.inventory.repository.InventoryCountItemRepository;
 import com.example.auth_system.inventory.repository.StockAdjustmentRepository;
 import com.example.auth_system.inventory.repository.WarehouseStockRepository;
 import com.example.auth_system.inventory.service.StockAdjustmentService;
@@ -59,6 +62,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
         private final StockAdjustmentMapper stockAdjustmentMapper;
         private final CurrentUserService currentUserService;
         private final StockMovementService stockMovementService;
+        private final InventoryCountItemRepository inventoryCountItemRepository;
 
         @Override
         @Transactional
@@ -374,6 +378,42 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
                 return direction == AdjustmentDirection.INCREASE
                                 ? MovementType.ADJUSTMENT_IN
                                 : MovementType.ADJUSTMENT_OUT;
+        }
+
+        @Override
+        @Transactional
+        public List<StockAdjustmentResponse> createFromInventoryCount(
+                        UUID countId) {
+
+                List<InventoryCountItem> discrepancyItems = inventoryCountItemRepository
+                                .findDiscrepancyItemsByCountId(countId);
+
+                List<StockAdjustment> adjustments = new ArrayList<>();
+
+                for (InventoryCountItem item : discrepancyItems) {
+
+                        StockAdjustment adjustment = StockAdjustment.builder()
+                                        .warehouse(
+                                                        item.getInventoryCount().getWarehouse())
+                                        .product(item.getProduct())
+                                        .variant(item.getVariant())
+                                        .difference(
+                                                        Math.abs(item.getDifference()))
+                                        .adjustmentType(
+                                                        AdjustmentType.COUNT_ADJUSTMENT)
+                                        .status(
+                                                        AdjustmentStatus.PENDING)
+                                        .reason("This is adjustment from invnetory count")
+                                        .build();
+
+                        adjustments.add(adjustment);
+                }
+
+                stockAdjustmentRepository.saveAll(adjustments);
+
+                return adjustments.stream()
+                                .map(stockAdjustmentMapper::toResponse)
+                                .toList();
         }
 
 }

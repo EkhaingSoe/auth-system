@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.auth_system.common.dto.response.ApiResponse;
 import com.example.auth_system.inventory.dto.request.inventoryCount.CreateInventoryCountItemRequest;
+import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateCountedQuantityRequest;
 import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateInventoryCountItemsRequest;
 import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountItemResponse;
 import com.example.auth_system.inventory.service.InventoryCountItemService;
@@ -112,13 +113,13 @@ public class InventoryCountItemController {
     // }
 
     @PutMapping("/{itemId}/count")
-    public ResponseEntity<ApiResponse<InventoryCountItemResponse>> CountedQuantity(
+    public ResponseEntity<ApiResponse<InventoryCountItemResponse>> updateCountedQuantity(
             @PathVariable UUID itemId,
-            @RequestParam Integer countedQuantity) {
+            @RequestBody @Valid UpdateCountedQuantityRequest request) {
 
-        InventoryCountItemResponse response = inventoryCountItemService.CountedQuantity(
+        InventoryCountItemResponse response = inventoryCountItemService.countedQuantity(
                 itemId,
-                countedQuantity);
+                request);
 
         return ResponseEntity.ok(
                 ApiResponse.success(

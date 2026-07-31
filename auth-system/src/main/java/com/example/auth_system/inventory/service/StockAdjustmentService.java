@@ -46,4 +46,7 @@ public interface StockAdjustmentService {
     // // Summary / Reports
     List<StockAdjustmentSummaryResponse> getAdjustmentSummary();
 
+    // for inventory count
+    List<StockAdjustmentResponse> createFromInventoryCount(UUID countId);
+
 }

@@ -123,16 +123,16 @@ public class InventoryCountController {
                 ApiResponse.success(200, "Inventory count started successfully", response));
     }
 
-    // @PutMapping("/{id}/complete")
-    // public ResponseEntity<ApiResponse<InventoryCountResponse>> completeCount(
-    // @PathVariable UUID id) {
+    @PostMapping("/{id}/complete")
+    public ResponseEntity<ApiResponse<InventoryCountResponse>> completeCount(
+            @PathVariable UUID id) {
 
-    // InventoryCountResponse response = inventoryCountService.completeCount(id);
+        InventoryCountResponse response = inventoryCountService.completeCount(id);
 
-    // return ResponseEntity.ok(
-    // ApiResponse.success(200, "Inventory count completed successfully",
-    // response));
-    // }
+        return ResponseEntity.ok(
+                ApiResponse.success(200, "Inventory count completed successfully",
+                        response));
+    }
 
     // @PutMapping("/{id}/verify")
     // public ResponseEntity<ApiResponse<InventoryCountResponse>> verifyCount(

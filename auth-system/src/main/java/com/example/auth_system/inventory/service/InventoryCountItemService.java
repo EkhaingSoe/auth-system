@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.example.auth_system.inventory.dto.request.inventoryCount.CreateInventoryCountItemRequest;
+import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateCountedQuantityRequest;
 import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateInventoryCountItemsRequest;
 import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountItemResponse;
 
@@ -23,7 +24,7 @@ public interface InventoryCountItemService {
 
     // List<InventoryCountItemResponse> getDiscrepancyItems(UUID inventoryCountId);
 
-    InventoryCountItemResponse CountedQuantity(UUID itemId, Integer countedQuantity);
+    InventoryCountItemResponse countedQuantity(UUID itemId, UpdateCountedQuantityRequest countedQuantity);
 
     // List<InventoryCountItemResponse> createStockAdjustments(UUID
     // inventoryCountId);

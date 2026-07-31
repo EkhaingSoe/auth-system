@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.inventory.dto.request.inventoryCount.CreateInventoryCountItemRequest;
+import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateCountedQuantityRequest;
 import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountItemResponse;
 import com.example.auth_system.inventory.entity.InventoryCount;
 import com.example.auth_system.inventory.entity.InventoryCountItem;
@@ -95,9 +96,23 @@ public class InventoryCountItemServiceImpl implements InventoryCountItemService 
 
     @Transactional
     @Override
-    public InventoryCountItemResponse CountedQuantity(UUID itemId, Integer countedQuantity) {
+    public InventoryCountItemResponse countedQuantity(UUID itemId, UpdateCountedQuantityRequest countedQuantity) {
 
-        return null;
+        InventoryCountItem countItem = inventoryCountItemRepository.findById(itemId)
+                .orElseThrow(() -> new ResourceNotFoundException("Count Item not found"));
+
+        InventoryCount inventoryCount = countItem.getInventoryCount();
+
+        if (inventoryCount.getStatus() != InventoryCountStatus.IN_PROGRESS) {
+            throw new BusinessException(
+                    "Inventory count must be in progress");
+        }
+
+        countItem.setCountedQuantity(countedQuantity.getCountedQuantity());
+        countItem.setDifference(countItem.getCountedQuantity() - countItem.getSystemQuantity());
+        InventoryCountItem savedItem = inventoryCountItemRepository.save(countItem);
+
+        return inventoryCountItemMapper.toResponse(savedItem);
 
     }
 
@@ -111,7 +126,10 @@ public class InventoryCountItemServiceImpl implements InventoryCountItemService 
         }
 
         return warehouseStockRepository
-                .findByProductIdAndVariantId(productId, variantId)
+                .findByProductIdAndVariantIdAndWarehouseId(
+                        productId,
+                        null,
+                        warehouseId)
                 .map(WarehouseStock::getAvailableQuantity)
                 .orElse(0);
     }

@@ -1,6 +1,7 @@
 package com.example.auth_system.inventory.service.impl;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,9 +24,11 @@ import com.example.auth_system.inventory.enums.AdjustmentStatus;
 import com.example.auth_system.inventory.enums.CountType;
 import com.example.auth_system.inventory.enums.InventoryCountStatus;
 import com.example.auth_system.inventory.mapper.InventoryCountMapper;
+import com.example.auth_system.inventory.repository.InventoryCountItemRepository;
 import com.example.auth_system.inventory.repository.InventoryCountRepository;
 import com.example.auth_system.inventory.repository.WarehouseStockRepository;
 import com.example.auth_system.inventory.service.InventoryCountService;
+import com.example.auth_system.inventory.service.StockAdjustmentService;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.store.entity.Store;
@@ -45,6 +48,8 @@ public class InventoryCountServiceImpl implements InventoryCountService {
     private final InventoryCountRepository inventoryCountRepository;
     private final InventoryCountMapper inventoryCountMapper;
     private final WarehouseStockRepository warehouseStockRepository;
+    private final InventoryCountItemRepository inventoryCountItemRepository;
+    private final StockAdjustmentService stockAdjustmentService;
 
     @Override
     @Transactional
@@ -97,6 +102,56 @@ public class InventoryCountServiceImpl implements InventoryCountService {
         count.setStatus(InventoryCountStatus.IN_PROGRESS);
         inventoryCountRepository.save(count);
         return inventoryCountMapper.toInventoryCountResponse(count);
+    }
+
+    @Transactional
+    @Override
+    public InventoryCountResponse completeCount(UUID countId) {
+        InventoryCount count = inventoryCountRepository.findById(countId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Inventory count not found"));
+
+        if (count.getStatus() != InventoryCountStatus.IN_PROGRESS) {
+            throw new BusinessException(
+                    "Only inventory counts in IN_PROGRESS status can be completed");
+        }
+
+        List<InventoryCountItem> items = inventoryCountItemRepository.findByInventoryCountId(count.getId());
+        if (items.isEmpty()) {
+            throw new BusinessException(
+                    "Inventory count has no items");
+        }
+        // boolean hasUncountedItems = items.stream().anyMatch(item ->
+        // item.getCountedQuantity() == null);
+        long uncounted = inventoryCountItemRepository.countUncountedItems(countId);
+
+        if (uncounted > 0) {
+            throw new BusinessException(
+                    "Please count all items before completing inventory count");
+        }
+
+        count.setStatus(InventoryCountStatus.COMPLETED);
+        count.setCompletedDate(LocalDateTime.now());
+        count.setCompletedBy(currentUserService.getCurrentUser());
+        InventoryCount savedCount = inventoryCountRepository.save(count);
+        return inventoryCountMapper.toInventoryCountResponse(savedCount);
+    }
+
+    @Transactional
+    @Override
+    public List<StockAdjustmentResponse> createAdjustment(UUID countId) {
+
+        InventoryCount count = inventoryCountRepository.findById(countId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Inventory count not found"));
+
+        if (count.getStatus() != InventoryCountStatus.COMPLETED) {
+
+            throw new BusinessException(
+                    "Only completed inventory counts can create adjustment");
+        }
+
+        return stockAdjustmentService.createFromInventoryCount(countId);
     }
 
     private String generateInventoryCount() {
