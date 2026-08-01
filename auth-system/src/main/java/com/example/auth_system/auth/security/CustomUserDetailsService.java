@@ -2,7 +2,8 @@
 package com.example.auth_system.auth.security;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.auth.repository.UserRepository;
+import com.example.auth_system.user.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

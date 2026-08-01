@@ -1,7 +1,6 @@
 package com.example.auth_system.customer.service.impl;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.auth.repository.UserRepository;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.customer.dto.request.CreateCustomerRequest;
@@ -13,6 +12,8 @@ import com.example.auth_system.customer.mapper.CustomerMapper;
 import com.example.auth_system.customer.repository.CustomerGroupRepository;
 import com.example.auth_system.customer.repository.CustomerRepository;
 import com.example.auth_system.customer.service.CustomerService;
+import com.example.auth_system.user.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -66,7 +67,8 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerGroup customerGroup = null;
         if (request.getCustomerGroupId() != null) {
             customerGroup = customerGroupRepository.findById(request.getCustomerGroupId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Customer group not found with id: " + request.getCustomerGroupId()));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Customer group not found with id: " + request.getCustomerGroupId()));
         }
 
         Customer customer = customerMapper.toEntity(request, customerGroup);
@@ -105,7 +107,8 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerGroup customerGroup = null;
         if (request.getCustomerGroupId() != null) {
             customerGroup = customerGroupRepository.findById(request.getCustomerGroupId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Customer group not found with id: " + request.getCustomerGroupId()));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Customer group not found with id: " + request.getCustomerGroupId()));
         }
 
         customerMapper.updateEntity(customer, request, customerGroup);
@@ -292,13 +295,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void updateCustomerSpending(UUID customerId, BigDecimal amount) {
         log.info("Updating spending for customer: {}, amount: {}", customerId, amount);
-        
+
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + customerId));
-        
+
         customer.updateSpending(amount);
         customerRepository.save(customer);
-        
+
         log.info("Customer spending updated successfully");
     }
 }

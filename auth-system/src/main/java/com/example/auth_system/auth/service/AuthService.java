@@ -11,18 +11,28 @@ import com.example.auth_system.auth.dto.request.VerifyOtpRequest;
 import com.example.auth_system.auth.dto.response.AuthResponse;
 import com.example.auth_system.auth.dto.response.LoginResponse;
 import com.example.auth_system.auth.dto.response.RefreshTokenResponse;
-import com.example.auth_system.auth.dto.response.UserInfoResponse;
+import com.example.auth_system.user.dto.response.UserInfoResponse;
 
 public interface AuthService {
     AuthResponse register(RegisterRequest request);
+
     LoginResponse login(LoginRequest request);
+
     void logout(String token);
+
     void forgotPassword(ForgotPasswordRequest request);
+
     void resetPassword(ResetPasswordRequest request);
+
     void sendOtp(SendOtpRequest request);
+
     void verifyOtp(VerifyOtpRequest request);
-    RefreshTokenResponse refreshToken(RefreshTokenRequest request);  // Add this
-    void verifyEmail(String token);  // Add this
-    void changePassword(String authHeader, ChangePasswordRequest request); 
+
+    RefreshTokenResponse refreshToken(RefreshTokenRequest request); // Add this
+
+    void verifyEmail(String token); // Add this
+
+    void changePassword(String authHeader, ChangePasswordRequest request);
+
     UserInfoResponse getCurrentUser(String authHeader);
 }

@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.auth.repository.UserRepository;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.customer.repository.CustomerRepository;
@@ -29,6 +28,7 @@ import com.example.auth_system.order.payment.service.PaymentService;
 import com.example.auth_system.payment_gateway.kpay.KPayGateway;
 import com.example.auth_system.payment_gateway.kpay.KPayResponse;
 import com.example.auth_system.payment_gateway.kpay.KPayWebhookRequest;
+import com.example.auth_system.user.repository.UserRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;

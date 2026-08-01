@@ -5,27 +5,27 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.example.auth_system.auth.entity.User;
-import com.example.auth_system.auth.repository.UserRepository;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
+import com.example.auth_system.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class CurrentUserService {
-    private final UserRepository userRepository;
+        private final UserRepository userRepository;
 
-    public User getCurrentUser() {
+        public User getCurrentUser() {
 
-        Authentication authentication = SecurityContextHolder
-                .getContext()
-                .getAuthentication();
+                Authentication authentication = SecurityContextHolder
+                                .getContext()
+                                .getAuthentication();
 
-        String username = authentication.getName();
+                String username = authentication.getName();
 
-        return userRepository.findByUsername(username)
-                .orElseThrow(
-                        () -> new ResourceNotFoundException(
-                                "User not found"));
-    }
+                return userRepository.findByUsername(username)
+                                .orElseThrow(
+                                                () -> new ResourceNotFoundException(
+                                                                "User not found"));
+        }
 }

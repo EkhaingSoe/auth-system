@@ -4,6 +4,8 @@ import com.example.auth_system.auth.dto.request.*;
 import com.example.auth_system.auth.dto.response.*;
 import com.example.auth_system.auth.service.AuthService;
 import com.example.auth_system.common.dto.response.ApiResponse;
+import com.example.auth_system.user.dto.response.UserInfoResponse;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

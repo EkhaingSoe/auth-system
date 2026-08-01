@@ -1,7 +1,6 @@
 // src/main/java/com/example/auth_system/user/service/UserManagementService.java
 package com.example.auth_system.user.service;
 
-import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
@@ -10,7 +9,7 @@ import com.example.auth_system.user.dto.response.UserResponse;
 import java.util.List;
 import java.util.UUID;
 
-public interface UserManagementService {
+public interface UserService {
 
     // Get all users
     List<UserResponse> getAllUsers();

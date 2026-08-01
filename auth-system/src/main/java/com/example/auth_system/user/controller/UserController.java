@@ -2,18 +2,16 @@
 package com.example.auth_system.user.controller;
 
 import com.example.auth_system.common.dto.response.ApiResponse;
-import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
-import com.example.auth_system.user.service.UserManagementService;
+import com.example.auth_system.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +21,9 @@ import java.util.UUID;
 @RequestMapping("/api/admin/users")
 @RequiredArgsConstructor
 @Slf4j
-public class UserManagementController {
+public class UserController {
 
-        private final UserManagementService userManagementService;
+        private final UserService userManagementService;
 
         // get end point
 

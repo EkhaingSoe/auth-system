@@ -13,7 +13,6 @@ import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.mapper.UserMapper;
 import com.example.auth_system.user.repository.UserManagementRepository;
-import com.example.auth_system.user.service.UserManagementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +30,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class UserManagementServiceImpl implements UserManagementService {
+public class UserServiceImpl implements UserService {
 
     private final UserManagementRepository userRepository;
     private final RoleRepository roleRepository;
