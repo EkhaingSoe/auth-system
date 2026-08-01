@@ -1,5 +1,5 @@
 // src/main/java/com/example/auth_system/auth/entity/Permission.java
-package com.example.auth_system.auth.entity;
+package com.example.auth_system.permission.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

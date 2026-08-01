@@ -1,10 +1,11 @@
 package com.example.auth_system.common.bootstrap;
 
-import com.example.auth_system.auth.entity.Role;
-import com.example.auth_system.auth.entity.RoleName;
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.auth.repository.RoleRepository;
 import com.example.auth_system.auth.repository.UserRepository;
+import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.permission.entity.RoleName;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,37 +16,37 @@ import java.util.HashSet;
 @RequiredArgsConstructor
 public class AdminInitializer implements CommandLineRunner {
 
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
+        private final UserRepository userRepository;
+        private final RoleRepository roleRepository;
+        private final PasswordEncoder passwordEncoder;
 
-    @Override
-    public void run(String... args) {
+        @Override
+        public void run(String... args) {
 
-        if (userRepository.findByEmail("admin@gmail.com").isEmpty()) {
+                if (userRepository.findByEmail("admin@gmail.com").isEmpty()) {
 
-            Role adminRole = roleRepository
-                    .findByName(RoleName.ROLE_ADMIN)
-                    .orElseThrow(() -> new RuntimeException("ROLE_ADMIN not found"));
+                        Role adminRole = roleRepository
+                                        .findByName(RoleName.ROLE_ADMIN)
+                                        .orElseThrow(() -> new RuntimeException("ROLE_ADMIN not found"));
 
-            User admin = User.builder()
-                    .email("admin@gmail.com")
-                    .password(
-                            passwordEncoder.encode("Admin@123"))
-                    .firstName("System")
-                    .lastName("Admin")
-                    .enabled(true)
-                    .emailVerified(true)
-                    .roles(new HashSet<>())
-                    .build();
+                        User admin = User.builder()
+                                        .email("admin@gmail.com")
+                                        .password(
+                                                        passwordEncoder.encode("Admin@123"))
+                                        .firstName("System")
+                                        .lastName("Admin")
+                                        .enabled(true)
+                                        .emailVerified(true)
+                                        .roles(new HashSet<>())
+                                        .build();
 
-            admin.getRoles().add(adminRole);
+                        admin.getRoles().add(adminRole);
 
-            userRepository.save(admin);
+                        userRepository.save(admin);
 
-            System.out.println(
-                    "Admin account created");
+                        System.out.println(
+                                        "Admin account created");
+                }
+
         }
-
-    }
 }

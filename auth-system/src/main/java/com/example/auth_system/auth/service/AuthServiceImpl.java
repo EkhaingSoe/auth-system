@@ -12,6 +12,9 @@ import com.example.auth_system.common.exception.OtpValidationException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.common.service.EmailService;
+import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.permission.entity.RoleName;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;

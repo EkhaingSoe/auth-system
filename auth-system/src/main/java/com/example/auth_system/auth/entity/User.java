@@ -10,6 +10,8 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.auth_system.permission.entity.Role;
+
 @Entity
 @Table(name = "users")
 @Data

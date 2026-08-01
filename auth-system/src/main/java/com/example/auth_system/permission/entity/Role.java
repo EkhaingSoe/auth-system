@@ -1,4 +1,4 @@
-package com.example.auth_system.auth.entity;
+package com.example.auth_system.permission.entity;
 
 import java.util.HashSet;
 import java.util.Set;

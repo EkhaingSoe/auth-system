@@ -1,7 +1,8 @@
 package com.example.auth_system.auth.repository;
 
-import com.example.auth_system.auth.entity.Permission;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.auth_system.permission.entity.Permission;
 
 import java.util.Optional;
 

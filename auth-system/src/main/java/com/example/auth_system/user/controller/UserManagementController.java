@@ -1,8 +1,8 @@
 // src/main/java/com/example/auth_system/user/controller/UserManagementController.java
 package com.example.auth_system.user.controller;
 
-import com.example.auth_system.auth.entity.RoleName;
 import com.example.auth_system.common.dto.response.ApiResponse;
+import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;

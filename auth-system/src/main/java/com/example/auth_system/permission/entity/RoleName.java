@@ -1,4 +1,4 @@
-package com.example.auth_system.auth.entity;
+package com.example.auth_system.permission.entity;
 
 public enum RoleName {
     ROLE_CUSTOMER,

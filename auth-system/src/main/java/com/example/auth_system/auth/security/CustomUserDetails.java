@@ -1,8 +1,9 @@
 // src/main/java/com/example/auth_system/auth/security/CustomUserDetails.java
 package com.example.auth_system.auth.security;
 
-import com.example.auth_system.auth.entity.Permission;
 import com.example.auth_system.auth.entity.User;
+import com.example.auth_system.permission.entity.Permission;
+
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
