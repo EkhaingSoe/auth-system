@@ -1,4 +1,4 @@
-package com.example.auth_system.auth.repository;
+package com.example.auth_system.permission.repository;
 
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.permission.entity.RoleName;

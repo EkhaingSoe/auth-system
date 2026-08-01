@@ -1,5 +1,5 @@
 // src/main/java/com/example/auth_system/auth/service/impl/PermissionServiceImpl.java
-package com.example.auth_system.auth.service;
+package com.example.auth_system.permission.service;
 
 import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.permission.entity.Permission;

@@ -14,6 +14,7 @@ import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.common.service.EmailService;
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.permission.entity.RoleName;
+import com.example.auth_system.permission.repository.RoleRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,10 +1,10 @@
 // src/main/java/com/example/auth_system/auth/controller/PermissionController.java
 package com.example.auth_system.permission.controller;
 
-import com.example.auth_system.auth.service.PermissionManagementService;
 import com.example.auth_system.common.dto.response.ApiResponse;
 import com.example.auth_system.permission.entity.Permission;
 import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.permission.service.PermissionManagementService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
