@@ -14,8 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UpdateInventoryCountRequest {
 
-    private CountType countType;
-
     private LocalDateTime scheduledDate;
 
     private String notes;

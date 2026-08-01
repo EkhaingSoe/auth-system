@@ -61,6 +61,9 @@ public class InventoryCount {
     @Column(name = "completed_date")
     private LocalDateTime completedDate;
 
+    @Column(name = "cancelled_date")
+    private LocalDateTime cancelledDate;
+
     @OneToMany(mappedBy = "inventoryCount", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<InventoryCountItem> items = new ArrayList<>(); // [{productId, variantId, expected, counted,
@@ -83,6 +86,10 @@ public class InventoryCount {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "completed_by")
     private User completedBy;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cancelled_by")
+    private User cancelledBy;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

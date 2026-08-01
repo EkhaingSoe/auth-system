@@ -13,30 +13,24 @@ public interface InventoryCountService {
     // CRUD
     InventoryCountResponse create(CreateInventoryCountRequest request);
 
-    // InventoryCountResponse update(UUID countId, UpdateInventoryCountRequest
-    // request);
+    InventoryCountResponse update(UUID countId, UpdateInventoryCountRequest request);
 
-    // void delete(UUID countId);
+    InventoryCountResponse getById(UUID countId);
 
-    // InventoryCountResponse getById(UUID countId);
+    List<InventoryCountResponse> getAll();
 
-    // List<InventoryCountResponse> getAll();
+    List<InventoryCountResponse> search(String keyword);
 
-    // // Search
-    // List<InventoryCountResponse> search(String keyword);
+    List<InventoryCountResponse> getByWarehouse(UUID warehouseId);
 
-    // List<InventoryCountResponse> getByWarehouse(UUID warehouseId);
-
-    // List<InventoryCountResponse> getByStatus(InventoryCountStatus status);
+    List<InventoryCountResponse> getByStatus(InventoryCountStatus status);
 
     // // Workflow
     InventoryCountResponse startCount(UUID countId);
 
     InventoryCountResponse completeCount(UUID countId);
 
-    // InventoryCountResponse verifyCount(UUID countId);
-
-    // InventoryCountResponse cancelCount(UUID countId);
+    InventoryCountResponse cancelCount(UUID countId);
 
     List<StockAdjustmentResponse> createAdjustment(UUID countId);
 }

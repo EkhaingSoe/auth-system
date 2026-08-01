@@ -24,4 +24,11 @@ public interface WarehouseStockService {
     List<WarehouseStockResponse> getOutOfStockProducts();
 
     List<WarehouseStockResponse> getOverStockProducts();
+
+    // Internal APIs
+    void increaseStock(UUID warehouseId, UUID productId, UUID variantId, Integer quantity);
+
+    void decreaseStock(UUID warehouseId, UUID productId, UUID variantId, Integer quantity);
+
+    void adjustStock(UUID warehouseId, UUID productId, UUID variantId, Integer difference);
 }

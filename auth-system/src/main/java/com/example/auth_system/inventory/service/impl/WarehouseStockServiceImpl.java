@@ -16,6 +16,7 @@ import com.example.auth_system.product.repository.ProductVariantRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -129,6 +130,49 @@ public class WarehouseStockServiceImpl implements WarehouseStockService {
         return stocks.stream()
                 .map(warehouseStockMapper::toWarehouseStockResponse)
                 .toList();
+    }
+
+    @Override
+    public void increaseStock(UUID warehouseId, UUID productId, UUID variantId, Integer quantity) {
+
+        WarehouseStock stock = warehouseStockRepository.findByProductIdAndVariantIdAndWarehouseId(
+                productId, variantId, warehouseId).orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "Warehouse stock not found"));
+
+        stock.increaseQuantity(quantity);
+        stock.setLastUpdatedAt(LocalDateTime.now());
+        warehouseStockRepository.save(stock);
+
+    }
+
+    @Override
+    public void decreaseStock(UUID warehouseId, UUID productId, UUID variantId, Integer quantity) {
+        WarehouseStock stock = warehouseStockRepository.findByProductIdAndVariantIdAndWarehouseId(
+                productId, variantId, warehouseId).orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "Warehouse stock not found"));
+
+        stock.decreaseQuantity(quantity);
+        stock.setLastUpdatedAt(LocalDateTime.now());
+        warehouseStockRepository.save(stock);
+    }
+
+    @Override
+    public void adjustStock(UUID warehouseId, UUID productId, UUID variantId, Integer difference) {
+        WarehouseStock stock = warehouseStockRepository.findByProductIdAndVariantIdAndWarehouseId(
+                productId, variantId, warehouseId).orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "Warehouse stock not found"));
+
+        if (difference > 0) {
+            stock.increaseQuantity(difference);
+        } else if (difference < 0) {
+            stock.decreaseQuantity(Math.abs(difference));
+        }
+
+        stock.setLastUpdatedAt(LocalDateTime.now());
+        warehouseStockRepository.save(stock);
     }
 
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.auth_system.auth.entity.User;
+import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.service.CurrentUserService;
 import com.example.auth_system.inventory.dto.request.stockAdjustment.ApproveStockAdjustmentRequest;
@@ -38,6 +39,7 @@ import com.example.auth_system.inventory.repository.StockAdjustmentRepository;
 import com.example.auth_system.inventory.repository.WarehouseStockRepository;
 import com.example.auth_system.inventory.service.StockAdjustmentService;
 import com.example.auth_system.inventory.service.StockMovementService;
+import com.example.auth_system.inventory.service.WarehouseStockService;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.product.repository.ProductRepository;
@@ -63,6 +65,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
         private final CurrentUserService currentUserService;
         private final StockMovementService stockMovementService;
         private final InventoryCountItemRepository inventoryCountItemRepository;
+        private final WarehouseStockService warehouseStockService;
 
         @Override
         @Transactional
@@ -244,6 +247,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
         }
 
         @Override
+        @Transactional
         public StockAdjustmentResponse approveStockAdjustment(UUID adjustmentId,
                         ApproveStockAdjustmentRequest request) {
 
@@ -258,6 +262,34 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
                 }
 
                 User user = currentUserService.getCurrentUser();
+
+                if (adjustment.getDifference() == 0) {
+                        throw new BusinessException(
+                                        "No stock difference found");
+                }
+                MovementType finalMovementType = adjustment.getDifference() > 0
+                                ? MovementType.ADJUSTMENT_IN
+                                : MovementType.ADJUSTMENT_OUT;
+
+                stockMovementService.createMovement(
+                                finalMovementType,
+                                adjustment.getProduct(),
+                                adjustment.getVariant(),
+                                null,
+                                adjustment.getWarehouse(),
+                                Math.abs(adjustment.getDifference()),
+                                adjustment.getOldQuantity(),
+                                adjustment.getNewQuantity(),
+                                null,
+                                adjustment.getId(),
+                                ReferenceType.STOCK_ADJUSTMENT,
+                                "Inventory count adjustment",
+                                user);
+
+                // 2. Update current stock
+                warehouseStockService.adjustStock(adjustment.getProduct().getId(), adjustment.getVariant().getId(),
+                                adjustment.getWarehouse().getId(), adjustment.getDifference());
+
                 adjustment.setStatus(AdjustmentStatus.APPROVED);
                 adjustment.setApprovedBy(user);
                 adjustment.setApprovedAt(LocalDateTime.now());
