@@ -1,9 +1,10 @@
 package com.example.auth_system.inventory.entity;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.inventory.enums.CountType;
 import com.example.auth_system.inventory.enums.InventoryCountStatus;
 import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.user.entity.User;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

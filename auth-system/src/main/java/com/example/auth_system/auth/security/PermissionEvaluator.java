@@ -1,8 +1,8 @@
 // src/main/java/com/example/auth_system/auth/security/PermissionEvaluator.java
 package com.example.auth_system.auth.security;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.permission.service.PermissionService;
+import com.example.auth_system.user.entity.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

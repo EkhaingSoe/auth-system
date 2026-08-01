@@ -1,11 +1,12 @@
 // src/main/java/com/example/auth_system/user/mapper/UserMapper.java
 package com.example.auth_system.user.mapper;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
+import com.example.auth_system.user.entity.User;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;

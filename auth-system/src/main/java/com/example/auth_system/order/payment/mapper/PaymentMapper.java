@@ -2,7 +2,6 @@ package com.example.auth_system.order.payment.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.order.order.dto.orderResponse.CustomerInfoResponse;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.payment.dto.paymentRequest.CreateEcommercePaymentRequest;
@@ -11,6 +10,7 @@ import com.example.auth_system.order.payment.dto.paymentResponse.EcommercePaymen
 import com.example.auth_system.order.payment.dto.paymentResponse.PaymentResponse;
 import com.example.auth_system.order.payment.entity.Payment;
 import com.example.auth_system.order.payment.enums.PaymentStatus;
+import com.example.auth_system.user.entity.User;
 
 @Component
 public class PaymentMapper {

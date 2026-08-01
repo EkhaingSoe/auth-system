@@ -11,6 +11,8 @@ import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.example.auth_system.user.entity.User;
+
 @Entity
 @Table(name = "password_reset_tokens")
 @Data

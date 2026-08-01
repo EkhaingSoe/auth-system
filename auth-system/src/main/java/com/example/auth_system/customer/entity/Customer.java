@@ -1,7 +1,8 @@
 package com.example.auth_system.customer.entity;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.customer.enums.Gender;
+import com.example.auth_system.user.entity.User;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

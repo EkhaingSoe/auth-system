@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.service.CurrentUserService;
@@ -33,6 +32,7 @@ import com.example.auth_system.order.refund.repository.RefundRepository;
 import com.example.auth_system.order.refund.service.RefundService;
 import com.example.auth_system.payment_gateway.kpay.KPayGateway;
 import com.example.auth_system.payment_gateway.kpay.KPayRefundResponse;
+import com.example.auth_system.user.entity.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

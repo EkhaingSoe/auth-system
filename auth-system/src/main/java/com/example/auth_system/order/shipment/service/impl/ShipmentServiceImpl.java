@@ -7,7 +7,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.order.order.entity.Order;
@@ -22,6 +21,7 @@ import com.example.auth_system.order.shipment.entity.OrderShipment;
 import com.example.auth_system.order.shipment.enums.ShipmentStatus;
 import com.example.auth_system.order.shipment.mapper.ShipmentMapper;
 import com.example.auth_system.order.shipment.service.ShipmentService;
+import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.repository.UserRepository;
 
 import jakarta.transaction.Transactional;

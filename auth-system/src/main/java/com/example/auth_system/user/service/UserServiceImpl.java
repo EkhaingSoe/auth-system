@@ -1,7 +1,6 @@
 // src/main/java/com/example/auth_system/user/service/impl/UserManagementServiceImpl.java
 package com.example.auth_system.user.service;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.permission.entity.Role;
@@ -11,6 +10,7 @@ import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
+import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.mapper.UserMapper;
 import com.example.auth_system.user.repository.UserManagementRepository;
 import lombok.RequiredArgsConstructor;

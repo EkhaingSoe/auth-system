@@ -1,12 +1,12 @@
 package com.example.auth_system.order.refund.entity;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.payment.entity.Payment;
 import com.example.auth_system.order.refund.dto.refundRequest.RefundItemRequest;
 import com.example.auth_system.order.refund.enums.RefundMethod;
 import com.example.auth_system.order.refund.enums.RefundStatus;
 import com.example.auth_system.order.refund.enums.RefundType;
+import com.example.auth_system.user.entity.User;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

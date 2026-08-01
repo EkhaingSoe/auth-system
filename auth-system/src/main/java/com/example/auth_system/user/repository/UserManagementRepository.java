@@ -1,8 +1,8 @@
 // src/main/java/com/example/auth_system/user/repository/UserManagementRepository.java
 package com.example.auth_system.user.repository;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.permission.entity.RoleName;
+import com.example.auth_system.user.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,7 +1,7 @@
 // src/main/java/com/example/auth_system/auth/security/CustomUserDetailsService.java
 package com.example.auth_system.auth.security;
 
-import com.example.auth_system.auth.entity.User;
+import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;

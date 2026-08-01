@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.order.order.entity.Order;
 import com.example.auth_system.order.payment.entity.Payment;
 import com.example.auth_system.order.refund.dto.refundRequest.ProcessRefundRequest;
 import com.example.auth_system.order.refund.dto.refundResponse.RefundResponse;
 import com.example.auth_system.order.refund.entity.Refund;
 import com.example.auth_system.order.refund.entity.RefundItem;
+import com.example.auth_system.user.entity.User;
 
 import lombok.RequiredArgsConstructor;
 

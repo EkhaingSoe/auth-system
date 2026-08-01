@@ -1,12 +1,13 @@
 package com.example.auth_system.inventory.entity;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.inventory.enums.AdjustmentDirection;
 import com.example.auth_system.inventory.enums.AdjustmentStatus;
 import com.example.auth_system.inventory.enums.AdjustmentType;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.user.entity.User;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

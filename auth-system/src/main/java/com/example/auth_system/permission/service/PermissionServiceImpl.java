@@ -1,8 +1,8 @@
 // src/main/java/com/example/auth_system/auth/service/impl/PermissionServiceImpl.java
 package com.example.auth_system.permission.service;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.permission.entity.Permission;
+import com.example.auth_system.user.entity.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

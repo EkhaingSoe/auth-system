@@ -1,6 +1,5 @@
 package com.example.auth_system.inventory.service;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.inventory.dto.request.stockMovement.TransferStockRequest;
 import com.example.auth_system.inventory.dto.response.StockInOutResponse;
 // import com.example.auth_system.inventory.dto.request.TransferStockRequest;
@@ -12,6 +11,7 @@ import com.example.auth_system.inventory.enums.ReferenceType;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.user.entity.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,63 +20,63 @@ import java.util.UUID;
 
 public interface StockMovementService {
 
-    // ============================================================
-    // Query APIs (Frontend)
-    // ============================================================
+        // ============================================================
+        // Query APIs (Frontend)
+        // ============================================================
 
-    List<StockMovementResponse> getAllStockMovements();
+        List<StockMovementResponse> getAllStockMovements();
 
-    StockMovementResponse getStockMovementById(UUID movementId);
+        StockMovementResponse getStockMovementById(UUID movementId);
 
-    StockMovementResponse getStockMovementByNumber(String movementNumber);
+        StockMovementResponse getStockMovementByNumber(String movementNumber);
 
-    List<StockMovementResponse> getStockMovementsByProduct(UUID productId);
+        List<StockMovementResponse> getStockMovementsByProduct(UUID productId);
 
-    List<StockMovementResponse> getStockMovementsByVariant(UUID variantId);
+        List<StockMovementResponse> getStockMovementsByVariant(UUID variantId);
 
-    List<StockMovementResponse> getStockMovementsByWarehouse(UUID warehouseId);
+        List<StockMovementResponse> getStockMovementsByWarehouse(UUID warehouseId);
 
-    List<StockMovementResponse> getStockMovementsByType(MovementType movementType);
+        List<StockMovementResponse> getStockMovementsByType(MovementType movementType);
 
-    List<StockMovementResponse> getStockMovementsByReference(UUID referenceId);
+        List<StockMovementResponse> getStockMovementsByReference(UUID referenceId);
 
-    List<StockMovementResponse> getStockMovementsByDateRange(
-            LocalDateTime start,
-            LocalDateTime end);
+        List<StockMovementResponse> getStockMovementsByDateRange(
+                        LocalDateTime start,
+                        LocalDateTime end);
 
-    List<StockMovementResponse> getStockMovementsByProductAndDateRange(
-            UUID productId,
-            LocalDateTime start,
-            LocalDateTime end);
+        List<StockMovementResponse> getStockMovementsByProductAndDateRange(
+                        UUID productId,
+                        LocalDateTime start,
+                        LocalDateTime end);
 
-    StockMovementSummaryResponse getStockMovementSummary(UUID productId);
+        StockMovementSummaryResponse getStockMovementSummary(UUID productId);
 
-    StockInOutResponse getTotalInOutQuantity(UUID productId);
+        StockInOutResponse getTotalInOutQuantity(UUID productId);
 
-    // // ============================================================
-    // // Inventory Operations
-    // // ============================================================
+        // // ============================================================
+        // // Inventory Operations
+        // // ============================================================
 
-    StockMovementResponse transferStock(TransferStockRequest request);
+        StockMovementResponse transferStock(TransferStockRequest request);
 
-    // // ============================================================
-    // // Internal APIs
-    // // Called by Purchase, Sale, Adjustment, Inventory Count
-    // // ============================================================
+        // // ============================================================
+        // // Internal APIs
+        // // Called by Purchase, Sale, Adjustment, Inventory Count
+        // // ============================================================
 
-    StockMovement createMovement(
-            MovementType movementType,
-            Product product,
-            ProductVariant variant,
-            Store fromWarehouse,
-            Store toWarehouse,
-            Integer quantity,
-            Integer previousQuantity,
-            Integer newQuantity,
-            BigDecimal unitCost,
-            UUID referenceId,
-            ReferenceType referenceType,
-            String notes,
-            User createdBy);
+        StockMovement createMovement(
+                        MovementType movementType,
+                        Product product,
+                        ProductVariant variant,
+                        Store fromWarehouse,
+                        Store toWarehouse,
+                        Integer quantity,
+                        Integer previousQuantity,
+                        Integer newQuantity,
+                        BigDecimal unitCost,
+                        UUID referenceId,
+                        ReferenceType referenceType,
+                        String notes,
+                        User createdBy);
 
 }

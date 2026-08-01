@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.user.entity.User;
 
 import java.time.LocalDateTime;
 import java.util.List;

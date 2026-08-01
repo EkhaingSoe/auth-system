@@ -1,6 +1,5 @@
 package com.example.auth_system.customer.service.impl;
 
-import com.example.auth_system.auth.entity.User;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.customer.dto.request.CreateCustomerRequest;
@@ -12,6 +11,7 @@ import com.example.auth_system.customer.mapper.CustomerMapper;
 import com.example.auth_system.customer.repository.CustomerGroupRepository;
 import com.example.auth_system.customer.repository.CustomerRepository;
 import com.example.auth_system.customer.service.CustomerService;
+import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;

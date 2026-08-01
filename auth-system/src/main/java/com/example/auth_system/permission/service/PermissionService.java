@@ -1,9 +1,9 @@
 // src/main/java/com/example/auth_system/auth/service/PermissionService.java
 package com.example.auth_system.permission.service;
 
-import com.example.auth_system.auth.entity.User;
-
 import java.util.Set;
+
+import com.example.auth_system.user.entity.User;
 
 public interface PermissionService {
 
