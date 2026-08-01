@@ -4,6 +4,7 @@ import com.example.auth_system.inventory.repository.InventoryCountItemRepository
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.inventory.dto.request.inventoryCount.CreateInventoryCountItemRequest;
 import com.example.auth_system.inventory.dto.request.inventoryCount.UpdateCountedQuantityRequest;
 import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountItemResponse;
+import com.example.auth_system.inventory.dto.response.inventoryCount.InventoryCountResponse;
 import com.example.auth_system.inventory.entity.InventoryCount;
 import com.example.auth_system.inventory.entity.InventoryCountItem;
 import com.example.auth_system.inventory.entity.WarehouseStock;
@@ -35,102 +37,127 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 public class InventoryCountItemServiceImpl implements InventoryCountItemService {
 
-    private final InventoryCountItemRepository inventoryCountItemRepository;
-    private final InventoryCountRepository inventoryCountRepository;
-    private final ProductRepository productRepository;
-    private final ProductVariantRepository productVariantRepository;
-    private final WarehouseStockRepository warehouseStockRepository;
-    private final InventoryCountItemMapper inventoryCountItemMapper;
+        private final InventoryCountItemRepository inventoryCountItemRepository;
+        private final InventoryCountRepository inventoryCountRepository;
+        private final ProductRepository productRepository;
+        private final ProductVariantRepository productVariantRepository;
+        private final WarehouseStockRepository warehouseStockRepository;
+        private final InventoryCountItemMapper inventoryCountItemMapper;
 
-    @Transactional
-    @Override
-    public List<InventoryCountItemResponse> createInventoryCountitem(UUID inventoryCountId,
-            List<CreateInventoryCountItemRequest> requests) {
+        @Transactional
+        @Override
+        public List<InventoryCountItemResponse> createInventoryCountitem(UUID inventoryCountId,
+                        List<CreateInventoryCountItemRequest> requests) {
 
-        InventoryCount count = inventoryCountRepository.findById(inventoryCountId).orElseThrow(
-                () -> new ResourceNotFoundException("Warehouse not found"));
+                InventoryCount count = inventoryCountRepository.findById(inventoryCountId).orElseThrow(
+                                () -> new ResourceNotFoundException("Warehouse not found"));
 
-        if (count.getStatus() != InventoryCountStatus.PENDING) {
-            throw new BusinessException(
-                    "Cannot add items after count started");
+                if (count.getStatus() != InventoryCountStatus.PENDING) {
+                        throw new BusinessException(
+                                        "Cannot add items after count started");
+                }
+
+                List<InventoryCountItem> items = new ArrayList<>();
+
+                for (CreateInventoryCountItemRequest request : requests) {
+
+                        Product product = productRepository.findById(request.getProductId())
+                                        .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+
+                        ProductVariant variant = null;
+
+                        if (request.getVariantId() != null) {
+                                variant = productVariantRepository.findById(request.getVariantId())
+                                                .orElseThrow(() -> new ResourceNotFoundException("Variant not found"));
+                        }
+
+                        Integer systemQuantity = getCurrentStock(
+                                        count.getWarehouse().getId(),
+                                        product.getId(),
+                                        request.getVariantId());
+
+                        InventoryCountItem item = InventoryCountItem.builder()
+                                        .inventoryCount(count)
+                                        .product(product)
+                                        .variant(variant)
+                                        .systemQuantity(systemQuantity)
+                                        .countedQuantity(0)
+                                        .difference(0)
+                                        .build();
+
+                        items.add(item);
+                }
+
+                List<InventoryCountItem> savedItems = inventoryCountItemRepository.saveAll(items);
+
+                return savedItems.stream()
+                                .map(inventoryCountItemMapper::toResponse)
+                                .toList();
+
         }
 
-        List<InventoryCountItem> items = new ArrayList<>();
+        @Override
+        @Transactional(readOnly = true)
+        public List<InventoryCountItemResponse> getByInventoryCount(UUID inventoryCountId) {
 
-        for (CreateInventoryCountItemRequest request : requests) {
-
-            Product product = productRepository.findById(request.getProductId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
-
-            ProductVariant variant = null;
-
-            if (request.getVariantId() != null) {
-                variant = productVariantRepository.findById(request.getVariantId())
-                        .orElseThrow(() -> new ResourceNotFoundException("Variant not found"));
-            }
-
-            Integer systemQuantity = getCurrentStock(
-                    count.getWarehouse().getId(),
-                    product.getId(),
-                    request.getVariantId());
-
-            InventoryCountItem item = InventoryCountItem.builder()
-                    .inventoryCount(count)
-                    .product(product)
-                    .variant(variant)
-                    .systemQuantity(systemQuantity)
-                    .countedQuantity(0)
-                    .difference(0)
-                    .build();
-
-            items.add(item);
+                List<InventoryCountItem> items = inventoryCountItemRepository.findByInventoryCountId(inventoryCountId);
+                return items.stream()
+                                .map(inventoryCountItemMapper::toResponse)
+                                .toList();
         }
 
-        List<InventoryCountItem> savedItems = inventoryCountItemRepository.saveAll(items);
+        @Override
+        @Transactional(readOnly = true)
+        public List<InventoryCountItemResponse> getDiscrepancyItems(UUID inventoryCountId) {
 
-        return savedItems.stream()
-                .map(inventoryCountItemMapper::toResponse)
-                .toList();
+                InventoryCount count = inventoryCountRepository.findById(inventoryCountId)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Inventory count not found"));
 
-    }
-
-    @Transactional
-    @Override
-    public InventoryCountItemResponse countedQuantity(UUID itemId, UpdateCountedQuantityRequest countedQuantity) {
-
-        InventoryCountItem countItem = inventoryCountItemRepository.findById(itemId)
-                .orElseThrow(() -> new ResourceNotFoundException("Count Item not found"));
-
-        InventoryCount inventoryCount = countItem.getInventoryCount();
-
-        if (inventoryCount.getStatus() != InventoryCountStatus.IN_PROGRESS) {
-            throw new BusinessException(
-                    "Inventory count must be in progress");
+                List<InventoryCountItem> items = inventoryCountItemRepository
+                                .findDiscrepancyItemsByCountId(inventoryCountId);
+                return items.stream()
+                                .map(inventoryCountItemMapper::toResponse)
+                                .toList();
         }
 
-        countItem.setCountedQuantity(countedQuantity.getCountedQuantity());
-        countItem.setDifference(countItem.getCountedQuantity() - countItem.getSystemQuantity());
-        InventoryCountItem savedItem = inventoryCountItemRepository.save(countItem);
+        @Transactional
+        @Override
+        public InventoryCountItemResponse countedQuantity(UUID itemId, UpdateCountedQuantityRequest countedQuantity) {
 
-        return inventoryCountItemMapper.toResponse(savedItem);
+                InventoryCountItem countItem = inventoryCountItemRepository.findById(itemId)
+                                .orElseThrow(() -> new ResourceNotFoundException("Count Item not found"));
 
-    }
+                InventoryCount inventoryCount = countItem.getInventoryCount();
 
-    private Integer getCurrentStock(UUID warehouseId, UUID productId, UUID variantId) {
+                if (inventoryCount.getStatus() != InventoryCountStatus.IN_PROGRESS) {
+                        throw new BusinessException(
+                                        "Inventory count must be in progress");
+                }
 
-        if (variantId != null) {
-            return warehouseStockRepository
-                    .findByProductIdAndVariantIdAndWarehouseId(productId, variantId, warehouseId)
-                    .map(WarehouseStock::getAvailableQuantity)
-                    .orElse(0);
+                countItem.setCountedQuantity(countedQuantity.getCountedQuantity());
+                countItem.setDifference(countItem.getCountedQuantity() - countItem.getSystemQuantity());
+                InventoryCountItem savedItem = inventoryCountItemRepository.save(countItem);
+
+                return inventoryCountItemMapper.toResponse(savedItem);
+
         }
 
-        return warehouseStockRepository
-                .findByProductIdAndVariantIdAndWarehouseId(
-                        productId,
-                        null,
-                        warehouseId)
-                .map(WarehouseStock::getAvailableQuantity)
-                .orElse(0);
-    }
+        private Integer getCurrentStock(UUID warehouseId, UUID productId, UUID variantId) {
+
+                if (variantId != null) {
+                        return warehouseStockRepository
+                                        .findByProductIdAndVariantIdAndWarehouseId(productId, variantId, warehouseId)
+                                        .map(WarehouseStock::getAvailableQuantity)
+                                        .orElse(0);
+                }
+
+                return warehouseStockRepository
+                                .findByProductIdAndVariantIdAndWarehouseId(
+                                                productId,
+                                                null,
+                                                warehouseId)
+                                .map(WarehouseStock::getAvailableQuantity)
+                                .orElse(0);
+        }
 }

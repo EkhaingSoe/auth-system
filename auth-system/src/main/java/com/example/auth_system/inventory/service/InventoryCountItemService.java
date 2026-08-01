@@ -13,20 +13,10 @@ public interface InventoryCountItemService {
     List<InventoryCountItemResponse> createInventoryCountitem(UUID inventoryCountId,
             List<CreateInventoryCountItemRequest> requests);
 
-    // InventoryCountItemResponse update(UUID itemId,
-    // UpdateInventoryCountItemsRequest request);
+    List<InventoryCountItemResponse> getByInventoryCount(UUID inventoryCountId);
 
-    // void delete(UUID itemId);
-
-    // InventoryCountItemResponse getById(UUID itemId);
-
-    // List<InventoryCountItemResponse> getByInventoryCount(UUID inventoryCountId);
-
-    // List<InventoryCountItemResponse> getDiscrepancyItems(UUID inventoryCountId);
+    List<InventoryCountItemResponse> getDiscrepancyItems(UUID inventoryCountId);
 
     InventoryCountItemResponse countedQuantity(UUID itemId, UpdateCountedQuantityRequest countedQuantity);
-
-    // List<InventoryCountItemResponse> createStockAdjustments(UUID
-    // inventoryCountId);
 
 }

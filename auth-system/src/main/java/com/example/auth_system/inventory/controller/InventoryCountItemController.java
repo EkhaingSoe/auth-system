@@ -22,124 +22,65 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InventoryCountItemController {
 
-    private final InventoryCountItemService inventoryCountItemService;
+        private final InventoryCountItemService inventoryCountItemService;
 
-    @PostMapping("/{inventoryCountId}")
-    public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>> createInventoryCountItem(
-            @PathVariable UUID inventoryCountId,
-            @RequestBody @Valid List<CreateInventoryCountItemRequest> requests) {
+        @PostMapping("/{inventoryCountId}")
+        public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>> createInventoryCountItem(
+                        @PathVariable UUID inventoryCountId,
+                        @RequestBody @Valid List<CreateInventoryCountItemRequest> requests) {
 
-        List<InventoryCountItemResponse> response = inventoryCountItemService.createInventoryCountitem(
-                inventoryCountId,
-                requests);
+                List<InventoryCountItemResponse> response = inventoryCountItemService.createInventoryCountitem(
+                                inventoryCountId,
+                                requests);
 
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success(
-                        201,
-                        "Inventory count items created successfully",
-                        response));
-    }
+                return ResponseEntity.status(HttpStatus.CREATED)
+                                .body(ApiResponse.success(
+                                                201,
+                                                "Inventory count items created successfully",
+                                                response));
+        }
 
-    // @PutMapping("/{itemId}")
-    // public ResponseEntity<ApiResponse<InventoryCountItemResponse>> update(
-    // @PathVariable UUID itemId,
-    // @RequestBody @Valid UpdateInventoryCountItemsRequest request) {
+        @GetMapping("/count/{inventoryCountId}")
+        public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>> getByInventoryCount(
+                        @PathVariable UUID inventoryCountId) {
 
-    // InventoryCountItemResponse response =
-    // inventoryCountItemService.update(itemId, request);
+                List<InventoryCountItemResponse> response = inventoryCountItemService
+                                .getByInventoryCount(inventoryCountId);
 
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Inventory count item updated successfully",
-    // response));
-    // }
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Inventory count items retrieved successfully",
+                                                response));
+        }
 
-    // @DeleteMapping("/{itemId}")
-    // public ResponseEntity<ApiResponse<Void>> delete(
-    // @PathVariable UUID itemId) {
+        @GetMapping("/count/{inventoryCountId}/discrepancies")
+        public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>> getDiscrepancyItems(
+                        @PathVariable UUID inventoryCountId) {
 
-    // inventoryCountItemService.delete(itemId);
+                List<InventoryCountItemResponse> response = inventoryCountItemService
+                                .getDiscrepancyItems(inventoryCountId);
 
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Inventory count item deleted successfully",
-    // null));
-    // }
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Discrepancy items retrieved successfully",
+                                                response));
+        }
 
-    // @GetMapping("/{itemId}")
-    // public ResponseEntity<ApiResponse<InventoryCountItemResponse>> getById(
-    // @PathVariable UUID itemId) {
+        @PutMapping("/{itemId}/count")
+        public ResponseEntity<ApiResponse<InventoryCountItemResponse>> updateCountedQuantity(
+                        @PathVariable UUID itemId,
+                        @RequestBody @Valid UpdateCountedQuantityRequest request) {
 
-    // InventoryCountItemResponse response =
-    // inventoryCountItemService.getById(itemId);
+                InventoryCountItemResponse response = inventoryCountItemService.countedQuantity(
+                                itemId,
+                                request);
 
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Inventory count item retrieved successfully",
-    // response));
-    // }
-
-    // @GetMapping("/count/{inventoryCountId}")
-    // public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>>
-    // getByInventoryCount(
-    // @PathVariable UUID inventoryCountId) {
-
-    // List<InventoryCountItemResponse> response =
-    // inventoryCountItemService.getByInventoryCount(inventoryCountId);
-
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Inventory count items retrieved successfully",
-    // response));
-    // }
-
-    // @GetMapping("/count/{inventoryCountId}/discrepancies")
-    // public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>>
-    // getDiscrepancyItems(
-    // @PathVariable UUID inventoryCountId) {
-
-    // List<InventoryCountItemResponse> response =
-    // inventoryCountItemService.getDiscrepancyItems(inventoryCountId);
-
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Discrepancy items retrieved successfully",
-    // response));
-    // }
-
-    @PutMapping("/{itemId}/count")
-    public ResponseEntity<ApiResponse<InventoryCountItemResponse>> updateCountedQuantity(
-            @PathVariable UUID itemId,
-            @RequestBody @Valid UpdateCountedQuantityRequest request) {
-
-        InventoryCountItemResponse response = inventoryCountItemService.countedQuantity(
-                itemId,
-                request);
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Counted quantity updated successfully",
-                        response));
-    }
-
-    // @PostMapping("/{inventoryCountId}/create-adjustments")
-    // public ResponseEntity<ApiResponse<List<InventoryCountItemResponse>>>
-    // createStockAdjustments(
-    // @PathVariable UUID inventoryCountId) {
-
-    // List<InventoryCountItemResponse> response =
-    // inventoryCountItemService.createStockAdjustments(inventoryCountId);
-
-    // return ResponseEntity.ok(
-    // ApiResponse.success(
-    // 200,
-    // "Stock adjustments created successfully",
-    // response));
-    // }
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Counted quantity updated successfully",
+                                                response));
+        }
 }
