@@ -3,6 +3,8 @@ package com.example.auth_system.user.dto.response;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.example.auth_system.user.enums.UserStatus;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,7 +17,7 @@ public class UserInfoResponse {
     private String lastName;
     private String role;
     private boolean emailVerified;
-    private boolean enabled;
+    private UserStatus status;
     private LocalDateTime createdAt; // Change from String to LocalDateTime
     private LocalDateTime lastLoginAt;
 }

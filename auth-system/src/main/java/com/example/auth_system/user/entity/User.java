@@ -12,6 +12,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.user.enums.UserStatus;
 
 @Entity
 @Table(name = "users")
@@ -40,15 +41,21 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    // @Column(name = "store_id")
-    // private UUID storeId;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id")
+    @JoinColumn(name = "store")
     private Store store;
 
-    private boolean enabled;
-    private boolean emailVerified;
+    // private boolean enabled;
+    // private boolean emailVerified;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @Builder.Default
+    private UserStatus status = UserStatus.ACTIVE;
+
+    @Column(name = "email_verified")
+    @Builder.Default
+    private boolean emailVerified = false;
 
     @Builder.Default
     @ManyToMany(fetch = FetchType.LAZY)

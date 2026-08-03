@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.auth_system.user.enums.UserStatus;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -23,7 +25,7 @@ public class UserResponse {
     private UUID storeId;
     private String storeName;
     private List<String> roles;
-    private boolean enabled;
+    private UserStatus status;
     private boolean emailVerified;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

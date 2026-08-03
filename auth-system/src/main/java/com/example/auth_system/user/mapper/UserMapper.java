@@ -5,6 +5,7 @@ import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
+import com.example.auth_system.user.enums.UserStatus;
 
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ public class UserMapper {
                 .email(request.getEmail())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .enabled(true)
+                .status(UserStatus.ACTIVE)
                 .emailVerified(false)
                 .build();
     }
@@ -32,8 +33,8 @@ public class UserMapper {
         if (request.getLastName() != null) {
             user.setLastName(request.getLastName());
         }
-        if (request.getEnabled() != null) {
-            user.setEnabled(request.getEnabled());
+        if (request.getStatus() != null) {
+            user.setStatus(request.getStatus());
         }
         return user;
     }
@@ -50,7 +51,7 @@ public class UserMapper {
                 .roles(user.getRoles().stream()
                         .map(role -> role.getName().name())
                         .collect(Collectors.toList()))
-                .enabled(user.isEnabled())
+                .status(user.getStatus())
                 .emailVerified(user.isEmailVerified())
                 .createdAt(user.getCreatedAt())
                 .updatedAt(user.getUpdatedAt())

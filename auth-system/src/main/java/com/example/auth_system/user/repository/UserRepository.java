@@ -4,18 +4,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.user.entity.User;
+import com.example.auth_system.user.enums.UserStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
 
     // Find by email (most common)
@@ -24,8 +23,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     // Check if email exists
     boolean existsByEmail(String email);
 
-    // Find by email and enabled status
-    Optional<User> findByEmailAndEnabledTrue(String email);
+    // Find by email and status
+    Optional<User> findByEmailAndStatus(String email, UserStatus status);
 
     // Find users by role
     List<User> findByRolesContaining(Role role);
@@ -46,12 +45,12 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     // Soft delete or disable user
     @Modifying
     @Transactional
-    @Query("UPDATE User u SET u.enabled = false WHERE u.email = :email")
-    void disableUserByEmail(@Param("email") String email);
+    @Query("UPDATE User u SET u.status = :status WHERE u.email = :email")
+    void updateUserStatusByEmail(@Param("email") String email, @Param("status") UserStatus status);
 
     // Count active users
-    @Query("SELECT COUNT(u) FROM User u WHERE u.enabled = true AND u.emailVerified = true")
-    long countActiveUsers();
+    @Query("SELECT COUNT(u) FROM User u WHERE u.status = :status AND u.emailVerified = true")
+    long countActiveUsers(@Param("status") UserStatus status);
 
     // Find by name containing (case insensitive)
     List<User> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName);

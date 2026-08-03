@@ -17,6 +17,7 @@ import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.permission.repository.RoleRepository;
 import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.entity.User;
+import com.example.auth_system.user.enums.UserStatus;
 import com.example.auth_system.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -65,7 +66,7 @@ public class AuthServiceImpl implements AuthService {
                     .firstName(request.getFirstName())
                     .lastName(request.getLastName())
                     .roles(Set.of(userRole))
-                    .enabled(false)
+                    .status(UserStatus.INACTIVE)
                     .emailVerified(false)
                     .createdAt(LocalDateTime.now())
                     .updatedAt(LocalDateTime.now())
@@ -110,7 +111,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         // Check if user is enabled
-        if (!user.isEnabled()) {
+        if (user.getStatus() != UserStatus.ACTIVE) {
             throw new AuthException("Account is disabled. Please contact support");
         }
 
@@ -265,7 +266,7 @@ public class AuthServiceImpl implements AuthService {
                     .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
             user.setEmailVerified(true);
-            user.setEnabled(true);
+            user.setStatus(UserStatus.ACTIVE);
             user.setUpdatedAt(LocalDateTime.now());
             userRepository.save(user);
 
@@ -313,7 +314,7 @@ public class AuthServiceImpl implements AuthService {
                 .lastName(user.getLastName())
                 .role(roleName)
                 .emailVerified(user.isEmailVerified())
-                .enabled(user.isEnabled())
+                .status(user.getStatus())
                 .createdAt(user.getCreatedAt())
                 .lastLoginAt(user.getLastLoginAt())
                 .build();
@@ -355,7 +356,7 @@ public class AuthServiceImpl implements AuthService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         user.setEmailVerified(true);
-        user.setEnabled(true);
+        user.setStatus(UserStatus.ACTIVE);
         userRepository.save(user);
 
         log.info("Email verified for user: {}", email);

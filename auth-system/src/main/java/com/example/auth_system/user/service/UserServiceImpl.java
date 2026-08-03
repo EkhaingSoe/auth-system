@@ -13,6 +13,7 @@ import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
+import com.example.auth_system.user.enums.UserStatus;
 import com.example.auth_system.user.mapper.UserMapper;
 import com.example.auth_system.user.repository.UserManagementRepository;
 import lombok.RequiredArgsConstructor;
@@ -67,7 +68,6 @@ public class UserServiceImpl implements UserService {
     public UserResponse createUser(CreateUserRequest request) {
         log.info("Creating new user with username: {}, email: {}", request.getUsername(), request.getEmail());
 
-        // ✅ Check if username already exists
         if (request.getUsername() != null && userRepository.existsByUsername(request.getUsername())) {
             throw new UserAlreadyExistsException("Username '" + request.getUsername() + "' already taken");
         }
@@ -104,11 +104,11 @@ public class UserServiceImpl implements UserService {
 
             user.setStore(store);
             user.setEmailVerified(true); // Staff auto-verified
-            user.setEnabled(true); // Staff auto-enabled
+            user.setStatus(UserStatus.ACTIVE); // Staff auto-enabled
         } else {
             user.setStore(store);
             user.setEmailVerified(false); // Public needs OTP
-            user.setEnabled(false); // Public needs verification
+            user.setStatus(UserStatus.PENDING); // Public needs verification
         }
 
         user = userRepository.save(user);
@@ -132,8 +132,8 @@ public class UserServiceImpl implements UserService {
         if (request.getLastName() != null) {
             user.setLastName(request.getLastName());
         }
-        if (request.getEnabled() != null) {
-            user.setEnabled(request.getEnabled());
+        if (request.getStatus() != null) {
+            user.setStatus(request.getStatus());
         }
 
         user.setUpdatedAt(LocalDateTime.now());
@@ -171,7 +171,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
-        user.setEnabled(true);
+        user.setStatus(UserStatus.ACTIVE);
         user.setUpdatedAt(LocalDateTime.now());
         userRepository.save(user);
 
@@ -185,7 +185,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
-        user.setEnabled(false);
+        user.setStatus(UserStatus.INACTIVE);
         user.setUpdatedAt(LocalDateTime.now());
         userRepository.save(user);
 
@@ -230,7 +230,7 @@ public class UserServiceImpl implements UserService {
     public List<UserResponse> getEnabledUsers() {
         log.info("Fetching enabled users");
 
-        List<User> users = userRepository.findAllEnabled();
+        List<User> users = userRepository.findUsersByStatus(UserStatus.ACTIVE);
         return userMapper.toResponseList(users);
     }
 

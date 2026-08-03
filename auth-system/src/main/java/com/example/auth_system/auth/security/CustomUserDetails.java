@@ -3,6 +3,7 @@ package com.example.auth_system.auth.security;
 
 import com.example.auth_system.permission.entity.Permission;
 import com.example.auth_system.user.entity.User;
+import com.example.auth_system.user.enums.UserStatus;
 
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
@@ -50,7 +51,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.isEnabled();
+        return user.getStatus() == UserStatus.ACTIVE;
     }
 
     @Override
