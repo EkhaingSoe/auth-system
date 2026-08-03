@@ -1,7 +1,6 @@
 // src/main/java/com/example/auth_system/user/mapper/UserMapper.java
 package com.example.auth_system.user.mapper;
 
-import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
 import com.example.auth_system.user.dto.response.UserResponse;
@@ -21,7 +20,6 @@ public class UserMapper {
                 .email(request.getEmail())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .storeId(request.getStoreId())
                 .enabled(true)
                 .emailVerified(false)
                 .build();
@@ -47,7 +45,8 @@ public class UserMapper {
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .storeId(user.getStoreId())
+                .storeId(user.getStore().getId())
+                .storeName(user.getStore().getName())
                 .roles(user.getRoles().stream()
                         .map(role -> role.getName().name())
                         .collect(Collectors.toList()))

@@ -31,7 +31,7 @@ public class Customer {
     private UUID id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @Column(name = "customer_code", unique = true, nullable = false, length = 20)
@@ -112,7 +112,7 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<Wishlist> wishlistItems = new ArrayList<>();
+    private List<Wishlist> wishlists = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -127,12 +127,12 @@ public class Customer {
     }
 
     public void addWishlistItem(Wishlist wishlistItem) {
-        wishlistItems.add(wishlistItem);
+        wishlists.add(wishlistItem);
         wishlistItem.setCustomer(this);
     }
 
     public void removeWishlistItem(Wishlist wishlistItem) {
-        wishlistItems.remove(wishlistItem);
+        wishlists.remove(wishlistItem);
         wishlistItem.setCustomer(null);
     }
 

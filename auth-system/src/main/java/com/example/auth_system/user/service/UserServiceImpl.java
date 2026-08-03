@@ -6,6 +6,8 @@ import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.permission.repository.RoleRepository;
+import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.store.repository.StoreRepository;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
@@ -36,6 +38,7 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
+    private final StoreRepository storeRepository;
 
     @Override
     public List<UserResponse> getAllUsers() {
@@ -91,16 +94,19 @@ public class UserServiceImpl implements UserService {
             roles.add(defaultRole);
         }
         user.setRoles(roles);
+        Store store = storeRepository.findById(request.getStoreId())
+                .orElseThrow(() -> new ResourceNotFoundException("Store not found with id: " + request.getStoreId()));
 
         if (user.getUsername() != null && !user.getUsername().isEmpty()) {
             if (request.getStoreId() == null) {
                 throw new RuntimeException("Store ID is required for staff users");
             }
-            user.setStoreId(request.getStoreId());
+
+            user.setStore(store);
             user.setEmailVerified(true); // Staff auto-verified
             user.setEnabled(true); // Staff auto-enabled
         } else {
-            user.setStoreId(null);
+            user.setStore(store);
             user.setEmailVerified(false); // Public needs OTP
             user.setEnabled(false); // Public needs verification
         }

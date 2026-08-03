@@ -55,7 +55,7 @@ public class CustomerResponse {
 
     private String notes;
 
-    private List<WishlistResponse> wishlistItems;
+    private List<WishlistResponse> wishlists;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

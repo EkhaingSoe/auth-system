@@ -114,7 +114,9 @@ public class CustomerMapper {
                 .userEmail(customer.getUser() != null ? customer.getUser().getEmail() : null)
                 .customerGroupId(customer.getCustomerGroup() != null ? customer.getCustomerGroup().getId() : null)
                 .customerGroupName(customer.getCustomerGroup() != null ? customer.getCustomerGroup().getName() : null)
-                .discountPercentage(customer.getCustomerGroup() != null ? customer.getCustomerGroup().getDiscountPercentage() : null)
+                .discountPercentage(
+                        customer.getCustomerGroup() != null ? customer.getCustomerGroup().getDiscountPercentage()
+                                : null)
                 .addressLine1(customer.getAddressLine1())
                 .addressLine2(customer.getAddressLine2())
                 .city(customer.getCity())
@@ -132,10 +134,9 @@ public class CustomerMapper {
                 .isActive(customer.getIsActive())
                 .isVip(customer.getIsVip())
                 .notes(customer.getNotes())
-                .wishlistItems(customer.getWishlistItems() != null ?
-                        customer.getWishlistItems().stream()
-                                .map(wishlistMapper::toResponse)
-                                .collect(Collectors.toList()) : null)
+                .wishlists(customer.getWishlists() != null ? customer.getWishlists().stream()
+                        .map(wishlistMapper::toResponse)
+                        .collect(Collectors.toList()) : null)
                 .createdAt(customer.getCreatedAt())
                 .updatedAt(customer.getUpdatedAt())
                 .build();

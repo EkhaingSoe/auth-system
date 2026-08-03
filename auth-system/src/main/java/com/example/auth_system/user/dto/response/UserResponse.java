@@ -21,6 +21,7 @@ public class UserResponse {
     private String firstName;
     private String lastName;
     private UUID storeId;
+    private String storeName;
     private List<String> roles;
     private boolean enabled;
     private boolean emailVerified;
