@@ -23,8 +23,6 @@ public class AuthController {
     private final AuthService authService;
 
     /**
-     * Register a new user
-     * 
      * @param request Registration request with email, password, first name, last
      *                name
      * @return AuthResponse with registration status
@@ -127,13 +125,13 @@ public class AuthController {
     public ResponseEntity<ApiResponse<RefreshTokenResponse>> refreshToken(
             @Valid @RequestBody RefreshTokenRequest request) {
         log.info("🔄 POST /api/auth/refresh-token - Refresh token");
-        // TODO: Implement refresh token logic in AuthService
         RefreshTokenResponse response = authService.refreshToken(request);
         return ResponseEntity.ok(ApiResponse.success("Token refreshed successfully", response));
     }
 
     /**
-     * Verify email using token (alternative to OTP)
+     * Verify email using token (alternative to OTP) after registration or email
+     * change
      * 
      * @param token Email verification token
      * @return ApiResponse with verification status
@@ -141,7 +139,6 @@ public class AuthController {
     @GetMapping("/verify-email")
     public ResponseEntity<ApiResponse<Void>> verifyEmail(@RequestParam String token) {
         log.info("📧 GET /api/auth/verify-email - Verifying email");
-        // TODO: Implement email verification logic
         authService.verifyEmail(token);
         return ResponseEntity.ok(ApiResponse.success(200, "Email verified successfully", null));
     }

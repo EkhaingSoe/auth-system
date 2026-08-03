@@ -322,7 +322,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public RefreshTokenResponse refreshToken(RefreshTokenRequest request) {
-        log.info("Refreshing token");
         String refreshToken = request.getRefreshToken();
 
         if (!jwtTokenProvider.validateToken(refreshToken)) {

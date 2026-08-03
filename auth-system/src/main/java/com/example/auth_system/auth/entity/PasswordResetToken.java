@@ -25,7 +25,10 @@ public class PasswordResetToken {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, unique = true, columnDefinition = "TEXT")
+    // @Column(nullable = false, unique = true, columnDefinition = "TEXT")
+    // private String token;
+
+    @Column(nullable = false, unique = true)
     private String token;
 
     @ManyToOne(fetch = FetchType.LAZY)
