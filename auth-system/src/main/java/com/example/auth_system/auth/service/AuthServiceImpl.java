@@ -3,6 +3,7 @@ package com.example.auth_system.auth.service;
 import com.example.auth_system.auth.dto.request.*;
 import com.example.auth_system.auth.dto.response.*;
 import com.example.auth_system.auth.entity.*;
+import com.example.auth_system.auth.mapper.AuthMapper;
 import com.example.auth_system.auth.repository.*;
 import com.example.auth_system.auth.security.JwtTokenProvider;
 import com.example.auth_system.common.exception.AuthException;
@@ -44,116 +45,64 @@ public class AuthServiceImpl implements AuthService {
     private final OtpService otpService;
     private final EmailService emailService;
     private final RoleRepository roleRepository;
+    private final AuthMapper authMapper;
 
     @Override
     @Transactional
-    public AuthResponse register(RegisterRequest request) {
-        try {
-            log.info("Registering new user with email: {}", request.getEmail());
+    public RegisterResponse register(RegisterRequest request) {
 
-            // Check if user already exists
-            if (userRepository.existsByEmail(request.getEmail())) {
-                throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
-            }
-
-            Role userRole = roleRepository.findByName(RoleName.ROLE_CASHIER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-
-            // Create new user
-            User user = User.builder()
-                    .email(request.getEmail())
-                    .password(passwordEncoder.encode(request.getPassword()))
-                    .firstName(request.getFirstName())
-                    .lastName(request.getLastName())
-                    .roles(Set.of(userRole))
-                    .status(UserStatus.INACTIVE)
-                    .emailVerified(false)
-                    .createdAt(LocalDateTime.now())
-                    .updatedAt(LocalDateTime.now())
-                    .build();
-
-            user = userRepository.save(user);
-
-            // Send OTP for email verification
-            otpService.sendOtp(user.getEmail(), OtpType.REGISTRATION);
-
-            log.info("User registered successfully with id: {}", user.getId());
-
-            return AuthResponse.builder()
-                    .success(true)
-                    .message("Registration successful. Please verify your email with OTP")
-                    .userId(user.getId().toString())
-                    .build();
-        } catch (Exception e) {
-            log.error("Registration failed for email {}: {}", request.getEmail(), e.getMessage(), e);
-            throw new AuthException("Registration failed: " + e.getMessage());
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new UserAlreadyExistsException("Email already exists");
         }
+
+        Role role = roleRepository
+                .findByName(RoleName.ROLE_CASHIER)
+                .orElseThrow(() -> new RuntimeException("Role not found"));
+
+        User user = authMapper.toRegisterEntity(
+                request,
+                role,
+                passwordEncoder);
+
+        otpService.sendOtp(user.getEmail(), OtpType.REGISTRATION);
+        User savedUser = userRepository.save(user);
+        return authMapper.toRegisterResponse(savedUser);
 
     }
 
     @Override
     public LoginResponse login(LoginRequest request) {
-        log.info("Login attempt for email: {}", request.getEmail());
 
-        // Find user by email or email
         User user = userRepository.findByEmail(request.getEmail())
                 .or(() -> userRepository.findByUsername(request.getEmail())) // ✅ NEW: Fallback to username
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
-        // Check password
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new InvalidCredentialsException("Invalid email or password");
         }
 
-        // Check if email is verified
         if (!user.isEmailVerified()) {
             throw new AuthException("Please verify your email before logging in");
         }
 
-        // Check if user is enabled
         if (user.getStatus() != UserStatus.ACTIVE) {
             throw new AuthException("Account is disabled. Please contact support");
         }
 
-        // Generate JWT token
-        String token = jwtTokenProvider.generateToken(user);
-
-        // Update last login time
         user.setLastLoginAt(LocalDateTime.now());
         userRepository.save(user);
 
-        String loginId = user.getUsername() != null ? user.getUsername() : user.getEmail();
-        log.info("User logged in successfully: {}", loginId);
-
-        return LoginResponse.builder()
-                .accessToken(token)
-                .refreshToken(jwtTokenProvider.generateRefreshToken(user))
-                .tokenType("Bearer")
-                .expiresIn(jwtTokenProvider.getExpirationTime())
-                .user(LoginResponse.UserInfo.builder()
-                        .id(user.getId().toString())
-                        .email(user.getEmail())
-                        .firstName(user.getFirstName())
-                        .lastName(user.getLastName())
-                        .roles(user.getRoles().stream()
-                                .map(role -> role.getName().name())
-                                .collect(Collectors.toList()))
-                        .emailVerified(user.isEmailVerified())
-                        .build())
-                .build();
+        return authMapper.toLoginResponse(user);
     }
 
     @Override
     public void logout(String token) {
-        log.info("Logging out user");
 
-        // Remove token from cache/blacklist (if implemented)
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
             jwtTokenProvider.invalidateToken(token);
         }
 
-        log.info("User logged out successfully");
     }
 
     @Override

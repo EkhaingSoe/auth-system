@@ -8,13 +8,13 @@ import com.example.auth_system.auth.dto.request.RegisterRequest;
 import com.example.auth_system.auth.dto.request.ResetPasswordRequest;
 import com.example.auth_system.auth.dto.request.SendOtpRequest;
 import com.example.auth_system.auth.dto.request.VerifyOtpRequest;
-import com.example.auth_system.auth.dto.response.AuthResponse;
 import com.example.auth_system.auth.dto.response.LoginResponse;
 import com.example.auth_system.auth.dto.response.RefreshTokenResponse;
+import com.example.auth_system.auth.dto.response.RegisterResponse;
 import com.example.auth_system.user.dto.response.UserInfoResponse;
 
 public interface AuthService {
-    AuthResponse register(RegisterRequest request);
+    RegisterResponse register(RegisterRequest request);
 
     LoginResponse login(LoginRequest request);
 
