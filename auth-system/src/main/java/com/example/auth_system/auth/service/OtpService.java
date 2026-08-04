@@ -1,8 +1,8 @@
 package com.example.auth_system.auth.service;
 
-
 import com.example.auth_system.auth.entity.OtpToken;
-import com.example.auth_system.auth.entity.OtpType;
+import com.example.auth_system.auth.enums.OtpType;
+import com.example.auth_system.auth.mapper.AuthMapper;
 import com.example.auth_system.auth.repository.OtpTokenRepository;
 import com.example.auth_system.common.service.EmailService;
 import com.example.auth_system.common.util.OtpGenerator;
@@ -18,33 +18,24 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Slf4j
 public class OtpService {
-    
+
     private final OtpTokenRepository otpTokenRepository;
     private final OtpGenerator otpGenerator;
     private final EmailService emailService;
-    
+    private final AuthMapper authMapper;
+
     @Transactional
-    public void sendOtp(String email, OtpType type) {
-        // Generate 6-digit OTP
+    public void generateAndSendOtp(String email, OtpType type) {
+
         String otp = otpGenerator.generateOtp();
-        
-        // Invalidate existing active OTPs for this email and type
         otpTokenRepository.invalidateAllActiveOtps(email, type);
-        
-        // Create new OTP token
-        OtpToken otpToken = OtpToken.builder()
-                .email(email)
-                .otp(otp)
-                .type(type)
-                .used(false)
-                .expiresAt(LocalDateTime.now().plusMinutes(10))
-                .build();
-        
+        OtpToken otpToken = authMapper.toOtpTokenEntity(
+                email,
+                otp,
+                type,
+                LocalDateTime.now().plusMinutes(10));
+
         otpTokenRepository.save(otpToken);
-        
-        // Send OTP via email
         emailService.sendOtpEmail(email, otp, type);
-        
-        log.info("OTP sent to {} for type {}", email, type);
     }
 }

@@ -7,6 +7,8 @@ import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.example.auth_system.auth.enums.OtpType;
+
 @Entity
 @Table(name = "otp_tokens")
 @Data

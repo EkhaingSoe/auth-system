@@ -3,6 +3,7 @@ package com.example.auth_system.auth.service;
 import com.example.auth_system.auth.dto.request.*;
 import com.example.auth_system.auth.dto.response.*;
 import com.example.auth_system.auth.entity.*;
+import com.example.auth_system.auth.enums.OtpType;
 import com.example.auth_system.auth.mapper.AuthMapper;
 import com.example.auth_system.auth.repository.*;
 import com.example.auth_system.auth.security.JwtTokenProvider;
@@ -47,6 +48,7 @@ public class AuthServiceImpl implements AuthService {
     private final RoleRepository roleRepository;
     private final AuthMapper authMapper;
 
+    // refactor finished
     @Override
     @Transactional
     public RegisterResponse register(RegisterRequest request) {
@@ -64,17 +66,18 @@ public class AuthServiceImpl implements AuthService {
                 role,
                 passwordEncoder);
 
-        otpService.sendOtp(user.getEmail(), OtpType.REGISTRATION);
+        otpService.generateAndSendOtp(user.getEmail(), OtpType.REGISTRATION);
         User savedUser = userRepository.save(user);
         return authMapper.toRegisterResponse(savedUser);
 
     }
 
+    // refactor finished
     @Override
     public LoginResponse login(LoginRequest request) {
 
         User user = userRepository.findByEmail(request.getEmail())
-                .or(() -> userRepository.findByUsername(request.getEmail())) // ✅ NEW: Fallback to username
+                .or(() -> userRepository.findByUsername(request.getEmail()))
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
@@ -105,79 +108,57 @@ public class AuthServiceImpl implements AuthService {
 
     }
 
+    // refactor finished
     @Override
     @Transactional
     public void forgotPassword(ForgotPasswordRequest request) {
-        log.info("Processing forgot password for email: {}", request.getEmail());
 
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + request.getEmail()));
 
-        // Generate reset token
         String resetToken = jwtTokenProvider.generatePasswordResetToken(user);
-        log.info("reset token", resetToken);
 
-        // Save reset token to database
-        PasswordResetToken passwordResetToken = PasswordResetToken.builder()
-                .token(resetToken)
-                .user(user)
-                .used(false)
-                .expiresAt(LocalDateTime.now().plusHours(24))
-                .build();
+        PasswordResetToken passwordResetToken = authMapper.toPasswordResetToken(
+                user,
+                resetToken,
+                LocalDateTime.now().plusHours(24));
 
         passwordResetTokenRepository.save(passwordResetToken);
-
-        // Send email with reset link
         emailService.sendPasswordResetEmail(user.getEmail(), resetToken);
-
-        log.info("Password reset token sent to: {}", request.getEmail());
     }
 
+    // refactor finished
     @Override
     @Transactional
     public void resetPassword(ResetPasswordRequest request) {
-        log.info("Resetting password with token");
 
-        // Validate passwords match
         if (!request.getNewPassword().equals(request.getConfirmPassword())) {
             throw new AuthException("Passwords do not match");
         }
 
-        // Find and validate reset token
+        LocalDateTime now = LocalDateTime.now();
         PasswordResetToken resetToken = passwordResetTokenRepository
                 .findByTokenAndUsedFalseAndExpiresAtAfter(request.getToken(), LocalDateTime.now())
                 .orElseThrow(() -> new InvalidTokenException("Invalid or expired reset token"));
 
-        // Get user
         User user = resetToken.getUser();
-
-        // Update password
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
-        user.setUpdatedAt(LocalDateTime.now());
-        userRepository.save(user);
-
-        // Mark token as used
+        user.setUpdatedAt(now);
         resetToken.setUsed(true);
+        userRepository.save(user);
         passwordResetTokenRepository.save(resetToken);
-
-        // Invalidate all active OTPs for this user
         otpTokenRepository.invalidateAllActiveOtps(user.getEmail(), OtpType.PASSWORD_RESET);
-
-        // Send confirmation email
         emailService.sendPasswordResetConfirmationEmail(user.getEmail());
-
-        log.info("Password reset successfully for user: {}", user.getEmail());
     }
 
+    // refactor finished this sendOtp is for sending OTP for resent Otp button
     @Override
     @Transactional
     public void sendOtp(SendOtpRequest request) {
-        log.info("Sending OTP to: {} for type: {}", request.getEmail(), request.getType());
 
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + request.getEmail()));
 
-        // Rate limiting check (optional)
         long otpCount = otpTokenRepository.countOtpsByEmailSince(
                 request.getEmail(),
                 LocalDateTime.now().minusHours(1));
@@ -186,17 +167,15 @@ public class AuthServiceImpl implements AuthService {
             throw new AuthException("Too many OTP requests. Please try again later");
         }
 
-        otpService.sendOtp(user.getEmail(), request.getType());
-
-        log.info("OTP sent successfully to: {}", request.getEmail());
+        otpService.generateAndSendOtp(user.getEmail(), request.getType());
     }
 
+    // refactor finished // later i will add featues for login , email verification
+    // and password reset
     @Override
     @Transactional
     public void verifyOtp(VerifyOtpRequest request) {
-        log.info("Verifying OTP for: {} type: {}", request.getEmail(), request.getType());
 
-        // Find valid OTP
         OtpToken otpToken = otpTokenRepository
                 .findByEmailAndOtpAndTypeAndUsedFalseAndExpiresAtAfter(
                         request.getEmail(),
@@ -205,11 +184,9 @@ public class AuthServiceImpl implements AuthService {
                         LocalDateTime.now())
                 .orElseThrow(() -> new OtpValidationException("Invalid or expired OTP"));
 
-        // Mark OTP as used
         otpToken.setUsed(true);
         otpTokenRepository.save(otpToken);
 
-        // If verifying registration, mark email as verified
         if (request.getType() == OtpType.REGISTRATION) {
             User user = userRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -218,16 +195,11 @@ public class AuthServiceImpl implements AuthService {
             user.setStatus(UserStatus.ACTIVE);
             user.setUpdatedAt(LocalDateTime.now());
             userRepository.save(user);
-
-            log.info("Email verified successfully for user: {}", request.getEmail());
         }
-
-        log.info("OTP verified successfully for: {}", request.getEmail());
     }
 
     @Override
     public UserInfoResponse getCurrentUser(String authHeader) {
-        log.info("Getting current user from token");
 
         String token = extractTokenFromHeader(authHeader);
         log.debug("Token: {}", token.substring(0, Math.min(token.length(), 50)) + "...");

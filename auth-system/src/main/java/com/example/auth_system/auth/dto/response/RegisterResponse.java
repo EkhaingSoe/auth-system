@@ -1,7 +1,6 @@
 package com.example.auth_system.auth.dto.response;
 
 import java.util.UUID;
-
 import lombok.Builder;
 import lombok.Data;
 

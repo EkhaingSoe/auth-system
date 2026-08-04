@@ -1,6 +1,6 @@
 package com.example.auth_system.auth.dto.request;
 
-import com.example.auth_system.auth.entity.OtpType;
+import com.example.auth_system.auth.enums.OtpType;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -14,11 +14,11 @@ public class VerifyOtpRequest {
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
-    
+
     @NotBlank(message = "OTP is required")
     @Size(min = 6, max = 6, message = "OTP must be 6 digits")
     private String otp;
-    
+
     @NotNull(message = "OTP type is required")
     private OtpType type;
 }

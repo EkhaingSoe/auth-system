@@ -1,4 +1,4 @@
-package com.example.auth_system.auth.entity;
+package com.example.auth_system.auth.enums;
 
 public enum OtpType {
     REGISTRATION,
