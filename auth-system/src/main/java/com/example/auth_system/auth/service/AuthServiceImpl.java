@@ -14,14 +14,15 @@ import com.example.auth_system.common.exception.OtpValidationException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.common.service.EmailService;
+import com.example.auth_system.common.util.DeviceUtils;
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.permission.repository.RoleRepository;
-import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
 import com.example.auth_system.user.repository.UserRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -47,6 +48,7 @@ public class AuthServiceImpl implements AuthService {
     private final EmailService emailService;
     private final RoleRepository roleRepository;
     private final AuthMapper authMapper;
+    private final UserSessionRepository userSessionRepository;
 
     // refactor finished
     @Override
@@ -74,7 +76,7 @@ public class AuthServiceImpl implements AuthService {
 
     // refactor finished
     @Override
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponse login(LoginRequest request, HttpServletRequest httpRequest) {
 
         User user = userRepository.findByEmail(request.getEmail())
                 .or(() -> userRepository.findByUsername(request.getEmail()))
@@ -95,7 +97,29 @@ public class AuthServiceImpl implements AuthService {
         user.setLastLoginAt(LocalDateTime.now());
         userRepository.save(user);
 
-        return authMapper.toLoginResponse(user);
+        String accessToken = jwtTokenProvider.generateToken(user);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(user);
+        String ipAddress = httpRequest.getRemoteAddr();
+        String userAgent = httpRequest.getHeader("User-Agent");
+        String deviceName = DeviceUtils.getDeviceName(userAgent);
+
+        UserSessions session = UserSessions.builder()
+                .user(user)
+                .refreshToken(refreshToken)
+                .deviceName(deviceName)
+                .ipAddress(ipAddress)
+                .userAgent(userAgent)
+                .expiresAt(LocalDateTime.now().plusDays(7))
+                .revoked(false)
+                .lastUsedAt(LocalDateTime.now())
+                .build();
+
+        userSessionRepository.save(session);
+
+        return authMapper.toLoginResponse(
+                user,
+                accessToken,
+                refreshToken);
     }
 
     @Override
@@ -223,7 +247,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void verifyEmail(String token) {
-        log.info("Verifying email with token");
         if (!jwtTokenProvider.validateToken(token)) {
             throw new InvalidTokenException("Invalid or expired token");
         }
@@ -236,7 +259,6 @@ public class AuthServiceImpl implements AuthService {
         user.setStatus(UserStatus.ACTIVE);
         userRepository.save(user);
 
-        log.info("Email verified for user: {}", email);
     }
 
     @Override

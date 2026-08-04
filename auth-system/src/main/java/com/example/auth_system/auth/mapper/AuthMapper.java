@@ -49,10 +49,10 @@ public class AuthMapper {
                                 .build();
         }
 
-        public LoginResponse toLoginResponse(User user) {
-
-                String accessToken = jwtTokenProvider.generateToken(user);
-                String refreshToken = jwtTokenProvider.generateRefreshToken(user);
+        public LoginResponse toLoginResponse(
+                        User user,
+                        String accessToken,
+                        String refreshToken) {
 
                 return LoginResponse.builder()
                                 .accessToken(accessToken)
@@ -66,13 +66,11 @@ public class AuthMapper {
                                                                 .firstName(user.getFirstName())
                                                                 .lastName(user.getLastName())
                                                                 .roles(
-                                                                                user.getRoles()
-                                                                                                .stream()
+                                                                                user.getRoles().stream()
                                                                                                 .map(role -> role
                                                                                                                 .getName()
                                                                                                                 .name())
-                                                                                                .collect(Collectors
-                                                                                                                .toList()))
+                                                                                                .toList())
                                                                 .emailVerified(user.isEmailVerified())
                                                                 .build())
                                 .build();

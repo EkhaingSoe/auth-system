@@ -39,7 +39,6 @@ public class UserController {
 
         @GetMapping("/{id}")
         public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable UUID id) {
-                log.info("GET /api/admin/users/{} - Getting user by id", id);
                 UserResponse user = userService.getUserById(id);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User retrieved successfully", user));

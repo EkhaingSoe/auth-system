@@ -12,10 +12,12 @@ import com.example.auth_system.auth.dto.response.LoginResponse;
 import com.example.auth_system.auth.dto.response.RefreshTokenResponse;
 import com.example.auth_system.auth.dto.response.RegisterResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 public interface AuthService {
     RegisterResponse register(RegisterRequest request);
 
-    LoginResponse login(LoginRequest request);
+    LoginResponse login(LoginRequest request, HttpServletRequest httpRequest);
 
     void logout(String token);
 
