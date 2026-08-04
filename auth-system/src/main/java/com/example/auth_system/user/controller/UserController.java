@@ -5,8 +5,11 @@ import com.example.auth_system.common.dto.response.ApiResponse;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.service.UserService;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,14 +26,14 @@ import java.util.UUID;
 @Slf4j
 public class UserController {
 
-        private final UserService userManagementService;
+        private final UserService userService;
 
         // get end point
 
         @GetMapping
         public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsers() {
                 log.info("GET /api/admin/users - Getting all users");
-                List<UserResponse> users = userManagementService.getAllUsers();
+                List<UserResponse> users = userService.getAllUsers();
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users retrieved successfully", users));
         }
@@ -38,7 +41,7 @@ public class UserController {
         @GetMapping("/{id}")
         public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable UUID id) {
                 log.info("GET /api/admin/users/{} - Getting user by id", id);
-                UserResponse user = userManagementService.getUserById(id);
+                UserResponse user = userService.getUserById(id);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User retrieved successfully", user));
         }
@@ -46,7 +49,7 @@ public class UserController {
         @GetMapping("/email/{email}")
         public ResponseEntity<ApiResponse<UserResponse>> getUserByEmail(@PathVariable String email) {
                 log.info("GET /api/admin/users/email/{} - Getting user by email", email);
-                UserResponse user = userManagementService.getUserByEmail(email);
+                UserResponse user = userService.getUserByEmail(email);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User retrieved successfully", user));
         }
@@ -55,7 +58,7 @@ public class UserController {
         public ResponseEntity<ApiResponse<List<UserResponse>>> searchUsers(
                         @RequestParam String term) {
                 log.info("GET /api/admin/users/search?term={} - Searching users", term);
-                List<UserResponse> users = userManagementService.searchUsers(term);
+                List<UserResponse> users = userService.searchUsers(term);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users found successfully", users));
         }
@@ -64,7 +67,7 @@ public class UserController {
         public ResponseEntity<ApiResponse<List<UserResponse>>> getUsersByRole(
                         @PathVariable("roleName") String roleName) {
                 log.info("GET /api/admin/users/role/{} - Getting users by role", roleName);
-                List<UserResponse> users = userManagementService.getUsersByRole(roleName);
+                List<UserResponse> users = userService.getUsersByRole(roleName);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users retrieved successfully", users));
         }
@@ -72,7 +75,7 @@ public class UserController {
         @GetMapping("/enabled")
         public ResponseEntity<ApiResponse<List<UserResponse>>> getEnabledUsers() {
                 log.info("GET /api/admin/users/enabled - Getting enabled users");
-                List<UserResponse> users = userManagementService.getEnabledUsers();
+                List<UserResponse> users = userService.getEnabledUsers();
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Enabled users retrieved successfully", users));
         }
@@ -83,7 +86,7 @@ public class UserController {
         public ResponseEntity<ApiResponse<UserResponse>> createUser(
                         @Valid @RequestBody CreateUserRequest request) {
                 log.info("POST /api/admin/users - Creating new user: {}", request.getEmail());
-                UserResponse user = userManagementService.createUser(request);
+                UserResponse user = userService.createUser(request);
                 return ResponseEntity.status(HttpStatus.CREATED)
                                 .body(ApiResponse.success(201, "User created successfully", user));
         }
@@ -95,7 +98,7 @@ public class UserController {
                         @PathVariable UUID id,
                         @Valid @RequestBody UpdateUserRequest request) {
                 log.info("PUT /api/admin/users/{} - Updating user", id);
-                UserResponse user = userManagementService.updateUser(id, request);
+                UserResponse user = userService.updateUser(id, request);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User updated successfully", user));
         }
@@ -105,7 +108,7 @@ public class UserController {
                         @PathVariable UUID id,
                         @Valid @RequestBody AssignRoleRequest request) {
                 log.info("PUT /api/admin/users/{}/roles - Assigning roles: {}", id, request.getRoles());
-                UserResponse user = userManagementService.assignRoles(id, request);
+                UserResponse user = userService.assignRoles(id, request);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Roles assigned successfully", user));
         }
@@ -113,7 +116,7 @@ public class UserController {
         @PutMapping("/{id}/enable")
         public ResponseEntity<ApiResponse<Void>> enableUser(@PathVariable UUID id) {
                 log.info("PUT /api/admin/users/{}/enable - Enabling user", id);
-                userManagementService.enableUser(id);
+                userService.enableUser(id);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User enabled successfully", null));
         }
@@ -121,7 +124,7 @@ public class UserController {
         @PutMapping("/{id}/disable")
         public ResponseEntity<ApiResponse<Void>> disableUser(@PathVariable UUID id) {
                 log.info("PUT /api/admin/users/{}/disable - Disabling user", id);
-                userManagementService.disableUser(id);
+                userService.disableUser(id);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User disabled successfully", null));
         }
@@ -131,8 +134,15 @@ public class UserController {
         @DeleteMapping("/{id}")
         public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable UUID id) {
                 log.info("DELETE /api/admin/users/{} - Deleting user", id);
-                userManagementService.deleteUser(id);
+                userService.deleteUser(id);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User deleted successfully", null));
+        }
+
+        @GetMapping("/me")
+        public ResponseEntity<ApiResponse<UserInfoResponse>> getCurrentUser(HttpServletRequest request) {
+                String authHeader = request.getHeader("Authorization");
+                UserInfoResponse response = userService.getCurrentUser(authHeader);
+                return ResponseEntity.ok(ApiResponse.success(200, "User retrieved successfully", response));
         }
 }

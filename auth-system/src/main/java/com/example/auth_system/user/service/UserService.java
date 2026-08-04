@@ -4,6 +4,7 @@ package com.example.auth_system.user.service;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 
 import java.util.List;
@@ -49,4 +50,6 @@ public interface UserService {
 
     // Get enabled users only
     List<UserResponse> getEnabledUsers();
+
+    UserInfoResponse getCurrentUser(String authHeader);
 }

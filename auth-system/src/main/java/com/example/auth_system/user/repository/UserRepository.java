@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.permission.entity.RoleName;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
 
@@ -17,48 +18,53 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    // Find by email (most common)
     Optional<User> findByEmail(String email);
-
-    // Check if email exists
-    boolean existsByEmail(String email);
-
-    // Find by email and status
-    Optional<User> findByEmailAndStatus(String email, UserStatus status);
-
-    // Find users by role
-    List<User> findByRolesContaining(Role role);
-
-    // Find users created after certain date
-    List<User> findByCreatedAtAfter(LocalDateTime date);
-
-    // Custom query - update last login time
-    @Modifying
-    @Transactional
-    @Query("UPDATE User u SET u.lastLoginAt = :lastLoginAt WHERE u.email = :email")
-    void updateLastLoginByEmail(@Param("email") String email, @Param("lastLoginAt") LocalDateTime lastLoginAt);
-
-    // Find users with email not verified
-    @Query("SELECT u FROM User u WHERE u.emailVerified = false AND u.createdAt < :cutoffDate")
-    List<User> findUnverifiedUsersCreatedBefore(@Param("cutoffDate") LocalDateTime cutoffDate);
-
-    // Soft delete or disable user
-    @Modifying
-    @Transactional
-    @Query("UPDATE User u SET u.status = :status WHERE u.email = :email")
-    void updateUserStatusByEmail(@Param("email") String email, @Param("status") UserStatus status);
-
-    // Count active users
-    @Query("SELECT COUNT(u) FROM User u WHERE u.status = :status AND u.emailVerified = true")
-    long countActiveUsers(@Param("status") UserStatus status);
-
-    // Find by name containing (case insensitive)
-    List<User> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName);
 
     Optional<User> findByUsername(String username);
 
+    Optional<User> findByUsernameOrEmail(String username, String email);
+
+    boolean existsByEmail(String email);
+
     boolean existsByUsername(String username);
 
-    // For login (both email and username)
-    Optional<User> findByUsernameOrEmail(String username, String email);
+    Optional<User> findByEmailAndStatus(String email, UserStatus status);
+
+    List<User> findByRolesContaining(Role role);
+
+    @Query("""
+                SELECT u
+                FROM User u
+                JOIN u.roles r
+                WHERE r.name = :roleName
+            """)
+    List<User> findByRoleName(@Param("roleName") RoleName roleName);
+
+    @Query("""
+                SELECT u
+                FROM User u
+                WHERE u.status = :status
+            """)
+    List<User> findUsersByStatus(@Param("status") UserStatus status);
+
+    @Query("""
+                SELECT u
+                FROM User u
+                WHERE
+                LOWER(u.username) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                OR LOWER(u.email) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                OR LOWER(u.firstName) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                OR LOWER(u.lastName) LIKE LOWER(CONCAT('%',:keyword,'%'))
+            """)
+    List<User> searchUsers(@Param("keyword") String keyword);
+
+    @Modifying
+    @Transactional
+    @Query("""
+                UPDATE User u
+                SET u.lastLoginAt = :time
+                WHERE u.email = :email
+            """)
+    void updateLastLogin(@Param("email") String email, @Param("time") LocalDateTime time);
+
 }

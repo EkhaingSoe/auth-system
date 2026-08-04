@@ -3,6 +3,7 @@ package com.example.auth_system.user.mapper;
 
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
@@ -63,5 +64,26 @@ public class UserMapper {
         return users.stream()
                 .map(this::toResponse)
                 .collect(Collectors.toList());
+    }
+
+    public UserInfoResponse toUserInfoResponse(User user) {
+
+        String roleName = user.getRoles()
+                .stream()
+                .findFirst()
+                .map(role -> role.getName().name())
+                .orElse("ROLE_CUSTOMER");
+
+        return UserInfoResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .role(roleName)
+                .emailVerified(user.isEmailVerified())
+                .status(user.getStatus())
+                .createdAt(user.getCreatedAt())
+                .lastLoginAt(user.getLastLoginAt())
+                .build();
     }
 }

@@ -1,6 +1,9 @@
 // src/main/java/com/example/auth_system/user/service/impl/UserManagementServiceImpl.java
 package com.example.auth_system.user.service;
 
+import com.example.auth_system.auth.security.JwtTokenProvider;
+import com.example.auth_system.common.exception.AuthException;
+import com.example.auth_system.common.exception.InvalidTokenException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.permission.entity.Role;
@@ -11,11 +14,13 @@ import com.example.auth_system.store.repository.StoreRepository;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
 import com.example.auth_system.user.dto.request.CreateUserRequest;
 import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
 import com.example.auth_system.user.mapper.UserMapper;
-import com.example.auth_system.user.repository.UserManagementRepository;
+import com.example.auth_system.user.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,11 +40,12 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private final UserManagementRepository userRepository;
+    private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final StoreRepository storeRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     public List<UserResponse> getAllUsers() {
@@ -240,5 +246,27 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with username: " + username));
         return userMapper.toResponse(user);
+    }
+
+    @Override
+    public UserInfoResponse getCurrentUser(String authHeader) {
+
+        String token = extractTokenFromHeader(authHeader);
+
+        if (!jwtTokenProvider.validateToken(token)) {
+            throw new InvalidTokenException("Invalid or expired token");
+        }
+
+        String userId = jwtTokenProvider.getUserIdFromToken(token);
+        User user = userRepository.findById(UUID.fromString(userId))
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return userMapper.toUserInfoResponse(user);
+    }
+
+    private String extractTokenFromHeader(String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new AuthException("Missing or invalid authorization header");
+        }
+        return authHeader.substring(7);
     }
 }
