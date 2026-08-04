@@ -199,49 +199,6 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public UserInfoResponse getCurrentUser(String authHeader) {
-
-        String token = extractTokenFromHeader(authHeader);
-        log.debug("Token: {}", token.substring(0, Math.min(token.length(), 50)) + "...");
-
-        if (!jwtTokenProvider.validateToken(token)) {
-            throw new InvalidTokenException("Invalid or expired token");
-        }
-
-        String email = jwtTokenProvider.getEmailFromToken(token);
-        log.info("🔍 Extracted email from token: {}", email); // ← ADD THIS
-
-        // Debug: Check what users exist in database
-        List<User> allUsers = userRepository.findAll();
-        log.info("📊 Total users in DB: {}", allUsers.size());
-        for (User u : allUsers) {
-            log.info("   User: {} - {}", u.getEmail(), u.getId());
-        }
-
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
-
-        log.info("✅ Found user: {} with ID: {}", user.getEmail(), user.getId());
-
-        String roleName = user.getRoles().stream()
-                .findFirst()
-                .map(role -> role.getName().name())
-                .orElse("ROLE_CUSTOMER");
-
-        return UserInfoResponse.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .role(roleName)
-                .emailVerified(user.isEmailVerified())
-                .status(user.getStatus())
-                .createdAt(user.getCreatedAt())
-                .lastLoginAt(user.getLastLoginAt())
-                .build();
-    }
-
-    @Override
     public RefreshTokenResponse refreshToken(RefreshTokenRequest request) {
         String refreshToken = request.getRefreshToken();
 

@@ -11,7 +11,6 @@ import com.example.auth_system.auth.dto.request.VerifyOtpRequest;
 import com.example.auth_system.auth.dto.response.LoginResponse;
 import com.example.auth_system.auth.dto.response.RefreshTokenResponse;
 import com.example.auth_system.auth.dto.response.RegisterResponse;
-import com.example.auth_system.user.dto.response.UserInfoResponse;
 
 public interface AuthService {
     RegisterResponse register(RegisterRequest request);
@@ -34,5 +33,4 @@ public interface AuthService {
 
     void changePassword(String authHeader, ChangePasswordRequest request);
 
-    UserInfoResponse getCurrentUser(String authHeader);
 }

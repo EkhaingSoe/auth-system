@@ -32,7 +32,6 @@ public class UserController {
 
         @GetMapping
         public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsers() {
-                log.info("GET /api/admin/users - Getting all users");
                 List<UserResponse> users = userService.getAllUsers();
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users retrieved successfully", users));

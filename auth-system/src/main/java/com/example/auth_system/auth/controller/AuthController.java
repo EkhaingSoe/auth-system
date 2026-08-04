@@ -92,11 +92,4 @@ public class AuthController {
         authService.changePassword(authHeader, request);
         return ResponseEntity.ok(ApiResponse.success(200, "Password changed successfully", null));
     }
-
-    @GetMapping("/me")
-    public ResponseEntity<ApiResponse<UserInfoResponse>> getCurrentUser(HttpServletRequest request) {
-        String authHeader = request.getHeader("Authorization");
-        UserInfoResponse response = authService.getCurrentUser(authHeader);
-        return ResponseEntity.ok(ApiResponse.success(200, "User retrieved successfully", response));
-    }
 }

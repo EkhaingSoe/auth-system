@@ -45,9 +45,6 @@ public class User {
     @JoinColumn(name = "store")
     private Store store;
 
-    // private boolean enabled;
-    // private boolean emailVerified;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Builder.Default

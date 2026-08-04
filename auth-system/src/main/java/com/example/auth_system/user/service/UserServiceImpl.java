@@ -126,12 +126,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse updateUser(UUID id, UpdateUserRequest request) {
-        log.info("Updating user with id: {}", id);
 
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
-
-        // ✅ Only update allowed fields
         if (request.getFirstName() != null) {
             user.setFirstName(request.getFirstName());
         }
@@ -144,19 +141,15 @@ public class UserServiceImpl implements UserService {
 
         user.setUpdatedAt(LocalDateTime.now());
         user = userRepository.save(user);
-
-        log.info("User updated successfully: {}", user.getEmail());
         return userMapper.toResponse(user);
     }
 
     @Override
     public UserResponse assignRoles(UUID id, AssignRoleRequest request) {
-        log.info("Assigning roles to user with id: {}", id);
 
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
-        // Get roles from request
         Set<Role> roles = request.getRoles().stream()
                 .map(roleName -> roleRepository.findByName(RoleName.valueOf(roleName))
                         .orElseThrow(() -> new RuntimeException("Role not found: " + roleName)))
@@ -165,8 +158,6 @@ public class UserServiceImpl implements UserService {
         user.setRoles(roles);
         user.setUpdatedAt(LocalDateTime.now());
         user = userRepository.save(user);
-
-        log.info("Roles assigned successfully to user: {}", user.getEmail());
         return userMapper.toResponse(user);
     }
 
