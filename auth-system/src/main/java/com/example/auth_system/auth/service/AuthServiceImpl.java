@@ -30,6 +30,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -76,6 +78,7 @@ public class AuthServiceImpl implements AuthService {
 
     // refactor finished
     @Override
+    @Transactional
     public LoginResponse login(LoginRequest request, HttpServletRequest httpRequest) {
 
         User user = userRepository.findByEmail(request.getEmail())
@@ -123,6 +126,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    @Transactional
     public void logout(String token) {
 
         if (token != null && token.startsWith("Bearer ")) {
@@ -234,8 +238,23 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
+        UserSessions session = userSessionRepository
+                .findByRefreshTokenAndRevokedFalse(refreshToken)
+                .orElseThrow(() -> new InvalidTokenException("Session not found"));
+
         String newAccessToken = jwtTokenProvider.generateToken(user);
         String newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
+        Date expiryDate = jwtTokenProvider.getExpirationDateFromToken(newRefreshToken);
+        LocalDateTime expiresAt = expiryDate.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+
+        session.setRefreshToken(newRefreshToken);
+        session.setLastUsedAt(LocalDateTime.now());
+        session.setExpiresAt(expiresAt);
+        session.setRevoked(false);
+
+        userSessionRepository.save(session);
 
         return RefreshTokenResponse.builder()
                 .accessToken(newAccessToken)
@@ -246,6 +265,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    @Transactional
     public void verifyEmail(String token) {
         if (!jwtTokenProvider.validateToken(token)) {
             throw new InvalidTokenException("Invalid or expired token");
@@ -253,7 +273,11 @@ public class AuthServiceImpl implements AuthService {
 
         String email = jwtTokenProvider.getEmailFromToken(token);
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
+
+        if (user.isEmailVerified()) {
+            throw new AuthException("Email is already verified");
+        }
 
         user.setEmailVerified(true);
         user.setStatus(UserStatus.ACTIVE);
