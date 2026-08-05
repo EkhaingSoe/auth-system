@@ -32,9 +32,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -287,9 +284,11 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void changePassword(String authHeader, ChangePasswordRequest request) {
-        log.info("Changing password");
 
         String token = extractTokenFromHeader(authHeader);
+        if (!jwtTokenProvider.validateToken(token)) {
+            throw new InvalidTokenException("Invalid or expired token");
+        }
         String email = jwtTokenProvider.getEmailFromToken(token);
 
         User user = userRepository.findByEmail(email)
@@ -307,7 +306,6 @@ public class AuthServiceImpl implements AuthService {
         user.setUpdatedAt(LocalDateTime.now());
         userRepository.save(user);
 
-        log.info("Password changed for user: {}", email);
     }
 
     private String extractTokenFromHeader(String authHeader) {
