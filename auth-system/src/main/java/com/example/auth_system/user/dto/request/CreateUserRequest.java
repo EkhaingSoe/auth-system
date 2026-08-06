@@ -23,7 +23,6 @@ public class CreateUserRequest {
     @NotBlank(message = "Username is required")
     private String username;
 
-    // email is optional for staff, required for public users
     @Email(message = "Invalid email format")
     private String email; // Optional
 

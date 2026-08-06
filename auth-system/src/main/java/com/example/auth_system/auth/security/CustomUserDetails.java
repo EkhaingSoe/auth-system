@@ -1,7 +1,6 @@
 // src/main/java/com/example/auth_system/auth/security/CustomUserDetails.java
 package com.example.auth_system.auth.security;
 
-import com.example.auth_system.permission.entity.Permission;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
 
@@ -40,7 +39,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        // Use username if exists, otherwise email
         return user.getUsername() != null ? user.getUsername() : user.getEmail();
     }
 
@@ -69,12 +67,10 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
-    // ✅ Helper method to get user ID
     public String getUserId() {
         return user.getId().toString();
     }
 
-    // ✅ Helper method to get user email
     public String getEmail() {
         return user.getEmail();
     }
