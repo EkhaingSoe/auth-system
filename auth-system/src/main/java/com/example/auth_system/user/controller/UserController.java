@@ -13,6 +13,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +34,8 @@ public class UserController {
         // get end point
 
         @GetMapping
-        public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsers() {
-                List<UserResponse> users = userService.getAllUsers();
+        public ResponseEntity<ApiResponse<Page<UserResponse>>> getAllUsers(Pageable pageable) {
+                Page<UserResponse> users = userService.getAllUsers(pageable);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users retrieved successfully", users));
         }
@@ -53,27 +56,27 @@ public class UserController {
         }
 
         @GetMapping("/search")
-        public ResponseEntity<ApiResponse<List<UserResponse>>> searchUsers(
-                        @RequestParam String term) {
+        public ResponseEntity<ApiResponse<Page<UserResponse>>> searchUsers(
+                        @RequestParam String term, Pageable pageable) {
                 log.info("GET /api/admin/users/search?term={} - Searching users", term);
-                List<UserResponse> users = userService.searchUsers(term);
+                Page<UserResponse> users = userService.searchUsers(term, pageable);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users found successfully", users));
         }
 
         @GetMapping("/role/{roleName}")
-        public ResponseEntity<ApiResponse<List<UserResponse>>> getUsersByRole(
-                        @PathVariable("roleName") String roleName) {
+        public ResponseEntity<ApiResponse<Page<UserResponse>>> getUsersByRole(
+                        @PathVariable("roleName") String roleName, Pageable pageable) {
                 log.info("GET /api/admin/users/role/{} - Getting users by role", roleName);
-                List<UserResponse> users = userService.getUsersByRole(roleName);
+                Page<UserResponse> users = userService.getUsersByRole(roleName, pageable);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Users retrieved successfully", users));
         }
 
         @GetMapping("/enabled")
-        public ResponseEntity<ApiResponse<List<UserResponse>>> getEnabledUsers() {
+        public ResponseEntity<ApiResponse<Page<UserResponse>>> getEnabledUsers(Pageable pageable) {
                 log.info("GET /api/admin/users/enabled - Getting enabled users");
-                List<UserResponse> users = userService.getEnabledUsers();
+                Page<UserResponse> users = userService.getEnabledUsers(pageable);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Enabled users retrieved successfully", users));
         }

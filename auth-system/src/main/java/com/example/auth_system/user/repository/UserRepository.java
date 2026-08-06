@@ -20,6 +20,8 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
+        Page<User> findAll(Pageable pageable);
+
         Optional<User> findByEmailAndDeletedFalse(String email);
 
         Optional<User> findByUsername(String username);
@@ -45,14 +47,14 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                             JOIN u.roles r
                             WHERE r.name = :roleName
                         """)
-        List<User> findByRoleName(@Param("roleName") RoleName roleName);
+        Page<User> findByRoleName(@Param("roleName") RoleName roleName, Pageable pageable);
 
         @Query("""
                             SELECT u
                             FROM User u
                             WHERE u.status = :status
                         """)
-        List<User> findUsersByStatus(@Param("status") UserStatus status);
+        Page<User> findUsersByStatus(@Param("status") UserStatus status, Pageable pageable);
 
         @Query("""
                             SELECT u
@@ -65,8 +67,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                                 OR LOWER(u.lastName) LIKE LOWER(CONCAT('%',:keyword,'%'))
                             )
                         """)
-        List<User> searchUsers(
-                        @Param("keyword") String keyword);
+        Page<User> searchUsers(
+                        @Param("keyword") String keyword, Pageable pageable);
 
         @Modifying
         @Transactional

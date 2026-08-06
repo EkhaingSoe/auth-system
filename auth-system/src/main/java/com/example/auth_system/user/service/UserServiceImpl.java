@@ -23,6 +23,9 @@ import com.example.auth_system.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,9 +51,8 @@ public class UserServiceImpl implements UserService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
-    public List<UserResponse> getAllUsers() {
-        log.info("Fetching all users");
-        List<User> users = userRepository.findAll();
+    public Page<UserResponse> getAllUsers(Pageable pageable) {
+        Page<User> users = userRepository.findAll(pageable);
         return userMapper.toResponseList(users);
     }
 
@@ -201,21 +203,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponse> searchUsers(String searchTerm) {
+    public Page<UserResponse> searchUsers(String searchTerm, Pageable pageable) {
         log.info("Searching users with term: {}", searchTerm);
 
-        List<User> users = userRepository.searchUsers(searchTerm);
+        Page<User> users = userRepository.searchUsers(searchTerm, pageable);
         return userMapper.toResponseList(users);
     }
 
     @Override
-    public List<UserResponse> getUsersByRole(String roleName) {
+    public Page<UserResponse> getUsersByRole(String roleName, Pageable pageable) {
         log.info("Fetching users by role: {}", roleName);
 
         try {
             // ✅ Convert String to RoleName enum
             RoleName role = RoleName.valueOf(roleName);
-            List<User> users = userRepository.findByRoleName(role);
+            Page<User> users = userRepository.findByRoleName(role, pageable);
             return userMapper.toResponseList(users);
         } catch (IllegalArgumentException e) {
             log.error("Invalid role name: {}", roleName);
@@ -224,10 +226,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponse> getEnabledUsers() {
+    public Page<UserResponse> getEnabledUsers(Pageable pageable) {
         log.info("Fetching enabled users");
 
-        List<User> users = userRepository.findUsersByStatus(UserStatus.ACTIVE);
+        Page<User> users = userRepository.findUsersByStatus(UserStatus.ACTIVE, pageable);
         return userMapper.toResponseList(users);
     }
 

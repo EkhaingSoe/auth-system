@@ -8,6 +8,7 @@ import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -60,10 +61,8 @@ public class UserMapper {
                 .build();
     }
 
-    public List<UserResponse> toResponseList(List<User> users) {
-        return users.stream()
-                .map(this::toResponse)
-                .collect(Collectors.toList());
+    public Page<UserResponse> toResponseList(Page<User> users) {
+        return users.map(this::toResponse);
     }
 
     public UserInfoResponse toUserInfoResponse(User user) {

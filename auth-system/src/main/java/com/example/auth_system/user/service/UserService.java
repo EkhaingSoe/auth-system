@@ -10,10 +10,13 @@ import com.example.auth_system.user.dto.response.UserResponse;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+
 public interface UserService {
 
     // Get all users
-    List<UserResponse> getAllUsers();
+    Page<UserResponse> getAllUsers(Pageable pageable);
 
     // Get user by ID
     UserResponse getUserById(UUID id);
@@ -43,13 +46,13 @@ public interface UserService {
     void deleteUser(UUID id);
 
     // Search users
-    List<UserResponse> searchUsers(String searchTerm);
+    Page<UserResponse> searchUsers(String searchTerm, Pageable pageable);
 
     // Get users by role
-    List<UserResponse> getUsersByRole(String roleName);
+    Page<UserResponse> getUsersByRole(String roleName, Pageable pageable);
 
     // Get enabled users only
-    List<UserResponse> getEnabledUsers();
+    Page<UserResponse> getEnabledUsers(Pageable pageable);
 
     UserInfoResponse getCurrentUser(String authHeader);
 }
