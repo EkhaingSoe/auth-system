@@ -2,8 +2,6 @@ package com.example.auth_system.user.dto.request;
 
 import java.util.UUID;
 
-import com.example.auth_system.store.entity.Store;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

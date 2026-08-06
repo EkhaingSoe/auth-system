@@ -16,7 +16,8 @@ import com.example.auth_system.user.enums.UserStatus;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,10 +30,10 @@ public class User {
     @Column(unique = true)
     private String email; // for puplic user
 
-    @Column(unique = true)
+    @Column(unique = true, length = 50)
     private String username; // for staff
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String password;
 
     @Column(name = "first_name", nullable = false)
@@ -42,7 +43,7 @@ public class User {
     private String lastName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store")
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @Enumerated(EnumType.STRING)
@@ -50,7 +51,7 @@ public class User {
     @Builder.Default
     private UserStatus status = UserStatus.ACTIVE;
 
-    @Column(name = "email_verified")
+    @Column(name = "email_verified", nullable = false)
     @Builder.Default
     private boolean emailVerified = false;
 
@@ -61,6 +62,17 @@ public class User {
 
     @Column(name = "last_login_at")
     private LocalDateTime lastLoginAt;
+
+    @Column(name = "failed_login_attempts", nullable = false)
+    @Builder.Default
+    private Integer failedLoginAttempts = 0;
+
+    @Column(name = "locked_until")
+    private LocalDateTime lockedUntil;
+
+    @Column(name = "deleted", nullable = false)
+    @Builder.Default
+    private boolean deleted = false;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

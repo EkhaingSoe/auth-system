@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.permission.entity.RoleName;
@@ -18,71 +20,83 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    Optional<User> findByEmail(String email);
+        Optional<User> findByEmailAndDeletedFalse(String email);
 
-    Optional<User> findByUsername(String username);
+        Optional<User> findByUsername(String username);
 
-    Optional<User> findByUsernameOrEmail(String username, String email);
+        Optional<User> findByUsernameOrEmail(String username, String email);
 
-    boolean existsByEmail(String email);
+        boolean existsByEmail(String email);
 
-    boolean existsByUsername(String username);
+        boolean existsByUsername(String username);
 
-    Optional<User> findByEmailAndStatus(String email, UserStatus status);
+        Optional<User> findByEmailAndStatus(String email, UserStatus status);
 
-    List<User> findByRolesContaining(Role role);
+        // Page<User> findByStatusAndDeletedFalse(
+        // UserStatus status,
+        // Pageable pageable
+        // );
 
-    @Query("""
-                SELECT u
-                FROM User u
-                JOIN u.roles r
-                WHERE r.name = :roleName
-            """)
-    List<User> findByRoleName(@Param("roleName") RoleName roleName);
+        List<User> findByRolesContaining(Role role);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                WHERE u.status = :status
-            """)
-    List<User> findUsersByStatus(@Param("status") UserStatus status);
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            JOIN u.roles r
+                            WHERE r.name = :roleName
+                        """)
+        List<User> findByRoleName(@Param("roleName") RoleName roleName);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                WHERE
-                LOWER(u.username) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                OR LOWER(u.email) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                OR LOWER(u.firstName) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                OR LOWER(u.lastName) LIKE LOWER(CONCAT('%',:keyword,'%'))
-            """)
-    List<User> searchUsers(@Param("keyword") String keyword);
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            WHERE u.status = :status
+                        """)
+        List<User> findUsersByStatus(@Param("status") UserStatus status);
 
-    @Modifying
-    @Transactional
-    @Query("""
-                UPDATE User u
-                SET u.lastLoginAt = :time
-                WHERE u.email = :email
-            """)
-    void updateLastLogin(@Param("email") String email, @Param("time") LocalDateTime time);
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            WHERE u.deleted = false
+                            AND (
+                                LOWER(u.username) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                                OR LOWER(u.email) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                                OR LOWER(u.firstName) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                                OR LOWER(u.lastName) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                            )
+                        """)
+        List<User> searchUsers(
+                        @Param("keyword") String keyword);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                LEFT JOIN FETCH u.roles
-                WHERE u.email = :email
-            """)
-    Optional<User> findByEmailWithRoles(
-            @Param("email") String email);
+        @Modifying
+        @Transactional
+        @Query("""
+                            UPDATE User u
+                            SET u.lastLoginAt = :time
+                            WHERE u.email = :email
+                        """)
+        void updateLastLogin(@Param("email") String email, @Param("time") LocalDateTime time);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                LEFT JOIN FETCH u.roles
-                WHERE u.username = :username
-            """)
-    Optional<User> findByUsernameWithRoles(
-            @Param("username") String username);
+        @Query("""
+                            SELECT DISTINCT u
+                            FROM User u
+                            LEFT JOIN FETCH u.roles r
+                            LEFT JOIN FETCH r.permissions
+                            WHERE u.email = :email
+                        """)
+        Optional<User> findByEmailWithRoles(
+                        @Param("email") String email);
+
+        @Query("""
+                            SELECT DISTINCT u
+                            FROM User u
+                            LEFT JOIN FETCH u.roles r
+                            LEFT JOIN FETCH r.permissions
+                            WHERE u.username = :username
+                        """)
+        Optional<User> findByUsernameWithRoles(
+                        @Param("username") String username);
+
+        Optional<User> findByIdAndDeletedFalse(UUID id);
 
 }

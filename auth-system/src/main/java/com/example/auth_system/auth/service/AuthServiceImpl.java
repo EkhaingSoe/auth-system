@@ -78,7 +78,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public LoginResponse login(LoginRequest request, HttpServletRequest httpRequest) {
 
-        User user = userRepository.findByEmail(request.getEmail())
+        User user = userRepository.findByEmailAndDeletedFalse(request.getEmail())
                 .or(() -> userRepository.findByUsername(request.getEmail()))
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
@@ -138,7 +138,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public void forgotPassword(ForgotPasswordRequest request) {
 
-        User user = userRepository.findByEmail(request.getEmail())
+        User user = userRepository.findByEmailAndDeletedFalse(request.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + request.getEmail()));
 
         String resetToken = jwtTokenProvider.generatePasswordResetToken(user);
@@ -181,7 +181,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public void sendOtp(SendOtpRequest request) {
 
-        User user = userRepository.findByEmail(request.getEmail())
+        User user = userRepository.findByEmailAndDeletedFalse(request.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + request.getEmail()));
 
         long otpCount = otpTokenRepository.countOtpsByEmailSince(
@@ -213,7 +213,7 @@ public class AuthServiceImpl implements AuthService {
         otpTokenRepository.save(otpToken);
 
         if (request.getType() == OtpType.REGISTRATION) {
-            User user = userRepository.findByEmail(request.getEmail())
+            User user = userRepository.findByEmailAndDeletedFalse(request.getEmail())
                     .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
             user.setEmailVerified(true);
@@ -232,7 +232,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         String email = jwtTokenProvider.getEmailFromToken(refreshToken);
-        User user = userRepository.findByEmail(email)
+        User user = userRepository.findByEmailAndDeletedFalse(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         UserSessions session = userSessionRepository
@@ -269,7 +269,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         String email = jwtTokenProvider.getEmailFromToken(token);
-        User user = userRepository.findByEmail(email)
+        User user = userRepository.findByEmailAndDeletedFalse(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
 
         if (user.isEmailVerified()) {
@@ -291,7 +291,7 @@ public class AuthServiceImpl implements AuthService {
         }
         String email = jwtTokenProvider.getEmailFromToken(token);
 
-        User user = userRepository.findByEmail(email)
+        User user = userRepository.findByEmailAndDeletedFalse(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {

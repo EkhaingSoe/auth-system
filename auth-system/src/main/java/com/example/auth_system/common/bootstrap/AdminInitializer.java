@@ -24,7 +24,7 @@ public class AdminInitializer implements CommandLineRunner {
         @Override
         public void run(String... args) {
 
-                if (userRepository.findByEmail("admin@gmail.com").isEmpty()) {
+                if (userRepository.findByEmailAndDeletedFalse("admin@gmail.com").isEmpty()) {
 
                         Role adminRole = roleRepository
                                         .findByName(RoleName.ROLE_ADMIN)
