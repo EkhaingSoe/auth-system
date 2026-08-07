@@ -3,8 +3,8 @@ package com.example.auth_system.user.controller;
 
 import com.example.auth_system.common.dto.response.ApiResponse;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
-import com.example.auth_system.user.dto.request.CreateUserRequest;
-import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.request.CreateStaffUserRequest;
+import com.example.auth_system.user.dto.request.UpdateStaffUserRequest;
 import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.service.UserService;
@@ -85,7 +85,7 @@ public class UserController {
 
         @PostMapping
         public ResponseEntity<ApiResponse<UserResponse>> createUser(
-                        @Valid @RequestBody CreateUserRequest request) {
+                        @Valid @RequestBody CreateStaffUserRequest request) {
                 log.info("POST /api/admin/users - Creating new user: {}", request.getEmail());
                 UserResponse user = userService.createUser(request);
                 return ResponseEntity.status(HttpStatus.CREATED)
@@ -97,7 +97,7 @@ public class UserController {
         @PutMapping("/{id}")
         public ResponseEntity<ApiResponse<UserResponse>> updateUser(
                         @PathVariable UUID id,
-                        @Valid @RequestBody UpdateUserRequest request) {
+                        @Valid @RequestBody UpdateStaffUserRequest request) {
                 log.info("PUT /api/admin/users/{} - Updating user", id);
                 UserResponse user = userService.updateUser(id, request);
                 return ResponseEntity.ok(

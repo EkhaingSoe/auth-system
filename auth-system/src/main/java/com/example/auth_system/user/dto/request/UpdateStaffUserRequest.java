@@ -14,9 +14,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserRequest {
+public class UpdateStaffUserRequest {
     private String firstName;
     private String lastName;
+    private String email;
     private UserStatus status;
     private UUID storeId;
 }

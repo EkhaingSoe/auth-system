@@ -15,14 +15,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserRequest {
+public class CreateStaffUserRequest {
 
     // username is required for staff
     @NotBlank(message = "Username is required")
     private String username;
 
+    @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
-    private String email; // Optional
+    private String email;
 
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must be at least 6 characters")

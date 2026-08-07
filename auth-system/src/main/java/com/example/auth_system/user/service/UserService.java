@@ -2,8 +2,8 @@
 package com.example.auth_system.user.service;
 
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
-import com.example.auth_system.user.dto.request.CreateUserRequest;
-import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.request.CreateStaffUserRequest;
+import com.example.auth_system.user.dto.request.UpdateStaffUserRequest;
 import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 
@@ -28,10 +28,10 @@ public interface UserService {
     UserResponse getUserByUsername(String username);
 
     // Create new user
-    UserResponse createUser(CreateUserRequest request);
+    UserResponse createUser(CreateStaffUserRequest request);
 
     // Update user
-    UserResponse updateUser(UUID id, UpdateUserRequest request);
+    UserResponse updateUser(UUID id, UpdateStaffUserRequest request);
 
     // Assign roles to user
     UserResponse assignRoles(UUID id, AssignRoleRequest request);

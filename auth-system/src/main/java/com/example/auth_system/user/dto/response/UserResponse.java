@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.example.auth_system.user.enums.UserStatus;
+import com.example.auth_system.user.enums.UserType;
 
 @Data
 @Builder
@@ -24,6 +25,7 @@ public class UserResponse {
     private String lastName;
     private UUID storeId;
     private String storeName;
+    private UserType userType;
     private List<String> roles;
     private UserStatus status;
     private boolean emailVerified;

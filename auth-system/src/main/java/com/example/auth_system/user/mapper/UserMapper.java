@@ -1,8 +1,8 @@
 // src/main/java/com/example/auth_system/user/mapper/UserMapper.java
 package com.example.auth_system.user.mapper;
 
-import com.example.auth_system.user.dto.request.CreateUserRequest;
-import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.request.CreateStaffUserRequest;
+import com.example.auth_system.user.dto.request.UpdateStaffUserRequest;
 import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Component
 public class UserMapper {
 
-    public User toEntity(CreateUserRequest request) {
+    public User toEntity(CreateStaffUserRequest request) {
         return User.builder()
                 .username(request.getUsername()) // ✅ ADDED: Map username
                 .email(request.getEmail())
@@ -28,7 +28,7 @@ public class UserMapper {
                 .build();
     }
 
-    public User updateEntity(User user, UpdateUserRequest request) {
+    public User updateEntity(User user, UpdateStaffUserRequest request) {
         if (request.getFirstName() != null) {
             user.setFirstName(request.getFirstName());
         }
@@ -67,18 +67,19 @@ public class UserMapper {
 
     public UserInfoResponse toUserInfoResponse(User user) {
 
-        String roleName = user.getRoles()
+        List<String> roles = user.getRoles()
                 .stream()
-                .findFirst()
                 .map(role -> role.getName().name())
-                .orElse("ROLE_CUSTOMER");
+                .toList();
 
         return UserInfoResponse.builder()
                 .id(user.getId())
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .role(roleName)
+                .username(user.getUsername())
+                .userType(user.getUserType())
+                .roles(roles)
                 .emailVerified(user.isEmailVerified())
                 .status(user.getStatus())
                 .createdAt(user.getCreatedAt())

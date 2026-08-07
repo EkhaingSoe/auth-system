@@ -12,8 +12,8 @@ import com.example.auth_system.permission.repository.RoleRepository;
 import com.example.auth_system.store.entity.Store;
 import com.example.auth_system.store.repository.StoreRepository;
 import com.example.auth_system.user.dto.request.AssignRoleRequest;
-import com.example.auth_system.user.dto.request.CreateUserRequest;
-import com.example.auth_system.user.dto.request.UpdateUserRequest;
+import com.example.auth_system.user.dto.request.CreateStaffUserRequest;
+import com.example.auth_system.user.dto.request.UpdateStaffUserRequest;
 import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse createUser(CreateUserRequest request) {
+    public UserResponse createUser(CreateStaffUserRequest request) {
         log.info("Creating new user with username: {}, email: {}", request.getUsername(), request.getEmail());
 
         if (request.getUsername() != null && userRepository.existsByUsernameAndDeletedFalse(request.getUsername())) {
@@ -127,7 +127,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse updateUser(UUID id, UpdateUserRequest request) {
+    public UserResponse updateUser(UUID id, UpdateStaffUserRequest request) {
 
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
