@@ -13,6 +13,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.store.entity.Store;
 import com.example.auth_system.user.enums.UserStatus;
+import com.example.auth_system.user.enums.UserType;
 
 @Entity
 @Table(name = "users")
@@ -41,6 +42,11 @@ public class User {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_type", nullable = false)
+    @Builder.Default
+    private UserType userType = UserType.STAFF;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")

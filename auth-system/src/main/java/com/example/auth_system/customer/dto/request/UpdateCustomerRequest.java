@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.example.auth_system.customer.enums.CustomerStatus;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -44,7 +45,7 @@ public class UpdateCustomerRequest {
     private LocalDate dateOfBirth;
     private Gender gender;
 
-    private Boolean isActive;
+    private CustomerStatus status;
     private Boolean isVip;
     private String notes;
 }

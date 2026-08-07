@@ -1,6 +1,8 @@
 package com.example.auth_system.customer.repository;
 
 import com.example.auth_system.customer.entity.Customer;
+import com.example.auth_system.customer.enums.CustomerStatus;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,19 +23,19 @@ public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 
     Optional<Customer> findByUserId(UUID userId);
 
-    List<Customer> findByIsActiveTrue();
+    List<Customer> findByStatus(CustomerStatus status);
 
     List<Customer> findByIsVipTrue();
 
     @Query("SELECT c FROM Customer c WHERE " +
-           "LOWER(c.firstName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(c.lastName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(c.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(c.customerCode) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(c.phone) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
+            "LOWER(c.firstName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+            "LOWER(c.lastName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+            "LOWER(c.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+            "LOWER(c.customerCode) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+            "LOWER(c.phone) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Customer> searchCustomers(@Param("searchTerm") String searchTerm);
 
-    long countByIsActiveTrue();
+    long countByStatus(CustomerStatus status);
 
     @Query("SELECT c FROM Customer c WHERE c.customerGroup.id = :groupId")
     List<Customer> findByCustomerGroupId(@Param("groupId") UUID groupId);

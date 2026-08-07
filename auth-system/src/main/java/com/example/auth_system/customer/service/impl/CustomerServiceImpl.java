@@ -13,6 +13,7 @@ import com.example.auth_system.customer.repository.CustomerRepository;
 import com.example.auth_system.customer.service.CustomerService;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.repository.UserRepository;
+import com.example.auth_system.customer.enums.CustomerStatus;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -191,7 +192,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional(readOnly = true)
     public List<CustomerResponse> getActiveCustomers() {
         log.info("Getting active customers");
-        return customerRepository.findByIsActiveTrue().stream()
+        return customerRepository.findByStatus(CustomerStatus.ACTIVE).stream()
                 .map(customerMapper::toResponse)
                 .collect(Collectors.toList());
     }
@@ -231,7 +232,7 @@ public class CustomerServiceImpl implements CustomerService {
         log.info("Deleting customer: {}", id);
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + id));
-        customer.setIsActive(false);
+        customer.setStatus(CustomerStatus.INACTIVE);
         customerRepository.save(customer);
         log.info("Customer deactivated successfully: {}", id);
     }
@@ -245,7 +246,7 @@ public class CustomerServiceImpl implements CustomerService {
         log.info("Activating customer: {}", id);
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + id));
-        customer.setIsActive(true);
+        customer.setStatus(CustomerStatus.ACTIVE);
         customerRepository.save(customer);
         log.info("Customer activated successfully: {}", id);
     }
@@ -259,7 +260,7 @@ public class CustomerServiceImpl implements CustomerService {
         log.info("Deactivating customer: {}", id);
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + id));
-        customer.setIsActive(false);
+        customer.setStatus(CustomerStatus.INACTIVE);
         customerRepository.save(customer);
         log.info("Customer deactivated successfully: {}", id);
     }
@@ -272,7 +273,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional(readOnly = true)
     public long countActiveCustomers() {
         log.info("Counting active customers");
-        return customerRepository.countByIsActiveTrue();
+        return customerRepository.countByStatus(CustomerStatus.ACTIVE);
     }
 
     // ============================================================

@@ -7,6 +7,7 @@ import com.example.auth_system.customer.dto.response.WishlistResponse;
 import com.example.auth_system.customer.entity.Customer;
 import com.example.auth_system.customer.entity.CustomerGroup;
 import com.example.auth_system.customer.entity.Wishlist;
+import com.example.auth_system.customer.enums.CustomerStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +37,7 @@ public class CustomerMapper {
                 .dateOfBirth(request.getDateOfBirth())
                 .gender(request.getGender())
                 .notes(request.getNotes())
-                .isActive(true)
+                .status(CustomerStatus.ACTIVE)
                 .build();
     }
 
@@ -86,8 +87,8 @@ public class CustomerMapper {
         if (request.getGender() != null) {
             customer.setGender(request.getGender());
         }
-        if (request.getIsActive() != null) {
-            customer.setIsActive(request.getIsActive());
+        if (request.getStatus() != null) {
+            customer.setStatus(request.getStatus());
         }
         if (request.getIsVip() != null) {
             customer.setIsVip(request.getIsVip());
@@ -131,7 +132,7 @@ public class CustomerMapper {
                 .loyaltyPoints(customer.getLoyaltyPoints())
                 .orderCount(customer.getOrderCount())
                 .lastPurchaseDate(customer.getLastPurchaseDate())
-                .isActive(customer.getIsActive())
+                .status(customer.getStatus())
                 .isVip(customer.getIsVip())
                 .notes(customer.getNotes())
                 .wishlists(customer.getWishlists() != null ? customer.getWishlists().stream()

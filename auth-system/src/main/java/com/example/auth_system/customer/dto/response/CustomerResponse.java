@@ -1,6 +1,7 @@
 package com.example.auth_system.customer.dto.response;
 
 import com.example.auth_system.customer.enums.Gender;
+import com.example.auth_system.customer.enums.CustomerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -50,7 +51,7 @@ public class CustomerResponse {
     private Integer orderCount;
     private LocalDateTime lastPurchaseDate;
 
-    private Boolean isActive;
+    private CustomerStatus status;
     private Boolean isVip;
 
     private String notes;
