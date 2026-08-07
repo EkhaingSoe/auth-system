@@ -54,7 +54,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public RegisterResponse register(RegisterRequest request) {
 
-        if (userRepository.existsByEmail(request.getEmail())) {
+        if (userRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
             throw new UserAlreadyExistsException("Email already exists");
         }
 
@@ -79,7 +79,7 @@ public class AuthServiceImpl implements AuthService {
     public LoginResponse login(LoginRequest request, HttpServletRequest httpRequest) {
 
         User user = userRepository.findByEmailAndDeletedFalse(request.getEmail())
-                .or(() -> userRepository.findByUsername(request.getEmail()))
+                .or(() -> userRepository.findByUsernameAndDeletedFalse(request.getEmail()))
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {

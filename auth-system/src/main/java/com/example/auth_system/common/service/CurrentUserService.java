@@ -23,7 +23,7 @@ public class CurrentUserService {
 
                 String username = authentication.getName();
 
-                return userRepository.findByUsername(username)
+                return userRepository.findByUsernameAndDeletedFalse(username)
                                 .orElseThrow(
                                                 () -> new ResourceNotFoundException(
                                                                 "User not found"));

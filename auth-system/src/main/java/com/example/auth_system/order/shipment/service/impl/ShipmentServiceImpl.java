@@ -86,7 +86,7 @@ public class ShipmentServiceImpl implements ShipmentService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        User currentUser = userRepository.findByUsername(authentication.getName())
+        User currentUser = userRepository.findByUsernameAndDeletedFalse(authentication.getName())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         // 4. Update related order status
@@ -112,7 +112,7 @@ public class ShipmentServiceImpl implements ShipmentService {
         Order order = shipment.getOrder();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        User currentUser = userRepository.findByUsername(authentication.getName())
+        User currentUser = userRepository.findByUsernameAndDeletedFalse(authentication.getName())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         OrderStatus newOrderStatus = mapShipmentStatusToOrderStatus(status);
         if (newOrderStatus != null) {

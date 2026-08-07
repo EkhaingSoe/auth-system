@@ -76,12 +76,12 @@ public class UserServiceImpl implements UserService {
     public UserResponse createUser(CreateUserRequest request) {
         log.info("Creating new user with username: {}, email: {}", request.getUsername(), request.getEmail());
 
-        if (request.getUsername() != null && userRepository.existsByUsername(request.getUsername())) {
+        if (request.getUsername() != null && userRepository.existsByUsernameAndDeletedFalse(request.getUsername())) {
             throw new UserAlreadyExistsException("Username '" + request.getUsername() + "' already taken");
         }
 
         // ✅ Check if email already exists (if provided)
-        if (request.getEmail() != null && userRepository.existsByEmail(request.getEmail())) {
+        if (request.getEmail() != null && userRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
             throw new UserAlreadyExistsException("Email '" + request.getEmail() + "' already in use");
         }
 
@@ -236,7 +236,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse getUserByUsername(String username) {
         log.info("Fetching user by username: {}", username);
-        User user = userRepository.findByUsername(username)
+        User user = userRepository.findByUsernameAndDeletedFalse(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with username: " + username));
         return userMapper.toResponse(user);
     }

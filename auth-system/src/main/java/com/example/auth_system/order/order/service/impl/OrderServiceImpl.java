@@ -98,7 +98,7 @@ public class OrderServiceImpl implements OrderService {
 
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
                 String username = authentication.getName();
-                User currentUser = userRepository.findByUsername(username)
+                User currentUser = userRepository.findByUsernameAndDeletedFalse(username)
                                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
                 order.setCreatedBy(currentUser);
                 // Initial status
@@ -203,7 +203,7 @@ public class OrderServiceImpl implements OrderService {
                 Order order = orderRepository.findById(orderId)
                                 .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                User currentUser = userRepository.findByUsername(authentication.getName())
+                User currentUser = userRepository.findByUsernameAndDeletedFalse(authentication.getName())
                                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
                 orderStatusService.changeStatus(order, newStatus, currentUser, reason);
@@ -230,7 +230,7 @@ public class OrderServiceImpl implements OrderService {
 
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-                User currentUser = userRepository.findByUsername(authentication.getName())
+                User currentUser = userRepository.findByUsernameAndDeletedFalse(authentication.getName())
                                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
                 orderStatusService.changeStatus(order, OrderStatus.CANCELLED, currentUser, reason);

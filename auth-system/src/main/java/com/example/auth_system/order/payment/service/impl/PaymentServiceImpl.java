@@ -68,7 +68,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        User currentUser = userRepository.findByUsername(username)
+        User currentUser = userRepository.findByUsernameAndDeletedFalse(username)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
         Payment payment = paymentMapper.toEntity(request, order, currentUser);
@@ -103,7 +103,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        User currentUser = userRepository.findByUsername(username)
+        User currentUser = userRepository.findByUsernameAndDeletedFalse(username)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
         Payment payment = paymentMapper.toEcommerceEntity(request, order, currentUser);
@@ -208,7 +208,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        User currentUser = userRepository.findByUsername(username)
+        User currentUser = userRepository.findByUsernameAndDeletedFalse(username)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
         payment.setDeleted(true);
