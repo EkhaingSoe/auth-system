@@ -76,7 +76,7 @@ public class UserController {
         @GetMapping("/enabled")
         public ResponseEntity<ApiResponse<Page<UserResponse>>> getEnabledUsers(Pageable pageable) {
                 log.info("GET /api/admin/users/enabled - Getting enabled users");
-                Page<UserResponse> users = userService.getEnabledUsers(pageable);
+                Page<UserResponse> users = userService.getActiveUsers(pageable);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "Enabled users retrieved successfully", users));
         }
@@ -87,7 +87,7 @@ public class UserController {
         public ResponseEntity<ApiResponse<UserResponse>> createUser(
                         @Valid @RequestBody CreateStaffUserRequest request) {
                 log.info("POST /api/admin/users - Creating new user: {}", request.getEmail());
-                UserResponse user = userService.createUser(request);
+                UserResponse user = userService.createStaffUser(request);
                 return ResponseEntity.status(HttpStatus.CREATED)
                                 .body(ApiResponse.success(201, "User created successfully", user));
         }
@@ -99,7 +99,7 @@ public class UserController {
                         @PathVariable UUID id,
                         @Valid @RequestBody UpdateStaffUserRequest request) {
                 log.info("PUT /api/admin/users/{} - Updating user", id);
-                UserResponse user = userService.updateUser(id, request);
+                UserResponse user = userService.updateStaffUser(id, request);
                 return ResponseEntity.ok(
                                 ApiResponse.success(200, "User updated successfully", user));
         }
@@ -131,14 +131,6 @@ public class UserController {
         }
 
         // ============ DELETE ENDPOINTS ============
-
-        @DeleteMapping("/{id}")
-        public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable UUID id) {
-                log.info("DELETE /api/admin/users/{} - Deleting user", id);
-                userService.deleteUser(id);
-                return ResponseEntity.ok(
-                                ApiResponse.success(200, "User deleted successfully", null));
-        }
 
         @GetMapping("/me")
         public ResponseEntity<ApiResponse<UserInfoResponse>> getCurrentUser(HttpServletRequest request) {

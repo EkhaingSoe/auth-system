@@ -18,6 +18,7 @@ import com.example.auth_system.user.dto.response.UserInfoResponse;
 import com.example.auth_system.user.dto.response.UserResponse;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;
+import com.example.auth_system.user.enums.UserType;
 import com.example.auth_system.user.mapper.UserMapper;
 import com.example.auth_system.user.repository.UserRepository;
 
@@ -32,7 +33,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -52,14 +52,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<UserResponse> getAllUsers(Pageable pageable) {
-        Page<User> users = userRepository.findAll(pageable);
+        Page<User> users = userRepository.findAllByDeletedFalse(pageable);
         return userMapper.toResponseList(users);
     }
 
     @Override
     public UserResponse getUserById(UUID id) {
         log.info("Fetching user by id: {}", id);
-        User user = userRepository.findById(id)
+        User user = userRepository.findByIdAndDeletedFalse(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
         return userMapper.toResponse(user);
     }
@@ -73,61 +73,86 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse createUser(CreateStaffUserRequest request) {
-        log.info("Creating new user with username: {}, email: {}", request.getUsername(), request.getEmail());
+    public UserResponse createStaffUser(CreateStaffUserRequest request) {
 
         if (request.getUsername() != null && userRepository.existsByUsernameAndDeletedFalse(request.getUsername())) {
             throw new UserAlreadyExistsException("Username '" + request.getUsername() + "' already taken");
         }
 
-        // ✅ Check if email already exists (if provided)
         if (request.getEmail() != null && userRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
             throw new UserAlreadyExistsException("Email '" + request.getEmail() + "' already in use");
         }
 
-        // Map request to entity
         User user = userMapper.toEntity(request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setUserType(UserType.STAFF);
 
-        // ✅ Assign role (single role from request)
-        Set<Role> roles = new HashSet<>();
-        if (request.getRole() != null && !request.getRole().isEmpty()) {
-            Role role = roleRepository.findByName(RoleName.valueOf(request.getRole()))
-                    .orElseThrow(() -> new RuntimeException("Role not found: " + request.getRole()));
-            roles.add(role);
-        } else {
-            // Default role if none specified
-            Role defaultRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER)
-                    .orElseThrow(() -> new RuntimeException("Default role ROLE_CUSTOMER not found"));
-            roles.add(defaultRole);
-        }
-        user.setRoles(roles);
         Store store = storeRepository.findById(request.getStoreId())
-                .orElseThrow(() -> new ResourceNotFoundException("Store not found with id: " + request.getStoreId()));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Store not found: " + request.getStoreId()));
 
-        if (user.getUsername() != null && !user.getUsername().isEmpty()) {
-            if (request.getStoreId() == null) {
-                throw new RuntimeException("Store ID is required for staff users");
-            }
+        user.setStore(store);
 
-            user.setStore(store);
-            user.setEmailVerified(true); // Staff auto-verified
-            user.setStatus(UserStatus.ACTIVE); // Staff auto-enabled
-        } else {
-            user.setStore(store);
-            user.setEmailVerified(false); // Public needs OTP
-            user.setStatus(UserStatus.PENDING); // Public needs verification
-        }
+        Role role = roleRepository.findByName(
+                RoleName.valueOf(request.getRole())).orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "Role not found: " + request.getRole()));
 
-        user = userRepository.save(user);
-        log.info("User created successfully with id: {}, username: {}, email: {}",
-                user.getId(), user.getUsername(), user.getEmail());
+        user.setRoles(Set.of(role));
 
-        return userMapper.toResponse(user);
+        // Staff account settings
+        user.setEmailVerified(true);
+        user.setStatus(UserStatus.ACTIVE);
+
+        User savedUser = userRepository.save(user);
+
+        log.info(
+                "Staff created successfully id={}, username={}",
+                savedUser.getId(),
+                savedUser.getUsername());
+
+        return userMapper.toResponse(savedUser);
+
+        // Set<Role> roles = new HashSet<>();
+        // if (request.getRole() != null && !request.getRole().isEmpty()) {
+        // Role role = roleRepository.findByName(RoleName.valueOf(request.getRole()))
+        // .orElseThrow(() -> new RuntimeException("Role not found: " +
+        // request.getRole()));
+        // roles.add(role);
+        // } else {
+        // Role defaultRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER)
+        // .orElseThrow(() -> new RuntimeException("Default role ROLE_CUSTOMER not
+        // found"));
+        // roles.add(defaultRole);
+        // }
+        // user.setRoles(roles);
+        // Store store = storeRepository.findById(request.getStoreId())
+        // .orElseThrow(() -> new ResourceNotFoundException("Store not found with id: "
+        // + request.getStoreId()));
+
+        // if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+        // if (request.getStoreId() == null) {
+        // throw new RuntimeException("Store ID is required for staff users");
+        // }
+
+        // user.setStore(store);
+        // user.setEmailVerified(true); // Staff auto-verified
+        // user.setStatus(UserStatus.ACTIVE); // Staff auto-enabled
+        // } else {
+        // user.setStore(store);
+        // user.setEmailVerified(false); // Public needs OTP
+        // user.setStatus(UserStatus.PENDING); // Public needs verification
+        // }
+
+        // user = userRepository.save(user);
+        // log.info("User created successfully with id: {}, username: {}, email: {}",
+        // user.getId(), user.getUsername(), user.getEmail());
+
+        // return userMapper.toResponse(user);
     }
 
     @Override
-    public UserResponse updateUser(UUID id, UpdateStaffUserRequest request) {
+    public UserResponse updateStaffUser(UUID id, UpdateStaffUserRequest request) {
 
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
@@ -226,8 +251,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserResponse> getEnabledUsers(Pageable pageable) {
-        log.info("Fetching enabled users");
+    public Page<UserResponse> getActiveUsers(Pageable pageable) {
+        log.info("Fetching active users");
 
         Page<User> users = userRepository.findUsersByStatus(UserStatus.ACTIVE, pageable);
         return userMapper.toResponseList(users);

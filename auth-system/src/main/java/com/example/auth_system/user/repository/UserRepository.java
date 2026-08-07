@@ -20,93 +20,93 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    Page<User> findAll(Pageable pageable);
+        Page<User> findAllByDeletedFalse(Pageable pageable);
 
-    Optional<User> findByEmailAndDeletedFalse(String email);
+        Optional<User> findByIdAndDeletedFalse(UUID id);
 
-    Optional<User> findByUsernameAndDeletedFalse(String username);
+        Optional<User> findByEmailAndDeletedFalse(String email);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                WHERE u.deleted = false
-                AND (u.username = :keyword OR u.email = :keyword)
-            """)
-    Optional<User> findActiveUserByUsernameOrEmail(
-            @Param("keyword") String keyword);
+        Optional<User> findByUsernameAndDeletedFalse(String username);
 
-    boolean existsByEmailAndDeletedFalse(String email);
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            WHERE u.deleted = false
+                            AND (u.username = :keyword OR u.email = :keyword)
+                        """)
+        Optional<User> findActiveUserByUsernameOrEmail(
+                        @Param("keyword") String keyword);
 
-    boolean existsByUsernameAndDeletedFalse(String username);
+        boolean existsByEmailAndDeletedFalse(String email);
 
-    Optional<User> findByEmailAndStatusAndDeletedFalse(String email, UserStatus status);
+        boolean existsByUsernameAndDeletedFalse(String username);
 
-    // For internal service logic
-    List<User> findByRolesContaining(Role role);
+        Optional<User> findByEmailAndStatusAndDeletedFalse(String email, UserStatus status);
 
-    // For UI (pagination)
-    @Query("""
-                SELECT u
-                FROM User u
-                JOIN u.roles r
-                WHERE r.name = :roleName
-                AND u.deleted = false
-            """)
-    Page<User> findByRoleName(@Param("roleName") RoleName roleName, Pageable pageable);
+        // For internal service logic
+        List<User> findByRolesContaining(Role role);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                WHERE u.status = :status
-                AND u.deleted = false
-            """)
-    Page<User> findUsersByStatus(@Param("status") UserStatus status, Pageable pageable);
+        // For UI (pagination)
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            JOIN u.roles r
+                            WHERE r.name = :roleName
+                            AND u.deleted = false
+                        """)
+        Page<User> findByRoleName(@Param("roleName") RoleName roleName, Pageable pageable);
 
-    @Query("""
-                SELECT u
-                FROM User u
-                WHERE u.deleted = false
-                AND (
-                    LOWER(u.username) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                    OR LOWER(u.email) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                    OR LOWER(u.firstName) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                    OR LOWER(u.lastName) LIKE LOWER(CONCAT('%',:keyword,'%'))
-                )
-            """)
-    Page<User> searchUsers(
-            @Param("keyword") String keyword, Pageable pageable);
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            WHERE u.status = :status
+                            AND u.deleted = false
+                        """)
+        Page<User> findUsersByStatus(@Param("status") UserStatus status, Pageable pageable);
 
-    @Modifying
-    @Transactional
-    @Query("""
-                UPDATE User u
-                SET u.lastLoginAt = :time
-                WHERE u.email = :email
-            """)
-    void updateLastLogin(@Param("email") String email, @Param("time") LocalDateTime time);
+        @Query("""
+                            SELECT u
+                            FROM User u
+                            WHERE u.deleted = false
+                            AND (
+                                LOWER(u.username) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                                OR LOWER(u.email) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                                OR LOWER(u.firstName) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                                OR LOWER(u.lastName) LIKE LOWER(CONCAT('%',:keyword,'%'))
+                            )
+                        """)
+        Page<User> searchUsers(
+                        @Param("keyword") String keyword, Pageable pageable);
 
-    @Query("""
-                SELECT DISTINCT u
-                FROM User u
-                LEFT JOIN FETCH u.roles r
-                LEFT JOIN FETCH r.permissions
-                WHERE u.email = :email
-                AND u.deleted = false
-            """)
-    Optional<User> findByEmailWithRoles(
-            @Param("email") String email);
+        @Modifying
+        @Transactional
+        @Query("""
+                            UPDATE User u
+                            SET u.lastLoginAt = :time
+                            WHERE u.email = :email
+                        """)
+        void updateLastLogin(@Param("email") String email, @Param("time") LocalDateTime time);
 
-    @Query("""
-                SELECT DISTINCT u
-                FROM User u
-                LEFT JOIN FETCH u.roles r
-                LEFT JOIN FETCH r.permissions
-                WHERE u.username = :username
-                AND u.deleted = false
-            """)
-    Optional<User> findByUsernameWithRoles(
-            @Param("username") String username);
+        @Query("""
+                            SELECT DISTINCT u
+                            FROM User u
+                            LEFT JOIN FETCH u.roles r
+                            LEFT JOIN FETCH r.permissions
+                            WHERE u.email = :email
+                            AND u.deleted = false
+                        """)
+        Optional<User> findByEmailWithRoles(
+                        @Param("email") String email);
 
-    Optional<User> findByIdAndDeletedFalse(UUID id);
+        @Query("""
+                            SELECT DISTINCT u
+                            FROM User u
+                            LEFT JOIN FETCH u.roles r
+                            LEFT JOIN FETCH r.permissions
+                            WHERE u.username = :username
+                            AND u.deleted = false
+                        """)
+        Optional<User> findByUsernameWithRoles(
+                        @Param("username") String username);
 
 }

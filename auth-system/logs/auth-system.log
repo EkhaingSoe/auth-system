@@ -5011,3 +5011,2466 @@ Caused by: java.lang.ClassNotFoundException: CreateUserRequest
 2026-08-07 15:11:26.525 [Thread-43] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-08-07 15:11:26.526 [Thread-43] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Shutdown initiated...
 2026-08-07 15:11:26.527 [Thread-43] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Shutdown completed.
+2026-08-07 15:11:26.647 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:11:26.647 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:11:26.648 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:11:27.127 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:11:27.238 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:11:27.363 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:11:27.363 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:11:27.364 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:11:27.378 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:11:27.378 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 728 ms
+2026-08-07 15:11:27.411 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Starting...
+2026-08-07 15:11:27.450 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-10 - Added connection org.postgresql.jdbc.PgConnection@7c7dc2e6
+2026-08-07 15:11:27.450 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Start completed.
+2026-08-07 15:11:27.465 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:11:27.467 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:11:27.488 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.018s)
+2026-08-07 15:11:27.525 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:11:27.525 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:11:27.525 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:11:27.554 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:11:27.556 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:11:27.567 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:11:28.064 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:11:28.398 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:11:28.514 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:11:29.893 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:11:30.005 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@11028a94, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4811d64, org.springframework.security.web.context.SecurityContextHolderFilter@34eab415, org.springframework.security.web.header.HeaderWriterFilter@3e67435f, org.springframework.security.web.authentication.logout.LogoutFilter@75cc1b53, com.example.auth_system.auth.security.JwtAuthenticationFilter@7cecf4ed, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7d3dbf94, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79c466d7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f4c1846, org.springframework.security.web.session.SessionManagementFilter@2e4870d1, org.springframework.security.web.access.ExceptionTranslationFilter@7a466b0f, org.springframework.security.web.access.intercept.AuthorizationFilter@3fb5ebcb]
+2026-08-07 15:11:30.150 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:11:30.161 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:11:30.166 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.56 seconds (process running for 2798.909)
+2026-08-07 15:11:30.185 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:11:30.188 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:28:12.426 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 15:28:12.457 [Thread-47] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:28:12.459 [Thread-47] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Shutdown initiated...
+2026-08-07 15:28:12.466 [Thread-47] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Shutdown completed.
+2026-08-07 15:28:12.632 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:28:12.633 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:28:12.633 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:28:13.203 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:28:13.364 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 160 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:28:13.688 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:28:13.689 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:28:13.690 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:28:13.717 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:28:13.717 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1074 ms
+2026-08-07 15:28:13.776 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Starting...
+2026-08-07 15:28:13.821 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-11 - Added connection org.postgresql.jdbc.PgConnection@d319349
+2026-08-07 15:28:13.822 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Start completed.
+2026-08-07 15:28:13.847 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:28:13.851 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:28:13.885 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.031s)
+2026-08-07 15:28:13.934 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:28:13.934 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:28:13.935 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:28:13.984 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:28:13.988 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:28:14.009 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:28:14.843 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:28:15.214 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:28:15.471 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:28:17.651 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:28:17.869 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1d1cdafc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2770e224, org.springframework.security.web.context.SecurityContextHolderFilter@67c9496a, org.springframework.security.web.header.HeaderWriterFilter@8e38d42, org.springframework.security.web.authentication.logout.LogoutFilter@304ac9c7, com.example.auth_system.auth.security.JwtAuthenticationFilter@25975d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@297a3ec6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d672f36, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d136af7, org.springframework.security.web.session.SessionManagementFilter@44bc93d9, org.springframework.security.web.access.ExceptionTranslationFilter@360f0e43, org.springframework.security.web.access.intercept.AuthorizationFilter@7b7e30a5]
+2026-08-07 15:28:18.159 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:28:18.178 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:28:18.185 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.646 seconds (process running for 3806.919)
+2026-08-07 15:28:18.215 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:28:18.220 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:36:33.149 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2026-08-07 15:36:33.164 [Thread-51] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:36:33.168 [Thread-51] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Shutdown initiated...
+2026-08-07 15:36:33.170 [Thread-51] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Shutdown completed.
+2026-08-07 15:36:33.324 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:36:33.325 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:36:33.326 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:36:33.856 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:36:34.008 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 151 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:36:34.247 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:36:34.248 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:36:34.248 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:36:34.308 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:36:34.308 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 980 ms
+2026-08-07 15:36:34.376 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Starting...
+2026-08-07 15:36:34.416 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-12 - Added connection org.postgresql.jdbc.PgConnection@6c89c6f6
+2026-08-07 15:36:34.416 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Start completed.
+2026-08-07 15:36:34.444 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:36:34.448 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:36:34.487 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.036s)
+2026-08-07 15:36:34.549 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:36:34.550 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:36:34.550 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:36:34.608 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:36:34.613 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:36:34.634 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:36:35.485 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:36:35.851 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:36:36.091 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:36:38.522 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:36:38.721 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6aea4183, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1956d23c, org.springframework.security.web.context.SecurityContextHolderFilter@1b8d6ef, org.springframework.security.web.header.HeaderWriterFilter@7688433f, org.springframework.security.web.authentication.logout.LogoutFilter@75d60151, com.example.auth_system.auth.security.JwtAuthenticationFilter@21e28de7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22d6424a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16f36c94, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35107d0b, org.springframework.security.web.session.SessionManagementFilter@a45c188, org.springframework.security.web.access.ExceptionTranslationFilter@3f4391db, org.springframework.security.web.access.intercept.AuthorizationFilter@2f7311b5]
+2026-08-07 15:36:38.995 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:36:39.029 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:36:39.039 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.776 seconds (process running for 4307.771)
+2026-08-07 15:36:39.101 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:36:39.110 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:36:52.024 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 15:36:52.034 [Thread-55] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:36:52.036 [Thread-55] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Shutdown initiated...
+2026-08-07 15:36:52.038 [Thread-55] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Shutdown completed.
+2026-08-07 15:36:52.151 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:36:52.152 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:36:52.152 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:36:52.587 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:36:52.784 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 186 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:36:53.003 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:36:53.004 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:36:53.004 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:36:53.031 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:36:53.031 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 877 ms
+2026-08-07 15:36:53.105 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Starting...
+2026-08-07 15:36:53.158 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-13 - Added connection org.postgresql.jdbc.PgConnection@7c3b8034
+2026-08-07 15:36:53.158 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Start completed.
+2026-08-07 15:36:53.192 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:36:53.195 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:36:53.248 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.048s)
+2026-08-07 15:36:53.296 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:36:53.296 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:36:53.297 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:36:53.344 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:36:53.344 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:36:53.361 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:36:54.152 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:36:54.492 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:36:54.638 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:36:57.117 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:36:57.305 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@714dc680, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44483e41, org.springframework.security.web.context.SecurityContextHolderFilter@7beee327, org.springframework.security.web.header.HeaderWriterFilter@3d5da851, org.springframework.security.web.authentication.logout.LogoutFilter@3881b62e, com.example.auth_system.auth.security.JwtAuthenticationFilter@732b2dc0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29244394, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79eb79c1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6408f4a3, org.springframework.security.web.session.SessionManagementFilter@29ac9e07, org.springframework.security.web.access.ExceptionTranslationFilter@6d67fff9, org.springframework.security.web.access.intercept.AuthorizationFilter@1135388f]
+2026-08-07 15:36:57.517 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:36:57.534 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:36:57.538 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.422 seconds (process running for 4326.27)
+2026-08-07 15:36:57.563 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:36:57.569 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:37:44.591 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 15:37:44.606 [Thread-59] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:37:44.607 [Thread-59] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Shutdown initiated...
+2026-08-07 15:37:44.610 [Thread-59] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Shutdown completed.
+2026-08-07 15:37:44.776 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:37:44.777 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:37:44.777 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:37:45.276 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:37:45.434 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 157 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:37:45.626 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:37:45.627 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:37:45.627 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:37:45.648 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:37:45.648 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 868 ms
+2026-08-07 15:37:45.689 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Starting...
+2026-08-07 15:37:45.744 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-14 - Added connection org.postgresql.jdbc.PgConnection@75241171
+2026-08-07 15:37:45.744 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Start completed.
+2026-08-07 15:37:45.776 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:37:45.778 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:37:45.803 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.021s)
+2026-08-07 15:37:45.843 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:37:45.844 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:37:45.844 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:37:45.885 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:37:45.887 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:37:45.902 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:37:46.821 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:37:47.198 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:37:47.353 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:37:49.319 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:37:49.505 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ca3fa61, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@51b00e12, org.springframework.security.web.context.SecurityContextHolderFilter@77d010dc, org.springframework.security.web.header.HeaderWriterFilter@52d56d6e, org.springframework.security.web.authentication.logout.LogoutFilter@6f14495e, com.example.auth_system.auth.security.JwtAuthenticationFilter@3ad577e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e85221c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37c288bf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69f5fa55, org.springframework.security.web.session.SessionManagementFilter@48cce289, org.springframework.security.web.access.ExceptionTranslationFilter@416f006a, org.springframework.security.web.access.intercept.AuthorizationFilter@2bc2e5b1]
+2026-08-07 15:37:49.769 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:37:49.801 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:37:49.809 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.087 seconds (process running for 4378.54)
+2026-08-07 15:37:49.869 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:37:49.875 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:40:23.884 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 13 class path changes (0 additions, 0 deletions, 13 modifications)
+2026-08-07 15:40:23.899 [Thread-63] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:40:23.900 [Thread-63] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown initiated...
+2026-08-07 15:40:23.902 [Thread-63] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown completed.
+2026-08-07 15:40:24.036 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:40:24.037 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:40:24.037 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:40:24.507 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:40:24.699 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 192 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:40:24.940 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:40:24.941 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:40:24.941 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:40:24.971 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:40:24.971 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 931 ms
+2026-08-07 15:40:25.023 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Starting...
+2026-08-07 15:40:25.063 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-15 - Added connection org.postgresql.jdbc.PgConnection@22cc824d
+2026-08-07 15:40:25.063 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Start completed.
+2026-08-07 15:40:25.092 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:40:25.095 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:40:25.149 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.052s)
+2026-08-07 15:40:25.197 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:40:25.197 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:40:25.197 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:40:25.242 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:40:25.247 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:40:25.264 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:40:26.186 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:40:26.521 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:40:26.772 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:40:29.170 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:40:29.357 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b3dc95a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38c66515, org.springframework.security.web.context.SecurityContextHolderFilter@28f46b32, org.springframework.security.web.header.HeaderWriterFilter@179e28fa, org.springframework.security.web.authentication.logout.LogoutFilter@5d344e3e, com.example.auth_system.auth.security.JwtAuthenticationFilter@66ca54e6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e0d85ce, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3832bf0d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ecec77b, org.springframework.security.web.session.SessionManagementFilter@fec244a, org.springframework.security.web.access.ExceptionTranslationFilter@8afd406, org.springframework.security.web.access.intercept.AuthorizationFilter@487324a]
+2026-08-07 15:40:29.667 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:40:29.691 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:40:29.699 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.703 seconds (process running for 4538.429)
+2026-08-07 15:40:29.735 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:40:29.742 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:40:34.647 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 15:40:34.660 [Thread-67] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:40:34.661 [Thread-67] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Shutdown initiated...
+2026-08-07 15:40:34.665 [Thread-67] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Shutdown completed.
+2026-08-07 15:40:34.795 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:40:34.795 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:40:34.796 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:40:35.312 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:40:35.485 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 173 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:40:35.713 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:40:35.713 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:40:35.714 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:40:35.744 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:40:35.745 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 947 ms
+2026-08-07 15:40:35.788 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Starting...
+2026-08-07 15:40:35.837 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-16 - Added connection org.postgresql.jdbc.PgConnection@6be87f01
+2026-08-07 15:40:35.837 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Start completed.
+2026-08-07 15:40:35.863 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:40:35.864 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:40:35.888 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.021s)
+2026-08-07 15:40:35.932 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:40:35.945 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:40:35.946 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:40:36.008 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:40:36.012 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:40:36.025 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:40:36.692 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:40:37.085 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:40:37.196 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:40:39.061 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:40:39.253 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@32a5bd14, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e55211, org.springframework.security.web.context.SecurityContextHolderFilter@51845e9f, org.springframework.security.web.header.HeaderWriterFilter@39c375fe, org.springframework.security.web.authentication.logout.LogoutFilter@39e1424b, com.example.auth_system.auth.security.JwtAuthenticationFilter@1af69c9f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@41f9b920, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63b75864, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5a84546f, org.springframework.security.web.session.SessionManagementFilter@e94ed19, org.springframework.security.web.access.ExceptionTranslationFilter@7fadf80f, org.springframework.security.web.access.intercept.AuthorizationFilter@6cf0d659]
+2026-08-07 15:40:39.515 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:40:39.543 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:40:39.550 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.803 seconds (process running for 4548.28)
+2026-08-07 15:40:39.574 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:40:39.580 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 15:56:10.845 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 15:56:10.872 [Thread-71] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:56:10.873 [Thread-71] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Shutdown initiated...
+2026-08-07 15:56:10.880 [Thread-71] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Shutdown completed.
+2026-08-07 15:56:11.036 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 15:56:11.037 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 15:56:11.037 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 15:56:11.549 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 15:56:11.688 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 137 ms. Found 36 JPA repository interfaces.
+2026-08-07 15:56:11.999 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 15:56:12.001 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 15:56:12.001 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 15:56:12.029 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 15:56:12.030 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 985 ms
+2026-08-07 15:56:12.078 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Starting...
+2026-08-07 15:56:12.138 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-17 - Added connection org.postgresql.jdbc.PgConnection@78600cbf
+2026-08-07 15:56:12.139 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Start completed.
+2026-08-07 15:56:12.161 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 15:56:12.165 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 15:56:12.197 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.028s)
+2026-08-07 15:56:12.257 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 15:56:12.258 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 15:56:12.258 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 15:56:12.314 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 15:56:12.320 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 15:56:12.344 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 15:56:13.021 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 15:56:13.407 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 15:56:13.560 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 15:56:15.765 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 15:56:15.933 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@581ad8fb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d4f23b0, org.springframework.security.web.context.SecurityContextHolderFilter@2ca8d00d, org.springframework.security.web.header.HeaderWriterFilter@164abda4, org.springframework.security.web.authentication.logout.LogoutFilter@44d06706, com.example.auth_system.auth.security.JwtAuthenticationFilter@249ed000, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@ab16a9e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@49d551f1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77505aa4, org.springframework.security.web.session.SessionManagementFilter@4b759ab0, org.springframework.security.web.access.ExceptionTranslationFilter@7bbbb086, org.springframework.security.web.access.intercept.AuthorizationFilter@1f35644c]
+2026-08-07 15:56:16.203 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 15:56:16.225 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 15:56:16.232 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.282 seconds (process running for 5484.957)
+2026-08-07 15:56:16.259 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 15:56:16.265 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 16:07:56.892 [HikariPool-17 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-17 - Thread starvation or clock leap detected (housekeeper delta=2m44s483ms137µs500ns).
+2026-08-07 16:35:10.862 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 16:35:10.884 [Thread-75] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 16:35:10.888 [Thread-75] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Shutdown initiated...
+2026-08-07 16:35:10.892 [Thread-75] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Shutdown completed.
+2026-08-07 16:35:11.074 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 28752 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-07 16:35:11.074 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-07 16:35:11.074 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-07 16:35:11.673 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 16:35:11.915 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 241 ms. Found 36 JPA repository interfaces.
+2026-08-07 16:35:12.238 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-07 16:35:12.239 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-07 16:35:12.239 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-07 16:35:12.269 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-07 16:35:12.269 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1185 ms
+2026-08-07 16:35:12.351 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Starting...
+2026-08-07 16:35:12.402 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-18 - Added connection org.postgresql.jdbc.PgConnection@5d7505d
+2026-08-07 16:35:12.403 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Start completed.
+2026-08-07 16:35:12.435 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-07 16:35:12.439 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-07 16:35:12.477 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 38 migrations (execution time 00:00.034s)
+2026-08-07 16:35:12.533 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 40
+2026-08-07 16:35:12.533 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-07 16:35:12.533 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-07 16:35:12.619 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 16:35:12.626 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-07 16:35:12.648 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 16:35:13.542 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 16:35:13.929 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 16:35:14.162 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 16:35:16.663 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-07 16:35:16.847 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5da8affa, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5af23b09, org.springframework.security.web.context.SecurityContextHolderFilter@16fa94c8, org.springframework.security.web.header.HeaderWriterFilter@20fff022, org.springframework.security.web.authentication.logout.LogoutFilter@3823c74a, com.example.auth_system.auth.security.JwtAuthenticationFilter@7701a84e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1d5da8f2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42fc259b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67c2a322, org.springframework.security.web.session.SessionManagementFilter@641b9c41, org.springframework.security.web.access.ExceptionTranslationFilter@767fba67, org.springframework.security.web.access.intercept.AuthorizationFilter@7b972e55]
+2026-08-07 16:35:17.126 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-07 16:35:17.150 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-07 16:35:17.157 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 6.18 seconds (process running for 7825.88)
+2026-08-07 16:35:17.192 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 16:35:17.200 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-07 16:36:16.514 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-07 16:36:16.514 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-07 16:36:16.517 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-08-07 16:36:16.578 [http-nio-8080-exec-1] ERROR c.e.a.auth.security.JwtTokenProvider - Expired JWT token: JWT expired at 2026-08-07T08:45:59Z. Current time: 2026-08-07T10:06:16Z, a difference of 4817575 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-08-07 16:36:16.585 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/users' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-07 16:36:55.911 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 16:36:56.008 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:36:56.025 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:36:56.092 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        user_sessions
+        (created_at, device_name, expires_at, ip_address, last_used_at, refresh_token, revoked, updated_at, user_id, user_agent, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 16:36:56.112 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        deleted=?,
+        email=?,
+        email_verified=?,
+        failed_login_attempts=?,
+        first_name=?,
+        last_login_at=?,
+        last_name=?,
+        locked_until=?,
+        password=?,
+        status=?,
+        store_id=?,
+        updated_at=?,
+        user_type=?,
+        username=? 
+    where
+        id=?
+2026-08-07 16:37:02.722 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:37:02.732 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:37:02.736 [http-nio-8080-exec-4] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:37:02.737 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:37:02.744 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        not(u1_0.deleted) 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-07 16:37:02.757 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:37:02.761 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:39:19.526 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:39:19.535 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:39:19.537 [http-nio-8080-exec-6] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:39:19.537 [http-nio-8080-exec-6] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:39:19.554 [http-nio-8080-exec-6] INFO  c.e.a.user.controller.UserController - POST /api/admin/users - Creating new user: cashier@example.com
+2026-08-07 16:39:19.574 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.username=? 
+        and not(u1_0.deleted) 
+    fetch
+        first ? rows only
+2026-08-07 16:39:19.576 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted) 
+    fetch
+        first ? rows only
+2026-08-07 16:39:19.699 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:39:19.704 [http-nio-8080-exec-6] ERROR c.e.a.c.e.GlobalExceptionHandler - Resource not found: Store not found: 1362c0e3-f386-4f5a-ad9b-9f72ca091e13
+2026-08-07 16:39:19.709 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.ResourceNotFoundException: Store not found: 1362c0e3-f386-4f5a-ad9b-9f72ca091e13]
+2026-08-07 16:40:15.904 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:40:15.911 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:40:15.913 [http-nio-8080-exec-8] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:40:15.913 [http-nio-8080-exec-8] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:40:15.952 [http-nio-8080-exec-8] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com has permission STORE_READ: true
+2026-08-07 16:40:15.952 [http-nio-8080-exec-8] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission STORE_READ: true
+2026-08-07 16:40:15.955 [http-nio-8080-exec-8] INFO  c.e.a.s.controller.StoreController - GET /api/admin/stores - Getting all stores
+2026-08-07 16:40:15.955 [http-nio-8080-exec-8] INFO  c.e.a.s.s.impl.StoreServiceImpl - Fetching all stores
+2026-08-07 16:40:15.958 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0
+2026-08-07 16:40:35.294 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:40:35.299 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:40:35.301 [http-nio-8080-exec-9] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:40:35.301 [http-nio-8080-exec-9] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:40:35.303 [http-nio-8080-exec-9] INFO  c.e.a.user.controller.UserController - POST /api/admin/users - Creating new user: cashier@example.com
+2026-08-07 16:40:35.305 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.username=? 
+        and not(u1_0.deleted) 
+    fetch
+        first ? rows only
+2026-08-07 16:40:35.306 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted) 
+    fetch
+        first ? rows only
+2026-08-07 16:40:35.401 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:40:35.407 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.name=?
+2026-08-07 16:40:35.408 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:40:35.412 [http-nio-8080-exec-9] INFO  c.e.a.user.service.UserServiceImpl - Staff created successfully id=06db8637-2391-4175-86fa-6f54ee106e7e, username=cashier100
+2026-08-07 16:40:35.415 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (created_at, deleted, email, email_verified, failed_login_attempts, first_name, last_login_at, last_name, locked_until, password, status, store_id, updated_at, user_type, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 16:40:35.420 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        user_roles
+        (user_id, role_id) 
+    values
+        (?, ?)
+2026-08-07 16:41:01.126 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:01.130 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:01.131 [http-nio-8080-exec-10] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:01.133 [http-nio-8080-exec-10] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:01.137 [http-nio-8080-exec-10] INFO  c.e.a.user.service.UserServiceImpl - Fetching user by id: 06db8637-2391-4175-86fa-6f54ee106e7e
+2026-08-07 16:41:01.140 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=? 
+        and not(u1_0.deleted)
+2026-08-07 16:41:01.149 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:01.151 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:07.561 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:07.564 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:07.566 [http-nio-8080-exec-3] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:07.566 [http-nio-8080-exec-3] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:07.578 [http-nio-8080-exec-3] INFO  c.e.a.user.controller.UserController - GET /api/admin/users/email/admin@gmail.com - Getting user by email
+2026-08-07 16:41:07.579 [http-nio-8080-exec-3] INFO  c.e.a.user.service.UserServiceImpl - Fetching user by email: admin@gmail.com
+2026-08-07 16:41:07.582 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-07 16:41:07.585 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:07.589 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:12.405 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:12.409 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:12.410 [http-nio-8080-exec-1] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:12.410 [http-nio-8080-exec-1] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:12.412 [http-nio-8080-exec-1] INFO  c.e.a.user.controller.UserController - GET /api/admin/users/search?term=cas - Searching users
+2026-08-07 16:41:12.412 [http-nio-8080-exec-1] INFO  c.e.a.user.service.UserServiceImpl - Searching users with term: cas
+2026-08-07 16:41:12.419 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.deleted=false 
+        and (
+            lower(u1_0.username) like lower(('%'||?||'%')) escape '' 
+            or lower(u1_0.email) like lower(('%'||?||'%')) escape '' 
+            or lower(u1_0.first_name) like lower(('%'||?||'%')) escape '' 
+            or lower(u1_0.last_name) like lower(('%'||?||'%')) escape ''
+        ) 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-07 16:41:12.421 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:12.422 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:16.455 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:16.458 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:16.458 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:16.459 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:16.461 [http-nio-8080-exec-2] INFO  c.e.a.user.controller.UserController - GET /api/admin/users/role/ROLE_CASHIER - Getting users by role
+2026-08-07 16:41:16.462 [http-nio-8080-exec-2] INFO  c.e.a.user.service.UserServiceImpl - Fetching users by role: ROLE_CASHIER
+2026-08-07 16:41:16.464 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    where
+        r1_1.name=? 
+        and u1_0.deleted=false 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-07 16:41:16.466 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:16.467 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:28.931 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:28.936 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:28.937 [http-nio-8080-exec-4] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:28.937 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:28.949 [http-nio-8080-exec-4] INFO  c.e.a.user.controller.UserController - PUT /api/admin/users/06db8637-2391-4175-86fa-6f54ee106e7e - Updating user
+2026-08-07 16:41:28.951 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 16:41:28.953 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:28.953 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:28.955 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        deleted=?,
+        email=?,
+        email_verified=?,
+        failed_login_attempts=?,
+        first_name=?,
+        last_login_at=?,
+        last_name=?,
+        locked_until=?,
+        password=?,
+        status=?,
+        store_id=?,
+        updated_at=?,
+        user_type=?,
+        username=? 
+    where
+        id=?
+2026-08-07 16:41:34.724 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:34.727 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:34.728 [http-nio-8080-exec-5] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:34.728 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:34.730 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        not(u1_0.deleted) 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-07 16:41:34.734 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:34.735 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:34.736 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:34.737 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:41.359 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:41.362 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:41.363 [http-nio-8080-exec-7] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:41.363 [http-nio-8080-exec-7] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:41.364 [http-nio-8080-exec-7] INFO  c.e.a.user.controller.UserController - GET /api/admin/users/enabled - Getting enabled users
+2026-08-07 16:41:41.364 [http-nio-8080-exec-7] INFO  c.e.a.user.service.UserServiceImpl - Fetching active users
+2026-08-07 16:41:41.367 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.status=? 
+        and u1_0.deleted=false 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-07 16:41:41.368 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:41.369 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:41.370 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:41.370 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:41:53.940 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:41:53.943 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:53.945 [http-nio-8080-exec-6] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:41:53.945 [http-nio-8080-exec-6] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:41:53.953 [http-nio-8080-exec-6] INFO  c.e.a.user.controller.UserController - PUT /api/admin/users/06db8637-2391-4175-86fa-6f54ee106e7e/roles - Assigning roles: [ROLE_CASHIER, ROLE_MANAGER]
+2026-08-07 16:41:53.954 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 16:41:53.966 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.name=?
+2026-08-07 16:41:53.967 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:53.969 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.id,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.name=?
+2026-08-07 16:41:53.970 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:41:53.972 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.name,
+        s1_0.parent_store_id,
+        s1_0.phone,
+        s1_0.settings,
+        s1_0.status,
+        s1_0.store_code,
+        s1_0.store_type,
+        s1_0.tax_number,
+        s1_0.updated_at 
+    from
+        stores s1_0 
+    where
+        s1_0.id=?
+2026-08-07 16:41:53.974 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        deleted=?,
+        email=?,
+        email_verified=?,
+        failed_login_attempts=?,
+        first_name=?,
+        last_login_at=?,
+        last_name=?,
+        locked_until=?,
+        password=?,
+        status=?,
+        store_id=?,
+        updated_at=?,
+        user_type=?,
+        username=? 
+    where
+        id=?
+2026-08-07 16:41:53.977 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        user_roles 
+    where
+        user_id=?
+2026-08-07 16:41:53.978 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        user_roles
+        (user_id, role_id) 
+    values
+        (?, ?)
+2026-08-07 16:41:53.979 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        user_roles
+        (user_id, role_id) 
+    values
+        (?, ?)
+2026-08-07 16:42:06.513 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:42:06.516 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:42:06.517 [http-nio-8080-exec-8] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:42:06.517 [http-nio-8080-exec-8] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:42:06.518 [http-nio-8080-exec-8] INFO  c.e.a.user.controller.UserController - PUT /api/admin/users/06db8637-2391-4175-86fa-6f54ee106e7e/enable - Enabling user
+2026-08-07 16:42:06.518 [http-nio-8080-exec-8] INFO  c.e.a.user.service.UserServiceImpl - Enabling user with id: 06db8637-2391-4175-86fa-6f54ee106e7e
+2026-08-07 16:42:06.518 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 16:42:06.520 [http-nio-8080-exec-8] INFO  c.e.a.user.service.UserServiceImpl - User enabled successfully: cashier@example.com
+2026-08-07 16:42:06.520 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        deleted=?,
+        email=?,
+        email_verified=?,
+        failed_login_attempts=?,
+        first_name=?,
+        last_login_at=?,
+        last_name=?,
+        locked_until=?,
+        password=?,
+        status=?,
+        store_id=?,
+        updated_at=?,
+        user_type=?,
+        username=? 
+    where
+        id=?
+2026-08-07 16:42:15.068 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-07 16:42:15.070 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:42:15.071 [http-nio-8080-exec-9] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [BRAND_UPDATE, CATEGORY_UPDATE, PRODUCT_CREATE, BRAND_DELETE, CATEGORY_READ, CUSTOMER_CREATE, ORDER_READ, INVENTORY_VIEW, USER_ASSIGN_ROLE, USER_CREATE, STORE_READ, CATEGORY_CREATE, ORDER_DELETE, ORDER_UPDATE, CUSTOMER_DELETE, BRAND_CREATE, INVENTORY_MANAGE, ORDER_REFUND, USER_READ, CATEGORY_DELETE, CUSTOMER_UPDATE, PRODUCT_READ, USER_DELETE, USER_UPDATE, REPORT_EXPORT, PRODUCT_DELETE, STORE_UPDATE, CUSTOMER_READ, SETTINGS_UPDATE, PRODUCT_UPDATE, REPORT_VIEW_SALES, REPORT_VIEW_INVENTORY, BRAND_READ, ROLE_ADMIN, ORDER_CREATE, SETTINGS_VIEW]
+2026-08-07 16:42:15.071 [http-nio-8080-exec-9] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-07 16:42:15.075 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 16:42:15.077 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        r1_0.user_id=?
+2026-08-07 16:42:15.078 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name 
+    from
+        role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id 
+    where
+        p1_0.role_id=?
+2026-08-07 16:43:30.430 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-07 16:43:30.439 [Thread-79] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 16:43:30.440 [Thread-79] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Shutdown initiated...
+2026-08-07 16:43:30.441 [Thread-79] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Shutdown completed.
