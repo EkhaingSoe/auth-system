@@ -1,7 +1,7 @@
 package com.example.auth_system.common.bootstrap;
 
 import com.example.auth_system.permission.entity.Role;
-import com.example.auth_system.permission.entity.RoleName;
+import com.example.auth_system.permission.enums.RoleName;
 import com.example.auth_system.permission.repository.RoleRepository;
 import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.enums.UserStatus;

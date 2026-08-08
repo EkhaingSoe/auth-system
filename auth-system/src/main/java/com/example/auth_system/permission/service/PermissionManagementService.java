@@ -1,21 +1,22 @@
 // src/main/java/com/example/auth_system/auth/service/PermissionManagementService.java
 package com.example.auth_system.permission.service;
 
-import com.example.auth_system.permission.entity.Permission;
-import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.permission.dto.response.PermissionResponse;
+import com.example.auth_system.permission.dto.response.RoleResponse;
+import com.example.auth_system.permission.enums.RoleName;
 
 import java.util.List;
 import java.util.Set;
 
 public interface PermissionManagementService {
 
-    List<Permission> getAllPermissions();
+    List<PermissionResponse> getAllPermissions();
 
-    Set<Permission> getPermissionsByRole(String roleName);
+    List<PermissionResponse> getPermissionsByRole(RoleName roleName);
 
-    Role assignPermissionsToRole(String roleName, List<String> permissionNames);
+    RoleResponse assignPermissionsToRole(RoleName roleName, List<String> permissionNames);
 
-    Role addPermissionToRole(String roleName, String permissionName);
+    RoleResponse addPermissionToRole(RoleName roleName, String permissionName);
 
-    Role removePermissionFromRole(String roleName, String permissionName);
+    RoleResponse removePermissionFromRole(RoleName roleName, String permissionName);
 }

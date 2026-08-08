@@ -2,10 +2,15 @@
 package com.example.auth_system.permission.controller;
 
 import com.example.auth_system.common.dto.response.ApiResponse;
+import com.example.auth_system.permission.dto.request.AssignPermissionsRequest;
+import com.example.auth_system.permission.dto.response.PermissionResponse;
+import com.example.auth_system.permission.dto.response.RoleResponse;
 import com.example.auth_system.permission.entity.Permission;
 import com.example.auth_system.permission.entity.Role;
+import com.example.auth_system.permission.enums.RoleName;
 import com.example.auth_system.permission.service.PermissionManagementService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -26,57 +31,43 @@ public class PermissionController {
         private final PermissionManagementService permissionManagementService;
 
         @GetMapping
-        public ResponseEntity<ApiResponse<List<Permission>>> getAllPermissions() {
+        public ResponseEntity<ApiResponse<List<PermissionResponse>>> getAllPermissions() {
                 log.info("GET /api/admin/permissions - Getting all permissions");
-                List<Permission> permissions = permissionManagementService.getAllPermissions();
-                return ResponseEntity.ok(
-                                ApiResponse.success(200, "Permissions retrieved successfully", permissions));
+                List<PermissionResponse> permissions = permissionManagementService.getAllPermissions();
+                return ResponseEntity.ok(ApiResponse.success(200, "Permissions retrieved successfully", permissions));
         }
 
-        @GetMapping("/{roleName}/permission")
-        public ResponseEntity<ApiResponse<Set<Permission>>> getPermissionsByRole(
-                        @PathVariable String roleName) {
-                log.info("GET /api/admin/permissions/{}/permission - Getting permissions by role", roleName);
-
-                Set<Permission> permissions = permissionManagementService.getPermissionsByRole(roleName);
-                return ResponseEntity.ok(
-                                ApiResponse.success(200, "Permissions retrieved successfully", permissions));
+        @GetMapping("/roles/{roleName}")
+        public ResponseEntity<ApiResponse<List<PermissionResponse>>> getPermissionsByRole(
+                        @PathVariable RoleName roleName) {
+                log.info("GET /api/admin/permissions/roles/{} - Getting permissions by role", roleName);
+                List<PermissionResponse> permissions = permissionManagementService.getPermissionsByRole(roleName);
+                return ResponseEntity.ok(ApiResponse.success(200, "Permissions retrieved successfully", permissions));
         }
 
-        @PutMapping("/{roleName}/permissions")
-        public ResponseEntity<ApiResponse<Role>> assignPermissionsToRole(
-                        @PathVariable String roleName,
-                        @RequestBody List<String> permissionNames) {
-                log.info("PUT /api/admin/permissions/{}/permissions - Assigning permissions: {}", roleName,
-                                permissionNames);
-
-                Role role = permissionManagementService.assignPermissionsToRole(roleName, permissionNames);
-                return ResponseEntity.ok(
-                                ApiResponse.success(200, "Permissions assigned successfully", role));
+        @PutMapping("/roles/{roleName}/permissions")
+        public ResponseEntity<ApiResponse<RoleResponse>> assignPermissionsToRole(@PathVariable RoleName roleName,
+                        @Valid @RequestBody AssignPermissionsRequest request) {
+                log.info("PUT /api/admin/permissions/roles/{}/permissions - Assigning permissions: {}", roleName,
+                                request.getPermissionNames());
+                RoleResponse role = permissionManagementService.assignPermissionsToRole(roleName,
+                                request.getPermissionNames());
+                return ResponseEntity.ok(ApiResponse.success(200, "Permissions assigned successfully", role));
         }
 
-        @PostMapping("/{roleName}/permission")
-        public ResponseEntity<ApiResponse<Role>> addPermissionToRole(
-                        @PathVariable String roleName,
-                        @RequestBody Map<String, String> request) {
-                String permissionName = request.get("permission");
-                log.info("POST /api/admin/roles/{}/permissions - Adding permission {} to role",
-                                roleName, permissionName);
-
-                Role role = permissionManagementService.addPermissionToRole(roleName, permissionName);
-                return ResponseEntity.ok(
-                                ApiResponse.success(200, "Permission added successfully", role));
-        }
-
-        @DeleteMapping("/role/{roleName}/permission/{permissionName}")
-        public ResponseEntity<ApiResponse<Role>> removePermissionFromRole(
-                        @PathVariable String roleName,
+        @PostMapping("/roles/{roleName}/permissions/{permissionName}")
+        public ResponseEntity<ApiResponse<RoleResponse>> addPermissionToRole(@PathVariable RoleName roleName,
                         @PathVariable String permissionName) {
-                log.info("DELETE /api/admin/permissions/role/{}/permission/{} - Removing permission from role",
-                                roleName, permissionName);
+                log.info("POST /api/admin/permissions/roles/{}/permissions/{}", roleName, permissionName);
+                RoleResponse role = permissionManagementService.addPermissionToRole(roleName, permissionName);
+                return ResponseEntity.ok(ApiResponse.success(200, "Permission added successfully", role));
+        }
 
-                Role role = permissionManagementService.removePermissionFromRole(roleName, permissionName);
-                return ResponseEntity.ok(
-                                ApiResponse.success(200, "Permission removed successfully", role));
+        @DeleteMapping("/roles/{roleName}/permissions/{permissionName}")
+        public ResponseEntity<ApiResponse<RoleResponse>> removePermissionFromRole(@PathVariable RoleName roleName,
+                        @PathVariable String permissionName) {
+                log.info("DELETE /api/admin/permissions/roles/{}/permissions/{}", roleName, permissionName);
+                RoleResponse role = permissionManagementService.removePermissionFromRole(roleName, permissionName);
+                return ResponseEntity.ok(ApiResponse.success(200, "Permission removed successfully", role));
         }
 }
