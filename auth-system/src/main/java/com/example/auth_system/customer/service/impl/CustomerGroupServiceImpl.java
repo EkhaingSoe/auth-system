@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -116,11 +118,12 @@ public class CustomerGroupServiceImpl implements CustomerGroupService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerGroupResponse> getActiveCustomerGroups() {
+    public Page<CustomerGroupResponse> getActiveCustomerGroups(Pageable pageable) {
         log.info("Getting active customer groups");
-        return customerGroupRepository.findByIsActiveTrue().stream()
-                .map(customerGroupMapper::toResponse)
-                .collect(Collectors.toList());
+
+        return customerGroupRepository
+                .findByIsActiveTrue(pageable)
+                .map(customerGroupMapper::toResponse);
     }
 
     // ============================================================
@@ -174,22 +177,22 @@ public class CustomerGroupServiceImpl implements CustomerGroupService {
     // ============================================================
     // GET GROUPS WITH CUSTOMER COUNT
     // ============================================================
-
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerGroupResponse> getCustomerGroupsWithCount() {
+    public Page<CustomerGroupResponse> getCustomerGroupsWithCount(Pageable pageable) {
         log.info("Getting customer groups with customer count");
-        
-        List<Object[]> results = customerGroupRepository.findCustomerGroupsWithCount();
-        
-        return results.stream()
+
+        return customerGroupRepository
+                .findCustomerGroupsWithCount(pageable)
                 .map(result -> {
                     CustomerGroup group = (CustomerGroup) result[0];
                     Long count = (Long) result[1];
+
                     CustomerGroupResponse response = customerGroupMapper.toResponse(group);
+
                     response.setCustomerCount(count.intValue());
+
                     return response;
-                })
-                .collect(Collectors.toList());
+                });
     }
 }

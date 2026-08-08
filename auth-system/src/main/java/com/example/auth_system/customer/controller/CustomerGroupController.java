@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -44,9 +46,9 @@ public class CustomerGroupController {
 
     @GetMapping("/active")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerGroupResponse>>> getActiveCustomerGroups() {
+    public ResponseEntity<ApiResponse<Page<CustomerGroupResponse>>> getActiveCustomerGroups(Pageable pageable) {
         log.info("GET /api/admin/customer-groups/active - Getting active groups");
-        List<CustomerGroupResponse> groups = customerGroupService.getActiveCustomerGroups();
+        Page<CustomerGroupResponse> groups = customerGroupService.getActiveCustomerGroups(pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "Active groups retrieved", groups));
     }
 
@@ -104,9 +106,9 @@ public class CustomerGroupController {
 
     @GetMapping("/with-count")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerGroupResponse>>> getCustomerGroupsWithCount() {
+    public ResponseEntity<ApiResponse<Page<CustomerGroupResponse>>> getCustomerGroupsWithCount(Pageable pageable) {
         log.info("GET /api/admin/customer-groups/with-count - Getting groups with customer count");
-        List<CustomerGroupResponse> groups = customerGroupService.getCustomerGroupsWithCount();
+        Page<CustomerGroupResponse> groups = customerGroupService.getCustomerGroupsWithCount(pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "Groups with count retrieved", groups));
     }
 }
