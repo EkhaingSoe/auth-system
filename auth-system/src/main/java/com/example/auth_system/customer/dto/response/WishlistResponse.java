@@ -34,6 +34,7 @@ public class WishlistResponse {
         private String productName;
         private String productCode;
         private String productSku;
+        private String productImageUrl;
         private Double productPrice;
         private UUID variantId;
         private String variantSku;

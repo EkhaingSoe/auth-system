@@ -35,10 +35,9 @@ public class WishlistMapper {
                 .customerId(wishlist.getCustomer() != null ? wishlist.getCustomer().getId() : null)
                 .customerName(wishlist.getCustomer() != null ? wishlist.getCustomer().getFullName() : null)
                 .itemCount(wishlist.getItemCount())
-                .items(wishlist.getItems() != null ?
-                        wishlist.getItems().stream()
-                                .map(this::toItemResponse)
-                                .collect(Collectors.toList()) : null)
+                .items(wishlist.getItems() != null ? wishlist.getItems().stream()
+                        .map(this::toItemResponse)
+                        .collect(Collectors.toList()) : null)
                 .createdAt(wishlist.getCreatedAt())
                 .updatedAt(wishlist.getUpdatedAt())
                 .build();
@@ -63,11 +62,11 @@ public class WishlistMapper {
                 .productId(item.getProduct() != null ? item.getProduct().getId() : null)
                 .productName(item.getProduct() != null ? item.getProduct().getName() : null)
                 .productCode(item.getProduct() != null ? item.getProduct().getProductCode() : null)
-                .productSku(item.getVariant() != null ? item.getVariant().getSku() : 
-                            (item.getProduct() != null ? item.getProduct().getProductCode() : null))
-                .productPrice(item.getVariant() != null && item.getVariant().getSellingPrice() != null ?
-                            item.getVariant().getSellingPrice().doubleValue() :
-                            (item.getProduct() != null ? item.getProduct().getMinPrice().doubleValue() : 0.0))
+                .productSku(item.getVariant() != null ? item.getVariant().getSku()
+                        : (item.getProduct() != null ? item.getProduct().getProductCode() : null))
+                .productPrice(item.getVariant() != null && item.getVariant().getSellingPrice() != null
+                        ? item.getVariant().getSellingPrice().doubleValue()
+                        : (item.getProduct() != null ? item.getProduct().getMinPrice().doubleValue() : 0.0))
                 .variantId(item.getVariant() != null ? item.getVariant().getId() : null)
                 .variantSku(item.getVariant() != null ? item.getVariant().getSku() : null)
                 .variantAttributes(variantAttributes)

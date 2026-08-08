@@ -1,5 +1,7 @@
 package com.example.auth_system.customer.dto.request;
 
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -19,7 +21,10 @@ public class CreateCustomerGroupRequest {
     @Size(max = 100, message = "Name must not exceed 100 characters")
     private String name;
 
+    @Size(max = 1000, message = "Description must not exceed 1000 characters")
     private String description;
 
+    @DecimalMin(value = "0.0", message = "Discount percentage cannot be negative")
+    @DecimalMax(value = "100.0", message = "Discount percentage cannot exceed 100")
     private BigDecimal discountPercentage;
 }

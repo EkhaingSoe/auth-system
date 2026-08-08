@@ -49,7 +49,8 @@ public class WishlistServiceImpl implements WishlistService {
         log.info("Creating wishlist for customer: {}", request.getCustomerId());
 
         Customer customer = customerRepository.findById(request.getCustomerId())
-                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + request.getCustomerId()));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Customer not found with id: " + request.getCustomerId()));
 
         Wishlist wishlist = wishlistMapper.toEntity(customer, request);
         wishlist = wishlistRepository.save(wishlist);
@@ -129,17 +130,20 @@ public class WishlistServiceImpl implements WishlistService {
 
         // Find wishlist
         Wishlist wishlist = wishlistRepository.findById(request.getWishlistId())
-                .orElseThrow(() -> new ResourceNotFoundException("Wishlist not found with id: " + request.getWishlistId()));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Wishlist not found with id: " + request.getWishlistId()));
 
         // Find product
         Product product = productRepository.findById(request.getProductId())
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + request.getProductId()));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Product not found with id: " + request.getProductId()));
 
         // Find variant if provided
         ProductVariant variant = null;
         if (request.getVariantId() != null) {
             variant = variantRepository.findById(request.getVariantId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Variant not found with id: " + request.getVariantId()));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Variant not found with id: " + request.getVariantId()));
             // Verify variant belongs to product
             if (!variant.getProduct().getId().equals(request.getProductId())) {
                 throw new BusinessException("Variant does not belong to this product");
@@ -157,7 +161,6 @@ public class WishlistServiceImpl implements WishlistService {
                 .wishlist(wishlist)
                 .product(product)
                 .variant(variant)
-                .notes(request.getNotes())
                 .build();
 
         wishlistItemRepository.save(item);

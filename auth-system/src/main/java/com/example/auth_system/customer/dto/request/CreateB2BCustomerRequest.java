@@ -1,26 +1,31 @@
 package com.example.auth_system.customer.dto.request;
 
-import com.example.auth_system.customer.enums.Gender;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.example.auth_system.customer.enums.CustomerStatus;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateCustomerRequest {
+public class CreateB2BCustomerRequest {
 
+    @NotBlank(message = "Company name is required")
+    @Size(max = 255, message = "Company name must not exceed 255 characters")
+    private String companyName;
+
+    @NotBlank(message = "Contact first name is required")
     @Size(max = 100, message = "First name must not exceed 100 characters")
     private String firstName;
 
+    @NotBlank(message = "Contact last name is required")
     @Size(max = 100, message = "Last name must not exceed 100 characters")
     private String lastName;
 
@@ -28,8 +33,13 @@ public class UpdateCustomerRequest {
     @Size(max = 255, message = "Email must not exceed 255 characters")
     private String email;
 
+    @NotBlank(message = "Phone is required")
     @Size(max = 20, message = "Phone must not exceed 20 characters")
     private String phone;
+
+    @NotBlank(message = "Tax number is required")
+    @Size(max = 50, message = "Tax number must not exceed 50 characters")
+    private String taxNumber;
 
     private UUID customerGroupId;
 
@@ -40,9 +50,7 @@ public class UpdateCustomerRequest {
     private String postalCode;
     private String country;
 
-    private String companyName;
-    private String taxNumber;
-    private LocalDate dateOfBirth;
-    private Gender gender;
+    private BigDecimal creditLimit;
+
     private String notes;
 }

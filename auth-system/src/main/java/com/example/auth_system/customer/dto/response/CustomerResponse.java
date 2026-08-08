@@ -2,6 +2,8 @@ package com.example.auth_system.customer.dto.response;
 
 import com.example.auth_system.customer.enums.Gender;
 import com.example.auth_system.customer.enums.CustomerStatus;
+import com.example.auth_system.customer.enums.CustomerType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,43 +23,30 @@ public class CustomerResponse {
 
     private UUID id;
     private String customerCode;
+    private CustomerType customerType;
     private String firstName;
     private String lastName;
     private String fullName;
     private String email;
     private String phone;
-
     private UUID userId;
     private String userEmail;
-
     private UUID customerGroupId;
     private String customerGroupName;
-    private BigDecimal discountPercentage;
-
     private String addressLine1;
     private String addressLine2;
     private String city;
     private String state;
     private String postalCode;
     private String country;
-
     private String companyName;
     private String taxNumber;
     private LocalDate dateOfBirth;
     private Gender gender;
-
-    private BigDecimal totalSpent;
-    private Integer loyaltyPoints;
-    private Integer orderCount;
-    private LocalDateTime lastPurchaseDate;
-
     private CustomerStatus status;
-    private Boolean isVip;
-
+    private BigDecimal creditLimit;
+    private BigDecimal currentBalance;
     private String notes;
-
-    private List<WishlistResponse> wishlists;
-
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

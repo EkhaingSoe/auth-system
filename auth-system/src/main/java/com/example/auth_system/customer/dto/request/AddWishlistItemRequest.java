@@ -20,7 +20,6 @@ public class AddWishlistItemRequest {
     @NotNull(message = "Product ID is required")
     private UUID productId;
 
-    private UUID variantId;  // Optional
+    private UUID variantId; // Optional
 
-    private String notes;
 }

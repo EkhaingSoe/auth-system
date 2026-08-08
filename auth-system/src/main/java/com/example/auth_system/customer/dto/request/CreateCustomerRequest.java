@@ -18,6 +18,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CreateCustomerRequest {
 
+    private UUID userId; // Link to existing User (for online customers)
+
     @NotBlank(message = "First name is required")
     @Size(max = 100, message = "First name must not exceed 100 characters")
     private String firstName;
@@ -33,8 +35,6 @@ public class CreateCustomerRequest {
     @Size(max = 20, message = "Phone must not exceed 20 characters")
     private String phone;
 
-    private UUID userId;  // Link to existing User (for online customers)
-
     private UUID customerGroupId;
 
     private String addressLine1;
@@ -43,11 +43,7 @@ public class CreateCustomerRequest {
     private String state;
     private String postalCode;
     private String country;
-
-    private String companyName;
-    private String taxNumber;
     private LocalDate dateOfBirth;
     private Gender gender;
-
     private String notes;
 }

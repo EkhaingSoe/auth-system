@@ -32,8 +32,6 @@ public class CustomerMapper {
                 .state(request.getState())
                 .postalCode(request.getPostalCode())
                 .country(request.getCountry())
-                .companyName(request.getCompanyName())
-                .taxNumber(request.getTaxNumber())
                 .dateOfBirth(request.getDateOfBirth())
                 .gender(request.getGender())
                 .notes(request.getNotes())
@@ -87,12 +85,6 @@ public class CustomerMapper {
         if (request.getGender() != null) {
             customer.setGender(request.getGender());
         }
-        if (request.getStatus() != null) {
-            customer.setStatus(request.getStatus());
-        }
-        if (request.getIsVip() != null) {
-            customer.setIsVip(request.getIsVip());
-        }
         if (request.getNotes() != null) {
             customer.setNotes(request.getNotes());
         }
@@ -115,9 +107,6 @@ public class CustomerMapper {
                 .userEmail(customer.getUser() != null ? customer.getUser().getEmail() : null)
                 .customerGroupId(customer.getCustomerGroup() != null ? customer.getCustomerGroup().getId() : null)
                 .customerGroupName(customer.getCustomerGroup() != null ? customer.getCustomerGroup().getName() : null)
-                .discountPercentage(
-                        customer.getCustomerGroup() != null ? customer.getCustomerGroup().getDiscountPercentage()
-                                : null)
                 .addressLine1(customer.getAddressLine1())
                 .addressLine2(customer.getAddressLine2())
                 .city(customer.getCity())
@@ -128,16 +117,8 @@ public class CustomerMapper {
                 .taxNumber(customer.getTaxNumber())
                 .dateOfBirth(customer.getDateOfBirth())
                 .gender(customer.getGender())
-                .totalSpent(customer.getTotalSpent())
-                .loyaltyPoints(customer.getLoyaltyPoints())
-                .orderCount(customer.getOrderCount())
-                .lastPurchaseDate(customer.getLastPurchaseDate())
                 .status(customer.getStatus())
-                .isVip(customer.getIsVip())
                 .notes(customer.getNotes())
-                .wishlists(customer.getWishlists() != null ? customer.getWishlists().stream()
-                        .map(wishlistMapper::toResponse)
-                        .collect(Collectors.toList()) : null)
                 .createdAt(customer.getCreatedAt())
                 .updatedAt(customer.getUpdatedAt())
                 .build();
