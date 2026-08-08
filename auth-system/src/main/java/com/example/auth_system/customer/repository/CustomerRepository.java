@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,10 +22,9 @@ public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 
     Optional<Customer> findByUserId(UUID userId);
 
-    List<Customer> findByStatus(CustomerStatus status);
-    // Page<Customer> findByStatus(CustomerStatus status, Pageable pageable);
+    Page<Customer> findByStatus(CustomerStatus status, Pageable pageable);
 
-    List<Customer> findByIsVipTrue();
+    Page<Customer> findByIsVipTrue(Pageable pageable);
 
     @Query("SELECT c FROM Customer c WHERE " +
             "LOWER(c.firstName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
@@ -34,12 +32,12 @@ public interface CustomerRepository extends JpaRepository<Customer, UUID> {
             "LOWER(c.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
             "LOWER(c.customerCode) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
             "LOWER(c.phone) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
-    List<Customer> searchCustomers(@Param("searchTerm") String searchTerm);
+    Page<Customer> searchCustomers(@Param("searchTerm") String searchTerm, Pageable pageable);
 
     long countByStatus(CustomerStatus status);
 
     @Query("SELECT c FROM Customer c WHERE c.customerGroup.id = :groupId")
-    List<Customer> findByCustomerGroupId(@Param("groupId") UUID groupId);
+    Page<Customer> findByCustomerGroupId(@Param("groupId") UUID groupId, Pageable pageable);
 
     boolean existsByEmail(String email);
 

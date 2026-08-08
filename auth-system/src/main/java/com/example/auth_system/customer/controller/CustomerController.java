@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +34,7 @@ public class CustomerController {
     @PreAuthorize("@permission.hasPermission('CUSTOMER_CREATE')")
     public ResponseEntity<ApiResponse<CustomerResponse>> createCustomer(
             @Valid @RequestBody CreateCustomerRequest request) {
-        log.info("POST /api/admin/customers - Creating customer: {} {}", 
+        log.info("POST /api/admin/customers - Creating customer: {} {}",
                 request.getFirstName(), request.getLastName());
         CustomerResponse customer = customerService.createCustomer(request);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -41,25 +43,25 @@ public class CustomerController {
 
     @GetMapping
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerResponse>>> getAllCustomers() {
+    public ResponseEntity<ApiResponse<Page<CustomerResponse>>> getAllCustomers(Pageable pageable) {
         log.info("GET /api/admin/customers - Getting all customers");
-        List<CustomerResponse> customers = customerService.getAllCustomers();
+        Page<CustomerResponse> customers = customerService.getAllCustomers(pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "Customers retrieved successfully", customers));
     }
 
     @GetMapping("/active")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerResponse>>> getActiveCustomers() {
+    public ResponseEntity<ApiResponse<Page<CustomerResponse>>> getActiveCustomers(Pageable pageable) {
         log.info("GET /api/admin/customers/active - Getting active customers");
-        List<CustomerResponse> customers = customerService.getActiveCustomers();
+        Page<CustomerResponse> customers = customerService.getActiveCustomers(pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "Active customers retrieved successfully", customers));
     }
 
     @GetMapping("/vip")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerResponse>>> getVipCustomers() {
+    public ResponseEntity<ApiResponse<Page<CustomerResponse>>> getVipCustomers(Pageable pageable) {
         log.info("GET /api/admin/customers/vip - Getting VIP customers");
-        List<CustomerResponse> customers = customerService.getVipCustomers();
+        Page<CustomerResponse> customers = customerService.getVipCustomers(pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "VIP customers retrieved successfully", customers));
     }
 
@@ -97,9 +99,10 @@ public class CustomerController {
 
     @GetMapping("/search")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerResponse>>> searchCustomers(@RequestParam String term) {
+    public ResponseEntity<ApiResponse<Page<CustomerResponse>>> searchCustomers(@RequestParam String term,
+            Pageable pageable) {
         log.info("GET /api/admin/customers/search - Searching customers with term: {}", term);
-        List<CustomerResponse> customers = customerService.searchCustomers(term);
+        Page<CustomerResponse> customers = customerService.searchCustomers(term, pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "Customers found", customers));
     }
 
@@ -161,9 +164,10 @@ public class CustomerController {
 
     @GetMapping("/group/{groupId}")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_READ')")
-    public ResponseEntity<ApiResponse<List<CustomerResponse>>> getCustomersByGroup(@PathVariable UUID groupId) {
+    public ResponseEntity<ApiResponse<Page<CustomerResponse>>> getCustomersByGroup(@PathVariable UUID groupId,
+            Pageable pageable) {
         log.info("GET /api/admin/customers/group/{} - Getting customers by group", groupId);
-        List<CustomerResponse> customers = customerService.getCustomersByGroupId(groupId);
+        Page<CustomerResponse> customers = customerService.getCustomersByGroupId(groupId, pageable);
         return ResponseEntity.ok(ApiResponse.success(200, "Customers by group retrieved", customers));
     }
 }

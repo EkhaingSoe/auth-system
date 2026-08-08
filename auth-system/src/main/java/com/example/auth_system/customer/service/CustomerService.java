@@ -3,6 +3,8 @@ package com.example.auth_system.customer.service;
 import com.example.auth_system.customer.dto.request.CreateCustomerRequest;
 import com.example.auth_system.customer.dto.request.UpdateCustomerRequest;
 import com.example.auth_system.customer.dto.response.CustomerResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,13 +24,13 @@ public interface CustomerService {
 
     CustomerResponse getCustomerByUserId(UUID userId);
 
-    List<CustomerResponse> getAllCustomers();
+    Page<CustomerResponse> getAllCustomers(Pageable pageable);
 
-    List<CustomerResponse> getActiveCustomers();
+    Page<CustomerResponse> getActiveCustomers(Pageable pageable);
 
-    List<CustomerResponse> getVipCustomers();
+    Page<CustomerResponse> getVipCustomers(Pageable pageable);
 
-    List<CustomerResponse> searchCustomers(String term);
+    Page<CustomerResponse> searchCustomers(String term, Pageable pageable);
 
     void deleteCustomer(UUID id);
 
@@ -38,7 +40,7 @@ public interface CustomerService {
 
     long countActiveCustomers();
 
-    List<CustomerResponse> getCustomersByGroupId(UUID groupId);
+    Page<CustomerResponse> getCustomersByGroupId(UUID groupId, Pageable pageable);
 
     void updateCustomerSpending(UUID customerId, BigDecimal amount);
 }

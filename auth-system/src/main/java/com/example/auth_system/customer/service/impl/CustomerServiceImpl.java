@@ -19,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -177,11 +179,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerResponse> getAllCustomers() {
+    public Page<CustomerResponse> getAllCustomers(Pageable pageable) {
         log.info("Getting all customers");
-        return customerRepository.findAll().stream()
-                .map(customerMapper::toResponse)
-                .collect(Collectors.toList());
+        return customerRepository.findAll(pageable).map(customerMapper::toResponse);
     }
 
     // ============================================================
@@ -190,11 +190,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerResponse> getActiveCustomers() {
+    public Page<CustomerResponse> getActiveCustomers(Pageable pageable) {
         log.info("Getting active customers");
-        return customerRepository.findByStatus(CustomerStatus.ACTIVE).stream()
-                .map(customerMapper::toResponse)
-                .collect(Collectors.toList());
+
+        return customerRepository
+                .findByStatus(CustomerStatus.ACTIVE, pageable)
+                .map(customerMapper::toResponse);
     }
 
     // ============================================================
@@ -203,11 +204,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerResponse> getVipCustomers() {
+    public Page<CustomerResponse> getVipCustomers(Pageable pageable) {
         log.info("Getting VIP customers");
-        return customerRepository.findByIsVipTrue().stream()
-                .map(customerMapper::toResponse)
-                .collect(Collectors.toList());
+        return customerRepository.findByIsVipTrue(pageable).map(customerMapper::toResponse);
     }
 
     // ============================================================
@@ -216,11 +215,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerResponse> searchCustomers(String term) {
+    public Page<CustomerResponse> searchCustomers(String term, Pageable pageable) {
         log.info("Searching customers with term: {}", term);
-        return customerRepository.searchCustomers(term).stream()
-                .map(customerMapper::toResponse)
-                .collect(Collectors.toList());
+        return customerRepository.searchCustomers(term, pageable).map(customerMapper::toResponse);
     }
 
     // ============================================================
@@ -282,11 +279,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerResponse> getCustomersByGroupId(UUID groupId) {
+    public Page<CustomerResponse> getCustomersByGroupId(UUID groupId, Pageable pageable) {
         log.info("Getting customers by group id: {}", groupId);
-        return customerRepository.findByCustomerGroupId(groupId).stream()
-                .map(customerMapper::toResponse)
-                .collect(Collectors.toList());
+        return customerRepository.findByCustomerGroupId(groupId, pageable).map(customerMapper::toResponse);
     }
 
     // ============================================================
