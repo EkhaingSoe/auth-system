@@ -2,6 +2,7 @@
 package com.example.auth_system.permission.service;
 
 import com.example.auth_system.permission.entity.Permission;
+import com.example.auth_system.permission.enums.RoleName;
 import com.example.auth_system.user.entity.User;
 
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,11 @@ public class PermissionServiceImpl implements PermissionService {
         if (user == null || permissionName == null) {
             return false;
         }
+        boolean isAdmin = user.getRoles().stream().anyMatch(role -> role.getName() == RoleName.ROLE_ADMIN);
+        if (isAdmin) {
+            log.debug("User {} is ROLE_ADMIN - permission {} granted", user.getEmail(), permissionName);
+            return true;
+        }
         Set<String> permissions = getUserPermissions(user);
         boolean has = permissions.contains(permissionName);
         log.debug("User {} has permission {}: {}", user.getEmail(), permissionName, has);
@@ -43,6 +49,11 @@ public class PermissionServiceImpl implements PermissionService {
     public boolean hasAnyPermission(User user, String... permissionNames) {
         if (user == null || permissionNames == null || permissionNames.length == 0) {
             return false;
+        }
+        boolean isAdmin = user.getRoles().stream().anyMatch(role -> role.getName() == RoleName.ROLE_ADMIN);
+        if (isAdmin) {
+            log.debug("User {} is ROLE_ADMIN - any permission granted", user.getEmail());
+            return true;
         }
         Set<String> permissions = getUserPermissions(user);
         for (String permission : permissionNames) {

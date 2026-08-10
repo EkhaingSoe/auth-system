@@ -6087,3 +6087,2792 @@ com.example.auth_system.common.exception.DuplicateResourceException: Permission 
 2026-08-10 14:06:54.047 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-08-10 14:06:54.048 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-25 - Shutdown initiated...
 2026-08-10 14:06:54.050 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-25 - Shutdown completed.
+2026-08-10 14:08:13.191 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 12148 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-10 14:08:13.193 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-10 14:08:13.193 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-10 14:08:13.237 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-10 14:08:13.237 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-10 14:08:14.131 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-10 14:08:14.289 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 150 ms. Found 36 JPA repository interfaces.
+2026-08-10 14:08:14.895 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-10 14:08:14.906 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-10 14:08:14.907 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-10 14:08:14.954 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-10 14:08:14.955 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1717 ms
+2026-08-10 14:08:15.042 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-08-10 14:08:15.202 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5129c6a6
+2026-08-10 14:08:15.204 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-08-10 14:08:15.339 [restartedMain] INFO  o.f.c.i.s.classpath.ClassPathScanner - Flyway OSS Edition 10.0.0 by Redgate
+2026-08-10 14:08:15.339 [restartedMain] INFO  o.f.c.i.s.classpath.ClassPathScanner - 
+2026-08-10 14:08:15.339 [restartedMain] INFO  o.f.c.i.s.classpath.ClassPathScanner - See release notes here: https://rd.gt/416ObMi
+2026-08-10 14:08:15.352 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-10 14:08:15.358 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-10 14:08:15.407 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 40 migrations (execution time 00:00.040s)
+2026-08-10 14:08:15.415 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 41
+2026-08-10 14:08:15.416 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-10 14:08:15.427 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "42 - update customer financial fields"
+2026-08-10 14:08:15.447 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 1 migration to schema "public", now at version v42 (execution time 00:00.009s)
+2026-08-10 14:08:15.540 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-10 14:08:15.611 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-08-10 14:08:15.649 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-10 14:08:15.977 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-10 14:08:17.314 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-10 14:08:17.745 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:08:18.010 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-10 14:08:18.585 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-10 14:08:20.659 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-10 14:08:20.890 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@bfb85c3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@330cb483, org.springframework.security.web.context.SecurityContextHolderFilter@7ac95cc2, org.springframework.security.web.header.HeaderWriterFilter@555b1e91, org.springframework.security.web.authentication.logout.LogoutFilter@584d5481, com.example.auth_system.auth.security.JwtAuthenticationFilter@2e03611d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2fb506b0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ce6e531, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ddfdba5, org.springframework.security.web.session.SessionManagementFilter@7e8681cc, org.springframework.security.web.access.ExceptionTranslationFilter@6885a14d, org.springframework.security.web.access.intercept.AuthorizationFilter@1735ef50]
+2026-08-10 14:08:21.353 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-10 14:08:21.405 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-10 14:08:21.412 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 8.583 seconds (process running for 8.997)
+2026-08-10 14:08:21.510 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-10 14:17:32.348 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 6 class path changes (0 additions, 0 deletions, 6 modifications)
+2026-08-10 14:17:32.369 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:17:32.374 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-08-10 14:17:32.378 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-08-10 14:17:32.504 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 12148 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-10 14:17:32.504 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-10 14:17:32.504 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-10 14:17:32.924 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-10 14:17:33.102 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 177 ms. Found 36 JPA repository interfaces.
+2026-08-10 14:17:33.405 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-10 14:17:33.407 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-10 14:17:33.408 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-10 14:17:33.445 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-10 14:17:33.445 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 938 ms
+2026-08-10 14:17:33.516 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-08-10 14:17:33.565 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@71dec35
+2026-08-10 14:17:33.566 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-08-10 14:17:33.588 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-10 14:17:33.590 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-10 14:17:33.619 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 40 migrations (execution time 00:00.024s)
+2026-08-10 14:17:33.663 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 42
+2026-08-10 14:17:33.663 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-10 14:17:33.664 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-10 14:17:33.738 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-10 14:17:33.742 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-10 14:17:33.761 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-10 14:17:34.338 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-10 14:17:34.732 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:17:34.909 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-10 14:17:36.944 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-10 14:17:37.095 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4e4ec76b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@771488a2, org.springframework.security.web.context.SecurityContextHolderFilter@7eabbd3f, org.springframework.security.web.header.HeaderWriterFilter@24a9c93b, org.springframework.security.web.authentication.logout.LogoutFilter@58c9202d, com.example.auth_system.auth.security.JwtAuthenticationFilter@3637e365, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3330c8c1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@593a2f8d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@361bb9ef, org.springframework.security.web.session.SessionManagementFilter@2a511c34, org.springframework.security.web.access.ExceptionTranslationFilter@7df61407, org.springframework.security.web.access.intercept.AuthorizationFilter@5f975cfc]
+2026-08-10 14:17:37.303 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-10 14:17:37.322 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-10 14:17:37.325 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.859 seconds (process running for 564.91)
+2026-08-10 14:17:37.358 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-10 14:17:37.362 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-10 14:29:49.326 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-10 14:29:49.326 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-10 14:29:49.335 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-08-10 14:29:49.424 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:29:49.437 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:29:49.439 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:29:49.443 [http-nio-8080-exec-2] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/customer-groups' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-10 14:29:49.609 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com has permission CUSTOMER_CREATE: false
+2026-08-10 14:29:49.610 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: false
+2026-08-10 14:29:49.611 [http-nio-8080-exec-2] ERROR c.e.a.c.e.GlobalExceptionHandler - Unexpected error occurred: 
+org.springframework.security.access.AccessDeniedException: Access Denied
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.attemptAuthorization(AuthorizationManagerBeforeMethodInterceptor.java:256) ~[spring-security-core-6.2.0.jar:6.2.0]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:197) ~[spring-security-core-6.2.0.jar:6.2.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.example.auth_system.customer.controller.CustomerGroupController$$SpringCGLIB$$0.createCustomerGroup(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.auth_system.auth.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+2026-08-10 14:29:49.638 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2026-08-10 14:36:09.523 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-10 14:36:09.538 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:36:09.540 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-08-10 14:36:09.542 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-08-10 14:36:09.672 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 12148 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-10 14:36:09.673 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-10 14:36:09.673 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-10 14:36:10.047 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-10 14:36:10.176 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 128 ms. Found 36 JPA repository interfaces.
+2026-08-10 14:36:10.379 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-10 14:36:10.380 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-10 14:36:10.380 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-10 14:36:10.400 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-10 14:36:10.401 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 726 ms
+2026-08-10 14:36:10.485 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-08-10 14:36:10.547 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@4a7578dc
+2026-08-10 14:36:10.548 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-08-10 14:36:10.571 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-10 14:36:10.575 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-10 14:36:10.609 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 40 migrations (execution time 00:00.029s)
+2026-08-10 14:36:10.652 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 42
+2026-08-10 14:36:10.652 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-10 14:36:10.653 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-10 14:36:10.697 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-10 14:36:10.700 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-10 14:36:10.715 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-10 14:36:11.230 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-10 14:36:11.558 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:36:11.696 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-10 14:36:13.656 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-10 14:36:13.779 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1eb18f40, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f5d1397, org.springframework.security.web.context.SecurityContextHolderFilter@43cf7f36, org.springframework.security.web.header.HeaderWriterFilter@692d8189, org.springframework.security.web.authentication.logout.LogoutFilter@73860f9a, com.example.auth_system.auth.security.JwtAuthenticationFilter@3400ec7e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@368346c7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33a7b857, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b7acb87, org.springframework.security.web.session.SessionManagementFilter@69223eb7, org.springframework.security.web.access.ExceptionTranslationFilter@39f98800, org.springframework.security.web.access.intercept.AuthorizationFilter@5d08a1a4]
+2026-08-10 14:36:14.046 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-10 14:36:14.076 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-10 14:36:14.081 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.443 seconds (process running for 1681.666)
+2026-08-10 14:36:14.132 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-10 14:36:14.139 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-10 14:36:38.497 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-10 14:36:38.516 [Thread-11] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:36:38.517 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2026-08-10 14:36:38.519 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2026-08-10 14:36:38.644 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 12148 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-10 14:36:38.644 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-10 14:36:38.645 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-10 14:36:39.035 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-10 14:36:39.204 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 168 ms. Found 36 JPA repository interfaces.
+2026-08-10 14:36:39.402 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-10 14:36:39.403 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-10 14:36:39.405 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-10 14:36:39.431 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-10 14:36:39.432 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 786 ms
+2026-08-10 14:36:39.520 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2026-08-10 14:36:39.573 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@2fc20724
+2026-08-10 14:36:39.574 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2026-08-10 14:36:39.593 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-10 14:36:39.594 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-10 14:36:39.617 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 40 migrations (execution time 00:00.020s)
+2026-08-10 14:36:39.663 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 42
+2026-08-10 14:36:39.663 [restartedMain] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2026-08-10 14:36:39.663 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-10 14:36:39.717 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-10 14:36:39.720 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-10 14:36:39.734 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-10 14:36:40.333 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-10 14:36:40.654 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10 14:36:40.760 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-10 14:36:42.982 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-10 14:36:43.125 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@92531e4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31668b49, org.springframework.security.web.context.SecurityContextHolderFilter@7084ec47, org.springframework.security.web.header.HeaderWriterFilter@39ee9fba, org.springframework.security.web.authentication.logout.LogoutFilter@50bd08c9, com.example.auth_system.auth.security.JwtAuthenticationFilter@5d7f00e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21fb651f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c253dd5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3998c795, org.springframework.security.web.session.SessionManagementFilter@71834832, org.springframework.security.web.access.ExceptionTranslationFilter@5c21a1e1, org.springframework.security.web.access.intercept.AuthorizationFilter@6f9a074e]
+2026-08-10 14:36:43.393 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-10 14:36:43.418 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-10 14:36:43.422 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.809 seconds (process running for 1711.007)
+2026-08-10 14:36:43.447 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-10 14:36:43.451 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-10 14:36:55.599 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-10 14:36:55.600 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-10 14:36:55.602 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-08-10 14:36:55.610 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:36:55.615 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:36:55.615 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:36:55.615 [http-nio-8080-exec-2] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/customer-groups' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-10 14:36:55.631 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_CREATE granted
+2026-08-10 14:36:55.632 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: true
+2026-08-10 14:36:55.632 [http-nio-8080-exec-2] INFO  c.e.a.c.c.CustomerGroupController - POST /api/admin/customer-groups - Creating group: VIP
+2026-08-10 14:36:55.639 [http-nio-8080-exec-2] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Creating customer group: VIP
+2026-08-10 14:36:55.660 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:36:55.681 [http-nio-8080-exec-2] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group created successfully with id: fa8dff29-6c38-4520-9b3f-2c44a993e005
+2026-08-10 14:36:55.707 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        customer_groups
+        (created_at, description, discount_percentage, is_active, name, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-08-10 14:37:37.185 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:37:37.188 [http-nio-8080-exec-4] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:37:37.188 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:37:37.191 [http-nio-8080-exec-4] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_CREATE granted
+2026-08-10 14:37:37.192 [http-nio-8080-exec-4] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: true
+2026-08-10 14:37:37.192 [http-nio-8080-exec-4] INFO  c.e.a.c.c.CustomerGroupController - POST /api/admin/customer-groups - Creating group: Regular
+2026-08-10 14:37:37.193 [http-nio-8080-exec-4] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Creating customer group: Regular
+2026-08-10 14:37:37.194 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:37:37.197 [http-nio-8080-exec-4] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group created successfully with id: 1305c1e4-79cb-4005-b827-7a48d764984a
+2026-08-10 14:37:37.198 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        customer_groups
+        (created_at, description, discount_percentage, is_active, name, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-08-10 14:37:51.964 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:37:51.968 [http-nio-8080-exec-5] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:37:51.968 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:37:51.971 [http-nio-8080-exec-5] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_CREATE granted
+2026-08-10 14:37:51.971 [http-nio-8080-exec-5] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: true
+2026-08-10 14:37:51.971 [http-nio-8080-exec-5] INFO  c.e.a.c.c.CustomerGroupController - POST /api/admin/customer-groups - Creating group: Wholesale
+2026-08-10 14:37:51.971 [http-nio-8080-exec-5] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Creating customer group: Wholesale
+2026-08-10 14:37:51.972 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:37:51.973 [http-nio-8080-exec-5] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group created successfully with id: 26ba4536-a764-4f14-9312-ccdf48f7d9c4
+2026-08-10 14:37:51.973 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        customer_groups
+        (created_at, description, discount_percentage, is_active, name, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-08-10 14:38:13.069 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:38:13.073 [http-nio-8080-exec-6] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:38:13.073 [http-nio-8080-exec-6] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:38:13.075 [http-nio-8080-exec-6] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_CREATE granted
+2026-08-10 14:38:13.075 [http-nio-8080-exec-6] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: true
+2026-08-10 14:38:13.075 [http-nio-8080-exec-6] INFO  c.e.a.c.c.CustomerGroupController - POST /api/admin/customer-groups - Creating group: VIP
+2026-08-10 14:38:13.075 [http-nio-8080-exec-6] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Creating customer group: VIP
+2026-08-10 14:38:13.077 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:38:13.081 [http-nio-8080-exec-6] ERROR c.e.a.c.e.GlobalExceptionHandler - Unexpected error occurred: 
+com.example.auth_system.common.exception.BusinessException: Customer group with name already exists: VIP
+	at com.example.auth_system.customer.service.impl.CustomerGroupServiceImpl.createCustomerGroup(CustomerGroupServiceImpl.java:42) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:385) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.example.auth_system.customer.service.impl.CustomerGroupServiceImpl$$SpringCGLIB$$0.createCustomerGroup(<generated>) ~[classes/:na]
+	at com.example.auth_system.customer.controller.CustomerGroupController.createCustomerGroup(CustomerGroupController.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:198) ~[spring-security-core-6.2.0.jar:6.2.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.example.auth_system.customer.controller.CustomerGroupController$$SpringCGLIB$$0.createCustomerGroup(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.auth_system.auth.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+2026-08-10 14:38:13.087 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Customer group with name already exists: VIP]
+2026-08-10 14:38:21.418 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:38:21.422 [http-nio-8080-exec-7] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:38:21.422 [http-nio-8080-exec-7] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:38:21.425 [http-nio-8080-exec-7] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_CREATE granted
+2026-08-10 14:38:21.425 [http-nio-8080-exec-7] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: true
+2026-08-10 14:38:21.426 [http-nio-8080-exec-7] INFO  c.e.a.c.c.CustomerGroupController - POST /api/admin/customer-groups - Creating group: Wholesale
+2026-08-10 14:38:21.426 [http-nio-8080-exec-7] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Creating customer group: Wholesale
+2026-08-10 14:38:21.427 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:38:21.428 [http-nio-8080-exec-7] ERROR c.e.a.c.e.GlobalExceptionHandler - Unexpected error occurred: 
+com.example.auth_system.common.exception.BusinessException: Customer group with name already exists: Wholesale
+	at com.example.auth_system.customer.service.impl.CustomerGroupServiceImpl.createCustomerGroup(CustomerGroupServiceImpl.java:42) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:385) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.example.auth_system.customer.service.impl.CustomerGroupServiceImpl$$SpringCGLIB$$0.createCustomerGroup(<generated>) ~[classes/:na]
+	at com.example.auth_system.customer.controller.CustomerGroupController.createCustomerGroup(CustomerGroupController.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:198) ~[spring-security-core-6.2.0.jar:6.2.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.example.auth_system.customer.controller.CustomerGroupController$$SpringCGLIB$$0.createCustomerGroup(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.auth_system.auth.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+2026-08-10 14:38:21.430 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Customer group with name already exists: Wholesale]
+2026-08-10 14:39:00.754 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:39:00.758 [http-nio-8080-exec-10] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:39:00.759 [http-nio-8080-exec-10] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:39:00.761 [http-nio-8080-exec-10] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:39:00.761 [http-nio-8080-exec-10] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:39:00.762 [http-nio-8080-exec-10] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups - Getting all groups
+2026-08-10 14:39:00.763 [http-nio-8080-exec-10] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting all customer groups
+2026-08-10 14:39:00.766 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0
+2026-08-10 14:39:00.786 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:39:00.788 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:39:00.789 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:39:59.074 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:39:59.078 [http-nio-8080-exec-8] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:39:59.079 [http-nio-8080-exec-8] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:39:59.083 [http-nio-8080-exec-8] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:39:59.083 [http-nio-8080-exec-8] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:39:59.083 [http-nio-8080-exec-8] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups/active - Getting active groups
+2026-08-10 14:39:59.083 [http-nio-8080-exec-8] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting active customer groups
+2026-08-10 14:39:59.086 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.is_active 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-10 14:39:59.108 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:39:59.109 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:39:59.110 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:40:11.818 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:40:11.821 [http-nio-8080-exec-1] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:40:11.821 [http-nio-8080-exec-1] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:40:11.823 [http-nio-8080-exec-1] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:40:11.823 [http-nio-8080-exec-1] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:40:11.823 [http-nio-8080-exec-1] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups/active - Getting active groups
+2026-08-10 14:40:11.823 [http-nio-8080-exec-1] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting active customer groups
+2026-08-10 14:40:11.824 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.is_active 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-10 14:40:11.829 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(cg1_0.id) 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.is_active
+2026-08-10 14:40:20.820 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:40:20.824 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:40:20.826 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:40:20.828 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:40:20.828 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:40:20.828 [http-nio-8080-exec-2] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups/active - Getting active groups
+2026-08-10 14:40:20.828 [http-nio-8080-exec-2] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting active customer groups
+2026-08-10 14:40:20.830 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.is_active 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-10 14:40:20.833 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:40:20.835 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:40:20.837 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:41:47.005 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:41:47.008 [http-nio-8080-exec-6] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:41:47.009 [http-nio-8080-exec-6] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:41:47.016 [http-nio-8080-exec-6] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:41:47.016 [http-nio-8080-exec-6] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:41:47.016 [http-nio-8080-exec-6] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups/fa8dff29-6c38-4520-9b3f-2c44a993e005 - Getting group by id
+2026-08-10 14:41:47.016 [http-nio-8080-exec-6] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting customer group by id: fa8dff29-6c38-4520-9b3f-2c44a993e005
+2026-08-10 14:41:47.046 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.id=?
+2026-08-10 14:41:47.048 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:42:24.089 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:42:24.091 [http-nio-8080-exec-3] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:42:24.091 [http-nio-8080-exec-3] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:42:24.099 [http-nio-8080-exec-3] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:42:24.099 [http-nio-8080-exec-3] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:42:24.099 [http-nio-8080-exec-3] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups/name/VIP - Getting group by name
+2026-08-10 14:42:24.100 [http-nio-8080-exec-3] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting customer group by name: VIP
+2026-08-10 14:42:24.101 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=?
+2026-08-10 14:42:24.103 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:43:49.604 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:43:49.606 [http-nio-8080-exec-10] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:43:49.606 [http-nio-8080-exec-10] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:43:49.617 [http-nio-8080-exec-10] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_UPDATE granted
+2026-08-10 14:43:49.617 [http-nio-8080-exec-10] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_UPDATE: true
+2026-08-10 14:43:49.617 [http-nio-8080-exec-10] INFO  c.e.a.c.c.CustomerGroupController - PUT /api/admin/customer-groups/fa8dff29-6c38-4520-9b3f-2c44a993e005 - Updating group
+2026-08-10 14:43:49.617 [http-nio-8080-exec-10] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Updating customer group: fa8dff29-6c38-4520-9b3f-2c44a993e005
+2026-08-10 14:43:49.618 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.id=?
+2026-08-10 14:43:49.620 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:43:49.622 [http-nio-8080-exec-10] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group updated successfully: fa8dff29-6c38-4520-9b3f-2c44a993e005
+2026-08-10 14:43:49.622 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:43:49.630 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    update
+        customer_groups 
+    set
+        description=?,
+        discount_percentage=?,
+        is_active=?,
+        name=?,
+        updated_at=? 
+    where
+        id=?
+2026-08-10 14:44:48.971 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:44:48.973 [http-nio-8080-exec-8] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:44:48.973 [http-nio-8080-exec-8] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:44:48.974 [http-nio-8080-exec-8] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_CREATE granted
+2026-08-10 14:44:48.974 [http-nio-8080-exec-8] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_CREATE: true
+2026-08-10 14:44:48.975 [http-nio-8080-exec-8] INFO  c.e.a.c.c.CustomerGroupController - POST /api/admin/customer-groups - Creating group: testing
+2026-08-10 14:44:48.975 [http-nio-8080-exec-8] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Creating customer group: testing
+2026-08-10 14:44:48.977 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-10 14:44:48.977 [http-nio-8080-exec-8] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group created successfully with id: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:44:48.978 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        customer_groups
+        (created_at, description, discount_percentage, is_active, name, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-08-10 14:44:58.077 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:44:58.081 [http-nio-8080-exec-1] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:44:58.081 [http-nio-8080-exec-1] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:44:58.082 [http-nio-8080-exec-1] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_READ granted
+2026-08-10 14:44:58.082 [http-nio-8080-exec-1] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_READ: true
+2026-08-10 14:44:58.082 [http-nio-8080-exec-1] INFO  c.e.a.c.c.CustomerGroupController - GET /api/admin/customer-groups - Getting all groups
+2026-08-10 14:44:58.082 [http-nio-8080-exec-1] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting all customer groups
+2026-08-10 14:44:58.084 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0
+2026-08-10 14:44:58.087 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:44:58.088 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:44:58.088 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:44:58.090 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:45:18.672 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:45:18.675 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:45:18.675 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:45:18.682 [http-nio-8080-exec-2] ERROR c.e.a.c.e.GlobalExceptionHandler - Unexpected error occurred: 
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:265) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:441) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:126) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:507) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1283) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1065) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:888) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.auth_system.auth.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+2026-08-10 14:45:18.684 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' is not supported]
+2026-08-10 14:45:36.787 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:45:36.790 [http-nio-8080-exec-5] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:45:36.790 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:45:36.794 [http-nio-8080-exec-5] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_UPDATE granted
+2026-08-10 14:45:36.794 [http-nio-8080-exec-5] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_UPDATE: true
+2026-08-10 14:45:36.794 [http-nio-8080-exec-5] INFO  c.e.a.c.c.CustomerGroupController - PATCH /api/admin/customer-groups/e6640f07-59cf-40f5-ad6f-0baa330c3091/deactivate - Deactivating group
+2026-08-10 14:45:36.794 [http-nio-8080-exec-5] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Deactivating customer group: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:45:36.795 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.id=?
+2026-08-10 14:45:36.796 [http-nio-8080-exec-5] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group deactivated successfully: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:45:36.797 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    update
+        customer_groups 
+    set
+        description=?,
+        discount_percentage=?,
+        is_active=?,
+        name=?,
+        updated_at=? 
+    where
+        id=?
+2026-08-10 14:45:36.814 [http-nio-8080-exec-5] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting customer group by id: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:45:36.816 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:46:25.031 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:46:25.034 [http-nio-8080-exec-6] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:46:25.034 [http-nio-8080-exec-6] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:46:25.038 [http-nio-8080-exec-6] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_UPDATE granted
+2026-08-10 14:46:25.038 [http-nio-8080-exec-6] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_UPDATE: true
+2026-08-10 14:46:25.038 [http-nio-8080-exec-6] INFO  c.e.a.c.c.CustomerGroupController - PATCH /api/admin/customer-groups/e6640f07-59cf-40f5-ad6f-0baa330c3091/activate - Activating group
+2026-08-10 14:46:25.039 [http-nio-8080-exec-6] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Activating customer group: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:46:25.040 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.id=?
+2026-08-10 14:46:25.042 [http-nio-8080-exec-6] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group activated successfully: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:46:25.043 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    update
+        customer_groups 
+    set
+        description=?,
+        discount_percentage=?,
+        is_active=?,
+        name=?,
+        updated_at=? 
+    where
+        id=?
+2026-08-10 14:46:25.045 [http-nio-8080-exec-6] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Getting customer group by id: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:46:25.046 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:47:10.785 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:47:10.788 [http-nio-8080-exec-3] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:47:10.789 [http-nio-8080-exec-3] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:47:10.790 [http-nio-8080-exec-3] ERROR c.e.a.c.e.GlobalExceptionHandler - Unexpected error occurred: 
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:265) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:441) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:126) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:507) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1283) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1065) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:888) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.auth_system.auth.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+2026-08-10 14:47:10.792 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' is not supported]
+2026-08-10 14:47:18.419 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-10 14:47:18.421 [http-nio-8080-exec-9] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-10 14:47:18.421 [http-nio-8080-exec-9] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-10 14:47:18.423 [http-nio-8080-exec-9] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CUSTOMER_DELETE granted
+2026-08-10 14:47:18.423 [http-nio-8080-exec-9] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CUSTOMER_DELETE: true
+2026-08-10 14:47:18.423 [http-nio-8080-exec-9] INFO  c.e.a.c.c.CustomerGroupController - DELETE /api/admin/customer-groups/e6640f07-59cf-40f5-ad6f-0baa330c3091 - Deleting group
+2026-08-10 14:47:18.424 [http-nio-8080-exec-9] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Deleting customer group: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:47:18.424 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        cg1_0.id,
+        cg1_0.created_at,
+        cg1_0.description,
+        cg1_0.discount_percentage,
+        cg1_0.is_active,
+        cg1_0.name,
+        cg1_0.updated_at 
+    from
+        customer_groups cg1_0 
+    where
+        cg1_0.id=?
+2026-08-10 14:47:18.426 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.customer_group_id,
+        c1_0.id,
+        c1_0.address_line1,
+        c1_0.address_line2,
+        c1_0.city,
+        c1_0.company_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.credit_limit,
+        c1_0.current_balance,
+        c1_0.customer_code,
+        c1_0.customer_type,
+        c1_0.date_of_birth,
+        c1_0.deleted,
+        c1_0.email,
+        c1_0.first_name,
+        c1_0.gender,
+        c1_0.is_vip,
+        c1_0.last_name,
+        c1_0.last_purchase_date,
+        c1_0.loyalty_points,
+        c1_0.notes,
+        c1_0.order_count,
+        c1_0.phone,
+        c1_0.postal_code,
+        c1_0.state,
+        c1_0.status,
+        c1_0.tax_number,
+        c1_0.total_spent,
+        c1_0.updated_at,
+        c1_0.user_id 
+    from
+        customers c1_0 
+    where
+        c1_0.customer_group_id=?
+2026-08-10 14:47:18.427 [http-nio-8080-exec-9] INFO  c.e.a.c.s.i.CustomerGroupServiceImpl - Customer group deactivated successfully: e6640f07-59cf-40f5-ad6f-0baa330c3091
+2026-08-10 14:47:18.428 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    update
+        customer_groups 
+    set
+        description=?,
+        discount_percentage=?,
+        is_active=?,
+        name=?,
+        updated_at=? 
+    where
+        id=?
+2026-08-10 14:48:09.937 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false

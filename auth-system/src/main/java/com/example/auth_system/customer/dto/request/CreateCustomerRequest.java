@@ -1,8 +1,10 @@
 package com.example.auth_system.customer.dto.request;
 
+import com.example.auth_system.customer.enums.CustomerType;
 import com.example.auth_system.customer.enums.Gender;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +19,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateCustomerRequest {
+
+    @NotNull(message = "Customer type is required")
+    private CustomerType customerType;
 
     private UUID userId; // Link to existing User (for online customers)
 
