@@ -45,8 +45,7 @@ public class Customer {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "customer_type", nullable = false, length = 20)
-    @Builder.Default
-    private CustomerType customerType = CustomerType.WALK_IN;
+    private CustomerType customerType;
 
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
@@ -134,11 +133,13 @@ public class Customer {
     @Column(columnDefinition = "TEXT")
     private String notes;
 
-    @Column(name = "credit_limit")
-    private BigDecimal creditLimit;
+    @Column(name = "credit_limit", precision = 19, scale = 2)
+    @Builder.Default
+    private BigDecimal creditLimit = BigDecimal.ZERO;
 
-    @Column(name = "current_balance")
-    private BigDecimal currentBalance;
+    @Column(name = "current_balance", precision = 19, scale = 2)
+    @Builder.Default
+    private BigDecimal currentBalance = BigDecimal.ZERO;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
@@ -157,6 +158,18 @@ public class Customer {
         return (firstName == null ? "" : firstName)
                 + " "
                 + (lastName == null ? "" : lastName);
+    }
+
+    public boolean isWalkIn() {
+        return CustomerType.WALK_IN.equals(customerType);
+    }
+
+    public boolean isB2B() {
+        return CustomerType.WHOLESALE.equals(customerType);
+    }
+
+    public boolean isIndividual() {
+        return CustomerType.ECOMMERCE.equals(customerType);
     }
 
     public void addWishlistItem(Wishlist wishlistItem) {
@@ -187,5 +200,25 @@ public class Customer {
             throw new IllegalStateException("Insufficient loyalty points");
         }
         this.loyaltyPoints -= points;
+    }
+
+    public void increaseBalance(BigDecimal amount) {
+        if (amount == null || amount.signum() <= 0) {
+            return;
+        }
+        if (this.currentBalance == null) {
+            this.currentBalance = BigDecimal.ZERO;
+        }
+        this.currentBalance = this.currentBalance.add(amount);
+    }
+
+    public void decreaseBalance(BigDecimal amount) {
+        if (amount == null || amount.signum() <= 0) {
+            return;
+        }
+        if (this.currentBalance == null) {
+            this.currentBalance = BigDecimal.ZERO;
+        }
+        this.currentBalance = this.currentBalance.subtract(amount);
     }
 }
