@@ -1,6 +1,7 @@
 // src/main/java/com/example/auth_system/auth/service/impl/PermissionManagementServiceImpl.java
 package com.example.auth_system.permission.service;
 
+import com.example.auth_system.common.exception.DuplicateResourceException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.permission.dto.response.PermissionResponse;
 import com.example.auth_system.permission.dto.response.RoleResponse;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -56,26 +58,29 @@ public class PermissionManagementServiceImpl implements PermissionManagementServ
 
         @Override
         @Transactional
-        public RoleResponse assignPermissionsToRole(
-                        RoleName roleName,
-                        List<String> permissionNames) {
-
-                log.info("Assigning permissions to role: {}", roleName);
+        public RoleResponse assignPermissionsToRole(RoleName roleName, List<String> permissionNames) {
 
                 Role role = roleRepository.findByName(roleName)
                                 .orElseThrow(() -> new ResourceNotFoundException(
                                                 "Role not found: " + roleName));
 
-                Set<Permission> permissions = permissionNames.stream()
-                                .map(permissionName -> permissionRepository.findByName(permissionName)
-                                                .orElseThrow(() -> new ResourceNotFoundException(
-                                                                "Permission not found: " + permissionName)))
-                                .collect(Collectors.toSet());
+                Set<String> uniquePermissionNames = new HashSet<>(permissionNames);
+                List<Permission> permissions = permissionRepository.findByNameIn(uniquePermissionNames);
+                if (permissions.size() != uniquePermissionNames.size()) {
+                        Set<String> foundPermissionNames = permissions.stream()
+                                        .map(Permission::getName)
+                                        .collect(Collectors.toSet());
 
-                role.setPermissions(permissions);
+                        String missingPermission = uniquePermissionNames.stream()
+                                        .filter(name -> !foundPermissionNames.contains(name))
+                                        .findFirst()
+                                        .orElse("Unknown");
 
-                log.info("Permissions assigned successfully to role: {}", roleName);
+                        throw new ResourceNotFoundException(
+                                        "Permission not found: " + missingPermission);
+                }
 
+                role.setPermissions(new HashSet<>(permissions));
                 return roleMapper.toResponse(role);
         }
 
@@ -85,14 +90,7 @@ public class PermissionManagementServiceImpl implements PermissionManagementServ
 
         @Override
         @Transactional
-        public RoleResponse addPermissionToRole(
-                        RoleName roleName,
-                        String permissionName) {
-
-                log.info(
-                                "Adding permission {} to role: {}",
-                                permissionName,
-                                roleName);
+        public RoleResponse addPermissionToRole(RoleName roleName, String permissionName) {
 
                 Role role = roleRepository.findByName(roleName)
                                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -102,13 +100,16 @@ public class PermissionManagementServiceImpl implements PermissionManagementServ
                                 .orElseThrow(() -> new ResourceNotFoundException(
                                                 "Permission not found: " + permissionName));
 
+                boolean alreadyAssigned = role.getPermissions()
+                                .stream()
+                                .anyMatch(existingPermission -> existingPermission.getId().equals(permission.getId()));
+
+                if (alreadyAssigned) {
+                        throw new DuplicateResourceException(
+                                        "Permission already assigned to role: " + roleName + " - " + permissionName);
+                }
+
                 role.addPermission(permission);
-
-                log.info(
-                                "Permission {} added successfully to role: {}",
-                                permissionName,
-                                roleName);
-
                 return roleMapper.toResponse(role);
         }
 
@@ -118,14 +119,7 @@ public class PermissionManagementServiceImpl implements PermissionManagementServ
 
         @Override
         @Transactional
-        public RoleResponse removePermissionFromRole(
-                        RoleName roleName,
-                        String permissionName) {
-
-                log.info(
-                                "Removing permission {} from role: {}",
-                                permissionName,
-                                roleName);
+        public RoleResponse removePermissionFromRole(RoleName roleName, String permissionName) {
 
                 Role role = roleRepository.findByName(roleName)
                                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -135,13 +129,16 @@ public class PermissionManagementServiceImpl implements PermissionManagementServ
                                 .orElseThrow(() -> new ResourceNotFoundException(
                                                 "Permission not found: " + permissionName));
 
+                boolean assigned = role.getPermissions()
+                                .stream()
+                                .anyMatch(existingPermission -> existingPermission.getId().equals(permission.getId()));
+
+                if (!assigned) {
+                        throw new ResourceNotFoundException(
+                                        "Permission is not assigned to role: " + roleName + " - " + permissionName);
+                }
+
                 role.removePermission(permission);
-
-                log.info(
-                                "Permission {} removed successfully from role: {}",
-                                permissionName,
-                                roleName);
-
                 return roleMapper.toResponse(role);
         }
 

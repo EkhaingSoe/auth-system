@@ -7,6 +7,8 @@ import com.example.auth_system.user.entity.User;
 
 public interface PermissionService {
 
+    // this service is used internally in auth module
+
     Set<String> getUserPermissions(User user);
 
     boolean hasPermission(User user, String permissionName);
