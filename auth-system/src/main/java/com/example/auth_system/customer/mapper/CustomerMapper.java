@@ -11,8 +11,6 @@ import com.example.auth_system.customer.enums.CustomerStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
-
 @Component
 @RequiredArgsConstructor
 public class CustomerMapper {
@@ -26,6 +24,7 @@ public class CustomerMapper {
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .customerGroup(customerGroup)
+                .customerType(request.getCustomerType())
                 .addressLine1(request.getAddressLine1())
                 .addressLine2(request.getAddressLine2())
                 .city(request.getCity())

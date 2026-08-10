@@ -135,7 +135,7 @@
             </plugin>
             
             <!-- Flyway Plugin -->
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>10.0.0</version>
@@ -144,7 +144,7 @@
                     <user>postgres</user>
                     <password>123456</password>
                 </configuration>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 </project>
