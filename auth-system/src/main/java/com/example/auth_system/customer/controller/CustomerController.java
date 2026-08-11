@@ -115,18 +115,6 @@ public class CustomerController {
         return ResponseEntity.ok(ApiResponse.success(200, "Customer updated successfully", customer));
     }
 
-    @DeleteMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('CUSTOMER_DELETE')")
-    public ResponseEntity<ApiResponse<Void>> deleteCustomer(@PathVariable UUID id) {
-        log.info("DELETE /api/admin/customers/{} - Deleting customer", id);
-        customerService.deleteCustomer(id);
-        return ResponseEntity.ok(ApiResponse.success(200, "Customer deactivated successfully", null));
-    }
-
-    // ============================================================
-    // ACTIVATE / DEACTIVATE
-    // ============================================================
-
     @PatchMapping("/{id}/activate")
     @PreAuthorize("@permission.hasPermission('CUSTOMER_UPDATE')")
     public ResponseEntity<ApiResponse<CustomerResponse>> activateCustomer(@PathVariable UUID id) {

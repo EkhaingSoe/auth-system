@@ -13,6 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestControllerAdvice
@@ -184,6 +185,25 @@ public class GlobalExceptionHandler {
                 .path(getPath(request))
                 .build();
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<Map<String, Object>> handleBusinessException(BusinessException ex) {
+
+        Map<String, String> errors = new LinkedHashMap<>();
+
+        if (ex.getField() != null) {
+            errors.put(ex.getField(), ex.getMessage());
+        }
+
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("code", ex.getHttpStatus().value());
+        response.put("message", "Validation failed");
+        response.put("errors", errors);
+
+        return ResponseEntity
+                .status(ex.getHttpStatus())
+                .body(response);
     }
 
     // Helper method to get request path

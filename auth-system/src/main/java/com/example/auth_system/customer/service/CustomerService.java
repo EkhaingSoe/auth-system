@@ -32,8 +32,6 @@ public interface CustomerService {
 
     Page<CustomerResponse> searchCustomers(String term, Pageable pageable);
 
-    void deleteCustomer(UUID id);
-
     void activateCustomer(UUID id);
 
     void deactivateCustomer(UUID id);

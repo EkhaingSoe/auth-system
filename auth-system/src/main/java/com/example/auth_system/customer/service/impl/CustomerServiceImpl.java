@@ -38,22 +38,19 @@ public class CustomerServiceImpl implements CustomerService {
     private final UserRepository userRepository;
     private final CustomerMapper customerMapper;
 
-    // ============================================================
-    // CREATE CUSTOMER
-    // ============================================================
-
+    // Create user
     @Override
     public CustomerResponse createCustomer(CreateCustomerRequest request) {
         log.info("Creating customer: {} {}", request.getFirstName(), request.getLastName());
 
-        // Validate email uniqueness
         if (request.getEmail() != null && customerRepository.existsByEmail(request.getEmail())) {
-            throw new BusinessException("Customer with email already exists: " + request.getEmail());
+            throw BusinessException.duplicateCustomerEmail(
+                    request.getEmail());
         }
 
-        // Validate phone uniqueness
         if (request.getPhone() != null && customerRepository.existsByPhone(request.getPhone())) {
-            throw new BusinessException("Customer with phone already exists: " + request.getPhone());
+            throw BusinessException.duplicateCustomerPhone(
+                    request.getPhone());
         }
 
         // Validate user if provided
@@ -78,8 +75,6 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setUser(user);
 
         customer = customerRepository.save(customer);
-        log.info("Customer created successfully with code: {}", customer.getCustomerCode());
-
         return customerMapper.toResponse(customer);
     }
 
@@ -220,24 +215,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.searchCustomers(term, pageable).map(customerMapper::toResponse);
     }
 
-    // ============================================================
-    // DELETE CUSTOMER (Soft Delete)
-    // ============================================================
-
-    @Override
-    public void deleteCustomer(UUID id) {
-        log.info("Deleting customer: {}", id);
-        Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + id));
-        customer.setStatus(CustomerStatus.INACTIVE);
-        customerRepository.save(customer);
-        log.info("Customer deactivated successfully: {}", id);
-    }
-
-    // ============================================================
-    // ACTIVATE CUSTOMER
-    // ============================================================
-
     @Override
     public void activateCustomer(UUID id) {
         log.info("Activating customer: {}", id);
@@ -248,13 +225,8 @@ public class CustomerServiceImpl implements CustomerService {
         log.info("Customer activated successfully: {}", id);
     }
 
-    // ============================================================
-    // DEACTIVATE CUSTOMER
-    // ============================================================
-
     @Override
     public void deactivateCustomer(UUID id) {
-        log.info("Deactivating customer: {}", id);
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + id));
         customer.setStatus(CustomerStatus.INACTIVE);
