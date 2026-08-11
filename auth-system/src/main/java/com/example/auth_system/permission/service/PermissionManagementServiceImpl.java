@@ -1,7 +1,8 @@
 // src/main/java/com/example/auth_system/auth/service/impl/PermissionManagementServiceImpl.java
 package com.example.auth_system.permission.service;
 
-import com.example.auth_system.common.exception.DuplicateResourceException;
+import com.example.auth_system.common.exception.BusinessException;
+import org.springframework.http.HttpStatus;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.permission.dto.response.PermissionResponse;
 import com.example.auth_system.permission.dto.response.RoleResponse;
@@ -105,8 +106,12 @@ public class PermissionManagementServiceImpl implements PermissionManagementServ
                                 .anyMatch(existingPermission -> existingPermission.getId().equals(permission.getId()));
 
                 if (alreadyAssigned) {
-                        throw new DuplicateResourceException(
-                                        "Permission already assigned to role: " + roleName + " - " + permissionName);
+                        throw new BusinessException(
+                                        "permission",
+                                        "Permission already assigned to role: "
+                                                        + roleName + " - " + permissionName,
+                                        "PERMISSION_ALREADY_ASSIGNED",
+                                        HttpStatus.CONFLICT);
                 }
 
                 role.addPermission(permission);

@@ -3,9 +3,9 @@ package com.example.auth_system.user.service;
 
 import com.example.auth_system.auth.security.JwtTokenProvider;
 import com.example.auth_system.common.exception.AuthException;
+import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.InvalidTokenException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
-import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.permission.entity.Role;
 import com.example.auth_system.permission.enums.RoleName;
 import com.example.auth_system.permission.repository.RoleRepository;
@@ -76,11 +76,11 @@ public class UserServiceImpl implements UserService {
     public UserResponse createStaffUser(CreateStaffUserRequest request) {
 
         if (request.getUsername() != null && userRepository.existsByUsernameAndDeletedFalse(request.getUsername())) {
-            throw new UserAlreadyExistsException("Username '" + request.getUsername() + "' already taken");
+            throw BusinessException.duplicateUsername(request.getUsername());
         }
 
         if (request.getEmail() != null && userRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
-            throw new UserAlreadyExistsException("Email '" + request.getEmail() + "' already in use");
+            throw BusinessException.duplicateUserEmail(request.getEmail());
         }
 
         User user = userMapper.toEntity(request);

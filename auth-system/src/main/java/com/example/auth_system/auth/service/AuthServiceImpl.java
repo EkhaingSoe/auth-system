@@ -8,11 +8,11 @@ import com.example.auth_system.auth.mapper.AuthMapper;
 import com.example.auth_system.auth.repository.*;
 import com.example.auth_system.auth.security.JwtTokenProvider;
 import com.example.auth_system.common.exception.AuthException;
+import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.InvalidCredentialsException;
 import com.example.auth_system.common.exception.InvalidTokenException;
 import com.example.auth_system.common.exception.OtpValidationException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
-import com.example.auth_system.common.exception.UserAlreadyExistsException;
 import com.example.auth_system.common.service.EmailService;
 import com.example.auth_system.common.util.DeviceUtils;
 import com.example.auth_system.permission.entity.Role;
@@ -55,7 +55,8 @@ public class AuthServiceImpl implements AuthService {
     public RegisterResponse register(RegisterRequest request) {
 
         if (userRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
-            throw new UserAlreadyExistsException("Email already exists");
+            throw BusinessException.duplicateUserEmail(
+                    request.getEmail());
         }
 
         Role role = roleRepository
