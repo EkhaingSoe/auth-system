@@ -5,6 +5,8 @@ import com.example.auth_system.common.dto.response.ApiResponse;
 import com.example.auth_system.store.dto.request.CreateStoreRequest;
 import com.example.auth_system.store.dto.request.UpdateStoreRequest;
 import com.example.auth_system.store.dto.response.StoreResponse;
+import com.example.auth_system.store.enums.StoreStatus;
+import com.example.auth_system.store.enums.StoreType;
 import com.example.auth_system.store.service.StoreService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -59,14 +61,14 @@ public class StoreController {
 
     @GetMapping("/status/{status}")
     @PreAuthorize("@permission.hasPermission('STORE_READ')")
-    public ResponseEntity<ApiResponse<List<StoreResponse>>> getStoresByStatus(@PathVariable String status) {
+    public ResponseEntity<ApiResponse<List<StoreResponse>>> getStoresByStatus(@PathVariable StoreStatus status) {
         log.info("GET /api/admin/stores/status/{} - Getting stores by status", status);
         return ResponseEntity.ok(ApiResponse.success(200, "Stores retrieved", storeService.getStoresByStatus(status)));
     }
 
     @GetMapping("/type/{storeType}")
     @PreAuthorize("@permission.hasPermission('STORE_READ')")
-    public ResponseEntity<ApiResponse<List<StoreResponse>>> getStoresByType(@PathVariable String storeType) {
+    public ResponseEntity<ApiResponse<List<StoreResponse>>> getStoresByType(@PathVariable StoreType storeType) {
         log.info("GET /api/admin/stores/type/{} - Getting stores by type", storeType);
         return ResponseEntity.ok(ApiResponse.success(200, "Stores retrieved", storeService.getStoresByType(storeType)));
     }
@@ -117,7 +119,7 @@ public class StoreController {
     @PreAuthorize("@permission.hasPermission('STORE_UPDATE')")
     public ResponseEntity<ApiResponse<StoreResponse>> updateStoreStatus(
             @PathVariable UUID id,
-            @RequestParam String status) {
+            @RequestParam StoreStatus status) {
         log.info("PATCH /api/admin/stores/{}/status - Updating status to {}", id, status);
         StoreResponse store = storeService.updateStoreStatus(id, status);
         return ResponseEntity.ok(ApiResponse.success(200, "Store status updated successfully", store));

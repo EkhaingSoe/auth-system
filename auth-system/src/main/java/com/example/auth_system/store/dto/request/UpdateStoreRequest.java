@@ -1,6 +1,10 @@
-// src/main/java/com/example/auth_system/store/dto/request/UpdateStoreRequest.java
 package com.example.auth_system.store.dto.request;
 
+import com.example.auth_system.store.enums.StoreStatus;
+import com.example.auth_system.store.enums.StoreType;
+import com.fasterxml.jackson.databind.JsonNode;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,21 +12,36 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateStoreRequest {
+
+    @Size(max = 150, message = "Store name must not exceed 150 characters")
     private String name;
+
+    @Size(max = 500, message = "Address must not exceed 500 characters")
     private String address;
+
+    @Size(max = 30, message = "Phone must not exceed 30 characters")
     private String phone;
+
+    @Email(message = "Invalid email format")
+    @Size(max = 150, message = "Email must not exceed 150 characters")
     private String email;
-    private String storeType;
-    private String status;
+
+    private StoreType storeType;
+
+    private StoreStatus status;
+
     private UUID parentStoreId;
+
     private JsonNode settings;
+
+    @Size(max = 150, message = "Contact person must not exceed 150 characters")
     private String contactPerson;
+
+    @Size(max = 100, message = "Tax number must not exceed 100 characters")
     private String taxNumber;
 }

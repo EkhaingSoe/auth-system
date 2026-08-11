@@ -2,6 +2,9 @@
 package com.example.auth_system.store.repository;
 
 import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.store.enums.StoreStatus;
+import com.example.auth_system.store.enums.StoreType;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,9 +19,9 @@ public interface StoreRepository extends JpaRepository<Store, UUID> {
 
     boolean existsByStoreCode(String storeCode);
 
-    List<Store> findByStatus(String status);
+    List<Store> findByStatus(StoreStatus status);
 
-    List<Store> findByStoreType(String storeType);
+    List<Store> findByStoreType(StoreType storeType);
 
     List<Store> findByParentStoreId(UUID parentStoreId);
 
@@ -27,11 +30,13 @@ public interface StoreRepository extends JpaRepository<Store, UUID> {
             "LOWER(s.storeCode) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Store> searchStores(@Param("searchTerm") String searchTerm);
 
-    List<Store> findByStatusAndStoreType(String status, String storeType);
+    List<Store> findByStatusAndStoreType(StoreStatus status, StoreType storeType);
 
     @Query("SELECT s FROM Store s WHERE s.parentStore IS NULL")
     List<Store> findHeadOffices();
 
     @Query("SELECT s FROM Store s WHERE s.parentStore.id = :parentId")
     List<Store> findChildStores(@Param("parentId") UUID parentId);
+
+    boolean existsByNameIgnoreCase(String name);
 }

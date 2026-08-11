@@ -216,4 +216,18 @@ public class BusinessException extends RuntimeException {
                 HttpStatus.BAD_REQUEST);
     }
 
+    public static BusinessException invalidStoreHierarchy(String message) {
+        return new BusinessException(
+                message,
+                "INVALID_STORE_HIERARCHY",
+                HttpStatus.BAD_REQUEST);
+    }
+
+    public static BusinessException storeHasChildStores() {
+        return new BusinessException(
+                "Cannot delete store with child stores. Delete child stores first.",
+                "STORE_HAS_CHILD_STORES",
+                HttpStatus.CONFLICT);
+    }
+
 }

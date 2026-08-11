@@ -4,6 +4,8 @@ package com.example.auth_system.store.service;
 import com.example.auth_system.store.dto.request.CreateStoreRequest;
 import com.example.auth_system.store.dto.request.UpdateStoreRequest;
 import com.example.auth_system.store.dto.response.StoreResponse;
+import com.example.auth_system.store.enums.StoreStatus;
+import com.example.auth_system.store.enums.StoreType;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,13 +26,13 @@ public interface StoreService {
 
     List<StoreResponse> searchStores(String searchTerm);
 
-    List<StoreResponse> getStoresByStatus(String status);
+    List<StoreResponse> getStoresByStatus(StoreStatus status);
 
-    List<StoreResponse> getStoresByType(String storeType);
+    List<StoreResponse> getStoresByType(StoreType storeType);
 
     List<StoreResponse> getChildStores(UUID parentId);
 
     List<StoreResponse> getHeadOffices();
 
-    StoreResponse updateStoreStatus(UUID id, String status);
+    StoreResponse updateStoreStatus(UUID id, StoreStatus status);
 }

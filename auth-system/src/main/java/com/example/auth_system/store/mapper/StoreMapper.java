@@ -1,10 +1,14 @@
 // src/main/java/com/example/auth_system/store/mapper/StoreMapper.java
 package com.example.auth_system.store.mapper;
 
+import com.example.auth_system.common.exception.BusinessException;
+import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.store.dto.request.CreateStoreRequest;
 import com.example.auth_system.store.dto.request.UpdateStoreRequest;
 import com.example.auth_system.store.dto.response.StoreResponse;
 import com.example.auth_system.store.entity.Store;
+import com.example.auth_system.store.enums.StoreStatus;
+import com.example.auth_system.store.enums.StoreType;
 import com.example.auth_system.store.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -28,8 +32,8 @@ public class StoreMapper {
                 .address(request.getAddress())
                 .phone(request.getPhone())
                 .email(request.getEmail())
-                .storeType(request.getStoreType() != null ? request.getStoreType() : "BRANCH")
-                .status(request.getStatus() != null ? request.getStatus() : "ACTIVE")
+                .storeType(request.getStoreType() != null ? request.getStoreType() : StoreType.BRANCH)
+                .status(request.getStatus() != null ? request.getStatus() : StoreStatus.ACTIVE)
                 .parentStore(parentStore)
                 .settings(request.getSettings())
                 .contactPerson(request.getContactPerson())
@@ -38,27 +42,46 @@ public class StoreMapper {
     }
 
     public void updateEntity(Store store, UpdateStoreRequest request) {
+
         if (request.getName() != null)
             store.setName(request.getName());
+
         if (request.getAddress() != null)
             store.setAddress(request.getAddress());
+
         if (request.getPhone() != null)
             store.setPhone(request.getPhone());
+
         if (request.getEmail() != null)
             store.setEmail(request.getEmail());
+
         if (request.getStoreType() != null)
             store.setStoreType(request.getStoreType());
+
         if (request.getStatus() != null)
             store.setStatus(request.getStatus());
+
         if (request.getSettings() != null)
             store.setSettings(request.getSettings());
+
         if (request.getContactPerson() != null)
             store.setContactPerson(request.getContactPerson());
+
         if (request.getTaxNumber() != null)
             store.setTaxNumber(request.getTaxNumber());
 
         if (request.getParentStoreId() != null) {
-            Store parentStore = storeRepository.findById(request.getParentStoreId()).orElse(null);
+
+            Store parentStore = storeRepository.findById(request.getParentStoreId())
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Parent store not found with id: "
+                                    + request.getParentStoreId()));
+
+            if (store.getId().equals(parentStore.getId())) {
+                throw BusinessException.invalidStoreHierarchy(
+                        "A store cannot be its own parent");
+            }
+
             store.setParentStore(parentStore);
         }
     }
