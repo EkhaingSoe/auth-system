@@ -16,7 +16,6 @@ public class SupplierMapper {
                 .phone(request.getPhone())
                 .email(request.getEmail())
                 .address(request.getAddress())
-                .isActive(request.getIsActive() != null ? request.getIsActive() : true)
                 .build();
     }
 

@@ -29,44 +29,37 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public SupplierResponse createSupplier(CreateSupplierRequest request) {
-        log.info("Creating supplier: {}", request.getName());
 
-        // Check duplicate name
         if (supplierRepository.existsByName(request.getName())) {
             throw new BusinessException("Supplier with name already exists: " + request.getName());
         }
 
         Supplier supplier = supplierMapper.toEntity(request);
-        supplier = supplierRepository.save(supplier);
-
+        Supplier savedSupplier = supplierRepository.save(supplier);
         log.info("Supplier created successfully with code: {}", supplier.getSupplierCode());
-        return supplierMapper.toResponse(supplier);
+        return supplierMapper.toResponse(savedSupplier);
     }
 
     @Override
+    @Transactional
     public SupplierResponse updateSupplier(UUID id, UpdateSupplierRequest request) {
-        log.info("Updating supplier: {}", id);
 
         Supplier supplier = supplierRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Supplier not found with id: " + id));
 
-        // Check duplicate name if changed
         if (request.getName() != null && !supplier.getName().equals(request.getName())
                 && supplierRepository.existsByName(request.getName())) {
             throw new BusinessException("Supplier with name already exists: " + request.getName());
         }
 
         supplierMapper.updateEntity(supplier, request);
-        supplier = supplierRepository.save(supplier);
-
-        log.info("Supplier updated successfully: {}", id);
-        return supplierMapper.toResponse(supplier);
+        Supplier savedSupplier = supplierRepository.save(supplier);
+        return supplierMapper.toResponse(savedSupplier);
     }
 
     @Override
     @Transactional(readOnly = true)
     public SupplierResponse getSupplierById(UUID id) {
-        log.info("Getting supplier by id: {}", id);
         Supplier supplier = supplierRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Supplier not found with id: " + id));
         return supplierMapper.toResponse(supplier);
@@ -75,7 +68,6 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     @Transactional(readOnly = true)
     public SupplierResponse getSupplierByCode(String supplierCode) {
-        log.info("Getting supplier by code: {}", supplierCode);
         Supplier supplier = supplierRepository.findBySupplierCode(supplierCode)
                 .orElseThrow(() -> new ResourceNotFoundException("Supplier not found with code: " + supplierCode));
         return supplierMapper.toResponse(supplier);
@@ -109,20 +101,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public void deleteSupplier(UUID id) {
-        log.info("Deleting supplier: {}", id);
-        Supplier supplier = supplierRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Supplier not found with id: " + id));
-
-        // Check if supplier has products
-        // You can add product count check here
-
-        supplier.setIsActive(false);
-        supplierRepository.save(supplier);
-        log.info("Supplier deactivated successfully: {}", id);
-    }
-
-    @Override
+    @Transactional
     public void activateSupplier(UUID id) {
         log.info("Activating supplier: {}", id);
         Supplier supplier = supplierRepository.findById(id)
@@ -133,6 +112,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
+    @Transactional
     public void deactivateSupplier(UUID id) {
         log.info("Deactivating supplier: {}", id);
         Supplier supplier = supplierRepository.findById(id)

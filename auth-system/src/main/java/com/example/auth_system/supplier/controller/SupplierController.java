@@ -78,7 +78,7 @@ public class SupplierController {
         return ResponseEntity.ok(ApiResponse.success(200, "Suppliers found", suppliers));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     @PreAuthorize("@permission.hasPermission('SUPPLIER_UPDATE')")
     public ResponseEntity<ApiResponse<SupplierResponse>> updateSupplier(
             @PathVariable UUID id,
@@ -86,14 +86,6 @@ public class SupplierController {
         log.info("PUT /api/admin/suppliers/{} - Updating supplier", id);
         SupplierResponse supplier = supplierService.updateSupplier(id, request);
         return ResponseEntity.ok(ApiResponse.success(200, "Supplier updated successfully", supplier));
-    }
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('SUPPLIER_DELETE')")
-    public ResponseEntity<ApiResponse<Void>> deleteSupplier(@PathVariable UUID id) {
-        log.info("DELETE /api/admin/suppliers/{} - Deleting supplier", id);
-        supplierService.deleteSupplier(id);
-        return ResponseEntity.ok(ApiResponse.success(200, "Supplier deactivated successfully", null));
     }
 
     // ============================================================

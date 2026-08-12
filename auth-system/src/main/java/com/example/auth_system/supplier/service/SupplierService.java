@@ -23,8 +23,6 @@ public interface SupplierService {
 
     List<SupplierResponse> searchSuppliers(String term);
 
-    void deleteSupplier(UUID id);
-
     void activateSupplier(UUID id);
 
     void deactivateSupplier(UUID id);

@@ -11,39 +11,39 @@ import java.util.UUID;
 
 public interface SupplierRepository extends JpaRepository<Supplier, UUID> {
 
-    Optional<Supplier> findBySupplierCode(String supplierCode);
+        Optional<Supplier> findBySupplierCode(String supplierCode);
 
-    List<Supplier> findByNameContainingIgnoreCase(String name);
+        List<Supplier> findByNameContainingIgnoreCase(String name);
 
-    List<Supplier> findByContactPersonContainingIgnoreCase(String contactPerson);
+        List<Supplier> findByContactPersonContainingIgnoreCase(String contactPerson);
 
-    Optional<Supplier> findByPhone(String phone);
+        Optional<Supplier> findByPhone(String phone);
 
-    Optional<Supplier> findByEmail(String email);
+        Optional<Supplier> findByEmail(String email);
 
-    List<Supplier> findByIsActiveTrue();
+        List<Supplier> findByIsActiveTrue();
 
-    List<Supplier> findByIsActiveFalse();
+        List<Supplier> findByIsActiveFalse();
 
-    boolean existsBySupplierCode(String supplierCode);
+        boolean existsBySupplierCode(String supplierCode);
 
-    boolean existsByName(String name);
+        boolean existsByName(String name);
 
-    @Query("SELECT s FROM Supplier s WHERE " +
-            "LOWER(s.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-            "LOWER(s.contactPerson) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-            "LOWER(s.supplierCode) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
-    List<Supplier> searchSuppliers(@Param("searchTerm") String searchTerm);
+        long countByIsActiveTrue();
 
-    long countByIsActiveTrue();
+        @Query("SELECT s FROM Supplier s WHERE " +
+                        "LOWER(s.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+                        "LOWER(s.contactPerson) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+                        "LOWER(s.supplierCode) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
+        List<Supplier> searchSuppliers(@Param("searchTerm") String searchTerm);
 
-    @Query("SELECT s FROM Supplier s " +
-            "JOIN ProductSupplier ps ON ps.supplier.id = s.id " +
-            "WHERE ps.product.id = :productId")
-    List<Supplier> findSuppliersByProductId(@Param("productId") UUID productId);
+        @Query("SELECT s FROM Supplier s " +
+                        "JOIN ProductSupplier ps ON ps.supplier.id = s.id " +
+                        "WHERE ps.product.id = :productId")
+        List<Supplier> findSuppliersByProductId(@Param("productId") UUID productId);
 
-    @Query("SELECT s FROM Supplier s " +
-            "JOIN ProductSupplier ps ON ps.supplier.id = s.id " +
-            "WHERE ps.product.id = :productId AND ps.isPrimary = true")
-    Optional<Supplier> findPrimarySupplierByProductId(@Param("productId") UUID productId);
+        @Query("SELECT s FROM Supplier s " +
+                        "JOIN ProductSupplier ps ON ps.supplier.id = s.id " +
+                        "WHERE ps.product.id = :productId AND ps.isPrimary = true")
+        Optional<Supplier> findPrimarySupplierByProductId(@Param("productId") UUID productId);
 }

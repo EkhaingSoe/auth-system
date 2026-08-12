@@ -19,26 +19,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateSupplierRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
     @NotBlank(message = "Supplier name is required")
     @Size(max = 255, message = "Name must not exceed 255 characters")
     private String name;
 
-    @Size(max = 255, message = "Contact person name must not exceed 255 characters")
+    @Size(max = 255, message = "Contact person name must not exceed 150 characters")
     private String contactPerson;
 
-    @Size(max = 20, message = "Phone number must not exceed 20 characters")
+    @Size(max = 20, message = "Phone number must not exceed 30 characters")
     private String phone;
 
     @Email(message = "Invalid email format")
-    @Size(max = 255, message = "Email must not exceed 255 characters")
+    @Size(max = 255, message = "Email must not exceed 150 characters")
     private String email;
 
     private String address;
 
-    @Builder.Default
-    private Boolean isActive = true;
 }
