@@ -170,6 +170,30 @@ public class BusinessException extends RuntimeException {
                 HttpStatus.NOT_FOUND);
     }
 
+    public static BusinessException duplicateSupplierName(String name) {
+        return new BusinessException(
+                "name",
+                "Supplier with name already exists: " + name,
+                "DUPLICATE_SUPPLIER_NAME",
+                HttpStatus.CONFLICT);
+    }
+
+    public static BusinessException duplicateSupplierPhone(String phone) {
+        return new BusinessException(
+                "phone",
+                "Supplier with phone already exists: " + phone,
+                "DUPLICATE_SUPPLIER_PHONE",
+                HttpStatus.CONFLICT);
+    }
+
+    public static BusinessException duplicateSupplierEmail(String email) {
+        return new BusinessException(
+                "email",
+                "Supplier with email already exists: " + email,
+                "DUPLICATE_SUPPLIER_EMAIL",
+                HttpStatus.CONFLICT);
+    }
+
     // ============================================================
     // VARIANT
     // ============================================================

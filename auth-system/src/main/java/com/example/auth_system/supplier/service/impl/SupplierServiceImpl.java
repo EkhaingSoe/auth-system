@@ -31,7 +31,15 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierResponse createSupplier(CreateSupplierRequest request) {
 
         if (supplierRepository.existsByName(request.getName())) {
-            throw new BusinessException("Supplier with name already exists: " + request.getName());
+            throw BusinessException.duplicateSupplierName(request.getName());
+        }
+
+        if (supplierRepository.existsByPhone(request.getPhone())) {
+            throw BusinessException.duplicateSupplierPhone(request.getPhone());
+        }
+
+        if (supplierRepository.existsByEmailIgnoreCase(request.getEmail())) {
+            throw BusinessException.duplicateSupplierEmail(request.getEmail());
         }
 
         Supplier supplier = supplierMapper.toEntity(request);

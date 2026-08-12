@@ -29,6 +29,10 @@ public interface SupplierRepository extends JpaRepository<Supplier, UUID> {
 
         boolean existsByName(String name);
 
+        boolean existsByPhone(String phone);
+
+        boolean existsByEmailIgnoreCase(String email);
+
         long countByIsActiveTrue();
 
         @Query("SELECT s FROM Supplier s WHERE " +
