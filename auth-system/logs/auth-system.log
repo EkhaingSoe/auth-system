@@ -2249,3 +2249,162 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
     where
         s1_0.id=?
 2026-08-12 13:52:44.723 [http-nio-8080-exec-2] INFO  c.e.a.s.s.impl.SupplierServiceImpl - Supplier activated successfully: 761f4729-da86-4419-9756-cf83c4802ff5
+2026-08-12 13:53:17.318 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission SUPPLIER_UPDATE granted
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission SUPPLIER_UPDATE: true
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] INFO  c.e.a.s.c.SupplierController - PATCH /api/admin/suppliers/761f4729-da86-4419-9756-cf83c4802ff5/deactivate - Deactivating supplier
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] INFO  c.e.a.s.s.impl.SupplierServiceImpl - Deactivating supplier: 761f4729-da86-4419-9756-cf83c4802ff5
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.contact_person,
+        s1_0.created_at,
+        s1_0.email,
+        s1_0.is_active,
+        s1_0.name,
+        s1_0.phone,
+        s1_0.supplier_code,
+        s1_0.updated_at 
+    from
+        suppliers s1_0 
+    where
+        s1_0.id=?
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] INFO  c.e.a.s.s.impl.SupplierServiceImpl - Supplier deactivated successfully: 761f4729-da86-4419-9756-cf83c4802ff5
+2026-08-12 13:53:17.328 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    update
+        suppliers 
+    set
+        address=?,
+        contact_person=?,
+        email=?,
+        is_active=?,
+        name=?,
+        phone=?,
+        supplier_code=?,
+        updated_at=? 
+    where
+        id=?
+2026-08-12 13:53:23.333 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-12 13:53:23.333 [http-nio-8080-exec-9] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-12 13:53:23.333 [http-nio-8080-exec-9] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-12 13:53:23.344 [http-nio-8080-exec-9] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission SUPPLIER_READ granted
+2026-08-12 13:53:23.344 [http-nio-8080-exec-9] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission SUPPLIER_READ: true
+2026-08-12 13:53:23.345 [http-nio-8080-exec-9] INFO  c.e.a.s.c.SupplierController - GET /api/admin/suppliers/count/active - Counting active suppliers
+2026-08-12 13:53:23.345 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(s1_0.id) 
+    from
+        suppliers s1_0 
+    where
+        s1_0.is_active
+2026-08-12 14:24:53.218 [http-nio-8080-exec-3] ERROR c.e.a.auth.security.JwtTokenProvider - Expired JWT token: JWT expired at 2026-08-12T07:37:22Z. Current time: 2026-08-12T07:54:53Z, a difference of 1051218 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-08-12 14:25:05.585 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
