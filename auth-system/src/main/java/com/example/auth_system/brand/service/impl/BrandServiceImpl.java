@@ -8,6 +8,7 @@ import com.example.auth_system.brand.entity.Brand;
 import com.example.auth_system.brand.mapper.BrandMapper;
 import com.example.auth_system.brand.repository.BrandRepository;
 import com.example.auth_system.brand.service.BrandService;
+import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.service.CloudinaryService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,23 +37,20 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public BrandResponse createBrand(CreateBrandRequest request) {
-        log.info("Creating brand: {}", request.getName());
 
         if (brandRepository.existsByName(request.getName())) {
-            throw new RuntimeException("Brand with name '" + request.getName() + "' already exists");
+            throw BusinessException.duplicateBrandName(request.getName());
         }
-
         Brand brand = brandMapper.toEntity(request);
-        brand = brandRepository.save(brand);
-
-        log.info("Brand created: {}", brand.getId());
-        return brandMapper.toResponse(brand);
+        Brand savedBrand = brandRepository.save(brand);
+        return brandMapper.toResponse(savedBrand);
     }
 
     @Override
-    public List<BrandResponse> getAllBrands() {
+    public Page<BrandResponse> getAllBrands(Pageable pageable) {
         log.info("Getting all brands");
-        return brandMapper.toResponseList(brandRepository.findAll());
+        return brandRepository.findAll(pageable)
+                .map(brandMapper::toResponse);
     }
 
     @Override
@@ -70,32 +71,28 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public BrandResponse updateBrand(UUID id, UpdateBrandRequest request) {
-        log.info("Updating brand: {}", id);
 
         Brand brand = brandRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + id));
 
         if (request.getName() != null && !request.getName().equals(brand.getName())) {
             if (brandRepository.existsByName(request.getName())) {
-                throw new RuntimeException("Brand with name '" + request.getName() + "' already exists");
+                throw BusinessException.duplicateBrandName(request.getName());
             }
         }
 
         brandMapper.updateEntity(brand, request);
-        brand = brandRepository.save(brand);
-
-        log.info("Brand updated: {}", id);
-        return brandMapper.toResponse(brand);
+        Brand savedBrand = brandRepository.save(brand);
+        return brandMapper.toResponse(savedBrand);
     }
 
     @Override
+    @Transactional
     public void deleteBrand(UUID id) {
-        log.info("Deleting brand: {}", id);
 
         Brand brand = brandRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + id));
 
-        // Delete logo from Cloudinary if exists
         if (brand.getPublicId() != null) {
             try {
                 cloudinaryService.deleteImage(brand.getPublicId());
@@ -105,19 +102,21 @@ public class BrandServiceImpl implements BrandService {
         }
 
         brandRepository.delete(brand);
-        log.info("Brand deleted: {}", id);
     }
 
     @Override
-    public List<BrandResponse> searchBrands(String searchTerm) {
+    public Page<BrandResponse> searchBrands(String searchTerm, Pageable pageable) {
         log.info("Searching brands: {}", searchTerm);
-        return brandMapper.toResponseList(brandRepository.searchBrands(searchTerm));
+        return brandRepository.searchBrands(searchTerm, pageable)
+                .map(brandMapper::toResponse);
     }
 
     @Override
-    public List<BrandResponse> getActiveBrands() {
+    public Page<BrandResponse> getActiveBrands(Pageable pageable) {
         log.info("Getting active brands");
-        return brandMapper.toResponseList(brandRepository.findByIsActiveTrue());
+        return brandRepository.findByIsActiveTrue(pageable)
+                .map(brandMapper::toResponse);
+        // return brandMapper.toResponseList(brandRepository.findByIsActiveTrue());
     }
 
     // ============================================================
@@ -126,10 +125,17 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public BrandResponse uploadBrandLogo(UUID brandId, MultipartFile file) {
-        log.info("Uploading logo for brand: {}", brandId);
 
         Brand brand = brandRepository.findById(brandId)
                 .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + brandId));
+
+        if (file == null || file.isEmpty()) {
+            throw new BusinessException(
+                    "logo",
+                    "Brand logo file is required",
+                    "BRAND_LOGO_REQUIRED",
+                    HttpStatus.BAD_REQUEST);
+        }
 
         try {
             // Delete old logo if exists
@@ -145,20 +151,21 @@ public class BrandServiceImpl implements BrandService {
 
             brand.setLogoUrl(imageUrl);
             brand.setPublicId(publicId);
-            brand = brandRepository.save(brand);
-
-            log.info("Logo uploaded for brand: {}", brandId);
-            return brandMapper.toResponse(brand);
+            Brand savedBrand = brandRepository.save(brand);
+            return brandMapper.toResponse(savedBrand);
 
         } catch (IOException e) {
             log.error("Failed to upload logo: {}", e.getMessage());
-            throw new RuntimeException("Failed to upload logo: " + e.getMessage());
+            throw new BusinessException(
+                    "logo",
+                    "Failed to upload brand logo",
+                    "BRAND_LOGO_UPLOAD_FAILED",
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Override
     public BrandResponse removeBrandLogo(UUID brandId) {
-        log.info("Removing logo for brand: {}", brandId);
 
         Brand brand = brandRepository.findById(brandId)
                 .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + brandId));
@@ -173,9 +180,7 @@ public class BrandServiceImpl implements BrandService {
 
         brand.setLogoUrl(null);
         brand.setPublicId(null);
-        brand = brandRepository.save(brand);
-
-        log.info("Logo removed for brand: {}", brandId);
-        return brandMapper.toResponse(brand);
+        Brand savedBrand = brandRepository.save(brand);
+        return brandMapper.toResponse(savedBrand);
     }
 }

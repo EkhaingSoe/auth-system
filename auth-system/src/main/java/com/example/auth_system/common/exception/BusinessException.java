@@ -254,4 +254,13 @@ public class BusinessException extends RuntimeException {
                 HttpStatus.CONFLICT);
     }
 
+    // brand
+    public static BusinessException duplicateBrandName(String name) {
+        return new BusinessException(
+                "name",
+                "Brand with name already exists: " + name,
+                "DUPLICATE_BRAND_NAME",
+                HttpStatus.CONFLICT);
+    }
+
 }

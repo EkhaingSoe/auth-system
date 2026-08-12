@@ -1,6 +1,8 @@
 // src/main/java/com/example/auth_system/brand/dto/request/CreateBrandRequest.java
 package com.example.auth_system.brand.dto.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +22,6 @@ public class CreateBrandRequest {
 
     @Builder.Default
     private Boolean isActive = true;
+
+    private MultipartFile logo;
 }

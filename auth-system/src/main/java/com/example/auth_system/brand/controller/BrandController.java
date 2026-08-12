@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,9 +34,9 @@ public class BrandController {
 
     @GetMapping
     @PreAuthorize("@permission.hasPermission('BRAND_READ')")
-    public ResponseEntity<ApiResponse<List<BrandResponse>>> getAllBrands() {
+    public ResponseEntity<ApiResponse<Page<BrandResponse>>> getAllBrands(Pageable pageable) {
         log.info("GET /api/admin/brands - Getting all brands");
-        return ResponseEntity.ok(ApiResponse.success(200, "Brands retrieved", brandService.getAllBrands()));
+        return ResponseEntity.ok(ApiResponse.success(200, "Brands retrieved", brandService.getAllBrands(pageable)));
     }
 
     @GetMapping("/{id}")
@@ -53,16 +55,18 @@ public class BrandController {
 
     @GetMapping("/search")
     @PreAuthorize("@permission.hasPermission('BRAND_READ')")
-    public ResponseEntity<ApiResponse<List<BrandResponse>>> searchBrands(@RequestParam String term) {
+    public ResponseEntity<ApiResponse<Page<BrandResponse>>> searchBrands(@RequestParam String term,
+            Pageable pageable) {
         log.info("GET /api/admin/brands/search?term={} - Searching brands", term);
-        return ResponseEntity.ok(ApiResponse.success(200, "Brands found", brandService.searchBrands(term)));
+        return ResponseEntity.ok(ApiResponse.success(200, "Brands found", brandService.searchBrands(term, pageable)));
     }
 
     @GetMapping("/active")
     @PreAuthorize("@permission.hasPermission('BRAND_READ')")
-    public ResponseEntity<ApiResponse<List<BrandResponse>>> getActiveBrands() {
+    public ResponseEntity<ApiResponse<Page<BrandResponse>>> getActiveBrands(Pageable pageable) {
         log.info("GET /api/admin/brands/active - Getting active brands");
-        return ResponseEntity.ok(ApiResponse.success(200, "Active brands retrieved", brandService.getActiveBrands()));
+        return ResponseEntity
+                .ok(ApiResponse.success(200, "Active brands retrieved", brandService.getActiveBrands(pageable)));
     }
 
     // ============================================================

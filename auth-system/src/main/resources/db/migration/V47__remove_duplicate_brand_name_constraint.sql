@@ -1,0 +1,2 @@
+ALTER TABLE brands
+DROP CONSTRAINT IF EXISTS uk_brands_name;

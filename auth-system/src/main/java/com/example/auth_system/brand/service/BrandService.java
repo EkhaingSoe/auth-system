@@ -4,6 +4,9 @@ package com.example.auth_system.brand.service;
 import com.example.auth_system.brand.dto.request.CreateBrandRequest;
 import com.example.auth_system.brand.dto.request.UpdateBrandRequest;
 import com.example.auth_system.brand.dto.response.BrandResponse;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -13,7 +16,7 @@ public interface BrandService {
 
     BrandResponse createBrand(CreateBrandRequest request);
 
-    List<BrandResponse> getAllBrands();
+    Page<BrandResponse> getAllBrands(Pageable pageable);
 
     BrandResponse getBrandById(UUID id);
 
@@ -23,9 +26,9 @@ public interface BrandService {
 
     void deleteBrand(UUID id);
 
-    List<BrandResponse> searchBrands(String searchTerm);
+    Page<BrandResponse> searchBrands(String searchTerm, Pageable pageable);
 
-    List<BrandResponse> getActiveBrands();
+    Page<BrandResponse> getActiveBrands(Pageable pageable);
 
     // Image Management
     BrandResponse uploadBrandLogo(UUID brandId, MultipartFile file);
