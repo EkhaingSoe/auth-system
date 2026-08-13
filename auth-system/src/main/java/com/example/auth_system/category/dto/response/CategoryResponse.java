@@ -27,15 +27,4 @@ public class CategoryResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class CategoryImageResponse {
-        private UUID id;
-        private String imageUrl;
-        private Boolean isPrimary;
-        private String altText;
-        private Integer sortOrder;
-    }
 }

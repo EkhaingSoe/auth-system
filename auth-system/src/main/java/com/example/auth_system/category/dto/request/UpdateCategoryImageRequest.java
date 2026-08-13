@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryImageRequest {
+public class UpdateCategoryImageRequest {
+
     private Boolean isPrimary;
+
     private String altText;
+
     private Integer sortOrder;
 }

@@ -262,5 +262,20 @@ public class BusinessException extends RuntimeException {
                 "DUPLICATE_BRAND_NAME",
                 HttpStatus.CONFLICT);
     }
+    // category
+
+    public static BusinessException duplicateCategoryName(String name) {
+        return new BusinessException(
+                "Category already exists: " + name,
+                "DUPLICATE_CATEGORY_NAME",
+                HttpStatus.CONFLICT);
+    }
+
+    public static BusinessException duplicateCategorySlug(String name) {
+        return new BusinessException(
+                "Category Slug already exists: " + name,
+                "DUPLICATE_CATEGORY_SLUG_NAME",
+                HttpStatus.CONFLICT);
+    }
 
 }

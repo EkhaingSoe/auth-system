@@ -3,6 +3,8 @@ package com.example.auth_system.category.service;
 import com.example.auth_system.category.dto.request.CreateCategoryRequest;
 import com.example.auth_system.category.dto.request.UpdateCategoryRequest;
 import com.example.auth_system.category.dto.response.CategoryResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -10,30 +12,53 @@ import java.util.UUID;
 
 public interface CategoryService {
 
-    // Category CRUD
-    CategoryResponse createCategory(CreateCategoryRequest request);
+        // ============================================================
+        // ADMIN - CATEGORY MANAGEMENT
+        // ============================================================
 
-    List<CategoryResponse> getAllCategories();
+        CategoryResponse createCategory(CreateCategoryRequest request);
 
-    CategoryResponse getCategoryById(UUID id);
+        Page<CategoryResponse> getAllCategories(Pageable pageable);
 
-    CategoryResponse getCategoryBySlug(String slug);
+        CategoryResponse getCategoryById(UUID id);
 
-    CategoryResponse updateCategory(UUID id, UpdateCategoryRequest request);
+        CategoryResponse getCategoryBySlug(String slug);
 
-    void deleteCategory(UUID id);
+        CategoryResponse updateCategory(UUID id, UpdateCategoryRequest request);
 
-    // Category Hierarchy
-    List<CategoryResponse> getRootCategories();
+        void deleteCategory(UUID id);
 
-    List<CategoryResponse> getSubCategories(UUID parentId);
+        Page<CategoryResponse> searchCategories(String term, Pageable pageable);
 
-    List<CategoryResponse> getActiveCategories();
+        // ============================================================
+        // ADMIN - CATEGORY HIERARCHY
+        // ============================================================
 
-    // Image Management
-    CategoryResponse uploadCategoryImage(UUID categoryId, MultipartFile file, Boolean isPrimary);
+        List<CategoryResponse> getActiveRootCategories();
 
-    CategoryResponse removeCategoryImage(UUID categoryId, UUID imageId);
+        List<CategoryResponse> getActiveSubCategories(UUID parentId);
 
-    CategoryResponse setPrimaryImage(UUID categoryId, UUID imageId);
+        Page<CategoryResponse> getCategoriesByStatus(Boolean isActive, Pageable pageable);
+
+        // ============================================================
+        // ADMIN - IMAGE MANAGEMENT
+        // ============================================================
+
+        CategoryResponse uploadCategoryImage(UUID categoryId, MultipartFile file, Boolean isPrimary);
+
+        CategoryResponse removeCategoryImage(UUID categoryId, UUID imageId);
+
+        CategoryResponse setPrimaryImage(UUID categoryId, UUID imageId);
+
+        // ============================================================
+        // E-COMMERCE - CATEGORY
+        // ============================================================
+
+        List<CategoryResponse> getEcommerceCategories();
+
+        List<CategoryResponse> getEcommerceRootCategories();
+
+        List<CategoryResponse> getEcommerceSubCategories(UUID parentId);
+
+        CategoryResponse getActiveCategoryBySlug(String slug);
 }

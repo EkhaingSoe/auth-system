@@ -17,9 +17,11 @@ public class CreateCategoryRequest {
     private String name;
 
     private String description;
-    private String slug;
+
     private UUID parentCategoryId;
-    private Integer sortOrder;
+
+    @Builder.Default
+    private Integer sortOrder = 0;
 
     @Builder.Default
     private Boolean isActive = true;

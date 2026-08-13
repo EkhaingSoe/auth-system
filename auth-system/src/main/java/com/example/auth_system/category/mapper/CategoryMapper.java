@@ -2,6 +2,7 @@ package com.example.auth_system.category.mapper;
 
 import com.example.auth_system.category.dto.request.CreateCategoryRequest;
 import com.example.auth_system.category.dto.request.UpdateCategoryRequest;
+import com.example.auth_system.category.dto.response.CategoryImageResponse;
 import com.example.auth_system.category.dto.response.CategoryResponse;
 import com.example.auth_system.category.entity.Category;
 import com.example.auth_system.category.entity.CategoryImage;
@@ -26,7 +27,6 @@ public class CategoryMapper {
         return Category.builder()
                 .name(request.getName())
                 .description(request.getDescription())
-                .slug(request.getSlug())
                 .isActive(request.getIsActive() != null ? request.getIsActive() : true)
                 .sortOrder(request.getSortOrder() != null ? request.getSortOrder() : 0)
                 .parentCategory(parentCategory)
@@ -38,8 +38,6 @@ public class CategoryMapper {
             category.setName(request.getName());
         if (request.getDescription() != null)
             category.setDescription(request.getDescription());
-        if (request.getSlug() != null)
-            category.setSlug(request.getSlug());
         if (request.getIsActive() != null)
             category.setIsActive(request.getIsActive());
         if (request.getSortOrder() != null)
@@ -69,8 +67,8 @@ public class CategoryMapper {
                 .build();
     }
 
-    private CategoryResponse.CategoryImageResponse toImageResponse(CategoryImage image) {
-        return CategoryResponse.CategoryImageResponse.builder()
+    private CategoryImageResponse toImageResponse(CategoryImage image) {
+        return CategoryImageResponse.builder()
                 .id(image.getId())
                 .imageUrl(image.getImageUrl())
                 .isPrimary(image.getIsPrimary())
@@ -79,7 +77,7 @@ public class CategoryMapper {
                 .build();
     }
 
-    private List<CategoryResponse.CategoryImageResponse> toImageResponseList(List<CategoryImage> images) {
+    private List<CategoryImageResponse> toImageResponseList(List<CategoryImage> images) {
         if (images == null)
             return List.of();
         return images.stream()
