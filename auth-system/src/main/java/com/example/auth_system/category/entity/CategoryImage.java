@@ -27,26 +27,28 @@ public class CategoryImage {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url", nullable = false, length = 500)
     private String imageUrl;
 
-    @Column(name = "public_id")
-    private String publicId; // Cloudinary public ID
+    @Column(name = "public_id", length = 255)
+    private String publicId;
 
-    @Column(name = "is_primary")
+    @Column(name = "is_primary", nullable = false)
+    @Builder.Default
     private Boolean isPrimary = false;
 
-    @Column(name = "alt_text")
+    @Column(name = "alt_text", length = 255)
     private String altText;
 
-    @Column(name = "sort_order")
+    @Column(name = "sort_order", nullable = false)
+    @Builder.Default
     private Integer sortOrder = 0;
 
     @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 }

@@ -25,19 +25,21 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 100)
     private String name;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, length = 150)
     private String slug;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active", nullable = false)
+    @Builder.Default
     private Boolean isActive = true;
 
-    @Column(name = "sort_order")
+    @Column(name = "sort_order", nullable = false)
+    @Builder.Default
     private Integer sortOrder = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -49,14 +51,13 @@ public class Category {
     private List<CategoryImage> images = new ArrayList<>();
 
     @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    // Helper methods
     public void addImage(CategoryImage image) {
         images.add(image);
         image.setCategory(this);
