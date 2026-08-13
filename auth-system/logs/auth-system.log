@@ -5331,3 +5331,1216 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2026-08-13 15:28:19.317 [Thread-255] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-08-13 15:28:19.318 [Thread-255] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-65 - Shutdown initiated...
 2026-08-13 15:28:19.320 [Thread-255] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-65 - Shutdown completed.
+2026-08-13 15:28:19.450 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 15:28:19.450 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 15:28:19.450 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 15:28:19.810 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 15:28:19.951 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 140 ms. Found 36 JPA repository interfaces.
+2026-08-13 15:28:20.141 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 15:28:20.142 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 15:28:20.142 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 15:28:20.164 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 15:28:20.164 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 711 ms
+2026-08-13 15:28:20.224 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-66 - Starting...
+2026-08-13 15:28:20.274 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-66 - Added connection org.postgresql.jdbc.PgConnection@2316fe3a
+2026-08-13 15:28:20.274 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-66 - Start completed.
+2026-08-13 15:28:20.310 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 15:28:20.313 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 15:28:20.361 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.045s)
+2026-08-13 15:28:20.413 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 15:28:20.414 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 15:28:20.456 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 15:28:20.459 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 15:28:20.471 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 15:28:21.034 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 15:28:21.053 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 15:28:21.128 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 15:28:22.292 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 15:28:22.400 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a9f8047, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a246609, org.springframework.security.web.context.SecurityContextHolderFilter@ac053be, org.springframework.security.web.header.HeaderWriterFilter@2bd99f62, org.springframework.security.web.authentication.logout.LogoutFilter@57acf4e1, com.example.auth_system.auth.security.JwtAuthenticationFilter@4eb086b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3545ee3a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5280557f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@605c2739, org.springframework.security.web.session.SessionManagementFilter@d201a96, org.springframework.security.web.access.ExceptionTranslationFilter@5d8c46ca, org.springframework.security.web.access.intercept.AuthorizationFilter@1d796b62]
+2026-08-13 15:28:22.543 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 15:28:22.563 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 15:28:22.567 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.16 seconds (process running for 15407.153)
+2026-08-13 15:28:22.588 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 15:28:22.592 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 16:51:47.057 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 16:51:47.063 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 16:51:47.072 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2026-08-13 16:51:47.199 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 16:51:47.226 [http-nio-8080-exec-1] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 16:51:47.227 [http-nio-8080-exec-1] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 16:51:47.234 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/categories' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-13 16:51:47.402 [http-nio-8080-exec-1] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CATEGORY_CREATE granted
+2026-08-13 16:51:47.402 [http-nio-8080-exec-1] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CATEGORY_CREATE: true
+2026-08-13 16:51:47.404 [http-nio-8080-exec-1] INFO  c.e.a.c.c.AdminCategoryController - POST /api/admin/categories - Creating category: Electronics
+2026-08-13 16:51:47.424 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id 
+    from
+        categories c1_0 
+    where
+        c1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-13 16:51:47.479 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Category already exists: Electronics]
+2026-08-13 17:02:46.981 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-13 17:02:46.993 [Thread-259] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:02:46.993 [Thread-259] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-66 - Shutdown initiated...
+2026-08-13 17:02:46.999 [Thread-259] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-66 - Shutdown completed.
+2026-08-13 17:02:47.140 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:02:47.141 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:02:47.141 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:02:47.756 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:02:47.951 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 193 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:02:48.235 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:02:48.236 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:02:48.237 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:02:48.285 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:02:48.286 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1140 ms
+2026-08-13 17:02:48.369 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-67 - Starting...
+2026-08-13 17:02:48.427 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-67 - Added connection org.postgresql.jdbc.PgConnection@6d51477c
+2026-08-13 17:02:48.427 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-67 - Start completed.
+2026-08-13 17:02:48.456 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:02:48.460 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:02:48.505 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.040s)
+2026-08-13 17:02:48.578 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:02:48.579 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:02:48.661 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:02:48.666 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:02:48.707 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:02:49.580 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:02:49.614 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:02:49.825 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:02:52.365 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:02:52.565 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@41fda079, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e5f6b90, org.springframework.security.web.context.SecurityContextHolderFilter@40c8c27c, org.springframework.security.web.header.HeaderWriterFilter@50d765f8, org.springframework.security.web.authentication.logout.LogoutFilter@591987c8, com.example.auth_system.auth.security.JwtAuthenticationFilter@44359220, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4d230cb7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2630584e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@53664189, org.springframework.security.web.session.SessionManagementFilter@24abb4d2, org.springframework.security.web.access.ExceptionTranslationFilter@2065a062, org.springframework.security.web.access.intercept.AuthorizationFilter@544f5aff]
+2026-08-13 17:02:52.885 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:02:52.914 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:02:52.921 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.851 seconds (process running for 21077.506)
+2026-08-13 17:02:52.958 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:02:52.967 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:03:02.947 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 17:03:02.948 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 17:03:02.951 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-08-13 17:03:02.964 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:03:02.972 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:03:02.973 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:03:02.973 [http-nio-8080-exec-2] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/categories' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-13 17:03:02.999 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CATEGORY_CREATE granted
+2026-08-13 17:03:02.999 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CATEGORY_CREATE: true
+2026-08-13 17:03:02.999 [http-nio-8080-exec-2] INFO  c.e.a.c.c.AdminCategoryController - POST /api/admin/categories - Creating category: Electronics
+2026-08-13 17:03:03.004 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id 
+    from
+        categories c1_0 
+    where
+        c1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-13 17:03:03.014 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Category already exists: Electronics]
+2026-08-13 17:05:32.355 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-13 17:05:32.369 [Thread-263] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:05:32.371 [Thread-263] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-67 - Shutdown initiated...
+2026-08-13 17:05:32.372 [Thread-263] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-67 - Shutdown completed.
+2026-08-13 17:05:32.519 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:05:32.522 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:05:32.522 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:05:33.065 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:05:33.215 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 149 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:05:33.460 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:05:33.462 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:05:33.462 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:05:33.491 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:05:33.491 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 966 ms
+2026-08-13 17:05:33.574 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-68 - Starting...
+2026-08-13 17:05:33.627 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-68 - Added connection org.postgresql.jdbc.PgConnection@59d4d1d2
+2026-08-13 17:05:33.628 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-68 - Start completed.
+2026-08-13 17:05:33.655 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:05:33.657 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:05:33.703 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.041s)
+2026-08-13 17:05:33.758 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:05:33.759 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:05:33.833 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:05:33.837 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:05:33.856 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:05:34.830 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:05:34.862 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:05:35.039 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:05:37.219 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:05:37.397 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2bb1ebf5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@74dd8efc, org.springframework.security.web.context.SecurityContextHolderFilter@161b9ed9, org.springframework.security.web.header.HeaderWriterFilter@42ad8130, org.springframework.security.web.authentication.logout.LogoutFilter@2754ed4e, com.example.auth_system.auth.security.JwtAuthenticationFilter@15767a3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cfaa131, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72701f9f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a3beda3, org.springframework.security.web.session.SessionManagementFilter@672f1678, org.springframework.security.web.access.ExceptionTranslationFilter@3ddeeead, org.springframework.security.web.access.intercept.AuthorizationFilter@2b8f5d57]
+2026-08-13 17:05:37.662 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:05:37.693 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:05:37.701 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.239 seconds (process running for 21242.286)
+2026-08-13 17:05:37.744 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:05:37.751 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:05:48.960 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 17:05:48.961 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 17:05:48.962 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-08-13 17:05:48.972 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:05:48.977 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:05:48.978 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:05:48.978 [http-nio-8080-exec-2] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/categories' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-13 17:05:48.991 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CATEGORY_READ granted
+2026-08-13 17:05:48.992 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CATEGORY_READ: true
+2026-08-13 17:05:48.992 [http-nio-8080-exec-2] INFO  c.e.a.c.c.AdminCategoryController - GET /api/admin/categories - Getting categories
+2026-08-13 17:05:49.007 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name,
+        c1_0.parent_category_id,
+        c1_0.slug,
+        c1_0.sort_order,
+        c1_0.updated_at 
+    from
+        categories c1_0 
+    order by
+        c1_0.sort_order 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-13 17:05:49.024 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        i1_0.category_id,
+        i1_0.id,
+        i1_0.alt_text,
+        i1_0.created_at,
+        i1_0.image_url,
+        i1_0.is_primary,
+        i1_0.public_id,
+        i1_0.sort_order,
+        i1_0.updated_at 
+    from
+        category_images i1_0 
+    where
+        i1_0.category_id=?
+2026-08-13 17:05:49.027 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        i1_0.category_id,
+        i1_0.id,
+        i1_0.alt_text,
+        i1_0.created_at,
+        i1_0.image_url,
+        i1_0.is_primary,
+        i1_0.public_id,
+        i1_0.sort_order,
+        i1_0.updated_at 
+    from
+        category_images i1_0 
+    where
+        i1_0.category_id=?
+2026-08-13 17:05:49.028 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        i1_0.category_id,
+        i1_0.id,
+        i1_0.alt_text,
+        i1_0.created_at,
+        i1_0.image_url,
+        i1_0.is_primary,
+        i1_0.public_id,
+        i1_0.sort_order,
+        i1_0.updated_at 
+    from
+        category_images i1_0 
+    where
+        i1_0.category_id=?
+2026-08-13 17:05:55.270 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:05:55.272 [http-nio-8080-exec-3] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:05:55.273 [http-nio-8080-exec-3] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:05:55.286 [http-nio-8080-exec-3] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CATEGORY_CREATE granted
+2026-08-13 17:05:55.286 [http-nio-8080-exec-3] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CATEGORY_CREATE: true
+2026-08-13 17:05:55.286 [http-nio-8080-exec-3] INFO  c.e.a.c.c.AdminCategoryController - POST /api/admin/categories - Creating category: Electronics
+2026-08-13 17:05:55.289 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id 
+    from
+        categories c1_0 
+    where
+        c1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-13 17:05:55.294 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Category already exists: Electronics]
+2026-08-13 17:06:16.276 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:06:16.280 [http-nio-8080-exec-4] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:06:16.281 [http-nio-8080-exec-4] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:06:16.290 [http-nio-8080-exec-4] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission BRAND_CREATE granted
+2026-08-13 17:06:16.290 [http-nio-8080-exec-4] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission BRAND_CREATE: true
+2026-08-13 17:06:16.290 [http-nio-8080-exec-4] INFO  c.e.a.b.controller.BrandController - POST /api/admin/brands - Creating brand: testing
+2026-08-13 17:06:16.292 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        b1_0.id 
+    from
+        brands b1_0 
+    where
+        b1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-13 17:06:16.294 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Brand with name already exists: testing]
+2026-08-13 17:06:56.448 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-13 17:06:56.459 [Thread-267] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:06:56.460 [Thread-267] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-68 - Shutdown initiated...
+2026-08-13 17:06:56.461 [Thread-267] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-68 - Shutdown completed.
+2026-08-13 17:06:56.566 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:06:56.566 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:06:56.567 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:06:57.028 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:06:57.202 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 172 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:06:57.419 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:06:57.420 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:06:57.421 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:06:57.450 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:06:57.450 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 881 ms
+2026-08-13 17:06:57.513 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-69 - Starting...
+2026-08-13 17:06:57.571 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-69 - Added connection org.postgresql.jdbc.PgConnection@3671d244
+2026-08-13 17:06:57.572 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-69 - Start completed.
+2026-08-13 17:06:57.591 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:06:57.593 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:06:57.625 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.029s)
+2026-08-13 17:06:57.673 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:06:57.673 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:06:57.717 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:06:57.720 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:06:57.734 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:06:58.630 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:06:58.658 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:06:58.892 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:07:01.053 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:07:01.221 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@da6bca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2550faa9, org.springframework.security.web.context.SecurityContextHolderFilter@1a0ffb7f, org.springframework.security.web.header.HeaderWriterFilter@6fcffda7, org.springframework.security.web.authentication.logout.LogoutFilter@495d9e56, com.example.auth_system.auth.security.JwtAuthenticationFilter@1ec634c0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e21b8f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e134652, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c2dab63, org.springframework.security.web.session.SessionManagementFilter@3428d4ab, org.springframework.security.web.access.ExceptionTranslationFilter@1d293a70, org.springframework.security.web.access.intercept.AuthorizationFilter@4e1d8f5a]
+2026-08-13 17:07:01.483 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:07:01.502 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:07:01.507 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.975 seconds (process running for 21326.092)
+2026-08-13 17:07:01.537 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:07:01.540 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:07:05.104 [http-nio-8080-exec-6] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 17:07:05.105 [http-nio-8080-exec-6] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 17:07:05.106 [http-nio-8080-exec-6] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-08-13 17:07:05.116 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:07:05.120 [http-nio-8080-exec-6] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:07:05.120 [http-nio-8080-exec-6] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:07:05.120 [http-nio-8080-exec-6] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/brands' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-13 17:07:05.120 [http-nio-8080-exec-6] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission BRAND_READ granted
+2026-08-13 17:07:05.120 [http-nio-8080-exec-6] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission BRAND_READ: true
+2026-08-13 17:07:05.120 [http-nio-8080-exec-6] INFO  c.e.a.b.controller.BrandController - GET /api/admin/brands - Getting all brands
+2026-08-13 17:07:05.128 [http-nio-8080-exec-6] INFO  c.e.a.b.s.impl.BrandServiceImpl - Getting all brands
+2026-08-13 17:07:05.128 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        b1_0.id,
+        b1_0.created_at,
+        b1_0.description,
+        b1_0.is_active,
+        b1_0.logo_url,
+        b1_0.name,
+        b1_0.public_id,
+        b1_0.updated_at 
+    from
+        brands b1_0 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-13 17:07:08.086 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:07:08.092 [http-nio-8080-exec-5] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:07:08.092 [http-nio-8080-exec-5] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:07:08.110 [http-nio-8080-exec-5] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission BRAND_CREATE granted
+2026-08-13 17:07:08.110 [http-nio-8080-exec-5] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission BRAND_CREATE: true
+2026-08-13 17:07:08.110 [http-nio-8080-exec-5] INFO  c.e.a.b.controller.BrandController - POST /api/admin/brands - Creating brand: testing
+2026-08-13 17:07:08.113 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        b1_0.id 
+    from
+        brands b1_0 
+    where
+        b1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-13 17:07:08.120 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Brand with name already exists: testing]
+2026-08-13 17:08:33.556 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-13 17:08:33.563 [Thread-271] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:08:33.564 [Thread-271] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-69 - Shutdown initiated...
+2026-08-13 17:08:33.565 [Thread-271] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-69 - Shutdown completed.
+2026-08-13 17:08:33.651 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:08:33.652 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:08:33.652 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:08:33.946 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:08:34.053 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:08:34.182 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:08:34.183 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:08:34.183 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:08:34.184 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:08:34.184 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 530 ms
+2026-08-13 17:08:34.230 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-70 - Starting...
+2026-08-13 17:08:34.270 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-70 - Added connection org.postgresql.jdbc.PgConnection@d7946
+2026-08-13 17:08:34.270 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-70 - Start completed.
+2026-08-13 17:08:34.283 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:08:34.284 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:08:34.329 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.042s)
+2026-08-13 17:08:34.371 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:08:34.371 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:08:34.404 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:08:34.406 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:08:34.419 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:08:34.939 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:08:34.950 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:08:35.077 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:08:36.529 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:08:36.648 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@26fcdc26, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@f22de97, org.springframework.security.web.context.SecurityContextHolderFilter@5fc2d0, org.springframework.security.web.header.HeaderWriterFilter@53c11e4a, org.springframework.security.web.authentication.logout.LogoutFilter@51bf190f, com.example.auth_system.auth.security.JwtAuthenticationFilter@31f77bd0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74a1de5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ca27008, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@651ace58, org.springframework.security.web.session.SessionManagementFilter@4bb71dc5, org.springframework.security.web.access.ExceptionTranslationFilter@693dc5e3, org.springframework.security.web.access.intercept.AuthorizationFilter@49a08109]
+2026-08-13 17:08:36.805 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:08:36.838 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:08:36.843 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 3.217 seconds (process running for 21421.428)
+2026-08-13 17:08:36.861 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:08:36.867 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:08:45.627 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 17:08:45.627 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 17:08:45.629 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-08-13 17:08:45.638 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:08:45.644 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:08:45.645 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:08:45.645 [http-nio-8080-exec-2] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/categories' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-13 17:08:45.664 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CATEGORY_CREATE granted
+2026-08-13 17:08:45.664 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CATEGORY_CREATE: true
+2026-08-13 17:08:45.664 [http-nio-8080-exec-2] INFO  c.e.a.c.c.AdminCategoryController - POST /api/admin/categories - Creating category: Electronics
+2026-08-13 17:08:45.668 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id 
+    from
+        categories c1_0 
+    where
+        c1_0.name=? 
+    fetch
+        first ? rows only
+2026-08-13 17:08:45.673 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.auth_system.common.exception.BusinessException: Category with name already exists: Electronics]
+2026-08-13 17:17:29.422 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 9 class path changes (0 additions, 0 deletions, 9 modifications)
+2026-08-13 17:17:29.432 [Thread-275] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:17:29.433 [Thread-275] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-70 - Shutdown initiated...
+2026-08-13 17:17:29.435 [Thread-275] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-70 - Shutdown completed.
+2026-08-13 17:17:29.570 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:17:29.571 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:17:29.572 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:17:30.138 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:17:30.271 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 132 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:17:30.605 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:17:30.606 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:17:30.606 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:17:30.630 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:17:30.630 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1043 ms
+2026-08-13 17:17:30.689 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-71 - Starting...
+2026-08-13 17:17:30.734 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-71 - Added connection org.postgresql.jdbc.PgConnection@4d834738
+2026-08-13 17:17:30.734 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-71 - Start completed.
+2026-08-13 17:17:30.767 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:17:30.770 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:17:30.831 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.059s)
+2026-08-13 17:17:30.889 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:17:30.890 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:17:30.960 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:17:30.965 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:17:30.985 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:17:31.729 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:17:31.756 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:17:31.920 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:17:33.964 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:17:34.163 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@65f0d10, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@314b02f1, org.springframework.security.web.context.SecurityContextHolderFilter@dc58e5f, org.springframework.security.web.header.HeaderWriterFilter@2f32f75e, org.springframework.security.web.authentication.logout.LogoutFilter@2d1c0bae, com.example.auth_system.auth.security.JwtAuthenticationFilter@1d7dc64c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31a26b70, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@992e21d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7cf6a9fc, org.springframework.security.web.session.SessionManagementFilter@2f35450c, org.springframework.security.web.access.ExceptionTranslationFilter@ba6efb8, org.springframework.security.web.access.intercept.AuthorizationFilter@4b532eaf]
+2026-08-13 17:17:34.416 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:17:34.433 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:17:34.440 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.935 seconds (process running for 21959.025)
+2026-08-13 17:17:34.477 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:17:34.482 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:17:48.516 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2026-08-13 17:17:48.532 [Thread-279] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:17:48.533 [Thread-279] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-71 - Shutdown initiated...
+2026-08-13 17:17:48.535 [Thread-279] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-71 - Shutdown completed.
+2026-08-13 17:17:48.676 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:17:48.676 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:17:48.677 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:17:49.095 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:17:49.245 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 143 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:17:49.461 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:17:49.461 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:17:49.461 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:17:49.488 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:17:49.488 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 807 ms
+2026-08-13 17:17:49.543 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-72 - Starting...
+2026-08-13 17:17:49.593 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-72 - Added connection org.postgresql.jdbc.PgConnection@6c0e16a5
+2026-08-13 17:17:49.593 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-72 - Start completed.
+2026-08-13 17:17:49.623 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:17:49.626 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:17:49.665 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.035s)
+2026-08-13 17:17:49.718 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:17:49.718 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:17:49.773 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:17:49.776 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:17:49.792 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:17:50.708 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:17:50.742 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:17:50.933 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:17:53.108 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:17:53.291 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f8691a7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@faaa466, org.springframework.security.web.context.SecurityContextHolderFilter@3b31a54c, org.springframework.security.web.header.HeaderWriterFilter@5e3411e, org.springframework.security.web.authentication.logout.LogoutFilter@6aad5029, com.example.auth_system.auth.security.JwtAuthenticationFilter@1e084d38, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@463a6ab6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59ce28de, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4ffd5aeb, org.springframework.security.web.session.SessionManagementFilter@34263daa, org.springframework.security.web.access.ExceptionTranslationFilter@64832ea2, org.springframework.security.web.access.intercept.AuthorizationFilter@57f7b7ec]
+2026-08-13 17:17:53.573 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:17:53.594 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:17:53.599 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.973 seconds (process running for 21978.184)
+2026-08-13 17:17:53.630 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:17:53.636 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:19:04.314 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-13 17:19:04.327 [Thread-283] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:19:04.328 [Thread-283] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-72 - Shutdown initiated...
+2026-08-13 17:19:04.331 [Thread-283] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-72 - Shutdown completed.
+2026-08-13 17:19:04.463 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:19:04.464 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:19:04.464 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:19:04.887 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:19:05.035 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 146 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:19:05.254 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:19:05.255 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:19:05.255 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:19:05.289 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:19:05.290 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 825 ms
+2026-08-13 17:19:05.362 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-73 - Starting...
+2026-08-13 17:19:05.422 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-73 - Added connection org.postgresql.jdbc.PgConnection@136ad54a
+2026-08-13 17:19:05.422 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-73 - Start completed.
+2026-08-13 17:19:05.452 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:19:05.455 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:19:05.488 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.030s)
+2026-08-13 17:19:05.535 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:19:05.536 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:19:05.592 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:19:05.595 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:19:05.622 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:19:06.553 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:19:06.571 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:19:06.697 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:19:08.551 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:19:08.763 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3ce984a2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@10050dda, org.springframework.security.web.context.SecurityContextHolderFilter@319f7b66, org.springframework.security.web.header.HeaderWriterFilter@6b8882f7, org.springframework.security.web.authentication.logout.LogoutFilter@f586bb, com.example.auth_system.auth.security.JwtAuthenticationFilter@1c91c8b3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43b26a3a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c02d781, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76dcc718, org.springframework.security.web.session.SessionManagementFilter@935fd4d, org.springframework.security.web.access.ExceptionTranslationFilter@255af0a7, org.springframework.security.web.access.intercept.AuthorizationFilter@2a02b473]
+2026-08-13 17:19:09.009 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:19:09.035 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:19:09.042 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 4.619 seconds (process running for 22053.627)
+2026-08-13 17:19:09.081 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:19:09.087 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:19:34.611 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-08-13 17:19:34.620 [Thread-287] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:19:34.621 [Thread-287] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-73 - Shutdown initiated...
+2026-08-13 17:19:34.623 [Thread-287] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-73 - Shutdown completed.
+2026-08-13 17:19:34.749 [restartedMain] INFO  c.e.a.AuthSystemApplication - Starting AuthSystemApplication using Java 21.0.11 with PID 15576 (C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system\target\classes started by hp in C:\Users\hp\Desktop\Ei Khaing Soe\auth-system\auth-system)
+2026-08-13 17:19:34.750 [restartedMain] DEBUG c.e.a.AuthSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-08-13 17:19:34.750 [restartedMain] INFO  c.e.a.AuthSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-08-13 17:19:35.247 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 17:19:35.414 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 169 ms. Found 36 JPA repository interfaces.
+2026-08-13 17:19:35.653 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-13 17:19:35.655 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 17:19:35.656 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-13 17:19:35.689 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-08-13 17:19:35.689 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 937 ms
+2026-08-13 17:19:35.742 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-74 - Starting...
+2026-08-13 17:19:35.785 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-74 - Added connection org.postgresql.jdbc.PgConnection@67bd6f4e
+2026-08-13 17:19:35.786 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-74 - Start completed.
+2026-08-13 17:19:35.813 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/ERP-SYS (PostgreSQL 18.4)
+2026-08-13 17:19:35.817 [restartedMain] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 18.4 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-08-13 17:19:35.862 [restartedMain] INFO  o.f.core.internal.command.DbValidate - Successfully validated 46 migrations (execution time 00:00.042s)
+2026-08-13 17:19:35.915 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 48
+2026-08-13 17:19:35.916 [restartedMain] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-08-13 17:19:35.977 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-13 17:19:35.981 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-08-13 17:19:36.002 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 17:19:36.866 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 17:19:36.893 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 17:19:36.999 [restartedMain] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-13 17:19:39.359 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 17:19:39.550 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a6c982, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1527fee1, org.springframework.security.web.context.SecurityContextHolderFilter@44719c98, org.springframework.security.web.header.HeaderWriterFilter@10e8f562, org.springframework.security.web.authentication.logout.LogoutFilter@410a93c4, com.example.auth_system.auth.security.JwtAuthenticationFilter@3af11f07, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4334a992, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14a01773, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@146080a1, org.springframework.security.web.session.SessionManagementFilter@720decf9, org.springframework.security.web.access.ExceptionTranslationFilter@6efd37eb, org.springframework.security.web.access.intercept.AuthorizationFilter@331b4a50]
+2026-08-13 17:19:39.835 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-08-13 17:19:39.858 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-08-13 17:19:39.864 [restartedMain] INFO  c.e.a.AuthSystemApplication - Started AuthSystemApplication in 5.156 seconds (process running for 22084.449)
+2026-08-13 17:19:39.887 [restartedMain] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        and not(u1_0.deleted)
+2026-08-13 17:19:39.894 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-08-13 17:19:42.014 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 17:19:42.015 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 17:19:42.017 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-08-13 17:19:42.038 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false
+2026-08-13 17:19:42.049 [http-nio-8080-exec-2] INFO  c.e.a.a.s.JwtAuthenticationFilter - 🔍 Authorities for user admin@gmail.com: [ROLE_ADMIN]
+2026-08-13 17:19:42.049 [http-nio-8080-exec-2] DEBUG c.e.a.a.s.JwtAuthenticationFilter - Set authentication for user: admin@gmail.com in security context
+2026-08-13 17:19:42.049 [http-nio-8080-exec-2] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/admin/categories' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-08-13 17:19:42.060 [http-nio-8080-exec-2] DEBUG c.e.a.p.s.PermissionServiceImpl - User admin@gmail.com is ROLE_ADMIN - permission CATEGORY_READ granted
+2026-08-13 17:19:42.060 [http-nio-8080-exec-2] DEBUG c.e.a.a.security.PermissionEvaluator - User admin@gmail.com has permission CATEGORY_READ: true
+2026-08-13 17:19:42.060 [http-nio-8080-exec-2] INFO  c.e.a.c.c.AdminCategoryController - GET /api/admin/categories - Getting categories
+2026-08-13 17:19:42.065 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name,
+        c1_0.parent_category_id,
+        c1_0.slug,
+        c1_0.sort_order,
+        c1_0.updated_at 
+    from
+        categories c1_0 
+    order by
+        c1_0.sort_order 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-08-13 17:19:42.072 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        i1_0.category_id,
+        i1_0.id,
+        i1_0.alt_text,
+        i1_0.created_at,
+        i1_0.image_url,
+        i1_0.is_primary,
+        i1_0.public_id,
+        i1_0.sort_order,
+        i1_0.updated_at 
+    from
+        category_images i1_0 
+    where
+        i1_0.category_id=?
+2026-08-13 17:19:42.074 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        i1_0.category_id,
+        i1_0.id,
+        i1_0.alt_text,
+        i1_0.created_at,
+        i1_0.image_url,
+        i1_0.is_primary,
+        i1_0.public_id,
+        i1_0.sort_order,
+        i1_0.updated_at 
+    from
+        category_images i1_0 
+    where
+        i1_0.category_id=?
+2026-08-13 17:19:42.075 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        i1_0.category_id,
+        i1_0.id,
+        i1_0.alt_text,
+        i1_0.created_at,
+        i1_0.image_url,
+        i1_0.is_primary,
+        i1_0.public_id,
+        i1_0.sort_order,
+        i1_0.updated_at 
+    from
+        category_images i1_0 
+    where
+        i1_0.category_id=?
+2026-08-13 17:19:45.420 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        distinct u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.email_verified,
+        u1_0.failed_login_attempts,
+        u1_0.first_name,
+        u1_0.last_login_at,
+        u1_0.last_name,
+        u1_0.locked_until,
+        u1_0.password,
+        r1_0.user_id,
+        r1_1.id,
+        r1_1.name,
+        p1_0.role_id,
+        p1_1.id,
+        p1_1.created_at,
+        p1_1.description,
+        p1_1.name,
+        u1_0.status,
+        u1_0.store_id,
+        u1_0.updated_at,
+        u1_0.user_type,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        (user_roles r1_0 
+    join
+        roles r1_1 
+            on r1_1.id=r1_0.role_id) 
+        on u1_0.id=r1_0.user_id 
+    left join
+        (role_permissions p1_0 
+    join
+        permissions p1_1 
+            on p1_1.id=p1_0.permission_id) 
+        on r1_1.id=p1_0.role_id 
+    where
+        u1_0.email=? 
+        and u1_0.deleted=false

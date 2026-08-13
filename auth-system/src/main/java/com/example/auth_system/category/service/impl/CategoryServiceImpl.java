@@ -45,7 +45,10 @@ public class CategoryServiceImpl implements CategoryService {
         }
         String slug = generateSlug(request.getName());
         if (categoryRepository.existsBySlug(slug)) {
-            throw BusinessException.duplicateCategorySlug(slug);
+            throw BusinessException.duplicate(
+                    "name",
+                    "Brand",
+                    request.getName());
         }
         Category category = categoryMapper.toEntity(request);
         category.setSlug(slug);

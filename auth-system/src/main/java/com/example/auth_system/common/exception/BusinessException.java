@@ -3,6 +3,8 @@ package com.example.auth_system.common.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import com.example.auth_system.common.enums.DuplicateEntity;
+
 @Getter
 public class BusinessException extends RuntimeException {
 
@@ -266,15 +268,36 @@ public class BusinessException extends RuntimeException {
 
     public static BusinessException duplicateCategoryName(String name) {
         return new BusinessException(
-                "Category already exists: " + name,
-                "DUPLICATE_CATEGORY_NAME",
+                "name",
+                "Category with name already exists: " + name,
+                "DUPLICATE_Category_NAME",
                 HttpStatus.CONFLICT);
     }
 
-    public static BusinessException duplicateCategorySlug(String name) {
+    public static BusinessException duplicateCategorySlug(String slug) {
         return new BusinessException(
-                "Category Slug already exists: " + name,
-                "DUPLICATE_CATEGORY_SLUG_NAME",
+                "Category slug already exists: " + slug,
+                "DUPLICATE_CATEGORY_SLUG",
+                HttpStatus.CONFLICT);
+    }
+
+    public static BusinessException duplicate(
+            String field,
+            String entityName,
+            String value) {
+
+        String message = entityName + " with " + field
+                + " already exists: " + value;
+
+        String errorCode = "DUPLICATE_"
+                + entityName.toUpperCase()
+                + "_"
+                + field.toUpperCase();
+
+        return new BusinessException(
+                field,
+                message,
+                errorCode,
                 HttpStatus.CONFLICT);
     }
 
