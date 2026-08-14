@@ -5,6 +5,7 @@ import com.example.auth_system.category.dto.request.UpdateCategoryRequest;
 import com.example.auth_system.category.dto.response.CategoryResponse;
 import com.example.auth_system.category.service.CategoryService;
 import com.example.auth_system.common.dto.response.ApiResponse;
+import com.example.auth_system.common.exception.BusinessException;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,210 +28,172 @@ import java.util.UUID;
 @Slf4j
 public class AdminCategoryController {
 
-    private final CategoryService categoryService;
+        private final CategoryService categoryService;
 
-    // ============================================================
-    // ADMIN - LIST
-    // ============================================================
+        @GetMapping
+        @PreAuthorize("@permission.hasPermission('CATEGORY_READ')")
+        public ResponseEntity<ApiResponse<Page<CategoryResponse>>> getAllCategories(
+                        @PageableDefault(size = 20, sort = "sortOrder") Pageable pageable) {
 
-    @GetMapping
-    @PreAuthorize("@permission.hasPermission('CATEGORY_READ')")
-    public ResponseEntity<ApiResponse<Page<CategoryResponse>>> getAllCategories(
-            @PageableDefault(size = 20, sort = "sortOrder") Pageable pageable) {
+                log.info("GET /api/admin/categories - Getting categories");
 
-        log.info("GET /api/admin/categories - Getting categories");
+                Page<CategoryResponse> categories = categoryService.getAllCategories(pageable);
 
-        Page<CategoryResponse> categories = categoryService.getAllCategories(pageable);
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Categories retrieved successfully",
-                        categories));
-    }
-
-    // ============================================================
-    // ADMIN - GET BY ID
-    // ============================================================
-
-    @GetMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_READ')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> getCategoryById(
-            @PathVariable UUID id) {
-
-        log.info("GET /api/admin/categories/{} - Getting category", id);
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Category retrieved successfully",
-                        categoryService.getCategoryById(id)));
-    }
-
-    // ============================================================
-    // ADMIN - GET BY SLUG
-    // ============================================================
-
-    @GetMapping("/slug/{slug}")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_READ')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> getCategoryBySlug(
-            @PathVariable String slug) {
-
-        log.info("GET /api/admin/categories/slug/{} - Getting category",
-                slug);
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Category retrieved successfully",
-                        categoryService.getCategoryBySlug(slug)));
-    }
-
-    // ============================================================
-    // ADMIN - CREATE
-    // ============================================================
-
-    @PostMapping
-    @PreAuthorize("@permission.hasPermission('CATEGORY_CREATE')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> createCategory(
-            @Valid @RequestBody CreateCategoryRequest request) {
-
-        log.info("POST /api/admin/categories - Creating category: {}",
-                request.getName());
-
-        CategoryResponse category = categoryService.createCategory(request);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(
-                        ApiResponse.success(
-                                201,
-                                "Category created successfully",
-                                category));
-    }
-
-    // ============================================================
-    // ADMIN - UPDATE
-    // ============================================================
-
-    @PutMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> updateCategory(
-            @PathVariable UUID id,
-            @Valid @RequestBody UpdateCategoryRequest request) {
-
-        log.info("PUT /api/admin/categories/{} - Updating category", id);
-
-        CategoryResponse category = categoryService.updateCategory(id, request);
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Category updated successfully",
-                        category));
-    }
-
-    // ============================================================
-    // ADMIN - DELETE
-    // ============================================================
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_DELETE')")
-    public ResponseEntity<ApiResponse<Void>> deleteCategory(
-            @PathVariable UUID id) {
-
-        log.info("DELETE /api/admin/categories/{} - Deleting category",
-                id);
-
-        categoryService.deleteCategory(id);
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Category deleted successfully",
-                        null));
-    }
-
-    // ============================================================
-    // ADMIN - IMAGE UPLOAD
-    // ============================================================
-
-    @PostMapping("/{categoryId}/images")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> uploadCategoryImage(
-            @PathVariable UUID categoryId,
-            @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "isPrimary", defaultValue = "false") Boolean isPrimary) {
-
-        log.info(
-                "POST /api/admin/categories/{}/images - Uploading image",
-                categoryId);
-
-        if (file.isEmpty()) {
-            throw new RuntimeException("File is empty");
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Categories retrieved successfully",
+                                                categories));
         }
 
-        CategoryResponse category = categoryService.uploadCategoryImage(
-                categoryId,
-                file,
-                isPrimary);
+        @GetMapping("/{id}")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_READ')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> getCategoryById(
+                        @PathVariable UUID id) {
 
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Image uploaded successfully",
-                        category));
-    }
+                log.info("GET /api/admin/categories/{} - Getting category", id);
 
-    // ============================================================
-    // ADMIN - REMOVE IMAGE
-    // ============================================================
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Category retrieved successfully",
+                                                categoryService.getCategoryById(id)));
+        }
 
-    @DeleteMapping("/{categoryId}/images/{imageId}")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> removeCategoryImage(
-            @PathVariable UUID categoryId,
-            @PathVariable UUID imageId) {
+        @GetMapping("/slug/{slug}")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_READ')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> getCategoryBySlug(
+                        @PathVariable String slug) {
 
-        log.info(
-                "DELETE /api/admin/categories/{}/images/{}",
-                categoryId,
-                imageId);
+                log.info("GET /api/admin/categories/slug/{} - Getting category",
+                                slug);
 
-        CategoryResponse category = categoryService.removeCategoryImage(
-                categoryId,
-                imageId);
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Category retrieved successfully",
+                                                categoryService.getCategoryBySlug(slug)));
+        }
 
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Image removed successfully",
-                        category));
-    }
+        @PostMapping
+        @PreAuthorize("@permission.hasPermission('CATEGORY_CREATE')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> createCategory(
+                        @Valid @RequestBody CreateCategoryRequest request) {
 
-    // ============================================================
-    // ADMIN - SET PRIMARY IMAGE
-    // ============================================================
+                log.info("POST /api/admin/categories - Creating category: {}",
+                                request.getName());
 
-    @PatchMapping("/{categoryId}/images/{imageId}/primary")
-    @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
-    public ResponseEntity<ApiResponse<CategoryResponse>> setPrimaryImage(
-            @PathVariable UUID categoryId,
-            @PathVariable UUID imageId) {
+                CategoryResponse category = categoryService.createCategory(request);
 
-        log.info(
-                "PATCH /api/admin/categories/{}/images/{}/primary",
-                categoryId,
-                imageId);
+                return ResponseEntity
+                                .status(HttpStatus.CREATED)
+                                .body(
+                                                ApiResponse.success(
+                                                                201,
+                                                                "Category created successfully",
+                                                                category));
+        }
 
-        CategoryResponse category = categoryService.setPrimaryImage(
-                categoryId,
-                imageId);
+        @PutMapping("/{id}")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> updateCategory(
+                        @PathVariable UUID id,
+                        @Valid @RequestBody UpdateCategoryRequest request) {
 
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        200,
-                        "Primary image set successfully",
-                        category));
-    }
+                log.info("PUT /api/admin/categories/{} - Updating category", id);
+
+                CategoryResponse category = categoryService.updateCategory(id, request);
+
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Category updated successfully",
+                                                category));
+        }
+
+        @DeleteMapping("/{id}")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_DELETE')")
+        public ResponseEntity<ApiResponse<Void>> deleteCategory(
+                        @PathVariable UUID id) {
+
+                log.info("DELETE /api/admin/categories/{} - Deleting category",
+                                id);
+
+                categoryService.deleteCategory(id);
+
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Category deleted successfully",
+                                                null));
+        }
+
+        @PostMapping("/{categoryId}/images")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> uploadCategoryImage(
+                        @PathVariable UUID categoryId,
+                        @RequestParam("file") MultipartFile file,
+                        @RequestParam(value = "isPrimary", defaultValue = "false") Boolean isPrimary) {
+
+                log.info("POST /api/admin/categories/{}/images - Uploading image", categoryId);
+
+                if (file == null || file.isEmpty()) {
+                        throw BusinessException.emptyFile();
+                }
+
+                CategoryResponse category = categoryService.uploadCategoryImage(categoryId, file, isPrimary);
+
+                return ResponseEntity.ok(ApiResponse.success(
+                                200,
+                                "Image uploaded successfully",
+                                category));
+        }
+
+        @DeleteMapping("/{categoryId}/images/{imageId}")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> removeCategoryImage(
+                        @PathVariable UUID categoryId,
+                        @PathVariable UUID imageId) {
+
+                log.info(
+                                "DELETE /api/admin/categories/{}/images/{}",
+                                categoryId,
+                                imageId);
+
+                CategoryResponse category = categoryService.removeCategoryImage(
+                                categoryId,
+                                imageId);
+
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Image removed successfully",
+                                                category));
+        }
+
+        // ============================================================
+        // ADMIN - SET PRIMARY IMAGE
+        // ============================================================
+
+        @PatchMapping("/{categoryId}/images/{imageId}/primary")
+        @PreAuthorize("@permission.hasPermission('CATEGORY_UPDATE')")
+        public ResponseEntity<ApiResponse<CategoryResponse>> setPrimaryImage(
+                        @PathVariable UUID categoryId,
+                        @PathVariable UUID imageId) {
+
+                log.info(
+                                "PATCH /api/admin/categories/{}/images/{}/primary",
+                                categoryId,
+                                imageId);
+
+                CategoryResponse category = categoryService.setPrimaryImage(
+                                categoryId,
+                                imageId);
+
+                return ResponseEntity.ok(
+                                ApiResponse.success(
+                                                200,
+                                                "Primary image set successfully",
+                                                category));
+        }
 }

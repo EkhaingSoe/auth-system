@@ -266,21 +266,6 @@ public class BusinessException extends RuntimeException {
     }
     // category
 
-    public static BusinessException duplicateCategoryName(String name) {
-        return new BusinessException(
-                "name",
-                "Category with name already exists: " + name,
-                "DUPLICATE_Category_NAME",
-                HttpStatus.CONFLICT);
-    }
-
-    public static BusinessException duplicateCategorySlug(String slug) {
-        return new BusinessException(
-                "Category slug already exists: " + slug,
-                "DUPLICATE_CATEGORY_SLUG",
-                HttpStatus.CONFLICT);
-    }
-
     public static BusinessException duplicate(
             String field,
             String entityName,
@@ -299,6 +284,14 @@ public class BusinessException extends RuntimeException {
                 message,
                 errorCode,
                 HttpStatus.CONFLICT);
+    }
+
+    public static BusinessException emptyFile() {
+        return new BusinessException(
+                "file",
+                "File is required",
+                "EMPTY_FILE",
+                HttpStatus.BAD_REQUEST);
     }
 
 }

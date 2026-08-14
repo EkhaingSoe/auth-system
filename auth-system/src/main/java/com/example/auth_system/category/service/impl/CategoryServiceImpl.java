@@ -41,14 +41,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponse createCategory(CreateCategoryRequest request) {
         if (categoryRepository.existsByName(request.getName())) {
-            throw BusinessException.duplicateCategoryName(request.getName());
+            throw BusinessException.duplicate("name", "Category", request.getName());
         }
         String slug = generateSlug(request.getName());
         if (categoryRepository.existsBySlug(slug)) {
-            throw BusinessException.duplicate(
-                    "name",
-                    "Brand",
-                    request.getName());
+            throw BusinessException.duplicate("slug", "Category", slug);
         }
         Category category = categoryMapper.toEntity(request);
         category.setSlug(slug);
@@ -84,14 +81,12 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponse updateCategory(UUID id, UpdateCategoryRequest request) {
 
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found: " +
-                        id));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found: " + id));
 
         if (request.getName() != null
                 && !request.getName().equals(category.getName())) {
             if (categoryRepository.existsByName(request.getName())) {
-                throw BusinessException.duplicateCategoryName(
-                        request.getName());
+                throw BusinessException.duplicate("name", "Category", request.getName());
             }
             category.setName(request.getName());
             String slug = generateSlug(request.getName());
@@ -188,13 +183,15 @@ public class CategoryServiceImpl implements CategoryService {
                     HttpStatus.BAD_REQUEST);
         }
 
+        boolean primary = Boolean.TRUE.equals(isPrimary);
+
         try {
             Map<String, Object> uploadResult = cloudinaryService.uploadImage(file, "categories");
 
             String imageUrl = uploadResult.get("url").toString();
             String publicId = uploadResult.get("public_id").toString();
 
-            if (isPrimary != null && isPrimary) {
+            if (primary) {
                 categoryImageRepository.removePrimaryFlag(categoryId);
             }
 

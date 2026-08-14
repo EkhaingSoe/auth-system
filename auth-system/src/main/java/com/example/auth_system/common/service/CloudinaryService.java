@@ -22,72 +22,74 @@ public class CloudinaryService {
 
     private final Cloudinary cloudinary;
 
-    @Value("${cloudinary.folder:categories}")
-    private String folderName;
+    // @Value("${cloudinary.folder:categories}")
+    // private String folderName;
 
     // upload image to cloudiary
     public Map<String, Object> uploadImage(MultipartFile file, String subFolder) throws IOException {
         return uploadImage(file, subFolder, null);
     }
 
-    // Upload image to Cloudinary with optional transformation
-
-    @SuppressWarnings("unchecked")
-    public Map<String, Object> uploadImage(MultipartFile file, String subFolder, Map<String, Object> options)
+    public Map<String, Object> uploadImage(MultipartFile file, String folder, Map<String, Object> options)
             throws IOException {
-        log.info("Uploading image to Cloudinary: {}", file.getOriginalFilename());
 
-        String publicId = generatePublicId(subFolder, file.getOriginalFilename()); // "categories/550e8400-e29b-41d4-a716-446655440000.jpg"
+        log.info(
+                "Uploading image to Cloudinary. folder={}, filename={}",
+                folder,
+                file.getOriginalFilename());
 
-        // Use HashMap for type safety
+        // Only UUID.
+        // Do NOT include the folder here.
+        String publicId = UUID.randomUUID().toString();
+
         Map<String, Object> uploadParams = new HashMap<>();
+
         uploadParams.put("public_id", publicId);
-        uploadParams.put("folder", folderName + "/" + subFolder);
+        uploadParams.put("folder", folder);
         uploadParams.put("resource_type", "image");
-        uploadParams.put("overwrite", true);
+        uploadParams.put("overwrite", false);
 
         if (options != null) {
             uploadParams.putAll(options);
         }
 
-        // Add transformation using Transformation object
         Transformation transformation = new Transformation()
                 .width(800)
                 .height(800)
                 .crop("limit")
-                .quality("auto")
-                .fetchFormat("auto");
+                .quality("auto");
 
         uploadParams.put("transformation", transformation);
 
         try {
+
             Map<String, Object> result = cloudinary.uploader().upload(file.getBytes(), uploadParams);
             log.info("Image uploaded successfully: {}", result.get("public_id"));
             return result;
+
         } catch (IOException e) {
-            log.error("Failed to upload image: {}", e.getMessage());
-            throw new IOException("Failed to upload image to Cloudinary: " + e.getMessage());
+            log.error("Failed to upload image: {}", e.getMessage(), e);
+            throw new IOException("Failed to upload image to Cloudinary: " + e.getMessage(), e);
         }
     }
 
-    /**
-     * Delete image from Cloudinary
-     */
     public Map<String, Object> deleteImage(String publicId) throws IOException {
+
+        if (publicId == null || publicId.isBlank()) {
+            log.warn("Cannot delete Cloudinary image: publicId is empty");
+            return Map.of();
+        }
+
         log.info("Deleting image: {}", publicId);
         try {
             Map<String, Object> result = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
-            log.info("Image deleted successfully");
             return result;
         } catch (IOException e) {
             log.error("Failed to delete image: {}", e.getMessage());
-            throw new IOException("Failed to delete image from Cloudinary: " + e.getMessage());
+            throw new IOException("Failed to delete image from Cloudinary: " + e.getMessage(), e);
         }
     }
 
-    /**
-     * Get image URL with transformations
-     */
     public String getImageUrl(String publicId, int width, int height) {
         // Use Transformation object
         Transformation transformation = new Transformation()
@@ -101,16 +103,10 @@ public class CloudinaryService {
                 .generate(publicId);
     }
 
-    /**
-     * Get thumbnail URL (200x200)
-     */
     public String getThumbnailUrl(String publicId) {
         return getImageUrl(publicId, 200, 200);
     }
 
-    /**
-     * Get optimized image URL
-     */
     public String getOptimizedUrl(String publicId) {
         Transformation transformation = new Transformation()
                 .quality("auto")
@@ -131,9 +127,6 @@ public class CloudinaryService {
         return subFolder + "/" + UUID.randomUUID() + extension; // "categories/550e8400-e29b-41d4-a716-446655440000.jpg"
     }
 
-    /**
-     * Extract public ID from Cloudinary URL
-     */
     public String extractPublicId(String imageUrl) {
         if (imageUrl == null)
             return null;
