@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
     private final ProductVariantMapper variantMapper;
     private final CloudinaryService cloudinaryService;
-    private final StoreRepository storeRepository;  // ← Add this
+    private final StoreRepository storeRepository; // ← Add this
     private final ProductWarehouseRepository productWarehouseRepository;
 
     private static final String PRODUCT_CODE_PREFIX = "PRD-";
@@ -89,7 +89,8 @@ public class ProductServiceImpl implements ProductService {
 
         // Create product
         Product product = productMapper.toEntity(request);
-        product.setCategory(category); // Set the Category entity into Product // product.category = Category(id="cat-001", name="Clothing", ...)
+        product.setCategory(category); // Set the Category entity into Product // product.category =
+                                       // Category(id="cat-001", name="Clothing", ...)
         product.setBrand(brand);
 
         // Generate product code
@@ -144,7 +145,8 @@ public class ProductServiceImpl implements ProductService {
                         .product(product)
                         .warehouse(store)
                         .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
-                        .reservedQuantity(stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
+                        .reservedQuantity(
+                                stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
                         .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
                         .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
                         .build();
@@ -265,30 +267,31 @@ public class ProductServiceImpl implements ProductService {
         }
 
         if (request.getWarehouseStocks() != null) {
-        // Clear existing warehouse stocks
-        List<ProductWarehouse> existingStocks = productWarehouseRepository.findByProductId(product.getId());
-        if (!existingStocks.isEmpty()) {
-            productWarehouseRepository.deleteAll(existingStocks);
+            // Clear existing warehouse stocks
+            List<ProductWarehouse> existingStocks = productWarehouseRepository.findByProductId(product.getId());
+            if (!existingStocks.isEmpty()) {
+                productWarehouseRepository.deleteAll(existingStocks);
+            }
+
+            // Create new warehouse stocks
+            for (CreateProductRequest.WarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
+                Store store = storeRepository.findById(stockRequest.getWarehouseId())
+                        .orElseThrow(() -> new ResourceNotFoundException(
+                                "Store not found with id: " + stockRequest.getWarehouseId()));
+
+                ProductWarehouse productWarehouse = ProductWarehouse.builder()
+                        .product(product)
+                        .warehouse(store)
+                        .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
+                        .reservedQuantity(
+                                stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
+                        .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
+                        .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
+                        .build();
+
+                productWarehouseRepository.save(productWarehouse);
+            }
         }
-
-        // Create new warehouse stocks
-        for (CreateProductRequest.WarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
-            Store store = storeRepository.findById(stockRequest.getWarehouseId())
-                    .orElseThrow(() -> new ResourceNotFoundException(
-                            "Store not found with id: " + stockRequest.getWarehouseId()));
-
-            ProductWarehouse productWarehouse = ProductWarehouse.builder()
-                    .product(product)
-                    .warehouse(store)
-                    .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
-                    .reservedQuantity(stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
-                    .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
-                    .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
-                    .build();
-
-            productWarehouseRepository.save(productWarehouse);
-        }
-    }
 
         product = productRepository.save(product);
         log.info("Product updated successfully: {}", productId);
@@ -397,38 +400,14 @@ public class ProductServiceImpl implements ProductService {
         return variantMapper.toFullResponse(variant);
     }
 
-    @Override
-    public ProductResponse updateVariantStock(UUID variantId, Integer quantity) {
-        log.info("Updating variant stock: {} by {}", variantId, quantity);
-        ProductVariant variant = variantRepository.findById(variantId)
-                .orElseThrow(() -> new ResourceNotFoundException("Variant not found with id: " + variantId));
-
-        variant.setStockQuantity(variant.getStockQuantity() + quantity);
-        variant = variantRepository.save(variant);
-
-        return productMapper.toResponse(variant.getProduct());
-    }
-
-    @Override
-    public ProductResponse updateVariantReserved(UUID variantId, Integer quantity) {
-        log.info("Updating variant reserved: {} by {}", variantId, quantity);
-        ProductVariant variant = variantRepository.findById(variantId)
-                .orElseThrow(() -> new ResourceNotFoundException("Variant not found with id: " + variantId));
-
-        variant.setReservedQuantity(variant.getReservedQuantity() + quantity);
-        variant = variantRepository.save(variant);
-
-        return productMapper.toResponse(variant.getProduct());
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<ProductVariantResponse> getVariantsNeedingReorder() {
-        log.info("Getting variants needing reorder");
-        return variantRepository.findVariantsNeedingReorder().stream()
-                .map(variantMapper::toFullResponse)
-                .collect(Collectors.toList());
-    }
+    // @Override
+    // @Transactional(readOnly = true)
+    // public List<ProductVariantResponse> getVariantsNeedingReorder() {
+    // log.info("Getting variants needing reorder");
+    // return variantRepository.findVariantsNeedingReorder().stream()
+    // .map(variantMapper::toFullResponse)
+    // .collect(Collectors.toList());
+    // }
 
     @Override
     public ProductResponse uploadProductImage(UUID productId, MultipartFile file, Boolean isPrimary) {

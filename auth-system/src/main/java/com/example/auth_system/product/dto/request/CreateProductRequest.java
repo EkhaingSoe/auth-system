@@ -1,5 +1,6 @@
 package com.example.auth_system.product.dto.request;
 
+import com.example.auth_system.product.enums.ProductType;
 import com.example.auth_system.supplier.dto.request.CreateSupplierRequest;
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.validation.Valid;
@@ -31,7 +32,7 @@ public class CreateProductRequest {
 
     private UUID brandId;
 
-    private String productType; // STOCKABLE, CONSUMABLE, SERVICE
+    private ProductType productType; // STOCKABLE, CONSUMABLE, SERVICE
 
     @Builder.Default
     private Boolean saleOk = true;
@@ -56,7 +57,7 @@ public class CreateProductRequest {
 
     private List<ImageRequest> images;
     private List<VariantImageRequest> variantImages;
-     private List<WarehouseStockRequest> warehouseStocks;
+    private List<WarehouseStockRequest> warehouseStocks;
 
     // inner class
 

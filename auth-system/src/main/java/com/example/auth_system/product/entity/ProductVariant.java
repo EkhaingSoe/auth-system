@@ -39,56 +39,47 @@ public class ProductVariant {
     @Column(unique = true, length = 100)
     private String barcode;
 
-    @Column(name = "selling_price", nullable = false)
+    @Column(name = "selling_price", nullable = false, precision = 15, scale = 2)
     private BigDecimal sellingPrice;
 
-    @Column(name = "cost_price")
+    @Column(name = "cost_price", precision = 15, scale = 2)
     private BigDecimal costPrice;
 
-    @Column(length = 3)
+    @Builder.Default
+    @Column(length = 3, nullable = false)
     private String currency = "MMK";
-
-    @Column(name = "stock_quantity")
-    private Integer stockQuantity = 0;
-
-    @Column(name = "reserved_quantity")
-    private Integer reservedQuantity = 0;
-
-    @Column(name = "min_stock_quantity")
-    private Integer minStockQuantity = 0;
-
-    @Column(name = "max_stock_quantity")
-    private Integer maxStockQuantity = 0;
-
-    @Column(name = "reorder_level")
-    private Integer reorderLevel = 0;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "attribute_values", columnDefinition = "jsonb")
     private JsonNode attributeValues;
 
-    @Column(name = "weight")
+    @Column(precision = 10, scale = 3)
     private BigDecimal weight;
 
-    @Column(name = "length")
+    @Column(precision = 10, scale = 3)
     private BigDecimal length;
 
-    @Column(name = "width")
+    @Column(precision = 10, scale = 3)
     private BigDecimal width;
 
-    @Column(name = "height")
+    @Column(precision = 10, scale = 3)
     private BigDecimal height;
 
-    @Column(length = 20)
+    @Builder.Default
+    @Column(length = 20, nullable = false)
     private String unit = "piece";
 
-    @Column(name = "is_active")
     @Builder.Default
+    @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
     @OneToMany(mappedBy = "variant", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
+
+    @Builder.Default
+    @Column(name = "is_default", nullable = false)
+    private Boolean isDefault = false;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -97,18 +88,6 @@ public class ProductVariant {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    public Integer getAvailableQuantity() {
-        return stockQuantity - reservedQuantity;
-    }
-
-    public boolean isInStock() {
-        return getAvailableQuantity() > 0;
-    }
-
-    public boolean needsReorder() {
-        return stockQuantity <= reorderLevel;
-    }
 
     public void addImage(ProductImage image) {
         images.add(image);
@@ -123,24 +102,20 @@ public class ProductVariant {
 
     public ProductImage getPrimaryImage() {
         return images.stream()
-                .filter(ProductImage::getIsPrimary)
+                .filter(image -> Boolean.TRUE.equals(image.getIsPrimary()))
                 .findFirst()
                 .orElse(null);
     }
 
     public List<ProductImage> getActiveImages() {
         return images.stream()
-                .filter(image -> image.getIsActive() != null && image.getIsActive())
-                .collect(java.util.stream.Collectors.toList());
-    }
-
-    public void clearImages() {
-        images.clear();
+                .filter(image -> Boolean.TRUE.equals(image.getIsActive()))
+                .toList();
     }
 
     public long getActiveImageCount() {
         return images.stream()
-                .filter(image -> image.getIsActive() != null && image.getIsActive())
+                .filter(image -> Boolean.TRUE.equals(image.getIsActive()))
                 .count();
     }
 

@@ -141,33 +141,42 @@ public class ProductController {
         return ResponseEntity.ok(ApiResponse.success(200, "Variant retrieved", productService.getVariantBySku(sku)));
     }
 
-    @PatchMapping("/variants/{variantId}/stock")
-    @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
-    public ResponseEntity<ApiResponse<ProductResponse>> updateVariantStock(
-            @PathVariable UUID variantId,
-            @RequestParam Integer quantity) {
-        log.info("PATCH /api/admin/products/variants/{}/stock - Updating stock by: {}", variantId, quantity);
-        ProductResponse product = productService.updateVariantStock(variantId, quantity);
-        return ResponseEntity.ok(ApiResponse.success(200, "Stock updated successfully", product));
-    }
+    // @PatchMapping("/variants/{variantId}/stock")
+    // @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
+    // public ResponseEntity<ApiResponse<ProductResponse>> updateVariantStock(
+    // @PathVariable UUID variantId,
+    // @RequestParam Integer quantity) {
+    // log.info("PATCH /api/admin/products/variants/{}/stock - Updating stock by:
+    // {}", variantId, quantity);
+    // ProductResponse product = productService.updateVariantStock(variantId,
+    // quantity);
+    // return ResponseEntity.ok(ApiResponse.success(200, "Stock updated
+    // successfully", product));
+    // }
 
-    @PatchMapping("/variants/{variantId}/reserved")
-    @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
-    public ResponseEntity<ApiResponse<ProductResponse>> updateVariantReserved(
-            @PathVariable UUID variantId,
-            @RequestParam Integer quantity) {
-        log.info("PATCH /api/admin/products/variants/{}/reserved - Updating reserved by: {}", variantId, quantity);
-        ProductResponse product = productService.updateVariantReserved(variantId, quantity);
-        return ResponseEntity.ok(ApiResponse.success(200, "Reserved stock updated successfully", product));
-    }
+    // @PatchMapping("/variants/{variantId}/reserved")
+    // @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
+    // public ResponseEntity<ApiResponse<ProductResponse>> updateVariantReserved(
+    // @PathVariable UUID variantId,
+    // @RequestParam Integer quantity) {
+    // log.info("PATCH /api/admin/products/variants/{}/reserved - Updating reserved
+    // by: {}", variantId, quantity);
+    // ProductResponse product = productService.updateVariantReserved(variantId,
+    // quantity);
+    // return ResponseEntity.ok(ApiResponse.success(200, "Reserved stock updated
+    // successfully", product));
+    // }
 
-    @GetMapping("/variants/reorder")
-    @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductVariantResponse>>> getVariantsNeedingReorder() {
-        log.info("GET /api/admin/products/variants/reorder - Getting variants needing reorder");
-        return ResponseEntity
-                .ok(ApiResponse.success(200, "Variants needing reorder", productService.getVariantsNeedingReorder()));
-    }
+    // @GetMapping("/variants/reorder")
+    // @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
+    // public ResponseEntity<ApiResponse<List<ProductVariantResponse>>>
+    // getVariantsNeedingReorder() {
+    // log.info("GET /api/admin/products/variants/reorder - Getting variants needing
+    // reorder");
+    // return ResponseEntity
+    // .ok(ApiResponse.success(200, "Variants needing reorder",
+    // productService.getVariantsNeedingReorder()));
+    // }
 
     // ============================================================
     // IMAGE OPERATIONS

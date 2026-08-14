@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.example.auth_system.product.dto.request.CreateProductRequest.SupplierRequest;
+import com.example.auth_system.product.enums.ProductType;
 
 @Data
 @Builder
@@ -28,7 +29,7 @@ public class UpdateProductRequest {
 
     private UUID brandId;
 
-    private String productType;
+    private ProductType productType;
 
     private Boolean saleOk;
 

@@ -43,11 +43,11 @@ public interface ProductService {
 
     ProductVariantResponse getVariantBySku(String sku);
 
-    ProductResponse updateVariantStock(UUID variantId, Integer quantity);
+    // ProductResponse updateVariantStock(UUID variantId, Integer quantity);
 
-    ProductResponse updateVariantReserved(UUID variantId, Integer quantity);
+    // ProductResponse updateVariantReserved(UUID variantId, Integer quantity);
 
-    List<ProductVariantResponse> getVariantsNeedingReorder();
+    // List<ProductVariantResponse> getVariantsNeedingReorder();
 
     // Image Operations
     ProductResponse uploadProductImage(UUID productId, MultipartFile file, Boolean isPrimary);

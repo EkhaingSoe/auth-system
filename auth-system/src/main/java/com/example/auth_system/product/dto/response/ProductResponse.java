@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.auth_system.product.enums.ProductType;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,7 +26,7 @@ public class ProductResponse {
     private String categoryName;
     private UUID brandId;
     private String brandName;
-    private String productType;
+    private ProductType productType;
     private Boolean saleOk;
     private Boolean posOk;
     private Boolean websiteOk;

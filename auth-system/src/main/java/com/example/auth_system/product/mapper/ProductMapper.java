@@ -81,7 +81,6 @@ public class ProductMapper {
                 .isActive(product.getIsActive())
                 .minPrice(product.getMinPrice())
                 .maxPrice(product.getMaxPrice())
-                .totalStock(product.getTotalStock())
                 .variants(product.getVariants().stream()
                         .map(variantMapper::toResponse)
                         .collect(Collectors.toList()))

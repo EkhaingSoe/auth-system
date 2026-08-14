@@ -2,6 +2,8 @@ package com.example.auth_system.product.entity;
 
 import com.example.auth_system.brand.entity.Brand;
 import com.example.auth_system.category.entity.Category;
+import com.example.auth_system.product.enums.ProductType;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,8 +47,9 @@ public class Product {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @Column(name = "product_type")
-    private String productType; // STOCKABLE, CONSUMABLE, SERVICE
+    @Enumerated(EnumType.STRING)
+    @Column(name = "product_type", nullable = false, length = 20)
+    private ProductType productType; // STOCKABLE, CONSUMABLE, SERVICE
 
     @Column(name = "sale_ok")
     private Boolean saleOk = true;
@@ -110,7 +113,10 @@ public class Product {
     }
 
     public ProductVariant getDefaultVariant() {
-        return variants.isEmpty() ? null : variants.get(0);
+        return variants.stream()
+                .filter(variant -> Boolean.TRUE.equals(variant.getIsDefault()))
+                .findFirst()
+                .orElse(null);
     }
 
     public BigDecimal getMinPrice() {
@@ -127,9 +133,4 @@ public class Product {
                 .orElse(BigDecimal.ZERO);
     }
 
-    public Integer getTotalStock() {
-        return variants.stream()
-                .mapToInt(ProductVariant::getStockQuantity)
-                .sum();
-    }
 }
