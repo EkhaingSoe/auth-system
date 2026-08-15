@@ -3,6 +3,7 @@ package com.example.auth_system.product.mapper;
 import com.example.auth_system.product.dto.request.CreateVariantRequest;
 import com.example.auth_system.product.dto.response.ProductImageResponse;
 import com.example.auth_system.product.dto.response.ProductResponse;
+import com.example.auth_system.product.dto.response.ProductVariantImageResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
@@ -36,6 +37,18 @@ public class ProductVariantMapper {
 
                 return ProductVariantResponse.builder()
                                 .id(variant.getId())
+                                .productId(
+                                                variant.getProduct() != null
+                                                                ? variant.getProduct().getId()
+                                                                : null)
+                                .productName(
+                                                variant.getProduct() != null
+                                                                ? variant.getProduct().getName()
+                                                                : null)
+                                .productCode(
+                                                variant.getProduct() != null
+                                                                ? variant.getProduct().getProductCode()
+                                                                : null)
                                 .sku(variant.getSku())
                                 .barcode(variant.getBarcode())
                                 .sellingPrice(variant.getSellingPrice())
@@ -48,54 +61,22 @@ public class ProductVariantMapper {
                                 .height(variant.getHeight())
                                 .unit(variant.getUnit())
                                 .isActive(variant.getIsActive())
-                                .images(variant.getImages().stream()
-                                                .map(image -> ProductImageResponse.builder()
-                                                                .id(image.getId())
-                                                                .imageUrl(image.getImageUrl())
-                                                                .publicId(image.getPublicId())
-                                                                .isPrimary(image.getIsPrimary())
-                                                                .altText(image.getAltText())
-                                                                .sortOrder(image.getSortOrder())
-                                                                .build())
-                                                .collect(java.util.stream.Collectors.toList()))
-                                .build();
-        }
-
-        public ProductVariantResponse toFullResponse(ProductVariant variant) {
-                if (variant == null) {
-                        return null;
-                }
-
-                return ProductVariantResponse.builder()
-                                .id(variant.getId())
-                                .productId(variant.getProduct() != null ? variant.getProduct().getId() : null)
-                                .productName(variant.getProduct() != null ? variant.getProduct().getName() : null)
-                                .productCode(variant.getProduct() != null ? variant.getProduct().getProductCode()
-                                                : null)
-                                .sku(variant.getSku())
-                                .barcode(variant.getBarcode())
-                                .sellingPrice(variant.getSellingPrice())
-                                .costPrice(variant.getCostPrice())
-                                .currency(variant.getCurrency())
-                                .attributeValues(variant.getAttributeValues())
-                                .weight(variant.getWeight())
-                                .length(variant.getLength())
-                                .width(variant.getWidth())
-                                .height(variant.getHeight())
-                                .unit(variant.getUnit())
-                                .isActive(variant.getIsActive())
-                                .images(variant.getImages().stream()
-                                                .map(image -> ProductImageResponse.builder()
-                                                                .id(image.getId())
-                                                                .imageUrl(image.getImageUrl())
-                                                                .publicId(image.getPublicId())
-                                                                .isPrimary(image.getIsPrimary())
-                                                                .altText(image.getAltText())
-                                                                .sortOrder(image.getSortOrder())
-                                                                .build())
-                                                .collect(java.util.stream.Collectors.toList()))
+                                .images(
+                                                variant.getImages()
+                                                                .stream()
+                                                                .map(image -> ProductVariantImageResponse.builder()
+                                                                                .id(image.getId())
+                                                                                .variantId(variant.getId())
+                                                                                .imageUrl(image.getImageUrl())
+                                                                                .publicId(image.getPublicId())
+                                                                                .isPrimary(image.getIsPrimary())
+                                                                                .altText(image.getAltText())
+                                                                                .sortOrder(image.getSortOrder())
+                                                                                .build())
+                                                                .toList())
                                 .createdAt(variant.getCreatedAt())
                                 .updatedAt(variant.getUpdatedAt())
                                 .build();
         }
+
 }

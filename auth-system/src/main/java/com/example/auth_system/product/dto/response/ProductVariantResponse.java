@@ -40,7 +40,7 @@ public class ProductVariantResponse {
     private Boolean isActive;
     private Boolean isInStock;
     private Boolean needsReorder;
-    private List<ProductImageResponse> images;
+    private List<ProductVariantImageResponse> images;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

@@ -21,17 +21,15 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     List<Product> findByBrandId(UUID brandId);
 
+    boolean existsByProductCode(String productCode);
+
+    boolean existsByName(String name);
+
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :term, '%')) " +
             "OR LOWER(p.productCode) LIKE LOWER(CONCAT('%', :term, '%'))")
     List<Product> searchProducts(@Param("term") String term);
 
-    @Query("SELECT p FROM Product p JOIN p.variants v WHERE v.sku = :sku")
-    Optional<Product> findByVariantSku(@Param("sku") String sku);
-
     @Query("SELECT p FROM Product p JOIN p.variants v WHERE v.barcode = :barcode")
     Optional<Product> findByVariantBarcode(@Param("barcode") String barcode);
 
-    boolean existsByProductCode(String productCode);
-
-    boolean existsByName(String name);
 }

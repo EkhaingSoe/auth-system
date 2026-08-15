@@ -324,8 +324,9 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     public ProductResponse getProductBySku(String sku) {
         log.info("Getting product by SKU: {}", sku);
-        Product product = productRepository.findByVariantSku(sku)
+        ProductVariant variant = variantRepository.findBySku(sku)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with SKU: " + sku));
+        Product product = variant.getProduct();
         return productMapper.toResponse(product);
     }
 
@@ -392,7 +393,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("Getting variant by id: {}", variantId);
         ProductVariant variant = variantRepository.findById(variantId)
                 .orElseThrow(() -> new ResourceNotFoundException("Variant not found with id: " + variantId));
-        return variantMapper.toFullResponse(variant);
+        return variantMapper.toResponse(variant);
     }
 
     @Override
@@ -401,7 +402,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("Getting variant by SKU: {}", sku);
         ProductVariant variant = variantRepository.findBySku(sku)
                 .orElseThrow(() -> new ResourceNotFoundException("Variant not found with SKU: " + sku));
-        return variantMapper.toFullResponse(variant);
+        return variantMapper.toResponse(variant);
     }
 
     // @Override
