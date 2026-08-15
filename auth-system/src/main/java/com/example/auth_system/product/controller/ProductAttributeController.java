@@ -1,7 +1,7 @@
 package com.example.auth_system.product.controller;
 
 import com.example.auth_system.common.dto.response.ApiResponse;
-import com.example.auth_system.product.dto.request.AddAttributeValueRequest;
+import com.example.auth_system.product.dto.request.CreateAttributeValueRequest;
 import com.example.auth_system.product.dto.request.CreateAttributeRequest;
 import com.example.auth_system.product.dto.request.UpdateAttributeRequest;
 import com.example.auth_system.product.dto.response.ProductAttributeResponse;
@@ -117,7 +117,7 @@ public class ProductAttributeController {
         @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
         public ResponseEntity<ApiResponse<ProductAttributeResponse>> addValueToAttribute(
                         @PathVariable UUID attributeId,
-                        @Valid @RequestBody AddAttributeValueRequest request) {
+                        @Valid @RequestBody CreateAttributeValueRequest request) {
                 log.info("POST /api/admin/product-attributes/{}/values - Adding value: {}",
                                 attributeId, request.getValue());
 

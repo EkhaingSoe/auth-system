@@ -163,7 +163,7 @@ public class ProductServiceImpl implements ProductService {
 
         // Create images
         if (request.getImages() != null) {
-            for (CreateProductRequest.ImageRequest imageRequest : request.getImages()) {
+            for (CreateProductImageRequest imageRequest : request.getImages()) {
                 ProductImage image = ProductImage.builder()
                         .product(product)
                         .imageUrl(imageRequest.getImageUrl())

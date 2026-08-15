@@ -6,19 +6,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateAttributeValueRequest {
+public class UpdateProductImageRequest {
 
-    @Size(max = 100, message = "Value must not exceed 100 characters")
-    private String value;
+    private UUID id;
 
-    @Size(max = 7, message = "Hex code must not exceed 7 characters")
-    private String hexCode;
+    @Size(max = 500, message = "Image URL must not exceed 500 characters")
+    private String imageUrl;
 
-    private Integer displayOrder;
+    private Boolean isPrimary;
+
+    private String altText;
+
+    private Integer sortOrder;
 
     private Boolean isActive;
 }

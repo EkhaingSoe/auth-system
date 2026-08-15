@@ -55,34 +55,8 @@ public class CreateProductRequest {
     @Valid
     private List<CreateProductSupplierRequest> suppliers;
 
-    private List<ImageRequest> images;
-    private List<VariantImageRequest> variantImages;
+    private List<CreateProductImageRequest> images;
+    // private List<CreateVariantImageRequest> variantImages;
     private List<CreateWarehouseStockRequest> warehouseStocks;
 
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class ImageRequest {
-        @NotBlank(message = "Image URL is required")
-        private String imageUrl;
-
-        private Boolean isPrimary;
-
-        private String altText;
-
-        private Integer sortOrder;
-    }
-
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class VariantImageRequest {
-        private UUID variantId; // Which variant this image belongs to
-        private String imageUrl;
-        private Boolean isPrimary;
-        private String altText;
-        private Integer sortOrder;
-    }
 }
