@@ -7,6 +7,8 @@ import com.example.auth_system.category.repository.CategoryRepository;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.service.CloudinaryService;
+import com.example.auth_system.inventory.entity.WarehouseStock;
+import com.example.auth_system.inventory.repository.WarehouseStockRepository;
 import com.example.auth_system.product.dto.request.CreateProductImageRequest;
 import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.CreateProductSupplierRequest;
@@ -19,7 +21,7 @@ import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductImage;
 import com.example.auth_system.product.entity.ProductSupplier;
 import com.example.auth_system.product.entity.ProductVariant;
-import com.example.auth_system.product.entity.ProductWarehouse;
+// import com.example.auth_system.product.entity.ProductWarehouse;
 import com.example.auth_system.product.mapper.ProductMapper;
 import com.example.auth_system.product.mapper.ProductVariantMapper;
 import com.example.auth_system.product.repository.*;
@@ -35,7 +37,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -46,6 +47,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
+    private final WarehouseStockRepository warehouseStockRepository;
     private final ProductRepository productRepository;
     private final ProductVariantRepository variantRepository;
     private final ProductImageRepository imageRepository;
@@ -57,10 +59,14 @@ public class ProductServiceImpl implements ProductService {
     private final ProductVariantMapper variantMapper;
     private final CloudinaryService cloudinaryService;
     private final StoreRepository storeRepository; // ← Add this
-    private final ProductWarehouseRepository productWarehouseRepository;
+    // private final ProductWarehouseRepository productWarehouseRepository;
 
     private static final String PRODUCT_CODE_PREFIX = "PRD-";
     private static final int PRODUCT_CODE_PADDING = 4;
+
+    // ProductServiceImpl(WarehouseStockRepository warehouseStockRepository) {
+    // this.warehouseStockRepository = warehouseStockRepository;
+    // }
 
     @Override
     public ProductResponse createProduct(CreateProductRequest request) {
@@ -145,17 +151,17 @@ public class ProductServiceImpl implements ProductService {
                 }
 
                 // Create product-warehouse link
-                ProductWarehouse productWarehouse = ProductWarehouse.builder()
+                WarehouseStock productWarehouse = WarehouseStock.builder()
                         .product(product)
                         .warehouse(store)
-                        .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
+                        .currentQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
                         .reservedQuantity(
                                 stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
                         .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
                         .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
                         .build();
 
-                productWarehouseRepository.save(productWarehouse);
+                warehouseStockRepository.save(productWarehouse);
                 // product.addWarehouseStock(productWarehouse); // If you have this method
             }
             log.info("Created {} warehouse stocks for product", request.getWarehouseStocks().size());
@@ -272,9 +278,9 @@ public class ProductServiceImpl implements ProductService {
 
         if (request.getWarehouseStocks() != null) {
             // Clear existing warehouse stocks
-            List<ProductWarehouse> existingStocks = productWarehouseRepository.findByProductId(product.getId());
+            List<WarehouseStock> existingStocks = warehouseStockRepository.findByProductId(product.getId());
             if (!existingStocks.isEmpty()) {
-                productWarehouseRepository.deleteAll(existingStocks);
+                warehouseStockRepository.deleteAll(existingStocks);
             }
 
             // Create new warehouse stocks
@@ -283,17 +289,17 @@ public class ProductServiceImpl implements ProductService {
                         .orElseThrow(() -> new ResourceNotFoundException(
                                 "Store not found with id: " + stockRequest.getWarehouseId()));
 
-                ProductWarehouse productWarehouse = ProductWarehouse.builder()
+                WarehouseStock productWarehouse = WarehouseStock.builder()
                         .product(product)
                         .warehouse(store)
-                        .stockQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
+                        .currentQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
                         .reservedQuantity(
                                 stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
                         .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
                         .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
                         .build();
 
-                productWarehouseRepository.save(productWarehouse);
+                warehouseStockRepository.save(productWarehouse);
             }
         }
 
@@ -430,7 +436,7 @@ public class ProductServiceImpl implements ProductService {
 
             // If this is primary, clear existing primary images
             if (isPrimary) {
-                imageRepository.clearPrimaryImages(productId);
+                imageRepository.clearPrimaryProductImages(productId);
             }
 
             ProductImage image = ProductImage.builder()
@@ -546,7 +552,8 @@ public class ProductServiceImpl implements ProductService {
         if (image.getIsPrimary()) {
             if (image.getProduct() != null) {
                 // Product-level: set first available as primary
-                List<ProductImage> remainingImages = imageRepository.findByProductId(productId);
+                List<ProductImage> remainingImages = imageRepository
+                        .findByProductIdAndVariantIsNullOrderBySortOrderAsc(productId);
                 if (!remainingImages.isEmpty()) {
                     ProductImage firstImage = remainingImages.get(0);
                     firstImage.setIsPrimary(true);
@@ -554,7 +561,8 @@ public class ProductServiceImpl implements ProductService {
                 }
             } else if (image.getVariant() != null) {
                 // Variant-level: set first available as primary
-                List<ProductImage> remainingImages = imageRepository.findByVariantId(image.getVariant().getId());
+                List<ProductImage> remainingImages = imageRepository
+                        .findByVariantIdOrderBySortOrderAsc(image.getVariant().getId());
                 if (!remainingImages.isEmpty()) {
                     ProductImage firstImage = remainingImages.get(0);
                     firstImage.setIsPrimary(true);
@@ -593,7 +601,7 @@ public class ProductServiceImpl implements ProductService {
 
         // Clear existing primary for the same level (product or variant)
         if (image.getProduct() != null) {
-            imageRepository.clearPrimaryImages(productId);
+            imageRepository.clearPrimaryProductImages(productId);
         } else if (image.getVariant() != null) {
             imageRepository.clearPrimaryVariantImages(variantId);
         }
@@ -615,7 +623,7 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
 
         // Get only product-level images (variant_id IS NULL)
-        return imageRepository.findByProductId(productId);
+        return imageRepository.findByProductIdAndVariantIsNullOrderBySortOrderAsc(productId);
     }
 
     @Override
@@ -633,7 +641,7 @@ public class ProductServiceImpl implements ProductService {
             throw new BusinessException("Variant does not belong to this product");
         }
 
-        return imageRepository.findByVariantId(variantId);
+        return imageRepository.findByVariantIdOrderBySortOrderAsc(variantId);
     }
 
     // @Override

@@ -17,7 +17,5 @@ public interface ProductSupplierRepository extends JpaRepository<ProductSupplier
 
     Optional<ProductSupplier> findByProductIdAndSupplierId(UUID productId, UUID supplierId);
 
-    List<ProductSupplier> findByProductIdAndIsPrimary(UUID productId, Boolean isPrimary);
-
     boolean existsByProductIdAndSupplierId(UUID productId, UUID supplierId);
 }

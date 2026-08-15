@@ -12,18 +12,15 @@ import java.util.Optional;
 
 public interface ProductImageRepository extends JpaRepository<ProductImage, UUID> {
 
-    List<ProductImage> findByProductId(UUID productId);
+    List<ProductImage> findByProductIdAndVariantIsNullOrderBySortOrderAsc(UUID productId);
 
-    List<ProductImage> findByProductIdOrderBySortOrderAsc(UUID productId);
-
-    Optional<ProductImage> findByProductIdAndIsPrimaryTrue(UUID productId);
+    Optional<ProductImage> findByProductIdAndVariantIsNullAndIsPrimaryTrue(UUID productId);
 
     @Modifying
-    @Query("UPDATE ProductImage i SET i.isPrimary = false WHERE i.product.id = :productId")
-    void clearPrimaryImages(@Param("productId") UUID productId);
+    @Query("UPDATE ProductImage i SET i.isPrimary = false WHERE i.product.id = :productId AND i.variant IS NULL")
+    void clearPrimaryProductImages(@Param("productId") UUID productId);
 
     // Variant-level images
-    List<ProductImage> findByVariantId(UUID variantId);
 
     List<ProductImage> findByVariantIdOrderBySortOrderAsc(UUID variantId);
 
