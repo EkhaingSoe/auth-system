@@ -2,6 +2,7 @@ package com.example.auth_system.product.service.impl;
 
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
+import com.example.auth_system.product.dto.response.AttributeValueResponse;
 import com.example.auth_system.product.dto.response.ProductAttributeResponse;
 import com.example.auth_system.product.entity.ProductAttribute;
 import com.example.auth_system.product.entity.ProductAttributeValue;
@@ -165,8 +166,8 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
                 .build();
     }
 
-    private ProductAttributeResponse.AttributeValueResponse toValueResponse(ProductAttributeValue value) {
-        return ProductAttributeResponse.AttributeValueResponse.builder()
+    private AttributeValueResponse toValueResponse(ProductAttributeValue value) {
+        return AttributeValueResponse.builder()
                 .id(value.getId())
                 .value(value.getValue())
                 .hexCode(value.getHexCode())

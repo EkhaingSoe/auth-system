@@ -2,7 +2,9 @@ package com.example.auth_system.product.mapper;
 
 import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
+import com.example.auth_system.product.dto.response.ProductImageResponse;
 import com.example.auth_system.product.dto.response.ProductResponse;
+import com.example.auth_system.product.dto.response.ProductSupplierResponse;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductImage;
 import com.example.auth_system.product.entity.ProductSupplier;
@@ -95,11 +97,11 @@ public class ProductMapper {
                 .build();
     }
 
-    public ProductResponse.ProductImageResponse toImageResponse(ProductImage image) {
+    public ProductImageResponse toImageResponse(ProductImage image) {
         if (image == null) {
             return null;
         }
-        return ProductResponse.ProductImageResponse.builder()
+        return ProductImageResponse.builder()
                 .id(image.getId())
                 .imageUrl(image.getImageUrl())
                 .publicId(image.getPublicId())
@@ -109,11 +111,11 @@ public class ProductMapper {
                 .build();
     }
 
-    public ProductResponse.ProductSupplierResponse toSupplierResponse(ProductSupplier supplier) {
+    public ProductSupplierResponse toSupplierResponse(ProductSupplier supplier) {
         if (supplier == null) {
             return null;
         }
-        return ProductResponse.ProductSupplierResponse.builder()
+        return ProductSupplierResponse.builder()
                 .id(supplier.getId())
                 .supplierId(supplier.getSupplier() != null ? supplier.getSupplier().getId() : null)
                 .supplierName(supplier.getSupplier() != null ? supplier.getSupplier().getName() : null)

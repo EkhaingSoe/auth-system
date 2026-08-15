@@ -5,19 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductAttributeResponse {
-
+public class AttributeValueResponse {
     private UUID id;
-    private String name;
-    private String displayName;
-    private String attributeType;
+    private String value;
+    private String hexCode;
+    private Integer displayOrder;
     private Boolean isActive;
-    private List<AttributeValueResponse> values;
 }

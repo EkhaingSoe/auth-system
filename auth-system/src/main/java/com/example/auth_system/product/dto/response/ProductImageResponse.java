@@ -5,19 +5,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductAttributeResponse {
+public class ProductImageResponse {
 
     private UUID id;
-    private String name;
-    private String displayName;
-    private String attributeType;
-    private Boolean isActive;
-    private List<AttributeValueResponse> values;
+
+    private String imageUrl;
+
+    private String publicId;
+
+    private Boolean isPrimary;
+
+    private String altText;
+
+    private Integer sortOrder;
 }

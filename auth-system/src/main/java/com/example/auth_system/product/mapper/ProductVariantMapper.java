@@ -1,6 +1,7 @@
 package com.example.auth_system.product.mapper;
 
 import com.example.auth_system.product.dto.request.CreateVariantRequest;
+import com.example.auth_system.product.dto.response.ProductImageResponse;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.Product;
@@ -28,12 +29,12 @@ public class ProductVariantMapper {
                                 .build();
         }
 
-        public ProductResponse.ProductVariantResponse toResponse(ProductVariant variant) {
+        public ProductVariantResponse toResponse(ProductVariant variant) {
                 if (variant == null) {
                         return null;
                 }
 
-                return ProductResponse.ProductVariantResponse.builder()
+                return ProductVariantResponse.builder()
                                 .id(variant.getId())
                                 .sku(variant.getSku())
                                 .barcode(variant.getBarcode())
@@ -48,7 +49,7 @@ public class ProductVariantMapper {
                                 .unit(variant.getUnit())
                                 .isActive(variant.getIsActive())
                                 .images(variant.getImages().stream()
-                                                .map(image -> ProductResponse.ProductImageResponse.builder()
+                                                .map(image -> ProductImageResponse.builder()
                                                                 .id(image.getId())
                                                                 .imageUrl(image.getImageUrl())
                                                                 .publicId(image.getPublicId())
@@ -84,7 +85,7 @@ public class ProductVariantMapper {
                                 .unit(variant.getUnit())
                                 .isActive(variant.getIsActive())
                                 .images(variant.getImages().stream()
-                                                .map(image -> ProductResponse.ProductImageResponse.builder()
+                                                .map(image -> ProductImageResponse.builder()
                                                                 .id(image.getId())
                                                                 .imageUrl(image.getImageUrl())
                                                                 .publicId(image.getPublicId())
