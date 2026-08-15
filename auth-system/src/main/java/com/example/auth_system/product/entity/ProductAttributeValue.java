@@ -33,9 +33,11 @@ public class ProductAttributeValue {
     private String hexCode;
 
     @Column(name = "display_order")
+    @Builder.Default
     private Integer displayOrder = 0;
 
     @Column(name = "is_active")
+    @Builder.Default
     private Boolean isActive = true;
 
     @CreationTimestamp

@@ -41,9 +41,11 @@ public class ProductSupplier {
     private BigDecimal supplierPrice;
 
     @Column(name = "lead_time_days")
+    @Builder.Default
     private Integer leadTimeDays = 7;
 
     @Column(name = "is_primary")
+    @Builder.Default
     private Boolean isPrimary = false;
 
     @CreationTimestamp

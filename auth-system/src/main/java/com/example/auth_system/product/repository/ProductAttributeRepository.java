@@ -1,6 +1,8 @@
 package com.example.auth_system.product.repository;
 
 import com.example.auth_system.product.entity.ProductAttribute;
+import com.example.auth_system.product.enums.AttributeType;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,7 +16,7 @@ public interface ProductAttributeRepository extends JpaRepository<ProductAttribu
 
     List<ProductAttribute> findByIsActiveTrue();
 
-    List<ProductAttribute> findByAttributeType(ProductAttribute.AttributeType attributeType);
+    List<ProductAttribute> findByAttributeType(AttributeType attributeType);
 
     @Query("SELECT pa FROM ProductAttribute pa LEFT JOIN FETCH pa.values WHERE pa.isActive = true ORDER BY pa.displayName")
     List<ProductAttribute> findActiveAttributesWithValues();

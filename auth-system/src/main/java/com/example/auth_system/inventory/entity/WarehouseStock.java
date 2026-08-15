@@ -44,27 +44,27 @@ public class WarehouseStock {
     @JoinColumn(name = "warehouse_id", nullable = false)
     private Store warehouse;
 
-    @Column(name = "current_quantity")
+    @Column(name = "current_quantity", nullable = false)
     @Builder.Default
     private Integer currentQuantity = 0;
 
-    @Column(name = "reserved_quantity")
+    @Column(name = "reserved_quantity", nullable = false)
     @Builder.Default
     private Integer reservedQuantity = 0;
 
-    @Column(name = "min_stock")
+    @Column(name = "min_stock", nullable = false)
     @Builder.Default
     private Integer minStock = 0;
 
-    @Column(name = "max_stock")
+    @Column(name = "max_stock", nullable = false)
     @Builder.Default
     private Integer maxStock = 0;
 
-    @Column(name = "reorder_level")
+    @Column(name = "reorder_level", nullable = false)
     @Builder.Default
     private Integer reorderLevel = 0;
 
-    @Column(name = "reorder_quantity")
+    @Column(name = "reorder_quantity", nullable = false)
     @Builder.Default
     private Integer reorderQuantity = 0;
 
@@ -93,15 +93,30 @@ public class WarehouseStock {
 
     public void decreaseQuantity(Integer quantity) {
 
-        if (this.currentQuantity < quantity) {
-            throw new RuntimeException("Not enough stock");
+        if (quantity == null || quantity <= 0) {
+            throw new IllegalArgumentException(
+                    "Quantity must be greater than zero");
         }
 
-        this.currentQuantity -= quantity;
+        if (currentQuantity < quantity) {
+            throw new IllegalStateException(
+                    "Not enough stock");
+        }
+
+        currentQuantity -= quantity;
     }
 
     public void increaseQuantity(Integer quantity) {
 
-        this.currentQuantity += quantity;
+        if (quantity == null || quantity <= 0) {
+            throw new IllegalArgumentException(
+                    "Quantity must be greater than zero");
+        }
+
+        currentQuantity += quantity;
+    }
+
+    public boolean hasVariant() {
+        return variant != null;
     }
 }

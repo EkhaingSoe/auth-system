@@ -38,12 +38,14 @@ public class ProductImage {
     private String publicId;
 
     @Column(name = "is_primary")
+    @Builder.Default
     private Boolean isPrimary = false;
 
     @Column(name = "alt_text", length = 255)
     private String altText;
 
     @Column(name = "sort_order")
+    @Builder.Default
     private Integer sortOrder = 0;
 
     @Column(name = "is_active")

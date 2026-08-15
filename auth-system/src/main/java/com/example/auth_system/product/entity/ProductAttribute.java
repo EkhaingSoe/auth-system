@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.example.auth_system.product.enums.AttributeType;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,7 @@ public class ProductAttribute {
     private AttributeType attributeType;
 
     @Column(name = "is_active")
+    @Builder.Default
     private Boolean isActive = true;
 
     @OneToMany(mappedBy = "attribute", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -44,10 +47,6 @@ public class ProductAttribute {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
-
-    public enum AttributeType {
-        color, size, material, style, custom
-    }
 
     public void addValue(ProductAttributeValue value) {
         values.add(value);

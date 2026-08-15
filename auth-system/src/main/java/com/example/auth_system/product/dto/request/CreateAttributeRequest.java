@@ -1,6 +1,7 @@
 package com.example.auth_system.product.dto.request;
 
-import com.example.auth_system.product.entity.ProductAttribute;
+import com.example.auth_system.product.enums.AttributeType;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -20,5 +21,5 @@ public class CreateAttributeRequest {
     private String displayName;
 
     @NotNull(message = "Attribute type is required")
-    private ProductAttribute.AttributeType attributeType;
+    private AttributeType attributeType;
 }
