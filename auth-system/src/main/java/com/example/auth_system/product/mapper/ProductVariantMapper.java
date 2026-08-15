@@ -1,6 +1,6 @@
 package com.example.auth_system.product.mapper;
 
-import com.example.auth_system.product.dto.request.CreateProductRequest;
+import com.example.auth_system.product.dto.request.CreateVariantRequest;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.Product;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductVariantMapper {
 
-        public ProductVariant toEntity(CreateProductRequest.CreateVariantRequest request, Product product) {
+        public ProductVariant toEntity(CreateVariantRequest request, Product product) {
                 return ProductVariant.builder()
                                 .product(product)
                                 .sku(request.getSku())

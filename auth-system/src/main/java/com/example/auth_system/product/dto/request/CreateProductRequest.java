@@ -53,72 +53,11 @@ public class CreateProductRequest {
     @NotNull(message = "At least one supplier is required")
     @Size(min = 1, message = "At least one supplier is required")
     @Valid
-    private List<SupplierRequest> suppliers;
+    private List<CreateProductSupplierRequest> suppliers;
 
     private List<ImageRequest> images;
     private List<VariantImageRequest> variantImages;
-    private List<WarehouseStockRequest> warehouseStocks;
-
-    // inner class
-
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class CreateVariantRequest {
-        @NotBlank(message = "SKU is required")
-        @Size(max = 50, message = "SKU must not exceed 50 characters")
-        private String sku;
-
-        @Size(max = 100, message = "Barcode must not exceed 100 characters")
-        private String barcode;
-
-        @NotNull(message = "Selling price is required")
-        private BigDecimal sellingPrice;
-
-        private BigDecimal costPrice;
-
-        private String currency;
-
-        private Integer stockQuantity;
-
-        private Integer reservedQuantity;
-
-        private Integer minStockQuantity;
-
-        private Integer maxStockQuantity;
-
-        private Integer reorderLevel;
-
-        private JsonNode attributeValues;
-
-        private BigDecimal weight;
-
-        private BigDecimal length;
-
-        private BigDecimal width;
-
-        private BigDecimal height;
-
-        private String unit;
-    }
-
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class SupplierRequest {
-        @NotNull(message = "Supplier ID is required")
-        private UUID supplierId;
-
-        private String supplierProductCode;
-
-        private BigDecimal supplierPrice;
-
-        private Integer leadTimeDays;
-
-        private Boolean isPrimary;
-    }
+    private List<CreateWarehouseStockRequest> warehouseStocks;
 
     @Data
     @Builder
@@ -145,19 +84,5 @@ public class CreateProductRequest {
         private Boolean isPrimary;
         private String altText;
         private Integer sortOrder;
-    }
-
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class WarehouseStockRequest {
-        @NotNull(message = "Warehouse ID is required")
-        private UUID warehouseId;
-
-        private Integer stockQuantity;
-        private Integer reservedQuantity;
-        private Integer minStock;
-        private Integer maxStock;
     }
 }

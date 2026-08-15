@@ -7,7 +7,11 @@ import com.example.auth_system.category.repository.CategoryRepository;
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.common.service.CloudinaryService;
+import com.example.auth_system.product.dto.request.CreateProductImageRequest;
 import com.example.auth_system.product.dto.request.CreateProductRequest;
+import com.example.auth_system.product.dto.request.CreateProductSupplierRequest;
+import com.example.auth_system.product.dto.request.CreateVariantRequest;
+import com.example.auth_system.product.dto.request.CreateWarehouseStockRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
@@ -101,7 +105,7 @@ public class ProductServiceImpl implements ProductService {
         product = productRepository.save(product);
 
         // Create variants
-        for (CreateProductRequest.CreateVariantRequest variantRequest : request.getVariants()) {
+        for (CreateVariantRequest variantRequest : request.getVariants()) {
             ProductVariant variant = variantMapper.toEntity(variantRequest, product);
             variant = variantRepository.save(variant);
             product.addVariant(variant);
@@ -109,7 +113,7 @@ public class ProductServiceImpl implements ProductService {
 
         // Create suppliers
         if (request.getSuppliers() != null) {
-            for (CreateProductRequest.SupplierRequest supplierRequest : request.getSuppliers()) {
+            for (CreateProductSupplierRequest supplierRequest : request.getSuppliers()) {
                 Supplier supplier = supplierRepository2.findById(supplierRequest.getSupplierId())
                         .orElseThrow(() -> new ResourceNotFoundException(
                                 "Supplier not found with id: " + supplierRequest.getSupplierId()));
@@ -129,7 +133,7 @@ public class ProductServiceImpl implements ProductService {
         }
 
         if (request.getWarehouseStocks() != null && !request.getWarehouseStocks().isEmpty()) {
-            for (CreateProductRequest.WarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
+            for (CreateWarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
                 // Validate store exists
                 Store store = storeRepository.findById(stockRequest.getWarehouseId())
                         .orElseThrow(() -> new ResourceNotFoundException(
@@ -209,7 +213,7 @@ public class ProductServiceImpl implements ProductService {
             product.getVariants().clear();
 
             // Create new variants
-            for (CreateProductRequest.CreateVariantRequest variantRequest : request.getVariants()) {
+            for (CreateVariantRequest variantRequest : request.getVariants()) {
                 // Check for duplicate SKU
                 if (variantRepository.existsBySku(variantRequest.getSku())) {
                     throw new BusinessException("Variant with SKU already exists: " + variantRequest.getSku());
@@ -227,7 +231,7 @@ public class ProductServiceImpl implements ProductService {
             product.getSuppliers().clear();
 
             // Create new suppliers
-            for (CreateProductRequest.SupplierRequest supplierRequest : request.getSuppliers()) {
+            for (CreateProductSupplierRequest supplierRequest : request.getSuppliers()) {
                 Supplier supplier = supplierRepository2.findById(supplierRequest.getSupplierId())
                         .orElseThrow(() -> new ResourceNotFoundException(
                                 "Supplier not found with id: " + supplierRequest.getSupplierId()));
@@ -252,7 +256,7 @@ public class ProductServiceImpl implements ProductService {
             product.getImages().clear();
 
             // Create new images
-            for (CreateProductRequest.ImageRequest imageRequest : request.getImages()) {
+            for (CreateProductImageRequest imageRequest : request.getImages()) {
                 ProductImage image = ProductImage.builder()
                         .product(product)
                         .imageUrl(imageRequest.getImageUrl())
@@ -274,7 +278,7 @@ public class ProductServiceImpl implements ProductService {
             }
 
             // Create new warehouse stocks
-            for (CreateProductRequest.WarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
+            for (CreateWarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
                 Store store = storeRepository.findById(stockRequest.getWarehouseId())
                         .orElseThrow(() -> new ResourceNotFoundException(
                                 "Store not found with id: " + stockRequest.getWarehouseId()));

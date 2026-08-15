@@ -31,7 +31,7 @@ public class ProductWarehouse {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "warehouse_id", nullable = false)
-    private Store warehouse;  // ← Uses Store entity
+    private Store warehouse; // ← Uses Store entity
 
     @Column(name = "stock_quantity")
     @Builder.Default

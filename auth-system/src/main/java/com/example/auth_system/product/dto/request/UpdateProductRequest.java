@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-import com.example.auth_system.product.dto.request.CreateProductRequest.SupplierRequest;
 import com.example.auth_system.product.enums.ProductType;
 
 @Data
@@ -42,14 +41,14 @@ public class UpdateProductRequest {
     private Boolean isActive;
 
     @Valid
-    private List<CreateProductRequest.CreateVariantRequest> variants;
+    private List<CreateVariantRequest> variants;
 
     @Valid
-    private List<SupplierRequest> suppliers;
+    private List<CreateProductSupplierRequest> suppliers;
 
     @Valid
-    private List<CreateProductRequest.ImageRequest> images;
+    private List<CreateProductImageRequest> images;
 
     @Valid
-    private List<CreateProductRequest.WarehouseStockRequest> warehouseStocks;
+    private List<CreateWarehouseStockRequest> warehouseStocks;
 }
