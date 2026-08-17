@@ -12,6 +12,7 @@ import com.example.auth_system.inventory.repository.WarehouseStockRepository;
 import com.example.auth_system.product.dto.request.CreateProductImageRequest;
 import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.CreateProductSupplierRequest;
+import com.example.auth_system.product.dto.request.CreateVariantImageRequest;
 import com.example.auth_system.product.dto.request.CreateVariantRequest;
 import com.example.auth_system.product.dto.request.CreateWarehouseStockRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
@@ -33,6 +34,9 @@ import com.example.auth_system.supplier.repository.SupplierRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -64,10 +68,6 @@ public class ProductServiceImpl implements ProductService {
     private static final String PRODUCT_CODE_PREFIX = "PRD-";
     private static final int PRODUCT_CODE_PADDING = 4;
 
-    // ProductServiceImpl(WarehouseStockRepository warehouseStockRepository) {
-    // this.warehouseStockRepository = warehouseStockRepository;
-    // }
-
     @Override
     public ProductResponse createProduct(CreateProductRequest request) {
         log.info("Creating product: {}", request.getName());
@@ -87,101 +87,18 @@ public class ProductServiceImpl implements ProductService {
                             () -> new ResourceNotFoundException("Brand not found with id: " + request.getBrandId()));
         }
 
-        // Check for duplicate SKUs
-        request.getVariants().forEach(variant -> {
-            if (variantRepository.existsBySku(variant.getSku())) {
-                throw new BusinessException("Variant with SKU already exists: " + variant.getSku());
-            }
-            if (variant.getBarcode() != null && variantRepository.existsByBarcode(variant.getBarcode())) {
-                throw new BusinessException("Variant with barcode already exists: " + variant.getBarcode());
-            }
-        });
+        validateVariants(request.getVariants());
 
         // Create product
         Product product = productMapper.toEntity(request);
-        product.setCategory(category); // Set the Category entity into Product // product.category =
-                                       // Category(id="cat-001", name="Clothing", ...)
+        product.setCategory(category);
         product.setBrand(brand);
-
-        // Generate product code
         String productCode = generateProductCode();
         product.setProductCode(productCode);
-
-        // Save product first
         product = productRepository.save(product);
 
-        // Create variants
-        for (CreateVariantRequest variantRequest : request.getVariants()) {
-            ProductVariant variant = variantMapper.toEntity(variantRequest, product);
-            variant = variantRepository.save(variant);
-            product.addVariant(variant);
-        }
-
-        // Create suppliers
-        if (request.getSuppliers() != null) {
-            for (CreateProductSupplierRequest supplierRequest : request.getSuppliers()) {
-                Supplier supplier = supplierRepository2.findById(supplierRequest.getSupplierId())
-                        .orElseThrow(() -> new ResourceNotFoundException(
-                                "Supplier not found with id: " + supplierRequest.getSupplierId()));
-
-                ProductSupplier productSupplier = ProductSupplier.builder()
-                        .product(product)
-                        .supplier(supplier)
-                        .supplierProductCode(supplierRequest.getSupplierProductCode())
-                        .supplierPrice(supplierRequest.getSupplierPrice())
-                        .leadTimeDays(supplierRequest.getLeadTimeDays() != null ? supplierRequest.getLeadTimeDays() : 7)
-                        .isPrimary(supplierRequest.getIsPrimary())
-                        .build();
-
-                supplierRepository.save(productSupplier);
-                product.addSupplier(productSupplier);
-            }
-        }
-
-        if (request.getWarehouseStocks() != null && !request.getWarehouseStocks().isEmpty()) {
-            for (CreateWarehouseStockRequest stockRequest : request.getWarehouseStocks()) {
-                // Validate store exists
-                Store store = storeRepository.findById(stockRequest.getWarehouseId())
-                        .orElseThrow(() -> new ResourceNotFoundException(
-                                "Store not found with id: " + stockRequest.getWarehouseId()));
-
-                // Check if store is active
-                if (!"ACTIVE".equals(store.getStatus())) {
-                    throw new BusinessException("Store is not active: " + store.getName());
-                }
-
-                // Create product-warehouse link
-                WarehouseStock productWarehouse = WarehouseStock.builder()
-                        .product(product)
-                        .warehouse(store)
-                        .currentQuantity(stockRequest.getStockQuantity() != null ? stockRequest.getStockQuantity() : 0)
-                        .reservedQuantity(
-                                stockRequest.getReservedQuantity() != null ? stockRequest.getReservedQuantity() : 0)
-                        .minStock(stockRequest.getMinStock() != null ? stockRequest.getMinStock() : 0)
-                        .maxStock(stockRequest.getMaxStock() != null ? stockRequest.getMaxStock() : 0)
-                        .build();
-
-                warehouseStockRepository.save(productWarehouse);
-                // product.addWarehouseStock(productWarehouse); // If you have this method
-            }
-            log.info("Created {} warehouse stocks for product", request.getWarehouseStocks().size());
-        }
-
-        // Create images
-        if (request.getImages() != null) {
-            for (CreateProductImageRequest imageRequest : request.getImages()) {
-                ProductImage image = ProductImage.builder()
-                        .product(product)
-                        .imageUrl(imageRequest.getImageUrl())
-                        .isPrimary(imageRequest.getIsPrimary() != null ? imageRequest.getIsPrimary() : false)
-                        .altText(imageRequest.getAltText())
-                        .sortOrder(imageRequest.getSortOrder() != null ? imageRequest.getSortOrder() : 0)
-                        .build();
-
-                imageRepository.save(image);
-                product.addImage(image);
-            }
-        }
+        createVariants(product, request.getVariants());
+        createProductSuppliers(product, request.getSuppliers());
 
         log.info("Product created successfully with ID: {} and code: {}", product.getId(), product.getProductCode());
         return productMapper.toResponse(product);
@@ -246,7 +163,7 @@ public class ProductServiceImpl implements ProductService {
                         .product(product)
                         .supplier(supplier)
                         .supplierProductCode(supplierRequest.getSupplierProductCode())
-                        .supplierPrice(supplierRequest.getSupplierPrice())
+                        .purchasePrice(supplierRequest.getPurchasePrice())
                         .leadTimeDays(supplierRequest.getLeadTimeDays() != null ? supplierRequest.getLeadTimeDays() : 7)
                         .isPrimary(supplierRequest.getIsPrimary())
                         .build();
@@ -347,38 +264,38 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductResponse> getActiveProducts() {
-        log.info("Getting active products");
-        return productRepository.findByIsActiveTrue().stream()
-                .map(productMapper::toResponse)
-                .collect(Collectors.toList());
+    public Page<ProductResponse> getActiveProducts(Pageable pageable) {
+
+        return productRepository
+                .findByIsActiveTrue(pageable)
+                .map(productMapper::toResponse);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductResponse> getProductsByCategory(UUID categoryId) {
+    public Page<ProductResponse> getProductsByCategory(UUID categoryId, Pageable pageable) {
         log.info("Getting products by category: {}", categoryId);
-        return productRepository.findByCategoryId(categoryId).stream()
-                .map(productMapper::toResponse)
-                .collect(Collectors.toList());
+
+        return productRepository
+                .findByCategoryId(categoryId, pageable)
+                .map(productMapper::toResponse);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductResponse> getProductsByBrand(UUID brandId) {
+    public Page<ProductResponse> getProductsByBrand(UUID brandId, Pageable pageable) {
         log.info("Getting products by brand: {}", brandId);
-        return productRepository.findByBrandId(brandId).stream()
-                .map(productMapper::toResponse)
-                .collect(Collectors.toList());
+        return productRepository
+                .findByBrandId(brandId, pageable)
+                .map(productMapper::toResponse);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductResponse> searchProducts(String term) {
+    public Page<ProductResponse> searchProducts(String term, Pageable pageable) {
         log.info("Searching products with term: {}", term);
-        return productRepository.searchProducts(term).stream()
-                .map(productMapper::toResponse)
-                .collect(Collectors.toList());
+        return productRepository.searchProducts(term, pageable)
+                .map(productMapper::toResponse);
     }
 
     @Override
@@ -644,23 +561,132 @@ public class ProductServiceImpl implements ProductService {
         return imageRepository.findByVariantIdOrderBySortOrderAsc(variantId);
     }
 
-    // @Override
-    // @Transactional(readOnly = true)
-    // public List<ProductImage> getAllImagesForProduct(UUID productId) {
-    // log.info("Getting all images (product + variants) for product: {}",
-    // productId);
-
-    // // Verify product exists
-    // Product product = productRepository.findById(productId)
-    // .orElseThrow(() -> new ResourceNotFoundException("Product not found with id:
-    // " + productId));
-
-    // // Get all images: product-level + all variant-level
-    // return imageRepository.findByProductIdOrVariantId(productId);
-    // }
-
     private String generateProductCode() {
         long count = productRepository.count() + 1;
         return PRODUCT_CODE_PREFIX + String.format("%0" + PRODUCT_CODE_PADDING + "d", count);
+    }
+
+    private void validateVariants(List<CreateVariantRequest> variants) {
+
+        for (CreateVariantRequest variant : variants) {
+
+            if (variantRepository.existsBySku(variant.getSku())) {
+                throw new BusinessException(
+                        "Variant with SKU already exists: "
+                                + variant.getSku());
+            }
+
+            if (variant.getBarcode() != null && variantRepository.existsByBarcode(variant.getBarcode())) {
+
+                throw new BusinessException(
+                        "Variant with barcode already exists: "
+                                + variant.getBarcode());
+            }
+        }
+    }
+
+    private void createVariants(
+            Product product,
+            List<CreateVariantRequest> requests) {
+
+        for (CreateVariantRequest request : requests) {
+
+            ProductVariant variant = variantMapper.toEntity(request, product);
+
+            variant = variantRepository.save(variant);
+
+            product.addVariant(variant);
+
+            // Variant images
+            // createVariantImages(
+            // variant,
+            // request.getImages());
+        }
+    }
+
+    private void createVariantImages(ProductVariant variant, List<CreateVariantImageRequest> requests) {
+
+        if (requests == null || requests.isEmpty()) {
+            return;
+        }
+
+        for (CreateVariantImageRequest request : requests) {
+
+            ProductImage image = ProductImage.builder()
+                    .variant(variant)
+                    .imageUrl(request.getImageUrl())
+                    .publicId(request.getPublicId())
+                    .isPrimary(
+                            request.getIsPrimary() != null
+                                    ? request.getIsPrimary()
+                                    : false)
+                    .altText(request.getAltText())
+                    .sortOrder(
+                            request.getSortOrder() != null
+                                    ? request.getSortOrder()
+                                    : 0)
+                    .build();
+
+            imageRepository.save(image);
+            variant.addImage(image);
+        }
+    }
+
+    private void createProductSuppliers(Product product, List<CreateProductSupplierRequest> requests) {
+
+        if (requests == null || requests.isEmpty()) {
+            return;
+        }
+
+        for (CreateProductSupplierRequest request : requests) {
+
+            Supplier supplier = supplierRepository2.findById(request.getSupplierId()).orElseThrow(
+                    () -> new ResourceNotFoundException(
+                            "Supplier not found with id: " + request.getSupplierId()));
+
+            ProductSupplier productSupplier = ProductSupplier.builder()
+                    .product(product)
+                    .supplier(supplier)
+                    .supplierProductCode(request.getSupplierProductCode())
+                    .purchasePrice(request.getPurchasePrice())
+                    .leadTimeDays(request.getLeadTimeDays() != null
+                            ? request.getLeadTimeDays()
+                            : 7)
+                    .isPrimary(request.getIsPrimary() != null
+                            ? request.getIsPrimary()
+                            : false)
+                    .build();
+
+            supplierRepository.save(productSupplier);
+            product.addSupplier(productSupplier);
+        }
+    }
+
+    private void createProductImages(Product product, List<CreateProductImageRequest> requests) {
+
+        if (requests == null || requests.isEmpty()) {
+            return;
+        }
+
+        for (CreateProductImageRequest request : requests) {
+
+            ProductImage image = ProductImage.builder()
+                    .product(product)
+                    .imageUrl(request.getImageUrl())
+                    .publicId(request.getPublicId())
+                    .isPrimary(
+                            request.getIsPrimary() != null
+                                    ? request.getIsPrimary()
+                                    : false)
+                    .altText(request.getAltText())
+                    .sortOrder(
+                            request.getSortOrder() != null
+                                    ? request.getSortOrder()
+                                    : 0)
+                    .build();
+
+            imageRepository.save(image);
+            product.addImage(image);
+        }
     }
 }

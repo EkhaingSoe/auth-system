@@ -8,6 +8,8 @@ import com.example.auth_system.product.entity.ProductImage;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,13 +30,13 @@ public interface ProductService {
 
     List<ProductResponse> getAllProducts();
 
-    List<ProductResponse> getActiveProducts();
+    Page<ProductResponse> getActiveProducts(Pageable pageable);
 
-    List<ProductResponse> getProductsByCategory(UUID categoryId);
+    Page<ProductResponse> getProductsByCategory(UUID categoryId, Pageable pageable);
 
-    List<ProductResponse> getProductsByBrand(UUID brandId);
+    Page<ProductResponse> getProductsByBrand(UUID brandId, Pageable pageable);
 
-    List<ProductResponse> searchProducts(String term);
+    Page<ProductResponse> searchProducts(String term, Pageable pageable);
 
     void deleteProduct(UUID productId);
 

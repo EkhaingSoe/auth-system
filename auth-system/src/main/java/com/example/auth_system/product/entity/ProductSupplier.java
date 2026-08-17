@@ -37,8 +37,8 @@ public class ProductSupplier {
     @Column(name = "supplier_product_code", length = 100)
     private String supplierProductCode;
 
-    @Column(name = "supplier_price")
-    private BigDecimal supplierPrice;
+    @Column(name = "purchase_price", nullable = false)
+    private BigDecimal purchasePrice;
 
     @Column(name = "lead_time_days")
     @Builder.Default

@@ -121,7 +121,7 @@ public class ProductMapper {
                 .supplierName(supplier.getSupplier() != null ? supplier.getSupplier().getName() : null)
                 .supplierCode(supplier.getSupplier() != null ? supplier.getSupplier().getSupplierCode() : null)
                 .supplierProductCode(supplier.getSupplierProductCode())
-                .supplierPrice(supplier.getSupplierPrice())
+                .purchasePrice(supplier.getPurchasePrice())
                 .leadTimeDays(supplier.getLeadTimeDays())
                 .isPrimary(supplier.getIsPrimary())
                 .build();

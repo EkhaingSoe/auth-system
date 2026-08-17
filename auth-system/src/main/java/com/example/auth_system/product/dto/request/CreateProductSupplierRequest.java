@@ -1,5 +1,6 @@
 package com.example.auth_system.product.dto.request;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,9 @@ public class CreateProductSupplierRequest {
 
     private String supplierProductCode;
 
-    private BigDecimal supplierPrice;
+    @NotNull(message = "Purchase price is required")
+    @DecimalMin(value = "0.0", inclusive = true, message = "Purchase price must not be negative")
+    private BigDecimal purchasePrice;
 
     @Builder.Default
     private Integer leadTimeDays = 7;

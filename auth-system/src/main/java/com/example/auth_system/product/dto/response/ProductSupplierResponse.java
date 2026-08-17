@@ -24,7 +24,7 @@ public class ProductSupplierResponse {
 
     private String supplierProductCode;
 
-    private BigDecimal supplierPrice;
+    private BigDecimal purchasePrice;
 
     private Integer leadTimeDays;
 

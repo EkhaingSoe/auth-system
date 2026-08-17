@@ -8,11 +8,10 @@ import java.util.UUID;
 
 public interface ProductAttributeValueRepository extends JpaRepository<ProductAttributeValue, UUID> {
 
-    List<ProductAttributeValue> findByAttributeId(UUID attributeId);
-
     List<ProductAttributeValue> findByAttributeIdOrderByDisplayOrderAsc(UUID attributeId);
 
-    List<ProductAttributeValue> findByAttributeIdAndIsActiveTrue(UUID attributeId);
+    List<ProductAttributeValue> findByAttributeIdAndIsActiveTrueOrderByDisplayOrderAsc(
+            UUID attributeId);
 
     List<ProductAttributeValue> findByAttributeName(String attributeName);
 

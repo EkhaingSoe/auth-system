@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -75,33 +77,39 @@ public class ProductController {
 
     @GetMapping("/search")
     @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductResponse>>> searchProducts(@RequestParam String term) {
+    public ResponseEntity<ApiResponse<Page<ProductResponse>>> searchProducts(@RequestParam String term,
+            Pageable pageable) {
         log.info("GET /api/admin/products/search?term={} - Searching products", term);
-        return ResponseEntity.ok(ApiResponse.success(200, "Products found", productService.searchProducts(term)));
+        return ResponseEntity
+                .ok(ApiResponse.success(200, "Products found", productService.searchProducts(term, pageable)));
     }
 
     @GetMapping("/category/{categoryId}")
     @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductResponse>>> getProductsByCategory(@PathVariable UUID categoryId) {
+    public ResponseEntity<ApiResponse<Page<ProductResponse>>> getProductsByCategory(@PathVariable UUID categoryId,
+            Pageable pageable) {
         log.info("GET /api/admin/products/category/{} - Getting products by category", categoryId);
         return ResponseEntity
-                .ok(ApiResponse.success(200, "Products retrieved", productService.getProductsByCategory(categoryId)));
+                .ok(ApiResponse.success(200, "Products retrieved",
+                        productService.getProductsByCategory(categoryId, pageable)));
     }
 
     @GetMapping("/brand/{brandId}")
     @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductResponse>>> getProductsByBrand(@PathVariable UUID brandId) {
+    public ResponseEntity<ApiResponse<Page<ProductResponse>>> getProductsByBrand(@PathVariable UUID brandId,
+            Pageable pageable) {
         log.info("GET /api/admin/products/brand/{} - Getting products by brand", brandId);
         return ResponseEntity
-                .ok(ApiResponse.success(200, "Products retrieved", productService.getProductsByBrand(brandId)));
+                .ok(ApiResponse.success(200, "Products retrieved",
+                        productService.getProductsByBrand(brandId, pageable)));
     }
 
     @GetMapping("/active")
     @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductResponse>>> getActiveProducts() {
+    public ResponseEntity<ApiResponse<Page<ProductResponse>>> getActiveProducts(Pageable pageable) {
         log.info("GET /api/admin/products/active - Getting active products");
         return ResponseEntity
-                .ok(ApiResponse.success(200, "Active products retrieved", productService.getActiveProducts()));
+                .ok(ApiResponse.success(200, "Active products retrieved", productService.getActiveProducts(pageable)));
     }
 
     @PutMapping("/{id}")
@@ -140,43 +148,6 @@ public class ProductController {
         log.info("GET /api/admin/products/variants/sku/{} - Getting variant by sku", sku);
         return ResponseEntity.ok(ApiResponse.success(200, "Variant retrieved", productService.getVariantBySku(sku)));
     }
-
-    // @PatchMapping("/variants/{variantId}/stock")
-    // @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
-    // public ResponseEntity<ApiResponse<ProductResponse>> updateVariantStock(
-    // @PathVariable UUID variantId,
-    // @RequestParam Integer quantity) {
-    // log.info("PATCH /api/admin/products/variants/{}/stock - Updating stock by:
-    // {}", variantId, quantity);
-    // ProductResponse product = productService.updateVariantStock(variantId,
-    // quantity);
-    // return ResponseEntity.ok(ApiResponse.success(200, "Stock updated
-    // successfully", product));
-    // }
-
-    // @PatchMapping("/variants/{variantId}/reserved")
-    // @PreAuthorize("@permission.hasPermission('PRODUCT_UPDATE')")
-    // public ResponseEntity<ApiResponse<ProductResponse>> updateVariantReserved(
-    // @PathVariable UUID variantId,
-    // @RequestParam Integer quantity) {
-    // log.info("PATCH /api/admin/products/variants/{}/reserved - Updating reserved
-    // by: {}", variantId, quantity);
-    // ProductResponse product = productService.updateVariantReserved(variantId,
-    // quantity);
-    // return ResponseEntity.ok(ApiResponse.success(200, "Reserved stock updated
-    // successfully", product));
-    // }
-
-    // @GetMapping("/variants/reorder")
-    // @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    // public ResponseEntity<ApiResponse<List<ProductVariantResponse>>>
-    // getVariantsNeedingReorder() {
-    // log.info("GET /api/admin/products/variants/reorder - Getting variants needing
-    // reorder");
-    // return ResponseEntity
-    // .ok(ApiResponse.success(200, "Variants needing reorder",
-    // productService.getVariantsNeedingReorder()));
-    // }
 
     // ============================================================
     // IMAGE OPERATIONS

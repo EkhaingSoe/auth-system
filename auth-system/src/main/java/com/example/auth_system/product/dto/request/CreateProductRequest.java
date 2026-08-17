@@ -55,8 +55,4 @@ public class CreateProductRequest {
     @Valid
     private List<CreateProductSupplierRequest> suppliers;
 
-    private List<CreateProductImageRequest> images;
-    // private List<CreateVariantImageRequest> variantImages;
-    private List<CreateWarehouseStockRequest> warehouseStocks;
-
 }

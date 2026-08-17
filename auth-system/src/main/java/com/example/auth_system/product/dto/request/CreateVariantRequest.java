@@ -45,8 +45,8 @@ public class CreateVariantRequest {
 
     private String unit;
 
-    @NotNull(message = "Variant images are required")
-    @Size(min = 1, message = "At least one variant image is required")
-    @Valid
-    private List<CreateVariantImageRequest> images;
+    // @NotNull(message = "Variant images are required")
+    // @Size(min = 1, message = "At least one variant image is required")
+    // @Valid
+    // private List<CreateVariantImageRequest> images;
 }

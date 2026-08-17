@@ -14,7 +14,9 @@ public interface ProductAttributeRepository extends JpaRepository<ProductAttribu
 
     Optional<ProductAttribute> findByName(String name);
 
-    List<ProductAttribute> findByIsActiveTrue();
+    boolean existsByName(String name);
+
+    List<ProductAttribute> findByIsActiveTrueOrderByDisplayName();
 
     List<ProductAttribute> findByAttributeType(AttributeType attributeType);
 
@@ -24,7 +26,4 @@ public interface ProductAttributeRepository extends JpaRepository<ProductAttribu
     @Query("SELECT pa FROM ProductAttribute pa LEFT JOIN FETCH pa.values ORDER BY pa.displayName")
     List<ProductAttribute> findAllWithValues(); // ← ADD THIS METHOD
 
-    boolean existsByName(String name);
-
-    List<ProductAttribute> findByIsActiveTrueOrderByDisplayName();
 }
