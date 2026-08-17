@@ -1,11 +1,13 @@
 package com.example.auth_system.product.controller;
 
 import com.example.auth_system.common.dto.response.ApiResponse;
+import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.ProductImage;
+import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.product.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -147,6 +149,22 @@ public class ProductController {
     public ResponseEntity<ApiResponse<ProductVariantResponse>> getVariantBySku(@PathVariable String sku) {
         log.info("GET /api/admin/products/variants/sku/{} - Getting variant by sku", sku);
         return ResponseEntity.ok(ApiResponse.success(200, "Variant retrieved", productService.getVariantBySku(sku)));
+    }
+
+    @GetMapping("/variants/barcode/{barcode}")
+    @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
+    public ResponseEntity<ApiResponse<ProductVariantResponse>> getVariantByBarcode(
+            @PathVariable String barcode) {
+
+        log.info(
+                "GET /api/admin/products/variants/barcode/{} - Getting variant by barcode",
+                barcode);
+
+        return ResponseEntity.ok(
+                ApiResponse.success(
+                        200,
+                        "Variant retrieved successfully",
+                        productService.getVariantByBarcode(barcode)));
     }
 
     // ============================================================

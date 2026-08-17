@@ -328,6 +328,17 @@ public class ProductServiceImpl implements ProductService {
         return variantMapper.toResponse(variant);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public ProductVariantResponse getVariantByBarcode(String barcode) {
+
+        ProductVariant variant = variantRepository.findByBarcode(barcode)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Variant not found with barcode: " + barcode));
+
+        return variantMapper.toResponse(variant);
+    }
+
     // @Override
     // @Transactional(readOnly = true)
     // public List<ProductVariantResponse> getVariantsNeedingReorder() {

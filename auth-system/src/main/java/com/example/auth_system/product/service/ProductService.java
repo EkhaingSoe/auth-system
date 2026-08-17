@@ -45,6 +45,8 @@ public interface ProductService {
 
     ProductVariantResponse getVariantBySku(String sku);
 
+    ProductVariantResponse getVariantByBarcode(String barcode);
+
     // ProductResponse updateVariantStock(UUID variantId, Integer quantity);
 
     // ProductResponse updateVariantReserved(UUID variantId, Integer quantity);
