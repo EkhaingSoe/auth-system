@@ -4,6 +4,7 @@ import com.example.auth_system.common.dto.response.ApiResponse;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
 import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
+import com.example.auth_system.product.dto.response.ProductImageResponse;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.ProductImage;
@@ -216,18 +217,21 @@ public class ProductController {
 
     @GetMapping("/{productId}/images")
     @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductImage>>> getProductImages(@PathVariable UUID productId) {
+    public ResponseEntity<ApiResponse<List<ProductImageResponse>>> getProductImages(
+            @PathVariable UUID productId) {
+
         log.info("GET /api/admin/products/{}/images - Getting product images", productId);
-        List<ProductImage> images = productService.getProductImages(productId);
+        List<ProductImageResponse> images = productService.getProductImages(productId);
+
         return ResponseEntity.ok(ApiResponse.success(200, "Product images retrieved", images));
     }
 
     @GetMapping("/{productId}/variants/{variantId}/images")
     @PreAuthorize("@permission.hasPermission('PRODUCT_READ')")
-    public ResponseEntity<ApiResponse<List<ProductImage>>> getVariantImages(@PathVariable UUID productId,
+    public ResponseEntity<ApiResponse<List<ProductImageResponse>>> getVariantImages(@PathVariable UUID productId,
             @PathVariable UUID variantId) {
         log.info("GET /api/admin/products/variants/{}/images - Getting variant images", variantId);
-        List<ProductImage> images = productService.getVariantImages(productId, variantId);
+        List<ProductImageResponse> images = productService.getVariantImages(productId, variantId);
         return ResponseEntity.ok(ApiResponse.success(200, "Variant images retrieved", images));
     }
 }

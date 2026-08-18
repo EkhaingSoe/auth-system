@@ -2,6 +2,7 @@ package com.example.auth_system.product.service;
 
 import com.example.auth_system.product.dto.request.CreateProductRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
+import com.example.auth_system.product.dto.response.ProductImageResponse;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.ProductImage;
@@ -62,7 +63,7 @@ public interface ProductService {
 
     ProductResponse uploadVariantImage(UUID productId, UUID variantId, MultipartFile file, Boolean isPrimary);
 
-    List<ProductImage> getProductImages(UUID productId);
+    List<ProductImageResponse> getProductImages(UUID productId);
 
-    List<ProductImage> getVariantImages(UUID productId, UUID variantId);
+    List<ProductImageResponse> getVariantImages(UUID productId, UUID variantId);
 }

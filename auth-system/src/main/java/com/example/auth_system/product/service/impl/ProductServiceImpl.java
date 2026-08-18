@@ -16,6 +16,7 @@ import com.example.auth_system.product.dto.request.CreateVariantImageRequest;
 import com.example.auth_system.product.dto.request.CreateVariantRequest;
 import com.example.auth_system.product.dto.request.CreateWarehouseStockRequest;
 import com.example.auth_system.product.dto.request.UpdateProductRequest;
+import com.example.auth_system.product.dto.response.ProductImageResponse;
 import com.example.auth_system.product.dto.response.ProductResponse;
 import com.example.auth_system.product.dto.response.ProductVariantResponse;
 import com.example.auth_system.product.entity.Product;
@@ -544,19 +545,22 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductImage> getProductImages(UUID productId) {
-        log.info("Getting product images for product: {}", productId);
+    public List<ProductImageResponse> getProductImages(UUID productId) {
+        productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Product not found with id: " + productId));
 
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
-
-        // Get only product-level images (variant_id IS NULL)
-        return imageRepository.findByProductIdAndVariantIsNullOrderBySortOrderAsc(productId);
+        // Get product-level images only
+        return imageRepository
+                .findByProductIdAndVariantIsNullOrderBySortOrderAsc(productId)
+                .stream()
+                .map(productMapper::toImageResponse)
+                .toList();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductImage> getVariantImages(UUID productId, UUID variantId) {
+    public List<ProductImageResponse> getVariantImages(UUID productId, UUID variantId) {
         log.info("Getting variant images for variant: {} of product: {}", variantId, productId);
 
         Product product = productRepository.findById(productId)
@@ -569,7 +573,12 @@ public class ProductServiceImpl implements ProductService {
             throw new BusinessException("Variant does not belong to this product");
         }
 
-        return imageRepository.findByVariantIdOrderBySortOrderAsc(variantId);
+        // return imageRepository.findByVariantIdOrderBySortOrderAsc(variantId);
+        return imageRepository
+                .findByVariantIdOrderBySortOrderAsc(variantId)
+                .stream()
+                .map(productMapper::toImageResponse)
+                .toList();
     }
 
     private String generateProductCode() {
