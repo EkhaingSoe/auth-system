@@ -19,9 +19,6 @@ import java.util.UUID;
 
 public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, UUID> {
 
-        Optional<WarehouseStock> findByProductAndVariantAndWarehouse(Product product, ProductVariant variant,
-                        Store warehouse);
-
         @Lock(LockModeType.PESSIMISTIC_WRITE)
         Optional<WarehouseStock> findByProductIdAndVariantIdAndWarehouseId(UUID productId, UUID variantId,
                         UUID warehouseId);
@@ -32,14 +29,12 @@ public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, 
 
         List<WarehouseStock> findByVariantId(UUID variantId);
 
-        List<WarehouseStock> findByProductIdAndVariantId(
-                        UUID productId,
-                        UUID variantId);
+        List<WarehouseStock> findByProductIdAndVariantId(UUID productId, UUID variantId);
 
-        boolean existsByProductAndVariantAndWarehouse(
-                        Product product,
-                        ProductVariant variant,
-                        Store warehouse);
+        boolean existsByProductIdAndVariantIdAndWarehouseId(
+                        UUID productId,
+                        UUID variantId,
+                        UUID warehouseId);
 
         @Query("""
                         SELECT ws
@@ -49,7 +44,7 @@ public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, 
                         """)
         List<WarehouseStock> findLowStockItems();
 
-        @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity = 0")
+        @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity <= 0")
         List<WarehouseStock> findOutOfStockItems();
 
         @Query("SELECT ws FROM WarehouseStock ws WHERE ws.currentQuantity > ws.maxStock")
@@ -58,11 +53,4 @@ public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, 
         @Query("SELECT ws FROM WarehouseStock ws WHERE ws.warehouse.id = :warehouseId AND ws.currentQuantity <= ws.reorderLevel")
         List<WarehouseStock> findWarehouseItemsBelowReorder(@Param("warehouseId") UUID warehouseId);
 
-        @Modifying
-        @Query("UPDATE WarehouseStock ws SET ws.currentQuantity = :quantity, ws.lastUpdatedAt = CURRENT_TIMESTAMP WHERE ws.id = :id")
-        int updateStockQuantity(@Param("id") UUID id, @Param("quantity") Integer quantity);
-
-        @Modifying
-        @Query("UPDATE WarehouseStock ws SET ws.reservedQuantity = :reserved WHERE ws.id = :id")
-        int updateReservedQuantity(@Param("id") UUID id, @Param("reserved") Integer reserved);
 }

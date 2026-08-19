@@ -7,7 +7,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,8 +24,13 @@ import java.util.UUID;
                 "variant_id",
                 "warehouse_id"
         })
+}, indexes = {
+        @Index(name = "idx_warehouse_stock_product", columnList = "product_id"),
+        @Index(name = "idx_warehouse_stock_variant", columnList = "variant_id"),
+        @Index(name = "idx_warehouse_stock_warehouse", columnList = "warehouse_id")
 })
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -79,41 +87,96 @@ public class WarehouseStock {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Transient
     public Integer getAvailableQuantity() {
-        return currentQuantity - reservedQuantity;
+        return Math.max(
+                0,
+                currentQuantity - reservedQuantity);
     }
 
+    @Transient
     public boolean isBelowReorderLevel() {
         return currentQuantity <= reorderLevel;
     }
 
+    @Transient
     public boolean isOverMaxStock() {
-        return currentQuantity > maxStock;
+        return maxStock > 0
+                && currentQuantity > maxStock;
     }
 
-    public void decreaseQuantity(Integer quantity) {
+    @Transient
+    public boolean isOutOfStock() {
+        return currentQuantity <= 0;
+    }
 
-        if (quantity == null || quantity <= 0) {
-            throw new IllegalArgumentException(
-                    "Quantity must be greater than zero");
-        }
-
-        if (currentQuantity < quantity) {
-            throw new IllegalStateException(
-                    "Not enough stock");
-        }
-
-        currentQuantity -= quantity;
+    @Transient
+    public boolean isLowStock() {
+        return currentQuantity > 0
+                && currentQuantity <= reorderLevel;
     }
 
     public void increaseQuantity(Integer quantity) {
 
+        validateQuantity(quantity);
+
+        this.currentQuantity += quantity;
+        this.lastUpdatedAt = LocalDateTime.now();
+    }
+
+    public void decreaseQuantity(Integer quantity) {
+
+        validateQuantity(quantity);
+
+        if (this.currentQuantity < quantity) {
+            throw new IllegalStateException(
+                    "Insufficient stock");
+        }
+
+        this.currentQuantity -= quantity;
+        this.lastUpdatedAt = LocalDateTime.now();
+    }
+
+    // ============================================================
+    // RESERVATION
+    // ============================================================
+
+    public void reserveQuantity(Integer quantity) {
+
+        validateQuantity(quantity);
+
+        if (getAvailableQuantity() < quantity) {
+            throw new IllegalStateException(
+                    "Insufficient available stock");
+        }
+
+        this.reservedQuantity += quantity;
+        this.lastUpdatedAt = LocalDateTime.now();
+    }
+
+    public void releaseReservedQuantity(Integer quantity) {
+
+        validateQuantity(quantity);
+
+        if (this.reservedQuantity < quantity) {
+            throw new IllegalStateException(
+                    "Reserved quantity cannot be negative");
+        }
+
+        this.reservedQuantity -= quantity;
+        this.lastUpdatedAt = LocalDateTime.now();
+    }
+
+    // ============================================================
+    // HELPERS
+    // ============================================================
+
+    private void validateQuantity(Integer quantity) {
+
         if (quantity == null || quantity <= 0) {
             throw new IllegalArgumentException(
                     "Quantity must be greater than zero");
         }
-
-        currentQuantity += quantity;
     }
 
     public boolean hasVariant() {
