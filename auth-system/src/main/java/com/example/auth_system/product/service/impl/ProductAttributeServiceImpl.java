@@ -2,10 +2,14 @@ package com.example.auth_system.product.service.impl;
 
 import com.example.auth_system.common.exception.BusinessException;
 import com.example.auth_system.common.exception.ResourceNotFoundException;
+import com.example.auth_system.product.dto.request.CreateAttributeRequest;
+import com.example.auth_system.product.dto.request.UpdateAttributeRequest;
+import com.example.auth_system.product.dto.request.UpdateAttributeValueRequest;
 import com.example.auth_system.product.dto.response.AttributeValueResponse;
 import com.example.auth_system.product.dto.response.ProductAttributeResponse;
 import com.example.auth_system.product.entity.ProductAttribute;
 import com.example.auth_system.product.entity.ProductAttributeValue;
+import com.example.auth_system.product.mapper.ProductAttributeMapper;
 import com.example.auth_system.product.repository.ProductAttributeRepository;
 import com.example.auth_system.product.repository.ProductAttributeValueRepository;
 import com.example.auth_system.product.service.ProductAttributeService;
@@ -26,6 +30,7 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
 
     private final ProductAttributeRepository attributeRepository;
     private final ProductAttributeValueRepository valueRepository;
+    private final ProductAttributeMapper attributeMapper;
 
     @Override
     @Transactional(readOnly = true)
@@ -63,14 +68,14 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
     }
 
     @Override
-    public ProductAttributeResponse createAttribute(ProductAttribute attribute) {
-        log.info("Creating new attribute: {}", attribute.getName());
+    public ProductAttributeResponse createAttribute(CreateAttributeRequest request) {
 
         // Check for duplicate name
-        if (attributeRepository.existsByName(attribute.getName())) {
-            throw new BusinessException("Attribute with name already exists: " + attribute.getName());
+        if (attributeRepository.existsByName(request.getName())) {
+            throw new BusinessException("Attribute with name already exists: " + request.getName());
         }
 
+        ProductAttribute attribute = attributeMapper.toEntity(request);
         ProductAttribute savedAttribute = attributeRepository.save(attribute);
         log.info("Attribute created successfully: {}", savedAttribute.getId());
 
@@ -78,40 +83,70 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
     }
 
     @Override
-    public ProductAttributeResponse updateAttribute(UUID id, ProductAttribute attribute) {
+    public ProductAttributeResponse updateAttribute(UUID id, UpdateAttributeRequest request) {
         log.info("Updating attribute: {}", id);
 
         ProductAttribute existingAttribute = attributeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Attribute not found with id: " + id));
 
-        // Check for duplicate name (if changed)
-        if (!existingAttribute.getName().equals(attribute.getName())
-                && attributeRepository.existsByName(attribute.getName())) {
-            throw new BusinessException("Attribute with name already exists: " + attribute.getName());
+        // Update name only when provided
+        if (request.getName() != null && !request.getName().equals(existingAttribute.getName())) {
+
+            if (attributeRepository.existsByName(request.getName())) {
+                throw BusinessException.duplicate(
+                        "name",
+                        "Attribute",
+                        request.getName());
+            }
+
+            existingAttribute.setName(request.getName());
         }
 
-        existingAttribute.setName(attribute.getName());
-        existingAttribute.setDisplayName(attribute.getDisplayName());
-        existingAttribute.setAttributeType(attribute.getAttributeType());
-        existingAttribute.setIsActive(attribute.getIsActive());
+        if (request.getDisplayName() != null) {
+            existingAttribute.setDisplayName(request.getDisplayName());
+        }
+
+        if (request.getAttributeType() != null) {
+            existingAttribute.setAttributeType(request.getAttributeType());
+        }
 
         ProductAttribute updatedAttribute = attributeRepository.save(existingAttribute);
-        log.info("Attribute updated successfully: {}", updatedAttribute.getId());
-
         return toResponse(updatedAttribute);
     }
 
     @Override
     public void deleteAttribute(UUID id) {
-        log.info("Deleting attribute: {}", id);
 
         ProductAttribute attribute = attributeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Attribute not found with id: " + id));
 
-        // Soft delete
+        attributeRepository.delete(attribute);
+    }
+
+    @Override
+    @Transactional
+    public void deactivateAttribute(UUID id) {
+
+        ProductAttribute attribute = attributeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Attribute not found with id: " + id));
+
         attribute.setIsActive(false);
+
         attributeRepository.save(attribute);
-        log.info("Attribute deactivated successfully: {}", id);
+    }
+
+    @Override
+    @Transactional
+    public void activateAttribute(UUID id) {
+
+        ProductAttribute attribute = attributeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Attribute not found with id: " + id));
+
+        attribute.setIsActive(true);
+
+        attributeRepository.save(attribute);
     }
 
     @Override
@@ -135,21 +170,92 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
     }
 
     @Override
-    public void removeValueFromAttribute(UUID attributeId, UUID valueId) {
-        log.info("Removing value: {} from attribute: {}", valueId, attributeId);
+    @Transactional
+    public ProductAttributeResponse updateAttributeValue(UUID attributeId, UUID valueId,
+            UpdateAttributeValueRequest request) {
+
+        ProductAttribute attribute = attributeRepository.findById(attributeId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Attribute not found with id: " + attributeId));
+
+        ProductAttributeValue existingValue = valueRepository.findById(valueId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Attribute value not found with id: " + valueId));
+
+        if (!existingValue.getAttribute().getId().equals(attributeId)) {
+            throw new BusinessException(
+                    "Value does not belong to this attribute");
+        }
+
+        if (request.getValue() != null
+                && !request.getValue().equals(existingValue.getValue())) {
+
+            existingValue.setValue(request.getValue());
+        }
+
+        if (request.getHexCode() != null) {
+            existingValue.setHexCode(request.getHexCode());
+        }
+
+        if (request.getDisplayOrder() != null) {
+            existingValue.setDisplayOrder(request.getDisplayOrder());
+        }
+
+        valueRepository.save(existingValue);
+        return toResponse(attribute);
+    }
+
+    @Override
+    public void deleteValue(UUID attributeId, UUID valueId) {
 
         ProductAttributeValue value = valueRepository.findById(valueId)
                 .orElseThrow(() -> new ResourceNotFoundException("Value not found with id: " + valueId));
 
-        // Verify value belongs to attribute
         if (!value.getAttribute().getId().equals(attributeId)) {
             throw new BusinessException("Value does not belong to this attribute");
         }
 
-        // Soft delete
+        valueRepository.delete(value);
+    }
+
+    @Override
+    @Transactional
+    public void deactivateValue(UUID attributeId, UUID valueId) {
+
+        ProductAttributeValue value = valueRepository.findById(valueId)
+                .orElseThrow(() -> new ResourceNotFoundException("Attribute value not found with id: " + valueId));
+
+        // Make sure the value belongs to the specified attribute
+        if (value.getAttribute() == null || !value.getAttribute().getId().equals(attributeId)) {
+            throw new ResourceNotFoundException("Attribute value does not belong to attribute: " + attributeId);
+        }
+
+        if (!Boolean.TRUE.equals(value.getIsActive())) {
+            throw new BusinessException("Attribute value is already inactive");
+        }
+
         value.setIsActive(false);
         valueRepository.save(value);
-        log.info("Value deactivated successfully: {}", valueId);
+    }
+
+    @Override
+    @Transactional
+    public void activateValue(UUID attributeId, UUID valueId) {
+
+        ProductAttributeValue value = valueRepository.findById(valueId).orElseThrow(() -> new ResourceNotFoundException(
+                "Attribute value not found with id: " + valueId));
+
+        // Make sure the value belongs to the specified attribute
+        if (value.getAttribute() == null || !value.getAttribute().getId().equals(attributeId)) {
+            throw new ResourceNotFoundException("Attribute value does not belong to attribute: " + attributeId);
+        }
+
+        if (Boolean.TRUE.equals(value.getIsActive())) {
+            throw new BusinessException("Attribute value is already active");
+        }
+
+        value.setIsActive(true);
+        valueRepository.save(value);
     }
 
     private ProductAttributeResponse toResponse(ProductAttribute attribute) {

@@ -22,5 +22,4 @@ public class UpdateAttributeRequest {
 
     private AttributeType attributeType;
 
-    private Boolean isActive;
 }

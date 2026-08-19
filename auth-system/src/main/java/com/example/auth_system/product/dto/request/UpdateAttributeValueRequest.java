@@ -20,5 +20,4 @@ public class UpdateAttributeValueRequest {
 
     private Integer displayOrder;
 
-    private Boolean isActive;
 }

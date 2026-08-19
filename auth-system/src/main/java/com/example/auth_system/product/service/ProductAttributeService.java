@@ -1,5 +1,8 @@
 package com.example.auth_system.product.service;
 
+import com.example.auth_system.product.dto.request.CreateAttributeRequest;
+import com.example.auth_system.product.dto.request.UpdateAttributeRequest;
+import com.example.auth_system.product.dto.request.UpdateAttributeValueRequest;
 import com.example.auth_system.product.dto.response.ProductAttributeResponse;
 import com.example.auth_system.product.entity.ProductAttribute;
 import com.example.auth_system.product.entity.ProductAttributeValue;
@@ -16,17 +19,25 @@ public interface ProductAttributeService {
 
     ProductAttributeResponse getAttributeById(UUID id);
 
-    ProductAttributeResponse createAttribute(ProductAttribute attribute);
+    ProductAttributeResponse createAttribute(CreateAttributeRequest request);
 
-    ProductAttributeResponse updateAttribute(UUID id, ProductAttribute attribute);
-
-    void deleteAttribute(UUID id);
+    ProductAttributeResponse updateAttribute(UUID id, UpdateAttributeRequest request);
 
     // Attribute Value Operations
     ProductAttributeResponse addValueToAttribute(UUID attributeId, ProductAttributeValue value);
 
-    // ProductAttributeResponse updateAttributeValue(UUID attributeId, UUID valueId,
-    // ProductAttributeValue value);
+    void deleteAttribute(UUID attributeId);
 
-    void removeValueFromAttribute(UUID attributeId, UUID valueId);
+    void deactivateAttribute(UUID attributeId);
+
+    void activateAttribute(UUID attributeId);
+
+    ProductAttributeResponse updateAttributeValue(UUID attributeId, UUID valueId,
+            UpdateAttributeValueRequest request);
+
+    void deleteValue(UUID attributeId, UUID valueId);
+
+    void deactivateValue(UUID attributeId, UUID valueId);
+
+    void activateValue(UUID attributeId, UUID valueId);
 }

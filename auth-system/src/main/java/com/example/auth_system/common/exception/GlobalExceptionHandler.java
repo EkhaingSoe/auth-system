@@ -181,8 +181,9 @@ public class GlobalExceptionHandler {
 
                 Map<String, Object> response = new LinkedHashMap<>();
                 response.put("code", ex.getHttpStatus().value());
-                response.put("message", "Validation failed");
+                response.put("message", ex.getMessage());
                 response.put("errors", errors);
+                response.put("success", false);
 
                 return ResponseEntity
                                 .status(ex.getHttpStatus())
