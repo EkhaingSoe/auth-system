@@ -26,15 +26,41 @@ public class WarehouseStockMapper {
                 }
 
                 return WarehouseStockResponse.builder()
+                                .id(warehouseStock.getId())
+
+                                // Product
+                                .productId(warehouseStock.getProduct().getId())
+                                .productName(warehouseStock.getProduct().getName())
+
+                                // Variant
+                                .variantId(
+                                                warehouseStock.getVariant() != null
+                                                                ? warehouseStock.getVariant().getId()
+                                                                : null)
+                                .sku(
+                                                warehouseStock.getVariant() != null
+                                                                ? warehouseStock.getVariant().getSku()
+                                                                : null)
+
+                                // Warehouse
                                 .warehouseId(warehouseStock.getWarehouse().getId())
                                 .warehouseName(warehouseStock.getWarehouse().getName())
+
+                                // Quantities
                                 .currentQuantity(warehouseStock.getCurrentQuantity())
                                 .reservedQuantity(warehouseStock.getReservedQuantity())
                                 .availableQuantity(warehouseStock.getAvailableQuantity())
+
+                                // Stock configuration
                                 .minStock(warehouseStock.getMinStock())
                                 .maxStock(warehouseStock.getMaxStock())
                                 .reorderLevel(warehouseStock.getReorderLevel())
-                                .needsReorder(warehouseStock.getAvailableQuantity() <= warehouseStock.getReorderLevel())
+                                .reorderQuantity(warehouseStock.getReorderQuantity())
+
+                                // Status
+                                .status(warehouseStock.getStockStatus())
+                                .needsReorder(warehouseStock.isBelowReorderLevel())
+
                                 .build();
         }
 

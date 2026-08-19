@@ -1,5 +1,6 @@
 package com.example.auth_system.inventory.entity;
 
+import com.example.auth_system.inventory.enums.StockStatus;
 import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.store.entity.Store;
@@ -181,5 +182,23 @@ public class WarehouseStock {
 
     public boolean hasVariant() {
         return variant != null;
+    }
+
+    @Transient
+    public StockStatus getStockStatus() {
+
+        if (currentQuantity <= 0) {
+            return StockStatus.OUT_OF_STOCK;
+        }
+
+        if (maxStock > 0 && currentQuantity > maxStock) {
+            return StockStatus.OVER_STOCK;
+        }
+
+        if (currentQuantity <= reorderLevel) {
+            return StockStatus.LOW_STOCK;
+        }
+
+        return StockStatus.IN_STOCK;
     }
 }

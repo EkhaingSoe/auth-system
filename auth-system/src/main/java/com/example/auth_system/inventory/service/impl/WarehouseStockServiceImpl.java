@@ -12,6 +12,7 @@ import com.example.auth_system.product.entity.Product;
 import com.example.auth_system.product.entity.ProductVariant;
 import com.example.auth_system.product.repository.ProductRepository;
 import com.example.auth_system.product.repository.ProductVariantRepository;
+import com.example.auth_system.store.repository.StoreRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,14 +35,7 @@ public class WarehouseStockServiceImpl implements WarehouseStockService {
     private final WarehouseStockMapper warehouseStockMapper;
     private final ProductRepository productRepository;
     private final ProductVariantRepository productVariantRepository;
-
-    @Override
-    public WarehouseStockResponse getWarehouseStockById(UUID warehouseStockId) {
-
-        WarehouseStock warehouseStock = warehouseStockRepository.findById(warehouseStockId)
-                .orElseThrow(() -> new ResourceNotFoundException("Warehouse not found"));
-        return warehouseStockMapper.toWarehouseStockResponse(warehouseStock);
-    }
+    private final StoreRepository storeRepository;
 
     @Override
     public List<WarehouseStockResponse> getAllWarehouseStocks() {
@@ -53,17 +47,31 @@ public class WarehouseStockServiceImpl implements WarehouseStockService {
     }
 
     @Override
-    public List<WarehouseStockResponse> getStockByWarehouse(UUID warehouseId) {
+    public WarehouseStockResponse getWarehouseStockById(UUID warehouseStockId) {
 
-        List<WarehouseStock> stocks = warehouseStockRepository.findByWarehouseId(warehouseId);
+        WarehouseStock warehouseStock = warehouseStockRepository.findById(warehouseStockId)
+                .orElseThrow(() -> new ResourceNotFoundException("Warehouse not found"));
+        return warehouseStockMapper.toWarehouseStockResponse(warehouseStock);
+    }
 
-        return stocks.stream()
+    @Override
+    public List<WarehouseStockResponse> getStockByWarehouse(UUID storeId) {
+
+        storeRepository.findById(storeId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Warehouse not found with id: " + storeId));
+
+        return warehouseStockRepository.findByWarehouseId(storeId)
+                .stream()
                 .map(warehouseStockMapper::toWarehouseStockResponse)
                 .toList();
     }
 
     @Override
     public List<WarehouseStockResponse> getStockByProduct(UUID productId, UUID variantId) {
+
+        productRepository.findById(productId).orElseThrow(() -> new ResourceNotFoundException(
+                "Product not found with id: " + productId));
 
         List<WarehouseStock> stocks;
 
@@ -81,6 +89,10 @@ public class WarehouseStockServiceImpl implements WarehouseStockService {
     @Override
     public StockSummaryResponse getStockSummary(UUID productId, UUID variantId) {
 
+        productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Product not found with id: " + productId));
+
         List<WarehouseStock> stocks;
 
         if (variantId != null) {
@@ -90,7 +102,7 @@ public class WarehouseStockServiceImpl implements WarehouseStockService {
         }
 
         if (stocks.isEmpty()) {
-            throw new ResourceNotFoundException("Stock not found");
+            throw new ResourceNotFoundException("Stock not found for product with id: " + productId);
         }
 
         WarehouseStock firstStock = stocks.get(0);

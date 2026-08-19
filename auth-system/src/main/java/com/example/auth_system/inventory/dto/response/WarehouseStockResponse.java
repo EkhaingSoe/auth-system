@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+import com.example.auth_system.inventory.enums.StockStatus;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,7 +23,7 @@ public class WarehouseStockResponse {
 
     // Variant
     private UUID variantId;
-    private String variantName;
+    // private String variantName;
     private String sku;
 
     // Warehouse
@@ -40,8 +42,6 @@ public class WarehouseStockResponse {
     private Integer reorderQuantity;
 
     // Stock status
+    private StockStatus status;
     private Boolean needsReorder;
-    private Boolean lowStock;
-    private Boolean outOfStock;
-    private Boolean overStock;
 }
