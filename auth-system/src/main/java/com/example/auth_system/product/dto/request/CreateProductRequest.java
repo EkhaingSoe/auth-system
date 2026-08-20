@@ -45,8 +45,8 @@ public class CreateProductRequest {
 
     private BigDecimal taxRate;
 
-    @NotNull(message = "At least one variant is required")
-    @Size(min = 1, message = "At least one variant is required")
+    // @NotNull(message = "At least one variant is required")
+    // @Size(min = 1, message = "At least one variant is required")
     @Valid
     private List<CreateVariantRequest> variants;
 
