@@ -11,7 +11,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,13 +24,13 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "stock_movements", indexes = {
-        @Index(name = "idx_stock_product", columnList = "product_id"),
-
-        @Index(name = "idx_stock_reference", columnList = "reference_id"),
-
-        @Index(name = "idx_stock_created", columnList = "created_at")
+        @Index(name = "idx_stock_movement_product", columnList = "product_id"),
+        @Index(name = "idx_stock_movement_variant", columnList = "variant_id"),
+        @Index(name = "idx_stock_movement_reference", columnList = "reference_id"),
+        @Index(name = "idx_stock_movement_created", columnList = "created_at")
 })
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -78,6 +81,7 @@ public class StockMovement {
     @Column(name = "reference_id")
     private UUID referenceId; // Order ID, Purchase Order ID, etc.
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "reference_type")
     private ReferenceType referenceType; // ORDER, PURCHASE_ORDER, ADJUSTMENT
 
@@ -92,7 +96,4 @@ public class StockMovement {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }
