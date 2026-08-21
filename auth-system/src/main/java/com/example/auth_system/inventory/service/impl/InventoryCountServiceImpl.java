@@ -88,15 +88,22 @@ public class InventoryCountServiceImpl implements InventoryCountService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Inventory count not found"));
 
-        if (count.getStatus() == InventoryCountStatus.COMPLETED ||
-                count.getStatus() == InventoryCountStatus.CANCELLED) {
+        if (count.getStatus() == InventoryCountStatus.COMPLETED
+                || count.getStatus() == InventoryCountStatus.CANCELLED
+                || count.getStatus() == InventoryCountStatus.IN_PROGRESS
+                || count.getStatus() == InventoryCountStatus.VERIFIED) {
 
             throw new BusinessException(
                     "Completed or cancelled inventory count cannot be updated");
         }
 
-        count.setScheduledDate(request.getScheduledDate());
-        count.setNotes(request.getNotes());
+        if (request.getScheduledDate() != null) {
+            count.setScheduledDate(request.getScheduledDate());
+        }
+
+        if (request.getNotes() != null) {
+            count.setNotes(request.getNotes());
+        }
         InventoryCount updatedCount = inventoryCountRepository.save(count);
 
         return inventoryCountMapper.toInventoryCountResponse(updatedCount);
@@ -188,6 +195,7 @@ public class InventoryCountServiceImpl implements InventoryCountService {
         }
 
         count.setStatus(InventoryCountStatus.IN_PROGRESS);
+        count.setCountDate(LocalDateTime.now());
         inventoryCountRepository.save(count);
         return inventoryCountMapper.toInventoryCountResponse(count);
     }
@@ -258,10 +266,18 @@ public class InventoryCountServiceImpl implements InventoryCountService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Inventory count not found"));
 
-        if (count.getStatus() != InventoryCountStatus.COMPLETED) {
-
+        if (count.getStatus() != InventoryCountStatus.IN_PROGRESS) {
             throw new BusinessException(
-                    "Only completed inventory counts can create adjustment");
+                    "Stock adjustment can only be created for an inventory count in progress");
+        }
+
+        boolean hasUncountedItems = count.getItems()
+                .stream()
+                .anyMatch(item -> item.getCountedQuantity() == null);
+
+        if (hasUncountedItems) {
+            throw new BusinessException(
+                    "All inventory count items must be counted before creating stock adjustment");
         }
 
         return stockAdjustmentService.createFromInventoryCount(countId);
@@ -284,7 +300,6 @@ public class InventoryCountServiceImpl implements InventoryCountService {
         for (WarehouseStock stock : stocks) {
 
             InventoryCountItem item = InventoryCountItem.builder()
-                    .inventoryCount(count)
                     .product(stock.getProduct())
                     .variant(stock.getVariant())
                     .systemQuantity(stock.getCurrentQuantity())

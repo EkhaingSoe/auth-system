@@ -53,10 +53,10 @@ public class InventoryCountItem {
     @Column(name = "system_quantity", nullable = false)
     private Integer systemQuantity;
 
-    @Column(name = "counted_quantity", nullable = false)
+    @Column(name = "counted_quantity")
     private Integer countedQuantity;
 
-    @Column(name = "difference", nullable = false)
+    @Column(name = "difference")
     private Integer difference;
 
     @OneToOne(fetch = FetchType.LAZY)

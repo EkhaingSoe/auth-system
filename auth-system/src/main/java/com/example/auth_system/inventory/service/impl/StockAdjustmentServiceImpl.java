@@ -4,6 +4,7 @@ import com.example.auth_system.product.mapper.ProductVariantMapper;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -400,10 +401,11 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
         }
 
         private String generateAdjustmentNumber() {
-                return "AJ-" + LocalDate.now()
-                                + "-" + UUID.randomUUID()
-                                                .toString()
-                                                .substring(0, 8);
+                String date = LocalDate.now()
+                                .format(DateTimeFormatter.BASIC_ISO_DATE);
+
+                return "AJ-" + date + "-" + String.format("%04d",
+                                stockAdjustmentRepository.count() + 1);
         }
 
         private MovementType getMovementType(AdjustmentDirection direction) {
@@ -412,40 +414,120 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
                                 : MovementType.ADJUSTMENT_OUT;
         }
 
+        // @Override
+        // @Transactional
+        // public List<StockAdjustmentResponse> createFromInventoryCount(UUID countId) {
+
+        // List<InventoryCountItem> discrepancyItems = inventoryCountItemRepository
+        // .findDiscrepancyItemsByCountId(countId);
+
+        // if (discrepancyItems.isEmpty()) {
+        // return List.of();
+        // }
+
+        // List<StockAdjustment> adjustments = new ArrayList<>();
+
+        // for (InventoryCountItem item : discrepancyItems) {
+
+        // Integer difference = item.getDifference();
+
+        // if (difference == null || difference == 0) {
+        // continue;
+        // }
+
+        // AdjustmentDirection direction = difference > 0
+        // ? AdjustmentDirection.INCREASE
+        // : AdjustmentDirection.DECREASE;
+
+        // StockAdjustment adjustment = StockAdjustment.builder()
+        // .adjustmentNumber(generateAdjustmentNumber())
+        // .warehouse(item.getInventoryCount().getWarehouse())
+        // .product(item.getProduct())
+        // .variant(item.getVariant())
+        // .difference(Math.abs(difference))
+        // .adjustmentType(AdjustmentType.COUNT_ADJUSTMENT)
+        // .direction(direction)
+        // .status(AdjustmentStatus.PENDING)
+        // .reason("Adjustment from inventory count")
+        // .build();
+
+        // item.setStockAdjustment(adjustment);
+
+        // adjustments.add(adjustment);
+        // }
+
+        // stockAdjustmentRepository.saveAll(adjustments);
+
+        // return adjustments.stream()
+        // .map(stockAdjustmentMapper::toResponse)
+        // .toList();
+        // }
+
         @Override
         @Transactional
-        public List<StockAdjustmentResponse> createFromInventoryCount(
-                        UUID countId) {
+        public List<StockAdjustmentResponse> createFromInventoryCount(UUID countId) {
 
                 List<InventoryCountItem> discrepancyItems = inventoryCountItemRepository
                                 .findDiscrepancyItemsByCountId(countId);
 
-                List<StockAdjustment> adjustments = new ArrayList<>();
+                if (discrepancyItems.isEmpty()) {
+                        return List.of();
+                }
+
+                List<StockAdjustmentResponse> responses = new ArrayList<>();
 
                 for (InventoryCountItem item : discrepancyItems) {
 
+                        Integer systemQuantity = item.getSystemQuantity();
+                        Integer countedQuantity = item.getCountedQuantity();
+
+                        if (systemQuantity == null || countedQuantity == null) {
+                                continue;
+                        }
+
+                        int difference = countedQuantity - systemQuantity;
+
+                        if (difference == 0) {
+                                continue;
+                        }
+
                         StockAdjustment adjustment = StockAdjustment.builder()
-                                        .warehouse(
-                                                        item.getInventoryCount().getWarehouse())
+                                        .adjustmentNumber(generateAdjustmentNumber())
+                                        .warehouse(item.getInventoryCount().getWarehouse())
                                         .product(item.getProduct())
                                         .variant(item.getVariant())
-                                        .difference(
-                                                        Math.abs(item.getDifference()))
-                                        .adjustmentType(
-                                                        AdjustmentType.COUNT_ADJUSTMENT)
-                                        .status(
-                                                        AdjustmentStatus.PENDING)
-                                        .reason("This is adjustment from invnetory count")
+
+                                        // Before and after stock
+                                        .oldQuantity(systemQuantity)
+                                        .newQuantity(countedQuantity)
+
+                                        // Actual adjustment amount
+                                        .difference(Math.abs(difference))
+
+                                        // INCREASE / DECREASE
+                                        .direction(
+                                                        difference > 0
+                                                                        ? AdjustmentDirection.INCREASE
+                                                                        : AdjustmentDirection.DECREASE)
+
+                                        .adjustmentType(AdjustmentType.COUNT_ADJUSTMENT)
+                                        .status(AdjustmentStatus.PENDING)
+                                        .reason("Adjustment from inventory count")
                                         .build();
 
-                        adjustments.add(adjustment);
+                        // Save adjustment first
+                        StockAdjustment savedAdjustment = stockAdjustmentRepository.save(adjustment);
+
+                        // Link adjustment to inventory count item
+                        item.setStockAdjustment(savedAdjustment);
+
+                        inventoryCountItemRepository.save(item);
+
+                        responses.add(
+                                        stockAdjustmentMapper.toResponse(savedAdjustment));
                 }
 
-                stockAdjustmentRepository.saveAll(adjustments);
-
-                return adjustments.stream()
-                                .map(stockAdjustmentMapper::toResponse)
-                                .toList();
+                return responses;
         }
 
 }

@@ -68,7 +68,7 @@ public class InventoryCountItemController {
                                                 response));
         }
 
-        @PutMapping("/{itemId}/count")
+        @PatchMapping("/{itemId}/count")
         public ResponseEntity<ApiResponse<InventoryCountItemResponse>> updateCountedQuantity(
                         @PathVariable UUID itemId,
                         @RequestBody @Valid UpdateCountedQuantityRequest request) {

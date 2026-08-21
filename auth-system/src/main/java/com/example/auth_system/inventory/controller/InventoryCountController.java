@@ -37,7 +37,7 @@ public class InventoryCountController {
                                 .body(ApiResponse.success(201, "Inventory count created successfully", response));
         }
 
-        @PutMapping("/{id}")
+        @PatchMapping("/{id}")
         public ResponseEntity<ApiResponse<InventoryCountResponse>> update(
                         @PathVariable UUID id,
                         @RequestBody @Valid UpdateInventoryCountRequest request) {
@@ -101,7 +101,7 @@ public class InventoryCountController {
                                                 response));
         }
 
-        @PutMapping("/{id}/start")
+        @PatchMapping("/{id}/start")
         public ResponseEntity<ApiResponse<InventoryCountResponse>> startCount(
                         @PathVariable UUID id) {
 
@@ -111,7 +111,7 @@ public class InventoryCountController {
                                 ApiResponse.success(200, "Inventory count started successfully", response));
         }
 
-        @PostMapping("/{id}/complete")
+        @PatchMapping("/{id}/complete")
         public ResponseEntity<ApiResponse<InventoryCountResponse>> completeCount(
                         @PathVariable UUID id) {
 
@@ -122,7 +122,7 @@ public class InventoryCountController {
                                                 response));
         }
 
-        @PutMapping("/{id}/cancel")
+        @PatchMapping("/{id}/cancel")
         public ResponseEntity<ApiResponse<InventoryCountResponse>> cancelCount(
                         @PathVariable UUID id) {
 
