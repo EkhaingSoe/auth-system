@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/inventory-counts")
+@RequestMapping("/api/admin/inventory-counts")
 @RequiredArgsConstructor
 @Slf4j
 public class InventoryCountController {

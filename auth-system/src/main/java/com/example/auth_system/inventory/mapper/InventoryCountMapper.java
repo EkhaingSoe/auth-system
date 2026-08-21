@@ -45,7 +45,10 @@ public class InventoryCountMapper {
                                 .countDate(inventoryCount.getCountDate())
                                 .completedDate(inventoryCount.getCompletedDate())
                                 .createdByName(inventoryCount.getCreatedBy().getUsername())
-                                .verifiedByName(inventoryCount.getVerifiedBy().getUsername())
+                                .verifiedByName(
+                                                inventoryCount.getVerifiedBy() != null
+                                                                ? inventoryCount.getVerifiedBy().getUsername()
+                                                                : null)
                                 .notes(inventoryCount.getNotes())
                                 .totalItems(totalItems)
                                 .countedItems(countedItems)

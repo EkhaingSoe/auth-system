@@ -2,6 +2,7 @@ package com.example.auth_system.inventory.service.impl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -267,10 +268,12 @@ public class InventoryCountServiceImpl implements InventoryCountService {
     }
 
     private String generateInventoryCount() {
-        return "IC-" + LocalDate.now()
-                + "-" + UUID.randomUUID()
-                        .toString()
-                        .substring(0, 8);
+        String date = LocalDate.now()
+                .format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+
+        long count = inventoryCountRepository.count() + 1;
+
+        return String.format("IC-%s-%04d", date, count);
     }
 
     private void createFullCountItems(InventoryCount count) {

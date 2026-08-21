@@ -9,9 +9,11 @@ import com.example.auth_system.user.entity.User;
 import com.example.auth_system.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CurrentUserService {
         private final UserRepository userRepository;
 
@@ -22,6 +24,12 @@ public class CurrentUserService {
                                 .getAuthentication();
 
                 String username = authentication.getName();
+
+                System.out.println("========== CURRENT USER DEBUG ==========");
+                System.out.println("Authentication: " + authentication);
+                System.out.println("Authentication name: " + authentication.getName());
+                System.out.println("Principal: " + authentication.getPrincipal());
+                System.out.println("========================================");
 
                 return userRepository.findByUsernameAndDeletedFalse(username)
                                 .orElseThrow(
