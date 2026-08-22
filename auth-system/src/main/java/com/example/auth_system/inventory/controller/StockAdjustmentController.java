@@ -38,7 +38,7 @@ public class StockAdjustmentController {
     // ============================================================
 
     @PostMapping
-    @PreAuthorize("@permission.hasPermission('INVENTORY_MANAGE')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_CREATE')")
     public ResponseEntity<ApiResponse<StockAdjustmentResponse>> createStockAdjustment(
             @Valid @RequestBody CreateStockAdjustmentRequest request) {
         log.info("POST /api/inventory/adjustments - Creating stock adjustment");
@@ -52,7 +52,7 @@ public class StockAdjustmentController {
     // ============================================================
 
     @PatchMapping("/{adjustmentId}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_MANAGE')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_UPDATE')")
     public ResponseEntity<ApiResponse<StockAdjustmentResponse>> updateStockAdjustment(
             @PathVariable UUID adjustmentId,
             @Valid @RequestBody UpdateStockAdjustmentRequest request) {
@@ -67,7 +67,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/{adjustmentId}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<StockAdjustmentResponse>> getStockAdjustmentById(
             @PathVariable UUID adjustmentId) {
         log.info("GET /api/inventory/adjustments/{} - Getting stock adjustment",
@@ -81,7 +81,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/number/{adjustmentNumber}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<StockAdjustmentResponse>> getStockAdjustmentByNumber(
             @PathVariable String adjustmentNumber) {
         log.info("GET /api/inventory/adjustments/number/{} - Getting stock adjustment", adjustmentNumber);
@@ -94,7 +94,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getAllStockAdjustments() {
         log.info("GET /api/inventory/adjustments - Getting all stock adjustments");
         List<StockAdjustmentResponse> adjustments = stockAdjustmentService.getAllStockAdjustments();
@@ -106,7 +106,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/status/{status}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getStockAdjustmentsByStatus(
             @PathVariable AdjustmentStatus status) {
         log.info("GET /api/inventory/adjustments/status/{} - Getting adjustments by status", status);
@@ -119,7 +119,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/pending")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getPendingStockAdjustments() {
         log.info("GET /api/inventory/adjustments/pending - Getting pending adjustments");
         List<StockAdjustmentResponse> adjustments = stockAdjustmentService.getPendingStockAdjustments();
@@ -131,7 +131,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/product/{productId}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getStockAdjustmentsByProduct(
             @PathVariable UUID productId) {
         log.info("GET /api/inventory/adjustments/product/{} - Getting adjustments by product", productId);
@@ -144,7 +144,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/warehouse/{warehouseId}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getStockAdjustmentsByWarehouse(
             @PathVariable UUID warehouseId) {
         log.info("GET /api/inventory/adjustments/warehouse/{} - Getting adjustments by warehouse", warehouseId);
@@ -157,7 +157,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/type/{adjustmentType}")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getStockAdjustmentsByType(
             @PathVariable AdjustmentType adjustmentType) {
         log.info("GET /api/inventory/adjustments/type/{} - Getting adjustments by type", adjustmentType);
@@ -170,7 +170,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @GetMapping("/date-range")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_VIEW')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_READ')")
     public ResponseEntity<ApiResponse<List<StockAdjustmentResponse>>> getStockAdjustmentsByDateRange(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
@@ -184,7 +184,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @PatchMapping("/{adjustmentId}/approve")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_MANAGE')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_APPROVE')")
     public ResponseEntity<ApiResponse<StockAdjustmentResponse>> approveStockAdjustment(
             @PathVariable UUID adjustmentId,
             @Valid @RequestBody ApproveStockAdjustmentRequest request) {
@@ -213,7 +213,7 @@ public class StockAdjustmentController {
     // // ============================================================
 
     @PatchMapping("/{adjustmentId}/complete")
-    @PreAuthorize("@permission.hasPermission('INVENTORY_MANAGE')")
+    @PreAuthorize("@permission.hasPermission('STOCK_ADJUSTMENT_COMPLETE')")
     public ResponseEntity<ApiResponse<StockAdjustmentResponse>> completeStockAdjustment(
             @PathVariable UUID adjustmentId) {
         log.info("PATCH /api/inventory/adjustments/{}/complete - Completing adjustment", adjustmentId);
