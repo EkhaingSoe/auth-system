@@ -1,7 +1,5 @@
 package com.example.auth_system.inventory.service.impl;
 
-import com.example.auth_system.product.mapper.ProductVariantMapper;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
-import javax.management.RuntimeErrorException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +19,6 @@ import com.example.auth_system.inventory.dto.request.stockAdjustment.CreateStock
 import com.example.auth_system.inventory.dto.request.stockAdjustment.UpdateStockAdjustmentRequest;
 import com.example.auth_system.inventory.dto.response.StockAdjustmentResponse;
 import com.example.auth_system.inventory.dto.response.StockAdjustmentSummaryResponse;
-import com.example.auth_system.inventory.dto.response.StockMovementResponse;
 import com.example.auth_system.inventory.entity.InventoryCountItem;
 import com.example.auth_system.inventory.entity.StockAdjustment;
 import com.example.auth_system.inventory.entity.StockMovement;
@@ -73,19 +68,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
         public StockAdjustmentResponse createStockAdjustment(CreateStockAdjustmentRequest request) {
 
                 Product product = productRepository.findById(request.getProductId()).orElseThrow(
-                                () -> new ResourceNotFoundException(
-                                                "Product not found"));
-
-                ProductVariant variant = null;
-
-                if (request.getVariantId() != null) {
-
-                        variant = productVariantRepository
-                                        .findById(request.getVariantId())
-                                        .orElseThrow(
-                                                        () -> new ResourceNotFoundException(
-                                                                        "Variant not found"));
-                }
+                                () -> new ResourceNotFoundException("Product not found"));
 
                 Store warehouseStore = null;
 
@@ -93,26 +76,52 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 
                         warehouseStore = storeRepository
                                         .findById(request.getWarehouseId())
-                                        .orElseThrow(
-                                                        () -> new ResourceNotFoundException(
-                                                                        "Variant not found"));
+                                        .orElseThrow(() -> new ResourceNotFoundException("Variant not found"));
                 }
 
-                // oldquantity = 100 ;
-                // newquantity = 90;
-                // difference = 90 - 100 = -10 (difference )
+                ProductVariant variant = null;
 
-                WarehouseStock stock = warehouseStockRepository
-                                .findByProductIdAndVariantIdAndWarehouseId(
-                                                product.getId(),
-                                                variant.getId(),
-                                                warehouseStore.getId())
-                                .orElseThrow(
-                                                () -> new ResourceNotFoundException(
-                                                                "Warehouse stock not found"));
+                if (request.getVariantId() != null) {
+
+                        variant = productVariantRepository.findById(request.getVariantId())
+                                        .orElseThrow(() -> new ResourceNotFoundException("Variant not found"));
+
+                        if (!variant.getProduct().getId().equals(product.getId())) {
+                                throw new BusinessException(
+                                                "Variant does not belong to the selected product");
+                        }
+                }
+
+                WarehouseStock stock;
+
+                if (variant != null) {
+
+                        stock = warehouseStockRepository
+                                        .findByProductIdAndVariantIdAndWarehouseId(
+                                                        product.getId(),
+                                                        variant.getId(),
+                                                        warehouseStore.getId())
+                                        .orElseThrow(() -> new ResourceNotFoundException(
+                                                        "Warehouse stock not found"));
+
+                } else {
+
+                        stock = warehouseStockRepository
+                                        .findByProductIdAndVariantIsNullAndWarehouseId(
+                                                        product.getId(),
+                                                        warehouseStore.getId())
+                                        .orElseThrow(() -> new ResourceNotFoundException(
+                                                        "Warehouse stock not found"));
+                }
 
                 Integer oldQuantity = stock.getCurrentQuantity();
-                Integer difference = request.getNewQuantity() - oldQuantity;
+                Integer newQuantity = request.getNewQuantity();
+
+                Integer quantityDifference = newQuantity - oldQuantity;
+
+                AdjustmentDirection direction = quantityDifference >= 0
+                                ? AdjustmentDirection.INCREASE
+                                : AdjustmentDirection.DECREASE;
 
                 StockAdjustment adjustment = StockAdjustment.builder()
                                 .adjustmentNumber(generateAdjustmentNumber())
@@ -120,13 +129,15 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
                                 .variant(variant)
                                 .warehouse(warehouseStore)
                                 .adjustmentType(request.getAdjustmentType())
-                                .direction(request.getDirection())
+                                .direction(direction)
                                 .oldQuantity(oldQuantity)
-                                .newQuantity(request.getNewQuantity())
-                                .difference(difference)
+                                .newQuantity(newQuantity)
+                                .difference(Math.abs(quantityDifference))
                                 .reason(request.getReason())
                                 .status(AdjustmentStatus.PENDING)
+                                .createdBy(currentUserService.getCurrentUser())
                                 .build();
+
                 StockAdjustment savedAdjustment = stockAdjustmentRepository.save(adjustment);
 
                 return stockAdjustmentMapper.toResponse(savedAdjustment);

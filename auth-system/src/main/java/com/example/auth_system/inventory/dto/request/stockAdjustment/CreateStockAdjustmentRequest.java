@@ -29,11 +29,11 @@ public class CreateStockAdjustmentRequest {
     @NotNull(message = "Adjustment type is required")
     private AdjustmentType adjustmentType;
 
-    @NotNull(message = "Adjustment direction is required")
-    private AdjustmentDirection direction;
+    // @NotNull(message = "Adjustment direction is required")
+    // private AdjustmentDirection direction;
 
     @NotNull(message = "New quantity is required")
-    @Min(value = 1, message = "Quantity must be greater than 0")
+    @Min(value = 0, message = "Quantity must be greater than 0")
     private Integer newQuantity;
 
     @NotNull(message = "Reason is required")

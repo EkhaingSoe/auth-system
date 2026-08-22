@@ -25,7 +25,6 @@ public class StockAdjustmentMapper {
                                 .variant(productVariant)
                                 .warehouse(warehouse)
                                 .adjustmentType(request.getAdjustmentType())
-                                .direction(request.getDirection())
                                 .newQuantity(request.getNewQuantity())
                                 .reason(request.getReason())
                                 .status(AdjustmentStatus.PENDING)

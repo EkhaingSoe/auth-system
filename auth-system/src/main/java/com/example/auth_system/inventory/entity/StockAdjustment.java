@@ -71,7 +71,7 @@ public class StockAdjustment {
     @Column(name = "new_quantity", nullable = false)
     private Integer newQuantity;
 
-    @Column(name = "difference")
+    @Column(name = "difference", nullable = false)
     private Integer difference;
 
     @Column(columnDefinition = "TEXT")
