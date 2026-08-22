@@ -114,6 +114,18 @@ public class InventoryCountItemServiceImpl implements InventoryCountItemService 
                                 .orElseThrow(() -> new ResourceNotFoundException(
                                                 "Inventory count not found"));
 
+                // Cancelled count cannot be checked for discrepancies
+                if (count.getStatus() == InventoryCountStatus.CANCELLED) {
+                        throw new BusinessException(
+                                        "Discrepancy items cannot be viewed for a cancelled inventory count");
+                }
+
+                // Inventory count must have items
+                if (count.getItems() == null || count.getItems().isEmpty()) {
+                        throw new BusinessException(
+                                        "No inventory count items found");
+                }
+
                 boolean isAllCounted = count.getItems()
                                 .stream()
                                 .allMatch(item -> item.getCountedQuantity() != null);
