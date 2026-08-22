@@ -114,6 +114,15 @@ public class InventoryCountItemServiceImpl implements InventoryCountItemService 
                                 .orElseThrow(() -> new ResourceNotFoundException(
                                                 "Inventory count not found"));
 
+                boolean isAllCounted = count.getItems()
+                                .stream()
+                                .allMatch(item -> item.getCountedQuantity() != null);
+
+                if (!isAllCounted) {
+                        throw new BusinessException(
+                                        "Discrepancy items can only be viewed after all items have been counted");
+                }
+
                 List<InventoryCountItem> items = inventoryCountItemRepository
                                 .findDiscrepancyItemsByCountId(inventoryCountId);
                 return items.stream()

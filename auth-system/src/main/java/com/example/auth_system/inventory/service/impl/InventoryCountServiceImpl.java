@@ -62,6 +62,41 @@ public class InventoryCountServiceImpl implements InventoryCountService {
                 .orElseThrow(
                         () -> new ResourceNotFoundException("Warehouse not found"));
 
+        if (request.getScheduledDate() == null) {
+            throw new BusinessException(
+                    "Scheduled date is required");
+        }
+
+        if (request.getScheduledDate().isBefore(LocalDateTime.now())) {
+            throw new BusinessException(
+                    "Scheduled date cannot be in the past");
+        }
+
+        // FULL COUNT: only one non-cancelled count per warehouse per month
+        if (request.getCountType() == CountType.FULL_COUNT) {
+
+            LocalDate scheduledDate = request.getScheduledDate().toLocalDate();
+
+            LocalDateTime startOfMonth = scheduledDate.withDayOfMonth(1).atStartOfDay();
+
+            LocalDateTime startOfNextMonth = startOfMonth.plusMonths(1);
+
+            boolean exists = inventoryCountRepository.existsCountForMonth(
+                    request.getWarehouseId(),
+                    CountType.FULL_COUNT,
+                    InventoryCountStatus.CANCELLED,
+                    startOfMonth,
+                    startOfNextMonth);
+
+            if (exists) {
+                throw new BusinessException(
+                        "A full inventory count has already been scheduled " +
+                                "for this warehouse in " +
+                                scheduledDate.getMonth() + " " +
+                                scheduledDate.getYear());
+            }
+        }
+
         String countNumber = generateInventoryCount();
         User currentUser = currentUserService.getCurrentUser();
 
@@ -241,9 +276,9 @@ public class InventoryCountServiceImpl implements InventoryCountService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Inventory count not found"));
 
-        if (count.getStatus() != InventoryCountStatus.COMPLETED) {
+        if (count.getStatus() == InventoryCountStatus.COMPLETED) {
             throw new BusinessException(
-                    "completed inventory counts can be cancelled");
+                    "Completed inventory counts cannot be cancelled");
         }
 
         if (count.getStatus() == InventoryCountStatus.CANCELLED) {
@@ -254,6 +289,7 @@ public class InventoryCountServiceImpl implements InventoryCountService {
         count.setStatus(InventoryCountStatus.CANCELLED);
         count.setCancelledDate(LocalDateTime.now());
         count.setCancelledBy(currentUserService.getCurrentUser());
+
         InventoryCount savedCount = inventoryCountRepository.save(count);
         return inventoryCountMapper.toInventoryCountResponse(savedCount);
     }
@@ -266,9 +302,8 @@ public class InventoryCountServiceImpl implements InventoryCountService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Inventory count not found"));
 
-        if (count.getStatus() != InventoryCountStatus.IN_PROGRESS) {
-            throw new BusinessException(
-                    "Stock adjustment can only be created for an inventory count in progress");
+        if (count.getStatus() != InventoryCountStatus.COMPLETED) {
+            throw new BusinessException("Stock adjustment can only be created for a completed inventory count");
         }
 
         boolean hasUncountedItems = count.getItems()
